@@ -1,10 +1,13 @@
 from flask import Flask, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 @app.route('/login')
-def index():
-    return render_template('index.html')
+def login():
+    context = {
+
+    }
+    return render_template('login.html')
 
 @app.route('/home')
 def home():

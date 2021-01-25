@@ -6,7 +6,7 @@
 
 {% block body %}
 <div class="login-form">
-    <form class="w-100 p-4" name="" action="/login/{{ username }}/" method="post">{% csrf_token %}
+    <form class="w-100 p-4" name="" action="/login/{{ username }}/" method="post">
         <input id="username-input" class="px-2 w-75" type="text" name="username" placeholder="enter username..." required/>
         <input id="password-input" class="px-2 w-75" type="text" name="password" placeholder="enter password..." required/>
         <input class="px-4 float" type="submit" value="Add"/>

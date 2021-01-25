@@ -11,9 +11,9 @@ def login():
     return render_template('login.html')
 
 
-@app.route('/login/<username>/<password>')
-def verify_user(username, password, method=['POST']):
-    
+@app.route('/login/<username>/<password>', methods=['POST'])
+def verify_user(username, password):
+    print(request)
     users = {
         'matthias': {
             'password': 'thispass',

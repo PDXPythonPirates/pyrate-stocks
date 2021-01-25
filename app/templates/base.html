@@ -6,7 +6,7 @@
         <meta http-equiv='X-UA-Compatible' content='ie=edge'>
         <link rel='stylesheet' href='{{ url_for("static", filename="css/main.css")}}'>
         {% block head %}{% endblock %}
-    
+        {% block title %}{% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}

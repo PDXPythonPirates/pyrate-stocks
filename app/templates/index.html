@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<h1>Hello world.  </h1>
+    {% block title %}Login Page{% endblock title %}
 {% endblock %}
 
 {% block body %}
+<div class="addform">
+    <form class="w-100 p-4" name="" action="/login/{{ username }}/" method="post">{% csrf_token %}
+        <input id="username-input" class="px-2 w-75" type="text" name="username" placeholder="enter username..." required/>
+        <input id="password-input" class="px-2 w-75" type="text" name="password" placeholder="enter password..." required/>
+        <input class="px-4 float" type="submit" value="Add"/>
+    </form>
+  </div>
 <h2>This is a web page.</h2>
 <h3>This is cool.</h3>
 {% endblock %}

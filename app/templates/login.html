@@ -7,11 +7,9 @@
 <div class="login-form">
     <form class="w-100 p-4" name="" action="/login/" method="post">
         {{ form.csrf_token }}
-        {{ form.username.label }} {{ form.username(size=20) }}
-        {{ form.password.label }} {{ form.password(size=20) }}
+        {{ form.username.label }} {{ form.username(size=20) }}<br>
+        {{ form.password.label }} {{ form.password(size=20) }}<br>
         <input type="submit" value="Login"/>
     </form>
   </div>
-<h2>This is a web page.</h2>
-<h3>This is cool.</h3>
 {% endblock %}

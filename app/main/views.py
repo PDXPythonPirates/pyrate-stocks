@@ -15,7 +15,7 @@ app = create_app()
 
 @app.route('/')
 def home():
-    return '<h1>Home Page</h1>'
+    return render_template('base.html')
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():

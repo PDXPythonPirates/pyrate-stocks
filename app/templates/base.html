@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-
-{% block styles %}
-{{super()}}
-<link rel="stylesheet"
-      href="{{url_for('.static', filename='styles.css')}}">
-{% endblock %}
-
-{% block html_attribs %} lang="en"{% endblock %}
-
+<!DOCTYPE html lang="en">
     <head>
         <meta charset='UTF-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <meta http-equiv='X-UA-Compatible' content='ie=edge'>
         <link rel='stylesheet' href='../static/styles.css'>
-        {% block head %}{% endblock %}
-        {% block title %}{% endblock %}
+        <title>Financial App</title>
     </head>
 
     <body>
+        <a href="{{ url_for('login') }}">Click here to login</a>
         {% block body %}{% endblock %}
     </body>
 </html>

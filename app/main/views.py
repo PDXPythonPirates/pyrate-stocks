@@ -6,7 +6,7 @@ def create_app():
     Bootstrap(app)
     return app
   
-app = create_app()
+app = create_app()  
 #app.url_map.strict_slashes = False
 
 @app.route('/')

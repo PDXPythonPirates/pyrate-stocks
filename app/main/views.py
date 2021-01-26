@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, jsonify
 from flask_bootstrap import Bootstrap
 from forms import LoginForm
 from keychain import Keys
@@ -19,6 +19,8 @@ def home():
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
+    data = request.json
+    print(request.form)
     form = LoginForm()
 
     users = {

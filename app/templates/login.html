@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="login-form">
-    <form class="w-100 p-4" name="" action="/validate" method="post">
+    <form class="w-100 p-4" name="" action="/login/" method="post">
         {{ form.csrf_token }}
         {{ form.username.label }} {{ form.username(size=20) }}
         {{ form.password.label }} {{ form.password(size=20) }}

@@ -17,14 +17,9 @@ app = create_app()
 def home():
     return '<h1>Home Page</h1>'
 
-@app.route('/login/')
+@app.route('/login/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    return render_template('login.html', form=form)
-
-
-@app.route('/validate', methods=['GET', 'POST'])
-def validate_user():
 
     users = {
         'matthias': {
@@ -40,12 +35,15 @@ def validate_user():
     }
 
     if form.validate_on_submit():
+        username = request.form.get('username')
+        password = request.form.get('password')
+
         if username in users and password == users[username]['password']:
-            return redirect('/')
+            return '<h1>User Profile</h1>'
         else:
-            return redirect('/login')
-    else:
-        return redirect('/failed')
+            return redirect('/login/')
+
+    return render_template('login.html', form=form)
 
 @app.route('/failed')
 def failed():

@@ -1,20 +1,31 @@
 from flask import Flask, render_template, redirect, url_for, request
 from flask_bootstrap import Bootstrap
+from forms import LoginForm
+from keychain import Keys
 
 def create_app():
     app = Flask(__name__, template_folder='../templates')
+    app.config['SECRET_KEY'] = Keys.secret()
     Bootstrap(app)
     return app
   
-app = create_app()  
+app = create_app()
+
 #app.url_map.strict_slashes = False
 
 @app.route('/')
 def home():
     return '<h1>Home Page</h1>'
 
-@app.route('/login/', methods=['POST'])
+@app.route('/login/')
 def login():
+    return render_template('login.html')
+
+
+@app.route('/validate')
+def validate_user():
+    form = LoginForm()
+
     users = {
         'matthias': {
             'password': 'thispass',
@@ -27,13 +38,18 @@ def login():
             'location': 'Portland, OR'
         }
     }
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+
+    if form.validate_on_submit():
         if username in users and password == users[username]['password']:
-            return redirect(url_for('/'))
+            return redirect('/')
         else:
-            return redirect(url_for('/login/'))  
+            return redirect('/login')
+    else:
+        return redirect('/failed')
+
+@app.route('/failed')
+def failed():
+    return '<h1>failed</h1>'
  
 if __name__=='__main__':
     app.run(debug=True)

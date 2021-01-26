@@ -22,7 +22,7 @@ def login():
     return render_template('login.html')
 
 
-@app.route('/validate')
+@app.route('/validate', methods=['GET', 'POST'])
 def validate_user():
     form = LoginForm()
 

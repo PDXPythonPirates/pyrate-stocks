@@ -1,5 +1,13 @@
 <!DOCTYPE html>
-<html lang='en'>
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('.static', filename='styles.css')}}">
+{% endblock %}
+
+{% block html_attribs %} lang="en"{% endblock %}
+
     <head>
         <meta charset='UTF-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>

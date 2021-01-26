@@ -1,19 +1,20 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, url_for, request
+from flask_bootstrap import Bootstrap
 
-app = Flask(__name__, template_folder='../templates')
+def create_app():
+    app = Flask(__name__, template_folder='../templates')
+    Bootstrap(app)
+    return app
+  
+app = create_app()
+#app.url_map.strict_slashes = False
 
 @app.route('/')
 def home():
     return '<h1>Home Page</h1>'
 
-@app.route('/login')
+@app.route('/login/', methods=['POST'])
 def login():
-    return render_template('login.html')
-
-
-@app.route('/login/<username>/<password>', methods=['POST'])
-def verify_user(username, password):
-    print(request)
     users = {
         'matthias': {
             'password': 'thispass',
@@ -26,11 +27,13 @@ def verify_user(username, password):
             'location': 'Portland, OR'
         }
     }
-
-    if username in users and password == users[username]['password']:
-        return redirect('/')
-    else:
-        return redirect('/login')
-
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username in users and password == users[username]['password']:
+            return redirect(url_for('/'))
+        else:
+            return redirect(url_for('/login/'))  
+ 
 if __name__=='__main__':
     app.run(debug=True)

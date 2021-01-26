@@ -41,9 +41,9 @@ def login():
         if username in users and password == users[username]['password']:
             return '<h1>User Profile</h1>'
         else:
-            return redirect('/login/')
+            return render_template('login.html', form=form, display_message='Login Failed')
 
-    return render_template('login.html', form=form)
+    return render_template('login.html', form=form, display_message='User Login')
 
 @app.route('/failed')
 def failed():

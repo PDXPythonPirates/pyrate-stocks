@@ -6,5 +6,6 @@ class LoginForm(FlaskForm):
     username = StringField(validators=[InputRequired()])
     password = PasswordField(validators=[InputRequired()])
     submit = SubmitField('Submit')
+    logout = SubmitField('Submit')
 
 # this file was grayed out after pull

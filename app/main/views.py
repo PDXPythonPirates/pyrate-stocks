@@ -14,8 +14,12 @@ app = create_app()
 #app.url_map.strict_slashes = False
 
 @app.route('/')
-def home():
+def base():
     return render_template('base.html')
+
+@app.route('/home/')
+def home():
+    return render_template('home.html')
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
@@ -36,20 +40,26 @@ def login():
         }
     }
 
-    if form.validate_on_submit():
+    if form.validate():
         username = request.form.get('username')
         password = request.form.get('password')
 
         if username in users and password == users[username]['password']:
-            return '<h1>User Profile</h1>'
+            return render_template('profile.html', form=form, display_message='Thank you for the visit!')
         else:
             return render_template('login.html', form=form, display_message='Login Failed')
 
     return render_template('login.html', form=form, display_message='User Login')
 
-@app.route('/failed')
-def failed():
-    return '<h1>failed</h1>'
- 
+# @app.route('/failed')
+# def failed():
+    # return '<h1>Failed attempt.</h1>'
+
+@app.route('/profile/', methods=['GET', 'POST'])
+def profile():
+    if form.validate():
+        return render_template('home.html',form=form)
+
+
 if __name__=='__main__':
     app.run(debug=True)

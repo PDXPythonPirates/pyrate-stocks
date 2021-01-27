@@ -1,13 +1,12 @@
 {% extends "bootstrap/base.html" %}
 
-{% block title %}Profile{% endblock %}
+{% block title %}username{% endblock %}
 
 {% block body %}
-<h1>This is your personal space.</h1>
-<h1>{{ display_message }}</h1>
+<h1>{{ context.display_message }}! This is your personal space.</h1>
 <div class="profile-form">
-    <form class="w-100 p-4" name="" action="/home" method="post">
-       <input type="submit" value="Logout"/>
-    </form>
-  </div>
+   <form class="w-100 p-4" name="" action="/" method="POST">
+      <input type="submit" value="Logout"/>
+   </form>
+</div>
  {% endblock %}

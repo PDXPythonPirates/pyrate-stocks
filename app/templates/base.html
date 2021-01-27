@@ -8,6 +8,7 @@
     </head>
 
     <body>
+        <h1>{{ display_message }}</h1>
         <a href="{{ url_for('login') }}">Click here to login</a>
         {% block body %}{% endblock %}
     </body>

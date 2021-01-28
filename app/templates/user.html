@@ -1,0 +1,19 @@
+<!-- This file renders data submitted from signup.html -->
+{% extends "index.html" %}
+
+{% block content %}
+<h1>User Information</h1>
+<table border="1">
+    {% for key, value in result.items() %}
+        <tr>
+            <th>
+                {{key}}
+            </th>
+            <td>
+                {{value}}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

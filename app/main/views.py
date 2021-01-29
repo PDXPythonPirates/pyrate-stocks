@@ -13,7 +13,7 @@ Bootstrap(app)
 # This route will bring you to the homepage.
 # As of now, users are directed here after logging out.
 @app.route('/', methods=['GET', 'POST'])
-def base():
+def home():
 
     context = {
 
@@ -68,21 +68,34 @@ def login():
     # If the request was a 'GET' request, the login page will be rendered.
     return render_template('login.html', form=form, display_message='User Login')
 
-# Load user profile.
-@app.route('/profile/', methods=['GET', 'POST'])
-def profile():
+# Logout user profile.
+@app.route('/logout/', methods=['GET', 'POST'])
+def logout():
     form = LogoutForm()
 
     context = {
         'form': form,
-        'display_message': 'Successfully logged out',
     }
     
     if form.validate_on_submit():
+        context['display_message'] = 'Successfully logged out'
         print('logged out')
         return render_template('home.html', context=context)
+    else:
+        context = {
 
-    return render_template('profile.html')
+        }
+        return render_template('profile.html', context=context)
+
+# Load user profile.
+@app.route('/profile/', methods=['GET', 'POST'])
+def profile():
+
+    context = {
+
+    }
+
+    return render_template('profile.html', context=context)
 
 
 # Run app

@@ -15,7 +15,11 @@ Bootstrap(app)
 @app.route('/', methods=['GET', 'POST'])
 def base():
 
-    return render_template('home.html')
+    context = {
+
+    }
+
+    return render_template('home.html', context=context)
 
 # This route is accessable via the link on the homepage.
 # login() will render a template, and if the form is submitted,

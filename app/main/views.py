@@ -3,13 +3,10 @@ from flask_bootstrap import Bootstrap
 from forms import LoginForm, LogoutForm
 from keychain import Keys
 
-def create_app():
-    app = Flask(__name__, template_folder='../templates')
-    app.config['SECRET_KEY'] = Keys.secret()
-    Bootstrap(app)
-    return app
-  
-app = create_app()
+
+app = Flask(__name__, template_folder='../templates')
+app.config['SECRET_KEY'] = Keys.secret()
+Bootstrap(app)
 
 #app.url_map.strict_slashes = False
 
@@ -46,8 +43,8 @@ def login():
     # If true, create a context for the user and render their profile.
     # Otherwise, go back to the login page.
     if form.validate_on_submit():
-        username = request.form.get('username')
-        password = request.form.get('password')
+        username = form.username.data
+        password = form.password.data
 
         # Data that pertains to the user.
         context = {
@@ -72,11 +69,14 @@ def login():
 def profile():
     form = LogoutForm()
 
-    # If POST request is sent via the logout button, render the homepage.
-    # This needs work -- can't get it to render home with display message. ((Matthias))
+    context = {
+        'form': form,
+        'display_message': 'Successfully logged out',
+    }
+    
     if form.validate_on_submit():
         print('logged out')
-        return render_template('home.html', display_message='Successfully logged out')
+        return render_template('home.html', context=context)
 
     return render_template('profile.html')
 

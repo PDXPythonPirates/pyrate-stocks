@@ -5,8 +5,8 @@
 {% block body %}
     <!--So far, I can't get this message to display on the homepage.
     Mostly meant for notifying the user of a successful logout. ((Matthias))-->
-    {% if display_message %}
-        <p>{{ display_message }}</p>
+    {% if context.display_message %}
+        <p>{{ context.display_message }}</p>
     {% endif %}
 <h1>Financial App Home</h1>
 <p>Check on the status of your favorite ETFs.</p>

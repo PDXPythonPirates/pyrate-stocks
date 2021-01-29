@@ -10,5 +10,3 @@ class LoginForm(FlaskForm):
 
 class LogoutForm(FlaskForm):
     logout = SubmitField('Submit')
-
-# this file was grayed out after pull

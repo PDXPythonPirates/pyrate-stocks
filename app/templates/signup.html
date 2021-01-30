@@ -1,0 +1,63 @@
+<!-- This files renders a sign up page that submits data to user.html -->
+{% extends "index.html" %} 
+
+{% block content %}
+<h1>Sign Up</h1>
+<div>
+    <form action="" method="post">
+        <!-- username, password -->
+        <div>
+            {{form.username.label}} <br>
+            {{form.username(size=30)}}
+            <br><br>
+            {{form.password.label}} <br>
+            {{form.password(size=30)}}
+            <br><br>
+        </div>
+
+        <!-- name -->
+        <div>
+            {{form.firstname.label}} <br>
+            {{form.firstname(size=30)}}
+            <br><br>
+            {{form.lastname.label}} <br>
+            {{form.lastname(size=30)}}
+            <br><br>
+        </div>
+
+        <!-- email, phone -->
+        <div>
+            {{form.email.label}} <br>
+            {{form.email(size=30)}}
+            <br><br>
+            {{form.phone.label}} <br>
+            {{form.phone(size=30)}}
+            <br><br>
+        </div>
+
+        <!-- address/location -->
+        <div>
+            {{form.address.label}} <br>
+            {{form.address(size=30)}}
+            <br><br>
+            {{form.apt.label}} <br>
+            {{form.apt(size=30)}}
+            <br><br>
+            {{form.city.label}} <br>
+            {{form.city(size=30)}}
+            <br><br>
+            {{form.state.label}} <br>
+            {{form.state(size=30)}}
+            <br><br>
+            {{form.zipcode.label}} <br>
+            {{form.zipcode(size=30)}}
+            <br><br>
+        </div>
+
+        <!-- submit button -->
+        <div>
+            {{form.submit()}}
+        </div>
+    </form>
+</div>
+{% endblock %}  

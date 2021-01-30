@@ -130,3 +130,6 @@ dmypy.json
 
 # Secret project files
 app/main/keychain.py
+
+# Mac hidden files
+.DS_Store

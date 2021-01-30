@@ -11,7 +11,6 @@ Bootstrap(app)
 #app.url_map.strict_slashes = False
 
 # This route will bring you to the homepage.
-# As of now, users are directed here after logging out.
 @app.route('/', methods=['GET', 'POST'])
 def home():
 
@@ -29,26 +28,26 @@ def home():
 def login():
     form = LoginForm()
 
-    # Some user data to utilize before implementing a database
-    users = {
-        'matthias': {
-            'password': 'thispass',
-            'creation-date': '01/02/21',
-            'location': 'Portland, OR'
-        },
-        'xuehong': {
-            'password': 'anotherpass',
-            'creation-date': '01/02/21',
-            'location': 'Portland, OR'
-        }
-    }
-
     # Checks if the form is valid AND checks if the request was 'POST'.
     # If true, create a context for the user and render their profile.
     # Otherwise, go back to the login page.
     if form.validate_on_submit():
         username = form.username.data
         password = form.password.data
+
+        # Some user data to utilize before implementing a database
+        users = {
+            'matthias': {
+                'password': 'thispass',
+                'creation-date': '01/02/21',
+                'location': 'Portland, OR'
+            },
+            'xuehong': {
+                'password': 'anotherpass',
+                'creation-date': '01/02/21',
+                'location': 'Portland, OR'
+            }
+        }
 
         # Data that pertains to the user.
         context = {
@@ -63,23 +62,27 @@ def login():
             return render_template('profile.html', context=context)
         # Does not exist or something was entered incorrectly.
         else:
-            return render_template('login.html', form=form, display_message='Incorrect Login')
+            context['display_message'] = 'Incorrect Login'
+            return render_template('login.html', context=context)
+
+    context = {
+        'form': form,
+        'display_message': 'User Login'
+    }
 
     # If the request was a 'GET' request, the login page will be rendered.
-    return render_template('login.html', form=form, display_message='User Login')
+    return render_template('login.html', context=context)
 
 # Logout user profile.
 @app.route('/logout/', methods=['GET', 'POST'])
 def logout():
     form = LogoutForm()
-
-    context = {
-        'form': form,
-    }
     
     if form.validate_on_submit():
-        context['display_message'] = 'Successfully logged out'
-        print('logged out')
+        context = {
+            'form': form,
+            'display_message': 'Successfully logged out',
+        }
         return render_template('home.html', context=context)
     else:
         context = {
@@ -90,11 +93,9 @@ def logout():
 # Load user profile.
 @app.route('/profile/', methods=['GET', 'POST'])
 def profile():
-
     context = {
 
     }
-
     return render_template('profile.html', context=context)
 
 

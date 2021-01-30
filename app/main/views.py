@@ -46,10 +46,10 @@ def login():
 
         # Check if the user exists and has entered the correct password.
         if username in users and password == users[username]['password']:
-            return render_template('profile.html', username=username, display_message=f'Welcome, {username}')
+            return render_template('profile.html', form=form, username=username, display_message=f'Welcome, {username}')
         # Does not exist or something was entered incorrectly.
         else:
-            return render_template('login.html', display_message='Incorrect Login')
+            return render_template('login.html', form=form, display_message='Incorrect Login')
 
     # If the request was a 'GET' request, the login page will be rendered.
     return render_template('login.html', form=form, display_message='User Login')

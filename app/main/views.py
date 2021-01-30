@@ -51,11 +51,6 @@ def login():
         else:
             return render_template('login.html', display_message='Incorrect Login')
 
-    context = {
-        'form': form,
-        'display_message': 'User Login'
-    }
-
     # If the request was a 'GET' request, the login page will be rendered.
     return render_template('login.html', form=form, display_message='User Login')
 
@@ -78,13 +73,17 @@ def profile():
 
     return render_template('profile.html', form=form)
 
-# routes to signup.html page. On click of Submit button, data renders to user.html in templates.
+# When the submit button is clicked on the signup page, 
+# data renders to profile.html.
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = SignUpForm()
+
     if form.is_submitted():
         form = request.form
+
         return render_template('profile.html', form=form)
+
     return render_template('signup.html', form=form)
 
 # Run app

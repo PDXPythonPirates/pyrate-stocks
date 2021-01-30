@@ -1,10 +1,14 @@
-{% extends "bootstrap/base.html" %}
+{% extends "base.html" %}
 
 {% block title %}Home{% endblock %}
 
-{% block body %}
-    {% if context.display_message %}
-        <p>{{ context.display_message }}</p>
+{% block head %}
+    {{super()}}
+{% endblock %}
+
+{% block content %}
+    {% if display_message %}
+        <p>{{ display_message }}</p>
     {% endif %}
     <h1>Financial App Home</h1>
     <p>Check on the status of your favorite ETFs.</p>

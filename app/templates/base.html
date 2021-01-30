@@ -1,14 +1,24 @@
-<!DOCTYPE html lang="en">
-    <head>
-        <meta charset='UTF-8'>
-        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-        <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-        <link rel='stylesheet' href='../static/styles.css'>
-        <title>Financial App</title>
-    </head>
+{% extends 'bootstrap/base.html' %}
 
-    <body>
-        {% block body %}
-        {% endblock %}
-    </body>
-</html>
+{% block title %}Financial App{% endblock %}
+
+{% block head %}
+    {{super()}}
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <link rel='stylesheet' href='../static/styles.css'>
+{% endblock %}
+
+{% block body %}
+    <div>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="{{ url_for('home') }}">Home</a></li>
+            <li class="list-inline-item"><a href="{{ url_for('login') }}">Login</a></li>
+            <li class="list-inline-item"><a href="{{ url_for('signup') }}">Signup</a></li>
+            <li class="list-inline-item"><a href="{{ url_for('profile') }}">Profile</a></li>
+        </ul>
+    </div>
+    {% block content %}
+    {% endblock %}
+{% endblock %}

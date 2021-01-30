@@ -1,8 +1,7 @@
 from flask import Flask, render_template, redirect, request, url_for, jsonify
 from flask_bootstrap import Bootstrap
-from forms import LoginForm, LogoutForm
+from forms import LoginForm, LogoutForm, SignUpForm
 from keychain import Keys
-
 
 app = Flask(__name__, template_folder='../templates')
 app.config['SECRET_KEY'] = Keys.secret()
@@ -14,11 +13,7 @@ Bootstrap(app)
 @app.route('/', methods=['GET', 'POST'])
 def home():
 
-    context = {
-
-    }
-
-    return render_template('home.html', context=context)
+    return render_template('home.html')
 
 # This route is accessable via the link on the homepage.
 # login() will render a template, and if the form is submitted,
@@ -49,21 +44,12 @@ def login():
             }
         }
 
-        # Data that pertains to the user.
-        context = {
-                'form': form,
-                'username': username,
-                'display_message': f'Welcome, {username}',
-                'followed_etfs': ['TSLA', 'AAPL', 'GOOGL', 'GOOG', 'FB', 'AMZN'],
-            }
-
         # Check if the user exists and has entered the correct password.
         if username in users and password == users[username]['password']:
-            return render_template('profile.html', context=context)
+            return render_template('profile.html', username=username, display_message=f'Welcome, {username}')
         # Does not exist or something was entered incorrectly.
         else:
-            context['display_message'] = 'Incorrect Login'
-            return render_template('login.html', context=context)
+            return render_template('login.html', display_message='Incorrect Login')
 
     context = {
         'form': form,
@@ -71,7 +57,7 @@ def login():
     }
 
     # If the request was a 'GET' request, the login page will be rendered.
-    return render_template('login.html', context=context)
+    return render_template('login.html', form=form, display_message='User Login')
 
 # Logout user profile.
 @app.route('/logout/', methods=['GET', 'POST'])
@@ -79,25 +65,27 @@ def logout():
     form = LogoutForm()
     
     if form.validate_on_submit():
-        context = {
-            'form': form,
-            'display_message': 'Successfully logged out',
-        }
-        return render_template('home.html', context=context)
-    else:
-        context = {
 
-        }
-        return render_template('profile.html', context=context)
+        return render_template('home.html', form=form, display_message='Successfully logged out')
+    else:
+        
+        return render_template('profile.html')
 
 # Load user profile.
 @app.route('/profile/', methods=['GET', 'POST'])
 def profile():
-    context = {
+    form = LogoutForm()
 
-    }
-    return render_template('profile.html', context=context)
+    return render_template('profile.html', form=form)
 
+# routes to signup.html page. On click of Submit button, data renders to user.html in templates.
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    form = SignUpForm()
+    if form.is_submitted():
+        form = request.form
+        return render_template('profile.html', form=form)
+    return render_template('signup.html', form=form)
 
 # Run app
 if __name__=='__main__':

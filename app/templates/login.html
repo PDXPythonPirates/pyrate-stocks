@@ -1,14 +1,18 @@
-{% extends "bootstrap/base.html" %}
+{% extends "base.html" %}
 
 {% block title %}Login{% endblock %}
 
-{% block body %}
-<h1>{{ context.display_message }}</h1>
+{% block head %}
+    {{super()}}
+{% endblock %}
+
+{% block content %}
+<h1>{{ display_message }}</h1>
 <div class="login-form">
-    <form class="w-100 p-4" name="" action="/login/" method="post">
-        {{ context.form.csrf_token }}
-        {{ context.form.username.label }} {{ context.form.username(size=20) }}<br>
-        {{ context.form.password.label }} {{ context.form.password(size=20) }}<br>
+    <form class="" name="" action="/login/" method="post">
+        {{ form.csrf_token }}
+        {{ form.username.label }} {{ form.username(size=20) }}<br>
+        {{ form.password.label }} {{ form.password(size=20) }}<br>
         <input type="submit" value="Login"/>
     </form>
   </div>

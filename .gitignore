@@ -133,3 +133,6 @@ app/main/keychain.py
 
 # Mac hidden files
 .DS_Store
+
+#vscode
+.vscode

@@ -1,12 +1,31 @@
-{% extends "bootstrap/base.html" %}
+{% extends "base.html" %}
 
-{% block title %}context.username{% endblock %}
+{% block title %}username{% endblock %}
 
-{% block body %}
-<h1>{{ context.display_message }}! This is your personal space.</h1>
-<div class="profile-form">
-   <form class="w-100 p-4" name="" action="/logout/" method="POST">
-      {{ context.form.csrf_token }}
+{% block head %}
+    {{super()}}
+{% endblock %}
+
+{% block content %}
+<h1>{{ display_message }}! This is your personal space.</h1>
+<div class="profile-information">
+   <h1>User Information</h1>
+   <table border="1">
+      {% for key, value in form.items() %}
+         <tr>
+               <th>
+                  {{key}}
+               </th>
+               <td>
+                  {{value}}
+               </td>
+         </tr>
+      {% endfor %}
+   </table>
+</div>
+<div class="profile-logout">
+   <form class="" name="" action="/logout/" method="POST">
+      {{ form.csrf_token }}
       <input type="submit" value="Logout"/>
    </form>
 </div>

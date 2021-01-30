@@ -130,3 +130,6 @@ dmypy.json
 
 #vscode
 .vscode
+
+#Secret project files
+app/main/keychain.py

@@ -2,11 +2,9 @@ from flask import Flask, render_template, request, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Email, Length
+from keychain import Keys
 
 app = Flask(__name__, template_folder='../templates')
-# Flask wtforms requires secret key. Uses it to protect web forms against a nasty attack called Cross-Site Request Forgery (CSRF)
-app.config['SECRET_KEY'] = 'secret' 
-
 
 # class SignUpForm is conntected to signup.html in templates
 class SignUpForm(FlaskForm):

@@ -1,46 +1,93 @@
-from flask import Flask, render_template, request, redirect
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import InputRequired, Email, Length
+from flask import Flask, render_template, redirect, request, url_for, jsonify
+from flask_bootstrap import Bootstrap
+from forms import LoginForm, LogoutForm, SignUpForm
 from keychain import Keys
 
 app = Flask(__name__, template_folder='../templates')
+app.config['SECRET_KEY'] = Keys.secret()
+Bootstrap(app)
 
-# class SignUpForm is conntected to signup.html in templates
-class SignUpForm(FlaskForm):
-    # Data fields that connect to inputs fields on signup.html in templates.
-    username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
-    password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=15)])
-    firstname = StringField('First Name', validators=[InputRequired()])
-    lastname = StringField('Last Name', validators=[InputRequired()])
-    email = StringField('Email', validators=[InputRequired(), Email(message='Invalid Email'), Length(max=20)])
-    phone = StringField('Phone', validators=[InputRequired()])
-    address = StringField('Address', validators=[InputRequired()])
-    apt = StringField('Apartment#', validators=[InputRequired()])
-    city = StringField('City', validators=[InputRequired()])
-    state = StringField('State', validators=[InputRequired()])
-    zipcode = StringField('Zip Code', validators=[InputRequired()])
-    # Submit Button
-    submit = SubmitField('Submit')
+#app.url_map.strict_slashes = False
 
-# routes to index.html page in templates.
-@app.route('/index')
+# This route will bring you to the homepage.
+@app.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template('index.html')
 
-# routes to signup.html page. On click of Submit button, data renders to user.html in templates.
+    return render_template('home.html')
+
+# This route is accessable via the link on the homepage.
+# login() will render a template, and if the form is submitted,
+# the user will be directed to their profile, or back to the
+# login template, if they entered incorrect information.
+@app.route('/login/', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+
+    # Checks if the form is valid AND checks if the request was 'POST'.
+    # Otherwise, go back to the login page.
+    if form.validate_on_submit():
+        username = form.username.data
+        password = form.password.data
+
+        # Some user data to utilize before implementing a database
+        users = {
+            'matthias': {
+                'password': 'thispass',
+                'creation-date': '01/02/21',
+                'location': 'Portland, OR'
+            },
+            'xuehong': {
+                'password': 'anotherpass',
+                'creation-date': '01/02/21',
+                'location': 'Portland, OR'
+            }
+        }
+
+        # Check if the user exists and has entered the correct password.
+        if username in users and password == users[username]['password']:
+            return render_template('profile.html', form=form, username=username, display_message=f'Welcome, {username}')
+        # Does not exist or something was entered incorrectly.
+        else:
+            return render_template('login.html', form=form, display_message='Incorrect Login')
+
+    # If the request was a 'GET' request, the login page will be rendered.
+    return render_template('login.html', form=form, display_message='User Login')
+
+# Logout user profile.
+@app.route('/logout/', methods=['GET', 'POST'])
+def logout():
+    form = LogoutForm()
+    
+    if form.validate_on_submit():
+
+        return render_template('home.html', form=form, display_message='Successfully logged out')
+    else:
+        
+        return render_template('profile.html')
+
+# Load user profile.
+@app.route('/profile/', methods=['GET', 'POST'])
+def profile():
+    form = LogoutForm()
+
+    return render_template('profile.html', form=form)
+
+# When the submit button is clicked on the signup page, 
+# data renders to profile.html.
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = SignUpForm()
+
     if form.is_submitted():
-        result = request.form
-        return render_template('user.html', result=result)
+        #form = request.form
+        form = form.username.data
+
+        # does not yet save registration data anywhere.
+        # this is a temporary redirect to the login page.
+        return render_template('login.html', form=LoginForm())
+
     return render_template('signup.html', form=form)
 
-# routes to profile.html page in templates.
-@app.route('/profile')
-def profile():
-    return render_template('profile.html')
-
-if __name__ == '__main__':
+# Run app
+if __name__=='__main__':
     app.run(debug=True)

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block head %}
+    {{super()}}
+{% endblock %}
+
+{% block content %}
+    {% if display_message %}
+        <p>{{ display_message }}</p>
+    {% endif %}
+    <h1>Financial App Home</h1>
+    <p>Check on the status of your favorite ETFs.</p>
+    <a href="{{ url_for('login') }}">
+        <h2>Click here to login</h2>
+    </a>
+{% endblock %}

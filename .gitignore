@@ -128,8 +128,11 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#vscode
-.vscode
-
-#Secret project files
+# Secret project files
 app/main/keychain.py
+
+# Mac hidden files
+.DS_Store
+
+#vscode
+**/.vscode/

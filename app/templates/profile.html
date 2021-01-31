@@ -1,6 +1,35 @@
-<!-- File that renders is currently blank -->
-{% extends "index.html" %} 
+{% extends "base.html" %}
+
+{% block title %}username{% endblock %}
+
+{% block head %}
+    {{super()}}
+{% endblock %}
 
 {% block content %}
-
-{% endblock %}  
+<h1>{{ display_message }}! This is your personal space.</h1>
+<div class="profile-information">
+   <h1>User Information</h1>
+   <table border="1">
+      <!--
+      {% for key, value in form %}
+         <tr>
+               <th>
+                  {{key}}
+               </th>
+               <td>
+                  {{value}}
+               </td>
+         </tr>
+      {% endfor %}
+      -->
+      
+   </table>
+</div>
+<div class="profile-logout">
+   <form class="" name="" action="/logout/" method="POST">
+      {{ form.csrf_token }}
+      <input type="submit" value="Logout"/>
+   </form>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block head %}
+    {{super()}}
+{% endblock %}
+
+{% block content %}
+<h1>{{ display_message }}</h1>
+<div class="login-form">
+    <form class="" name="" action="/login/" method="POST">
+        {{ form.csrf_token }}
+        {{ form.username.label }} {{ form.username(size=20) }}<br>
+        {{ form.password.label }} {{ form.password(size=20) }}<br>
+        <input type="submit" value="Login"/>
+    </form>
+  </div>
+{% endblock %}

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}username{% endblock %}
+{% block title %}{{super()}}{{ username }}{% endblock %}
 
 {% block head %}
     {{super()}}

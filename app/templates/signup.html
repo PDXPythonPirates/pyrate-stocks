@@ -1,5 +1,7 @@
 {% extends "base.html" %} 
 
+{% block title %}{{super()}}Signup{% endblock %}
+
 {% block content %}
 <h1>Sign Up</h1>
 <div>
@@ -13,6 +15,24 @@
         <br>
         {{form.email.label}}
         {{form.email(size=30)}}
+        <br>
+        {{form.phone.label}}
+        {{form.phone(size=30)}}
+        <br>
+        {{form.address.label}}
+        {{form.address(size=30)}}
+        <br>
+        {{form.addressLine2.label}}
+        {{form.addressLine2(size=30)}}
+        <br>
+        {{form.city.label}}
+        {{form.city(size=30)}}
+        <br>
+        {{form.state.label}}
+        {{form.state(size=30)}}
+        <br>
+        {{form.zipcode.label}}
+        {{form.zipcode(size=30)}}
         <br>
         {{form.submit()}}
     </form>

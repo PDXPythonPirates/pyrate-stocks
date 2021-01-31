@@ -20,7 +20,7 @@ def home():
 ##### ADD USER #####
 
 def append_list_as_row(file_name, user_data):
-    with open(file_name, 'w', newline='') as file:
+    with open(file_name, 'a+', newline='') as file:
         print('test2', user_data)
         writer = csv.writer(file, delimiter=',')
         writer.writerow(user_data)

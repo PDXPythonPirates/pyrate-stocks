@@ -12,7 +12,16 @@ class LogoutForm(FlaskForm):
     logout = SubmitField('Submit')
 
 class SignUpForm(FlaskForm):
-    username = StringField('Username', validators=[InputRequired()])
-    password = PasswordField('Password', validators=[InputRequired()])
-    email = StringField('Email', validators=[InputRequired()])
+    # Data fields that connect to inputs fields on signup.html in templates.
+    username = StringField('Username', validators=[InputRequired(), Length(min=2, max=15)])
+    password = PasswordField('Password', validators=[InputRequired(), Length(min=2, max=15)])
+    firstname = StringField('First Name')
+    lastname = StringField('Last Name')
+    email = StringField('Email', validators=[InputRequired(), Email(message='Invalid Email'), Length(max=20)])
+    phone = StringField('Phone')
+    address = StringField('Address')
+    addressLine2 = StringField('Address Line 2')
+    city = StringField('City')
+    state = StringField('State')
+    zipcode = StringField('Zip Code')
     submit = SubmitField('Submit')

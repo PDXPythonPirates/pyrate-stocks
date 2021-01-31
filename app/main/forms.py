@@ -20,7 +20,7 @@ class SignUpForm(FlaskForm):
     email = StringField('Email', validators=[InputRequired(), Email(message='Invalid Email'), Length(max=20)])
     phone = StringField('Phone', validators=[InputRequired()])
     address = StringField('Address', validators=[InputRequired()])
-    addressLine2 = StringField('Apartment#', validators=None)
+    addressLine2 = StringField('Address Line 2', validators=None)
     city = StringField('City', validators=[InputRequired()])
     state = StringField('State', validators=[InputRequired()])
     zipcode = StringField('Zip Code', validators=[InputRequired()])

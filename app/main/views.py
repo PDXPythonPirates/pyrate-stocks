@@ -80,9 +80,12 @@ def signup():
     form = SignUpForm()
 
     if form.is_submitted():
-        form = request.form
+        #form = request.form
+        form = form.username.data
 
-        return render_template('profile.html', form=form)
+        # does not yet save registration data anywhere.
+        # this is a temporary redirect to the login page.
+        return render_template('login.html', form=LoginForm())
 
     return render_template('signup.html', form=form)
 

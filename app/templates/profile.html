@@ -11,7 +11,8 @@
 <div class="profile-information">
    <h1>User Information</h1>
    <table border="1">
-      {% for key, value in form.items() %}
+      <!--
+      {% for key, value in form %}
          <tr>
                <th>
                   {{key}}
@@ -21,6 +22,8 @@
                </td>
          </tr>
       {% endfor %}
+      -->
+      
    </table>
 </div>
 <div class="profile-logout">
@@ -29,4 +32,4 @@
       <input type="submit" value="Logout"/>
    </form>
 </div>
- {% endblock %}
+{% endblock %}

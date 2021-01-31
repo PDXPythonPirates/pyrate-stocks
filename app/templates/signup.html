@@ -1,10 +1,10 @@
-<!-- This files renders a sign up page that submits data to user.html -->
 {% extends "base.html" %} 
 
 {% block content %}
 <h1>Sign Up</h1>
 <div>
-    <form action="" method="POST">
+    <form class="" name="" action="" method="POST">
+        
         <!-- username, password -->
         <div>
             {{form.username.label}} <br>
@@ -40,8 +40,8 @@
             {{form.address.label}} <br>
             {{form.address(size=30)}}
             <br><br>
-            {{form.apt.label}} <br>
-            {{form.apt(size=30)}}
+            {{form.addressLine2.label}} <br>
+            {{form.addressLine2(size=30)}}
             <br><br>
             {{form.city.label}} <br>
             {{form.city(size=30)}}

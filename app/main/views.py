@@ -24,7 +24,6 @@ def login():
     form = LoginForm()
 
     # Checks if the form is valid AND checks if the request was 'POST'.
-    # If true, create a context for the user and render their profile.
     # Otherwise, go back to the login page.
     if form.validate_on_submit():
         username = form.username.data

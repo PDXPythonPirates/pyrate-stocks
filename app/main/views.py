@@ -74,11 +74,11 @@ def profile():
 
 # When the submit button is clicked on the signup page, 
 # data renders to profile.html.
-@app.route('/signup', methods=['GET', 'POST'])
+@app.route('/signup/', methods=['GET', 'POST'])
 def signup():
     form = SignUpForm()
 
-    if form.is_submitted():
+    if form.validate_on_submit():
         #form = request.form
         form = form.username.data
 

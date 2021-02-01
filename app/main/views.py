@@ -3,6 +3,7 @@ from flask_bootstrap import Bootstrap
 from forms import LoginForm, LogoutForm, SignUpForm
 from keychain import Keys
 import csv
+import json
 
 
 app = Flask(__name__, template_folder='../templates')
@@ -19,11 +20,9 @@ def home():
 
 ##### ADD USER #####
 
-def append_list_as_row(file_name, user_data):
-    with open(file_name, 'a+', newline='') as file:
-        print('test2', user_data)
-        writer = csv.writer(file, delimiter=',')
-        writer.writerow(user_data)
+def append_user(file_name, user_data):
+    with open(file_name, 'a+') as file:
+        json.dump(user_data, file)
 
 
 ##### SIGNUP #####
@@ -34,10 +33,16 @@ def signup():
 
     print('signup page accessed')
     if form.validate_on_submit():
-        print('test0')
-        user_data = [form.username.data, form.password.data, form.email.data]
-        print('test1', user_data)
-        append_list_as_row('app/main/user_data.csv', user_data)
+        username = form.username.data
+        password = form.password.data
+        email = form.email.data
+
+        user_data['users'] = {}
+        user_data['users'][username] = {}
+        user_data['users'][username]['password'] = password
+        user_data['users'][username]['email'] = email
+
+        append_user('app/main/user_data.json', user_data)
 
         return redirect(url_for('login'))
 
@@ -55,17 +60,17 @@ def login():
         password = form.password.data
 
         # Check user_data.json for username & password match
-        with open('app/main/user_data.csv', 'r') as file:
-            user = file.readline()
-            user = list(user.split(','))
-            user = [x.strip('\n') for x in user]
+        with open('app/main/user_data.json', 'r') as file:
+            data = json.load(file)
+            users = data['users']
+            print('all users: ', users)
 
-        
-        # Not sure if the second check is a real thing. I think this will throw an error.
-        if username == user[0] and password == user[1]:
-            return render_template('profile.html', form=LogoutForm(), username=username, display_message=f'Welcome, {username}')
-        else:
-            return render_template('login.html', form=form, display_message='Incorrect Login')
+            for user, user_data in users.items():
+                print('user: ', user, user_data)
+                if user == username and password == user_data['password']:
+                    return render_template('profile.html', form=LogoutForm(), username=username, display_message=f'Welcome, {username}')
+                else:
+                    return render_template('login.html', form=form, display_message='Incorrect Login')
 
     return render_template('login.html', form=form, display_message='User Login')
 

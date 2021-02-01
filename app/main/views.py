@@ -33,7 +33,6 @@ def signup():
 
         with open('app/main/user_data.json', mode='r') as file:
             data = json.load(file)
-            print(data)
 
         with open('app/main/user_data.json', mode='w') as file:
             all_users = data['users']
@@ -67,10 +66,8 @@ def login():
             all_users = data['users']
 
             for user in all_users:
-                print(user)
                 _username = list(user.keys())[0]
                 if username == _username and password == user[_username]['password']:
-                    print('login_true')
                     return render_template('profile.html', form=LogoutForm(), display_message='Login Success')
         
             else:

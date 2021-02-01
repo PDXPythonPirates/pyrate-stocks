@@ -70,7 +70,6 @@ def login():
                 if username == _username and password == user[_username]['password']:
                     return render_template('profile.html', form=LogoutForm(), display_message='Login Success')
         
-            
             return render_template('login.html', form=form, display_message='Incorrect Login')
 
     return render_template('login.html', form=form, display_message='User Login')

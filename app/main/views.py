@@ -64,16 +64,17 @@ def login():
         # Check user_data.json for username & password match
         with open('app/main/user_data.json', 'r') as file:
             data = json.load(file)
-            users = data['users']
-            print('all users: ', users)
+            all_users = data['users']
 
-        # Needs work
-            for dict in users_list:
-                for k, v in dict:
-                    if k == username and v['password'] == password:
-                        return redirect(url_for('login'))
-                else:
-                    return render_template('login.html', form=form, display_message='Incorrect Login')
+            for user in all_users:
+                print(user)
+                _username = list(user.keys())[0]
+                if username == _username and password == user[_username]['password']:
+                    print('login_true')
+                    return render_template('profile.html', form=LogoutForm(), display_message='Login Success')
+        
+            else:
+                return render_template('login.html', form=form, display_message='Incorrect Login')
 
     return render_template('login.html', form=form, display_message='User Login')
 

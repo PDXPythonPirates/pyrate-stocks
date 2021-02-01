@@ -10,19 +10,13 @@ app = Flask(__name__, template_folder='../templates')
 app.config['SECRET_KEY'] = Keys.secret()
 Bootstrap(app)
 
+
 ##### HOME #####
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
 
     return render_template('home.html')
-
-
-##### ADD USER #####
-
-def append_user(file_name, user_data):
-    with open(file_name, 'a+') as file:
-        json.dump(user_data, file)
 
 
 ##### SIGNUP #####
@@ -37,14 +31,22 @@ def signup():
         password = form.password.data
         email = form.email.data
 
-        user_data['users'] = {}
-        user_data['users'][username] = {}
-        user_data['users'][username]['password'] = password
-        user_data['users'][username]['email'] = email
+        with open('app/main/user_data.json', mode='r') as file:
+            data = json.load(file)
+            print(data)
 
-        append_user('app/main/user_data.json', user_data)
+        with open('app/main/user_data.json', mode='w') as file:
+            all_users = data['users']
+            user_data = {
+                'password': password,
+                'email': email
+            }
+            user = {username: user_data}
+            all_users.append(user)
+            data = {"users":all_users}
+            json.dump(data, file)
 
-        return redirect(url_for('login'))
+        return redirect('/login')
 
     return render_template('signup.html', form=form)
 
@@ -65,10 +67,11 @@ def login():
             users = data['users']
             print('all users: ', users)
 
-            for user, user_data in users.items():
-                print('user: ', user, user_data)
-                if user == username and password == user_data['password']:
-                    return render_template('profile.html', form=LogoutForm(), username=username, display_message=f'Welcome, {username}')
+        # Needs work
+            for dict in users_list:
+                for k, v in dict:
+                    if k == username and v['password'] == password:
+                        return redirect(url_for('login'))
                 else:
                     return render_template('login.html', form=form, display_message='Incorrect Login')
 

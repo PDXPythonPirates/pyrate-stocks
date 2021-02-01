@@ -135,4 +135,4 @@ app/main/keychain.py
 .DS_Store
 
 #vscode
-**/.vscode/
+#**/.vscode/

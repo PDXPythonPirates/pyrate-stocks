@@ -1,30 +1,18 @@
 {% extends "base.html" %}
 
-{% block title %}username{% endblock %}
+{% block title %}{{super()}}{{ username }}{% endblock %}
 
 {% block head %}
     {{super()}}
 {% endblock %}
 
 {% block content %}
-<h1>{{ display_message }}! This is your personal space.</h1>
+<p>{{ display_message }}! This is your personal space.</p>
 <div class="profile-information">
    <h1>User Information</h1>
-   <table border="1">
-      <!--
-      {% for key, value in form %}
-         <tr>
-               <th>
-                  {{key}}
-               </th>
-               <td>
-                  {{value}}
-               </td>
-         </tr>
-      {% endfor %}
-      -->
-      
-   </table>
+   <ul>
+      <li></li>
+   </ul>
 </div>
 <div class="profile-logout">
    <form class="" name="" action="/logout/" method="POST">

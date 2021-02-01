@@ -13,16 +13,15 @@ class LogoutForm(FlaskForm):
 
 class SignUpForm(FlaskForm):
     # Data fields that connect to inputs fields on signup.html in templates.
-    username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
-    password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=15)])
-    firstname = StringField('First Name', validators=[InputRequired()])
-    lastname = StringField('Last Name', validators=[InputRequired()])
+    username = StringField('Username', validators=[InputRequired(), Length(min=2, max=15)])
+    password = PasswordField('Password', validators=[InputRequired(), Length(min=2, max=15)])
+    firstname = StringField('First Name')
+    lastname = StringField('Last Name')
     email = StringField('Email', validators=[InputRequired(), Email(message='Invalid Email'), Length(max=20)])
-    phone = StringField('Phone', validators=[InputRequired()])
-    address = StringField('Address', validators=[InputRequired()])
-    addressLine2 = StringField('Apartment#', validators=None)
-    city = StringField('City', validators=[InputRequired()])
-    state = StringField('State', validators=[InputRequired()])
-    zipcode = StringField('Zip Code', validators=[InputRequired()])
-    # Submit Button
+    phone = StringField('Phone')
+    address = StringField('Address')
+    addressLine2 = StringField('Address Line 2')
+    city = StringField('City')
+    state = StringField('State')
+    zipcode = StringField('Zip Code')
     submit = SubmitField('Submit')

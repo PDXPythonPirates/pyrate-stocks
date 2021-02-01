@@ -1,59 +1,91 @@
-from flask import Flask, render_template, redirect, request, url_for, jsonify
+from flask import Flask, render_template, redirect, request, url_for
 from flask_bootstrap import Bootstrap
 from forms import LoginForm, LogoutForm, SignUpForm
 from keychain import Keys
+import csv
+import json
+
 
 app = Flask(__name__, template_folder='../templates')
 app.config['SECRET_KEY'] = Keys.secret()
 Bootstrap(app)
 
-#app.url_map.strict_slashes = False
 
-# This route will bring you to the homepage.
+##### HOME #####
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
 
     return render_template('home.html')
 
-# This route is accessable via the link on the homepage.
-# login() will render a template, and if the form is submitted,
-# the user will be directed to their profile, or back to the
-# login template, if they entered incorrect information.
+
+##### SIGNUP #####
+
+@app.route('/signup/', methods=['GET', 'POST'])
+def signup():
+    form = SignUpForm()
+
+    print('signup page accessed')
+    if form.validate_on_submit():
+        username = form.username.data
+        password = form.password.data
+        email = form.email.data
+
+        with open('app/main/user_data.json', mode='r') as file:
+            data = json.load(file)
+
+        with open('app/main/user_data.json', mode='w') as file:
+            all_users = data['users']
+            user_data = {
+                'password': password,
+                'email': email
+            }
+            user = {username: user_data}
+            all_users.append(user)
+            data = {"users":all_users}
+            json.dump(data, file)
+
+        return redirect('/login')
+
+    return render_template('signup.html', form=form)
+
+
+##### LOGIN #####
+
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
 
-    # Checks if the form is valid AND checks if the request was 'POST'.
-    # Otherwise, go back to the login page.
     if form.validate_on_submit():
         username = form.username.data
         password = form.password.data
 
-        # Some user data to utilize before implementing a database
-        users = {
-            'matthias': {
-                'password': 'thispass',
-                'creation-date': '01/02/21',
-                'location': 'Portland, OR'
-            },
-            'xuehong': {
-                'password': 'anotherpass',
-                'creation-date': '01/02/21',
-                'location': 'Portland, OR'
-            }
-        }
+        # Check user_data.json for username & password match
+        with open('app/main/user_data.json', 'r') as file:
+            data = json.load(file)
+            all_users = data['users']
 
-        # Check if the user exists and has entered the correct password.
-        if username in users and password == users[username]['password']:
-            return render_template('profile.html', form=form, username=username, display_message=f'Welcome, {username}')
-        # Does not exist or something was entered incorrectly.
-        else:
+            for user in all_users:
+                _username = list(user.keys())[0]
+                if username == _username and password == user[_username]['password']:
+                    return render_template('profile.html', form=LogoutForm(), display_message='Login Success')
+        
             return render_template('login.html', form=form, display_message='Incorrect Login')
 
-    # If the request was a 'GET' request, the login page will be rendered.
     return render_template('login.html', form=form, display_message='User Login')
 
-# Logout user profile.
+
+##### PROFILE #####
+
+@app.route('/profile/', methods=['GET', 'POST'])
+def profile():
+    form = LogoutForm()
+
+    return render_template('profile.html', form=form)
+
+
+##### LOGOUT #####
+
 @app.route('/logout/', methods=['GET', 'POST'])
 def logout():
     form = LogoutForm()
@@ -65,29 +97,8 @@ def logout():
         
         return render_template('profile.html')
 
-# Load user profile.
-@app.route('/profile/', methods=['GET', 'POST'])
-def profile():
-    form = LogoutForm()
 
-    return render_template('profile.html', form=form)
+##### RUN APP #####
 
-# When the submit button is clicked on the signup page, 
-# data renders to profile.html.
-@app.route('/signup/', methods=['GET', 'POST'])
-def signup():
-    form = SignUpForm()
-
-    if form.validate_on_submit():
-        #form = request.form
-        form = form.username.data
-
-        # does not yet save registration data anywhere.
-        # this is a temporary redirect to the login page.
-        return render_template('login.html', form=LoginForm())
-
-    return render_template('signup.html', form=form)
-
-# Run app
 if __name__=='__main__':
     app.run(debug=True)

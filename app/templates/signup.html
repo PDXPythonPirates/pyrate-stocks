@@ -1,63 +1,40 @@
 {% extends "base.html" %} 
 
+{% block title %}{{super()}}Signup{% endblock %}
+
 {% block content %}
 <h1>Sign Up</h1>
 <div>
-    <form class="" name="" action="" method="POST">
-        
-        <!-- username, password -->
-        <div>
-            {{form.username.label}} <br>
-            {{form.username(size=30)}}
-            <br><br>
-            {{form.password.label}} <br>
-            {{form.password(size=30)}}
-            <br><br>
-        </div>
-
-        <!-- name -->
-        <div>
-            {{form.firstname.label}} <br>
-            {{form.firstname(size=30)}}
-            <br><br>
-            {{form.lastname.label}} <br>
-            {{form.lastname(size=30)}}
-            <br><br>
-        </div>
-
-        <!-- email, phone -->
-        <div>
-            {{form.email.label}} <br>
-            {{form.email(size=30)}}
-            <br><br>
-            {{form.phone.label}} <br>
-            {{form.phone(size=30)}}
-            <br><br>
-        </div>
-
-        <!-- address/location -->
-        <div>
-            {{form.address.label}} <br>
-            {{form.address(size=30)}}
-            <br><br>
-            {{form.addressLine2.label}} <br>
-            {{form.addressLine2(size=30)}}
-            <br><br>
-            {{form.city.label}} <br>
-            {{form.city(size=30)}}
-            <br><br>
-            {{form.state.label}} <br>
-            {{form.state(size=30)}}
-            <br><br>
-            {{form.zipcode.label}} <br>
-            {{form.zipcode(size=30)}}
-            <br><br>
-        </div>
-
-        <!-- submit button -->
-        <div>
-            {{form.submit()}}
-        </div>
+    <form class="" name="" action="/signup/" method="POST">
+        {{form.csrf_token}}
+        {{form.username.label}}
+        {{form.username(size=30)}}
+        <br>
+        {{form.password.label}}
+        {{form.password(size=30)}}
+        <br>
+        {{form.email.label}}
+        {{form.email(size=30)}}
+        <br>
+        {{form.phone.label}}
+        {{form.phone(size=30)}}
+        <br>
+        {{form.address.label}}
+        {{form.address(size=30)}}
+        <br>
+        {{form.addressLine2.label}}
+        {{form.addressLine2(size=30)}}
+        <br>
+        {{form.city.label}}
+        {{form.city(size=30)}}
+        <br>
+        {{form.state.label}}
+        {{form.state(size=30)}}
+        <br>
+        {{form.zipcode.label}}
+        {{form.zipcode(size=30)}}
+        <br>
+        {{form.submit()}}
     </form>
 </div>
 {% endblock %}  

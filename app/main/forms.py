@@ -20,11 +20,7 @@ class SignUpForm(FlaskForm):
 class LoginForm(FlaskForm):
     username = StringField(validators=[InputRequired()])
     password = PasswordField(validators=[InputRequired()])
-    submit = SubmitField('Submit')
-
-class ProfileForm(FlaskForm):
-    logout = SubmitField(label='Logout')
-    update = SubmitField(label='Update')
+    submit = SubmitField('Login')
 
 class UpdateForm(FlaskForm):
     password = PasswordField('Password', validators=[InputRequired(), Length(min=2, max=15)])
@@ -37,4 +33,7 @@ class UpdateForm(FlaskForm):
     city = StringField('City')
     state = StringField('State')
     zipcode = StringField('Zip Code')
-    update = SubmitField('Submit')
+    update = SubmitField('Update')
+
+class LogoutForm(FlaskForm):
+    logout = SubmitField('Logout')

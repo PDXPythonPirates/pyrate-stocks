@@ -1,12 +1,10 @@
 from flask import Flask, render_template, redirect, request, url_for
 from flask_bootstrap import Bootstrap
-from app.main.forms import SignUpForm, LoginForm, ProfileForm, UpdateForm
-from app.main.keychain import Keys
-import csv
+from forms import SignUpForm, LoginForm, UpdateForm, LogoutForm
+from keychain import Keys
 import json
 
-
-app = Flask(__name__, template_folder='../templates')
+app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config['SECRET_KEY'] = Keys.secret()
 Bootstrap(app)
 
@@ -14,9 +12,7 @@ Bootstrap(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-
     return render_template('home.html')
-
 
 ##### SIGNUP #####
 
@@ -47,7 +43,6 @@ def signup():
 
     return render_template('signup.html', form=form)
 
-
 ##### LOGIN #####
 
 @app.route('/login/', methods=['GET', 'POST'])
@@ -68,35 +63,21 @@ def login():
                 if username == _username and password == user[_username]['password']:
                     return render_template('profile.html', form=form, display_message='Login Success!')
         
-        return render_template('login.html', form=form, display_message='Incorrect Login')
+            return render_template('login.html', form=form, display_message='Incorrect Login')
     return render_template('login.html', form=form, display_message='User Login')
 ##### PROFILE #####
 
 @app.route('/profile/', methods=['GET', 'POST'])
 def profile():
-    form = ProfileForm()
+    uform = UpdateForm()
+    lform = LogoutForm()
 
-    return render_template('profile.html', form=form)
+    if uform.validate_on_submit() :
+        return render_template('update.html', form=uform, display_message='Update User Info.')
 
-
-##### UPDATE-LOGOUT #####
-
-@app.route('/update_logout/', methods=['GET', 'POST'])
-def update_logout():
-    form = ProfileForm()
+    elif lform.validate_on_submit() :
+        return render_template('home.html', form=lform, display_message='Successfully logged out')
     
-    if form.validate_on_submit():
-        if request.form.action == 'Update':
-            return render_template('update.html', form=form, display_message='Update User Info.')
-        elif request.form.action == 'Logout':
-            return render_template('home.html', form=form, display_message='Successfully logged out')
-    return render_template('profile.html')
-
-@app.route('/update/', methods=['GET', 'POST'])
-def update():
-    form = UpdateForm()
-    if form.validate_on_submit():
-        return render_template('update.html', form=form)
     return render_template('profile.html')
 
 ##### RUN APP #####

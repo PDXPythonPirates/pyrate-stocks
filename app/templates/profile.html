@@ -1,21 +1,22 @@
+{% extends "signup.html" %}
+
 {% block content %}
-<p>{{ display_message }}! This is your personal space.</p>
+<p>{{ display_message }}! </p>
+<h3>Welcome to you personal page {{ form.username.data }}</h3>
+
 <div class="profile-information">
    <h1>User Information</h1>
    <ul>
       <li></li>
    </ul>
 </div>
+
 <div class="profile-update-logout">
    <form class="" name="" action="/update-logout/" method="POST">
       {{ form.csrf_token }}
-      <div class="panel-body">
-         <input type="submit" name="action"  value="Update"/>
-      </div>
-      <br>
-      <div class="panel-body"></div>  
-         <input type="submit" name="action"  value="Logout"/>
-      </div>
+      <P><input type="submit"  value="Update"/></P>
+      <P><input type="submit"  value="Logout"/></P>
    </form>
 </div>
+
 {% endblock %}

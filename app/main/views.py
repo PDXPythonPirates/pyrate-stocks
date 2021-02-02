@@ -69,17 +69,25 @@ def login():
 
 @app.route('/profile/', methods=['GET', 'POST'])
 def profile():
-    uform = UpdateForm()
-    lform = LogoutForm()
-
-    if uform.validate_on_submit() :
-        return render_template('update.html', form=uform, display_message='Update User Info.')
-
-    elif lform.validate_on_submit() :
-        return render_template('home.html', form=lform, display_message='Successfully logged out')
     
     return render_template('profile.html')
 
+@app.route('/update/', methods=['GET', 'POST'])
+def update():
+    form = UpdateForm()
+    if form.validate_on_submit():
+        return render_template('update.html', form=form, display_message='User info update')
+    else:
+        return render_template('profile.html')
+
+@app.route('/logout/', methods=['GET', 'POST'])
+def logout():
+    form = LogoutForm()
+    if form.validate_on_submit():
+        return render_template('home.html', form=form, display_message='Successfully logged out')
+    else:
+        return render_template('profile.html')
+    
 ##### RUN APP #####
 
 if __name__=='__main__':

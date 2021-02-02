@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, request, url_for
 from flask_bootstrap import Bootstrap
-from forms import SignUpForm, LoginForm, ProfileForm, UpdateForm
-from keychain import Keys
+from app.main.forms import SignUpForm, LoginForm, ProfileForm, UpdateForm
+from app.main.keychain import Keys
 import csv
 import json
 
@@ -68,7 +68,7 @@ def login():
                 if username == _username and password == user[_username]['password']:
                     return render_template('profile.html', form=form, display_message='Login Success!')
         
-            return render_template('login.html', form=form, display_message='Incorrect Login')
+        return render_template('login.html', form=form, display_message='Incorrect Login')
     return render_template('login.html', form=form, display_message='User Login')
 ##### PROFILE #####
 

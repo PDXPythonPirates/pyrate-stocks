@@ -1,11 +1,3 @@
-{% extends "base.html" %}
-
-{% block title %}{{super()}}{{ username }}{% endblock %}
-
-{% block head %}
-    {{super()}}
-{% endblock %}
-
 {% block content %}
 <p>{{ display_message }}! This is your personal space.</p>
 <div class="profile-information">
@@ -14,10 +6,16 @@
       <li></li>
    </ul>
 </div>
-<div class="profile-logout">
-   <form class="" name="" action="/logout/" method="POST">
+<div class="profile-update-logout">
+   <form class="" name="" action="/update-logout/" method="POST">
       {{ form.csrf_token }}
-      <input type="submit" value="Logout"/>
+      <div class="panel-body">
+         <input type="submit" name="action"  value="Update"/>
+      </div>
+      <br>
+      <div class="panel-body"></div>  
+         <input type="submit" name="action"  value="Logout"/>
+      </div>
    </form>
 </div>
 {% endblock %}

@@ -1,7 +1,5 @@
 {% extends 'bootstrap/base.html' %}
 
-{% block title %}Financial App - {% endblock %}
-
 {% block head %}
     {{super()}}
     <meta charset='UTF-8'>
@@ -14,11 +12,14 @@
     <div>
         <ul class="list-inline">
             <li class="list-inline-item"><a href="{{ url_for('home') }}">Home</a></li>
-            <li class="list-inline-item"><a href="{{ url_for('login') }}">Login</a></li>
             <li class="list-inline-item"><a href="{{ url_for('signup') }}">Signup</a></li>
-            <li class="list-inline-item"><a href="{{ url_for('profile') }}">Profile</a></li>
+            <li class="list-inline-item"><a href="{{ url_for('login') }}">Login</a></li>
+            
         </ul>
     </div>
+
     {% block content %}
+    
     {% endblock %}
+
 {% endblock %}

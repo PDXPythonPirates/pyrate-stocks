@@ -1,4 +1,4 @@
-{% extends "signup.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 <p>{{ display_message }}! </p>
@@ -11,10 +11,16 @@
    </ul>
 </div>
 
+<div class="profile-update">
+   <form class="" name="" action="/update/" method="POST">
+      {{ form.csrf_token }}
+      <input type="submit" value="Update"/>
+   </form>
+</div>
+<br>
 <div class="profile-logout">
    <form class="" name="" action="/logout/" method="POST">
       {{ form.csrf_token }}
-      <input type="submit" value="Update"/>
       <input type="submit" value="Logout"/>
    </form>
 </div>

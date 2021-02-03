@@ -6,15 +6,33 @@
 <div class="profile-update">
     <form class="" name="" action="/update/" method="POST">
         {{ form.csrf_token }}
-        {{form.password.label}} {form.password(size=30)}} <br>
-        {{form.email.label}} {{form.email(size=30)}} <br>
-        {{form.phone.label}} {{form.phone(size=30)}} <br>
-        {{form.address.label}} {{form.address(size=30)}} <br>
-        {{form.addressLine2.label}} {{form.addressLine2(size=30)}} <br>
-        {{form.city.label}} {{form.city(size=30)}} <br>
-        {{form.state.label}} {form.state(size=30)}}  <br>
-        {{form.zipcode.label}} {{form.zipcode(size=30)}} <br>
-        <input type="submit" value="Click here to update your information."/>
+        {{form.username.label}}
+        {{form.username(size=30)}}
+        <br>
+        {{form.password.label}}
+        {{form.password(size=30)}}
+        <br>
+        {{form.email.label}}
+        {{form.email(size=30)}}
+        <br>
+        {{form.phone.label}}
+        {{form.phone(size=30)}}
+        <br>
+        {{form.address.label}}
+        {{form.address(size=30)}}
+        <br>
+        {{form.addressLine2.label}}
+        {{form.addressLine2(size=30)}}
+        <br>
+        {{form.city.label}}
+        {{form.city(size=30)}}
+        <br>
+        {{form.state.label}}
+        {{form.state(size=30)}}
+        <br>
+        {{form.zipcode.label}}
+        {{form.zipcode(size=30)}}
+        <input type="submit" value="Submit"/>
     </form>
 </div>
 

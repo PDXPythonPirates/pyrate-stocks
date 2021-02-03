@@ -22,18 +22,19 @@ class LoginForm(FlaskForm):
     password = PasswordField(validators=[InputRequired()])
     submit = SubmitField('Login')
 
-class UpdateForm(FlaskForm):
+class UpdateForm(SignUpForm):
+    username = StringField('Username', validators=[InputRequired(), Length(min=2, max=15)])
     password = PasswordField('Password', validators=[InputRequired(), Length(min=2, max=15)])
     firstname = StringField('First Name')
     lastname = StringField('Last Name')
-    email = StringField('Email', validators=[InputRequired(), Email(message='Invalid Email'), Length(max=20)])
+    email = StringField('Email')
     phone = StringField('Phone')
     address = StringField('Address')
     addressLine2 = StringField('Address Line 2')
     city = StringField('City')
     state = StringField('State')
     zipcode = StringField('Zip Code')
-    update = SubmitField('Update')
+    update = SubmitField('Submit')
 
 class LogoutForm(FlaskForm):
-    logout = SubmitField('Logout')
+    logout = SubmitField('Submit')

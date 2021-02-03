@@ -65,29 +65,34 @@ def login():
         
             return render_template('login.html', form=form, display_message='Incorrect Login')
     return render_template('login.html', form=form, display_message='User Login')
+
 ##### PROFILE #####
 
 @app.route('/profile/', methods=['GET', 'POST'])
 def profile():
-    
     return render_template('profile.html')
+
+##### UPDATE #####
 
 @app.route('/update/', methods=['GET', 'POST'])
 def update():
-    form = UpdateForm()
-    if form.validate_on_submit():
-        return render_template('update.html', form=form, display_message='User info update')
-    else:
-        return render_template('profile.html')
+    uform = UpdateForm()
+    if uform.validate_on_submit():
+        
+        return render_template('profile.html', form=uform, display_message='Successfully updated your info.')
+
+    return render_template('update.html', form=uform)
+
+##### LOGOUT #####
 
 @app.route('/logout/', methods=['GET', 'POST'])
 def logout():
-    form = LogoutForm()
-    if form.validate_on_submit():
-        return render_template('home.html', form=form, display_message='Successfully logged out')
+    lform = LogoutForm()
+    if lform.validate_on_submit():
+        return render_template('home.html', form=lform, display_message='Successfully logged out')
     else:
         return render_template('profile.html')
-    
+
 ##### RUN APP #####
 
 if __name__=='__main__':

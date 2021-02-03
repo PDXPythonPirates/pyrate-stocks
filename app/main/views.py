@@ -68,7 +68,7 @@ def login():
             for user in all_users:
                 _username = list(user.keys())[0]
                 if username == _username and password == user[_username]['password']:
-                    return render_template('profile.html', form=LogoutForm(), display_message='Login Success')
+                    return render_template('dashboard.html', form=LogoutForm(), display_message='Login Success')
         
             return render_template('login.html', form=form, display_message='Incorrect Login')
 

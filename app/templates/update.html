@@ -1,8 +1,9 @@
 {% extends "base.html" %} 
 
 {% block content %}
+<h2>{{ display_message }}</h2>
 
-<h2> Update your information below:</h2>
+<h3> Update your information below:</h3>
 <div class="profile-update">
     <form class="" name="" action="/update/" method="POST">
         {{ form.csrf_token }}

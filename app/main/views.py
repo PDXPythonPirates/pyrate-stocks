@@ -77,8 +77,32 @@ def profile():
 @app.route('/update/', methods=['GET', 'POST'])
 def update():
     uform = UpdateForm()
-    if uform.validate_on_submit():
         
+    if uform.validate_on_submit():
+        username = uform.username.data
+        password = uform.password.data
+        email = uform.email.data
+
+        with open('app/main/user_data.json', mode='r') as file:
+            data = json.load(file)
+            all_users = data['users']
+
+            for user in all_users:
+                _username = list(user.keys())[0]
+                user_data = list(user.values())
+               
+                if username == _username:
+                    user_data[0]['password'] = password
+                    user_data[0]['email'] = email
+                
+                    with open('app/main/user_data.json', mode='w') as file:
+                        data = {"users":all_users}
+                        json.dump(data, file)
+
+                    return render_template('profile.html', form=uform, display_message='Successfully updated your info')
+                
+            return render_template('update.html', form=uform, display_message='Wrong user name')
+
         return render_template('profile.html', form=uform, display_message='Successfully updated your info.')
 
     return render_template('update.html', form=uform)

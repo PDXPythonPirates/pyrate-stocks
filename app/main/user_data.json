@@ -1,1 +1,1 @@
-{"users": [{"matthias": {"password": "qwe", "email": "a@gmail.com"}}, {"xuehong": {"password": "qwe", "email": "xue@hot.com"}}, {"xuehong2": {"password": "qwe", "email": "xue2@hot.com"}}, {"xuehong3": {"password": "qwe", "email": "xue3@hot.com"}}, {"xuehong2": {"password": "qwe", "email": "xue@hot.com"}}, {"hack": {"password": "qwe", "email": "hack@hot.com"}}]}
+{"users": [{"matthias": {"password": "qwe", "email": "a@gmail.com"}}, {"xuehong": {"password": "qwe", "email": ""}}]}

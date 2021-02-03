@@ -1,11 +1,13 @@
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, session
 from flask_bootstrap import Bootstrap
 from forms import SignUpForm, LoginForm, UpdateForm, LogoutForm
+from datetime import timedelta
 from keychain import Keys
 import json
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config['SECRET_KEY'] = Keys.secret()
+app.permanent_session_lifetime = timedelta(days = 1)
 Bootstrap(app)
 
 ##### HOME #####
@@ -48,10 +50,12 @@ def signup():
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    
+
     if form.validate_on_submit():
+        session.permanent=True
         username = form.username.data
         password = form.password.data
+        session['user'] = username
 
         # Check user_data.json for username & password match
         with open('app/main/user_data.json', 'r') as file:
@@ -61,15 +65,24 @@ def login():
             for user in all_users:
                 _username = list(user.keys())[0]
                 if username == _username and password == user[_username]['password']:
-                    return render_template('profile.html', form=form, display_message='Login Success!')
-        
+                    return render_template('profile.html', form=form, display_message='Login successfully')
+                
             return render_template('login.html', form=form, display_message='Incorrect Login')
-    return render_template('login.html', form=form, display_message='User Login')
-
+    else:
+        if 'user' in session:
+            return render_template('profile.html', form=form, display_message='Welcome back.')
+            
+        return render_template('login.html', form=form, display_message='User Login')
+  
 ##### PROFILE #####
 
 @app.route('/profile/', methods=['GET', 'POST'])
 def profile():
+    if 'user' in session:
+        return render_template('profile.html')
+    else:
+        form = LoginForm()
+        return render_template('login.html', form=form, display_message='User Login')
     return render_template('profile.html')
 
 ##### UPDATE #####
@@ -113,6 +126,7 @@ def update():
 def logout():
     lform = LogoutForm()
     if lform.validate_on_submit():
+        session.pop('user', None)
         return render_template('home.html', form=lform, display_message='Successfully logged out')
     else:
         return render_template('profile.html')

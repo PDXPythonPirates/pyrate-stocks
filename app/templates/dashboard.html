@@ -8,21 +8,43 @@
 
 {% block content %}
 <p>{{ display_message }}!</p>
-<div class="ticker-list">
-   <h1>Dashboard</h1>
-   <ul class="list-group">
-      <li class="list-group-item">Symbol: </li>
-      <li class="list-group-item">Market Open: </li>
-      <li class="list-group-item">Market High: </li>
-      <li class="list-group-item">Current Price: </li>
-      <li class="list-group-item">Market Low: </li>
-      <li class="list-group-item">Market Close: </li>
-   </ul>
+
+<div>
+   <h1>Ticker Tracker</h1>
+   <form action="/add" method="post">
+       <div class="field">
+           <label>Ticker Symbol</label>
+           <input type="text" name="symbol" placeholder="Ex: AAPL">
+           <button type="submit">Add</button>
+      </div>
 </div>
-<div class="profile-logout">
-   <form class="" name="" action="/logout/" method="POST">
-      {{ form.csrf_token }}
-      <input type="submit" value="Logout"/>
-   </form>
+
+<div>
+   <table class="table table-bordered table-hover">
+       <thead>
+         <tr>
+           <th scope="col">Symbol</th>
+           <th scope="col">Current Price</th>
+           <th scope="col">Market Open</th>
+           <th scope="col">Market Close</th>
+           <th scope="col">Market Low</th>
+           <th scope="col">Market High</th>
+           <th scope="col"></th>
+         </tr>
+       </thead>
+       <tbody>
+         {% for ticker in ticker_list %}
+         <tr>
+           <th scope="row">{{ ticker.symbol}}</th>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td><a href="/delete/{{ ticker.id }}">Delete</a></td>
+         </tr>
+         {% endfor %}
+       </tbody>
+     </table>
 </div>
 {% endblock %}

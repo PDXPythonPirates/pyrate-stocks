@@ -14,31 +14,24 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 Bootstrap(app)
 db = SQLAlchemy(app)
 
-class ticker(db.Model):
+# DB class for dashboard.html
+class Ticker(db.Model):
     id = db.Column('id', db.Integer, primary_key=True)
-    symbol = db.Column(db.String(48))
-    current_price = db.Column(db.String(48))
-    market_high = db.Column(db.String(48))
-    market_low = db.Column(db.String(48))
-    market_open = db.Column(db.String(48))
-    market_close = db.Column(db.String(48))
+    symbol = db.Column(db.String(50))
+    current_price = db.Column(db.String(50))
+    market_high = db.Column(db.String(50))
+    market_low = db.Column(db.String(50))
+    market_open = db.Column(db.String(50))
+    market_close = db.Column(db.String(50))
 
-    def __init__(self, symbol, current_price, market_high, market_low, market_open, market_close):
-        self.symbol = symbol
-        self.current_price = current_price
-        self.market_high = market_high
-        self.market_low = market_low
-        self.market_open = market_open
-        self.market_close = market_close
-
-
-##### HOME #####
-
-@app.route('/', methods=['GET', 'POST'])
-def home():
-
-    return render_template('home.html')
-
+    # # save??
+    # def __init__(self, symbol, current_price, market_high, market_low, market_open, market_close):
+    #     self.symbol = symbol
+    #     self.current_price = current_price
+    #     self.market_high = market_high
+    #     self.market_low = market_low
+    #     self.market_open = market_open
+    #     self.market_close = market_close
 
 ##### SIGNUP #####
 
@@ -117,9 +110,44 @@ def logout():
     else:
         
         return render_template('profile.html')
+    
+    
+#### HOME #####
+
+@app.route('/', methods=['GET', 'POST'])
+def home():
+    return render_template('home.html')
+    
+    
+
+    
+##### DASHBOARD #####
+
+@app.route("/dashboard")
+def dashboard():
+    ticker_list = Ticker.query.all()
+    return render_template("dashboard.html", ticker_list=ticker_list)
+
+# Add a new symbol to track in DB
+@app.route("/add", methods=["POST"])
+def add():
+    symbol = request.form.get("symbol")
+    new_ticker = Ticker(symbol=symbol)
+    db.session.add(new_ticker)
+    db.session.commit()
+    return redirect('/dashboard')
+
+# Delete a symbol being tracked in DB             
+@app.route("/delete/<int:ticker_id>")   
+def delete(ticker_id):
+    ticker = Ticker.query.filter_by(id=ticker_id).first
+    db.session.delete(symbol)
+    db.session.commit()
+    return redirect('/dashboard')
 
 
 ##### RUN APP #####
 
 if __name__=='__main__':
+    db.create_all()
     app.run(debug=True)

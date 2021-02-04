@@ -7,11 +7,16 @@
 {% endblock %}
 
 {% block content %}
-<p>{{ display_message }}! This is your dashboard.</p>
-<div class="profile-information">
-   <h1>User Information</h1>
-   <ul>
-      <li></li>
+<p>{{ display_message }}!</p>
+<div class="ticker-list">
+   <h1>Dashboard</h1>
+   <ul class="list-group">
+      <li class="list-group-item">Symbol: </li>
+      <li class="list-group-item">Market Open: </li>
+      <li class="list-group-item">Market High: </li>
+      <li class="list-group-item">Current Price: </li>
+      <li class="list-group-item">Market Low: </li>
+      <li class="list-group-item">Market Close: </li>
    </ul>
 </div>
 <div class="profile-logout">

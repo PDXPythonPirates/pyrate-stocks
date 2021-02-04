@@ -1,7 +1,8 @@
 {% extends "base.html" %} 
 
 {% block content %}
-<h2><strong>Sign Up</strong></h2>
+<h2 style="color:rgb(84, 36, 116)" ><strong>Sign Up</strong></h2>
+<hr/>
 <div>
     <form class="" name="" action="/signup/" method="POST">
         {{form.csrf_token}}
@@ -31,8 +32,8 @@
         <br>
         {{form.zipcode.label}}
         {{form.zipcode(size=30)}}
-        <br>
-        {{form.submit()}}
+        <hr/>
+        <input style="background-color:rgb(215, 247, 189) " type="submit" value="Signup"/>
     </form>
 </div>
 {% endblock %}  

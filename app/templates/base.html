@@ -2,18 +2,24 @@
 
 {% block head %}
     {{super()}}
-
+    <meta charset='UTF-8'>
+    <meta name='description' content='Finantial App'>
+    <title> Finantial App </title>
+    
     <div>
-        <ul class="nav nav-tabs">
-            <li class="list-inline-item"><a href="{{ url_for('home') }}">Home</a></li>
-            <li class="list-inline-item"><a href="{{ url_for('signup') }}">Signup</a></li>
-            <li class="list-inline-item"><a href="{{ url_for('login') }}">Login</a></li>
+        <ul class="nav nav-pills" >
+            <li style="background-color:rgb(215, 247, 189) "  
+                class="nav-item"><a href="{{ url_for('home') }}">Home</a></li>
+            <li style="background-color:rgb(215, 247, 189) " 
+                class="nav-item"><a href="{{ url_for('signup') }}">Signup</a></li>
+            <li style="background-color:rgb(215, 247, 189) "  
+                class="nav-item"><a href="{{ url_for('login') }}">Login</a></li>
        </ul>
     </div>
 {% endblock %}
 
 {% block body %}
-
+    
     {% block content %}
     
     {% endblock %}

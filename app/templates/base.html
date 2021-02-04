@@ -2,21 +2,17 @@
 
 {% block head %}
     {{super()}}
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-    <link rel='stylesheet' href='../static/styles.css'>
-{% endblock %}
 
-{% block body %}
     <div>
-        <ul class="list-inline">
+        <ul class="nav nav-tabs">
             <li class="list-inline-item"><a href="{{ url_for('home') }}">Home</a></li>
             <li class="list-inline-item"><a href="{{ url_for('signup') }}">Signup</a></li>
             <li class="list-inline-item"><a href="{{ url_for('login') }}">Login</a></li>
-            
-        </ul>
+       </ul>
     </div>
+{% endblock %}
+
+{% block body %}
 
     {% block content %}
     

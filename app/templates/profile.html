@@ -1,20 +1,41 @@
 {% extends "base.html" %}
 
-{% block content %}
-<p>{{ display_message }}! </p>
-<h3>Welcome to you personal page {{ form.username.data }}</h3>
+{% block body %}
+{{super()}}
+
+<h4> {{ display_message }}! </h4>
 
 <div class="profile-information">
-   <h1>User Information</h1>
-   <ul>
-      <li></li>
-   </ul>
+   <li></li>
+
+   <table class="table table-bordered">
+      <caption><h4><strong>Information on your stock choices</strong></h4></caption>
+      <thead>
+         <tr>
+            <th> symbol</th>
+            <th>Closing Price</th>
+            <th>price change</th>
+            <th>% change</th>
+         </tr>
+      </thead>
+
+      <tbody>
+         <tr>
+            <th>AAPL</th>
+            <th>200</th>
+            <th>20</th>
+            <th>0.1</th>
+         </tr>
+      </tbody>
+
+   </table>
+  
 </div>
 
 <div class="profile-update">
    <form class="" name="" action="/update/" method="POST">
       {{ form.csrf_token }}
-      <input type="submit" value="Update"/>
+      <input type="submit" value="Update Personal Info"/>
    </form>
 </div>
 <br>

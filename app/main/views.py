@@ -5,7 +5,7 @@ from datetime import timedelta
 from keychain import Keys
 import json
 
-app = Flask(__name__, template_folder='../templates', static_folder='../static')
+app = Flask(__name__, template_folder='../templates')
 app.config['SECRET_KEY'] = Keys.secret()
 app.permanent_session_lifetime = timedelta(days = 1)
 Bootstrap(app)
@@ -50,11 +50,12 @@ def signup():
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    username = form.username.data
+    password = form.password.data
 
     if form.validate_on_submit():
         session.permanent=True
-        username = form.username.data
-        password = form.password.data
+        
         session['user'] = username
 
         # Check user_data.json for username & password match
@@ -65,12 +66,15 @@ def login():
             for user in all_users:
                 _username = list(user.keys())[0]
                 if username == _username and password == user[_username]['password']:
-                    return render_template('profile.html', form=form, display_message='Login successfully')
+                    return render_template('profile.html', form=form, 
+                    display_message='Login successfully')
                 
-            return render_template('login.html', form=form, display_message='Incorrect Login')
+            return render_template('login.html', form=form,
+                                                display_message='Incorrect Login')
     else:
         if 'user' in session:
-            return render_template('profile.html', form=form, display_message='Welcome back.')
+            return render_template('profile.html', form=form, 
+                                                display_message='Welcome back')
             
         return render_template('login.html', form=form, display_message='User Login')
   
@@ -112,12 +116,13 @@ def update():
                         data = {"users":all_users}
                         json.dump(data, file)
 
-                    return render_template('profile.html', form=uform, display_message='Successfully updated your info')
+                    return render_template('profile.html', form=uform, 
+                                 display_message='Successfully updated your info')
                 
-            return render_template('update.html', form=uform, display_message='Wrong user name')
+            return render_template('update.html', form=uform, 
+                                        display_message='Wrong user name')
 
-        return render_template('profile.html', form=uform, display_message='Successfully updated your info.')
-
+        
     return render_template('update.html', form=uform)
 
 ##### LOGOUT #####
@@ -127,7 +132,8 @@ def logout():
     lform = LogoutForm()
     if lform.validate_on_submit():
         session.pop('user', None)
-        return render_template('home.html', form=lform, display_message='Successfully logged out')
+        return render_template('home.html', form=lform, 
+                                        display_message='Successfully logged out')
     else:
         return render_template('profile.html')
 

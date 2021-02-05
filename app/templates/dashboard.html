@@ -15,36 +15,36 @@
        <div class="field">
            <label>Ticker Symbol</label>
            <input type="text" name="symbol" placeholder="Ex: AAPL">
-           <button type="submit">Add</button>
+           <button type="submit" class="btn btn-primary">Add</button>
       </div>
 </div>
-
+{% for ticker in ticker_list %}
 <div>
-   <table class="table table-bordered table-hover">
-       <thead>
-         <tr>
-           <th scope="col">Symbol</th>
-           <th scope="col">Current Price</th>
-           <th scope="col">Market Open</th>
-           <th scope="col">Market Close</th>
-           <th scope="col">Market Low</th>
-           <th scope="col">Market High</th>
-           <th scope="col"></th>
-         </tr>
-       </thead>
-       <tbody>
-         {% for ticker in ticker_list %}
-         <tr>
-           <th scope="row">{{ ticker.symbol}}</th>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td><a href="/delete/{{ ticker.id }}">Delete</a></td>
-         </tr>
-         {% endfor %}
-       </tbody>
-     </table>
+  <h2>{{ ticker.symbol }}</h2>
+  <a href="/delete/{{ ticker.id }}">Delete</a>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Current Price</th>
+          <th>Market High</th>
+          <th>Market Low</th>
+          <th>Market Open</th>
+          <th>Market Close</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ current_price }}</td>
+          <td>{{ market_high }}</td>
+          <td>{{ market_low }}</td>
+          <td>{{ market_open }}</td>
+          <td>{{ market_close }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+{% endfor %}
+
 {% endblock %}

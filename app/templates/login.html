@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 style="color:rgb(84, 36, 116)"> <strong>{{ display_message }}</strong></h1>
-<hr/>
-<div class="login-form">
+<div class="container">
+  <h1 style="color:rgb(84, 36, 116)"> <strong>{{ display_message }}</strong></h1>
+  <hr/>
+  <div class="login-form">
     <form class="" name="" action="/login/" method="POST">
         {{ form.csrf_token }}
         {{ form.username.label }} {{ form.username(size=20) }}<br>
@@ -12,4 +13,5 @@
         <input style="background-color:rgb(215, 247, 189) " type="submit" value="Login"/>
     </form>
   </div>
+</div> 
 {% endblock %}

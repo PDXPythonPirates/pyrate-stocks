@@ -13,8 +13,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 Bootstrap(app)
 db = SQLAlchemy(app)
+db.create_all()
 
-# DB class for dashboard.html
+##### DB CLASS #####
+
 class Ticker(db.Model):
     id = db.Column('id', db.Integer, primary_key=True)
     symbol = db.Column(db.String(50))
@@ -24,14 +26,6 @@ class Ticker(db.Model):
     market_open = db.Column(db.String(50))
     market_close = db.Column(db.String(50))
 
-    # # save??
-    # def __init__(self, symbol, current_price, market_high, market_low, market_open, market_close):
-    #     self.symbol = symbol
-    #     self.current_price = current_price
-    #     self.market_high = market_high
-    #     self.market_low = market_low
-    #     self.market_open = market_open
-    #     self.market_close = market_close
 
 ##### SIGNUP #####
 
@@ -133,6 +127,7 @@ def dashboard():
 def add():
     symbol = request.form.get("symbol")
     new_ticker = Ticker(symbol=symbol)
+    print(new_ticker)
     db.session.add(new_ticker)
     db.session.commit()
     return redirect('/dashboard')
@@ -140,8 +135,7 @@ def add():
 # Delete a symbol being tracked in DB             
 @app.route("/delete/<int:ticker_id>")   
 def delete(ticker_id):
-    ticker = Ticker.query.filter_by(id=ticker_id).first
-    db.session.delete(symbol)
+    Ticker.query.filter_by(id=ticker_id).delete()
     db.session.commit()
     return redirect('/dashboard')
 
@@ -149,5 +143,4 @@ def delete(ticker_id):
 ##### RUN APP #####
 
 if __name__=='__main__':
-    db.create_all()
     app.run(debug=True)

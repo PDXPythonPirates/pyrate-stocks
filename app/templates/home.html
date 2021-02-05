@@ -4,32 +4,35 @@
     {% if display_message %}
         <p>{{ display_message }}</p>
     {% endif %}
-   
-   <h1 style="color:rgb(84, 36, 116)"><strong>Financial App Home</strong></h1>
-   
-   <table class="table table-bordered">
-      <caption style="color:rgb(61, 35, 131)"><h4><strong> Market Watch </strong></h4></caption>
-      <thead>
-         <tr class="d-flex">
-            <th class="col-1">Symbol</th>
-            <th class="col-3">Closing Price</th>
-            <th class="col-3">Price change</th>
-            <th class="col-5">Change</th>
-        </tr>
-      </thead>
 
-      <tbody>
-         <tr class="d-flex">
-            <th class="col-1">Dow</th>
-            <th class="col-3">30000</th>
-            <th class="col-3">+300</th>
-            <th class="col-5">+1%</th>
+   <div class="container">
+
+      <h1 style="color:rgb(84, 36, 116)"><strong>Financial App Home</strong></h1>
+      
+      <table class="table table-bordered">
+         <caption style="color:rgb(61, 35, 131)"><h4><strong> Market Watch </strong></h4></caption>
+         <thead>
+            <tr class="d-flex">
+               <th class="col-1">Symbol</th>
+               <th class="col-3">Closing Price</th>
+               <th class="col-3">Price change</th>
+               <th class="col-5">Change</th>
          </tr>
+         </thead>
 
-      </tbody>
-  
-   </table>
+         <tbody>
+            <tr class="d-flex">
+               <th class="col-1">Dow</th>
+               <th class="col-3">30000</th>
+               <th class="col-3">+300</th>
+               <th class="col-5">+1%</th>
+            </tr>
 
-   <input style="background-color:rgb(215, 247, 189) " type="submit" value="Click here to check on the status of your favorite stocks"/>
+         </tbody>
+   
+      </table>
 
+      <input style="background-color:rgb(215, 247, 189) " type="submit" value="Click here to check on the status of your favorite stocks"/>
+
+   </div>
 {% endblock %}

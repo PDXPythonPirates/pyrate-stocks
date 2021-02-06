@@ -1,22 +1,26 @@
 from flask import Flask, render_template, redirect, request, url_for
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
-from forms import LoginForm, LogoutForm, SignUpForm
-from keychain import Keys
 
 import json
 import yfinance as yf
 
+from forms import LoginForm, LogoutForm, SignUpForm
+from keychain import Keys
+
+# App configuration
 app = Flask(__name__, template_folder='../templates')
 app.config['SECRET_KEY'] = Keys.secret()
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+# Database models
 class Ticker(db.Model):
     id = db.Column('id', db.Integer, primary_key=True)
     symbol = db.Column(db.String(10))
-    
+
+# Database table init & save to ensure tables are created
 db.create_all()
 db.session.commit()
 

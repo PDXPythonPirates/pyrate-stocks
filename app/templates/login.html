@@ -8,8 +8,8 @@
     <form class="" name="" action="/login/" method="POST">
         {{ form.csrf_token }}
         {{ form.username.label }} {{ form.username(size=20) }}<br>
+       
         {{ form.password.label }} {{ form.password(size=20) }}
-      
         <input style="background-color:rgb(215, 247, 189) " type="submit" value="Login"/>
     </form>
   </div>

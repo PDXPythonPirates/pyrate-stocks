@@ -1,5 +1,7 @@
+from operator import irshift
 from flask import Flask, render_template, redirect, session
 from flask_bootstrap import Bootstrap
+from werkzeug.utils import secure_filename
 from forms import SignUpForm, LoginForm, UpdateForm, LogoutForm
 from flask_sqlalchemy import SQLAlchemy
 from datetime import timedelta
@@ -16,64 +18,70 @@ Bootstrap(app)
 db = SQLAlchemy(app)
 
 # account table
-class account(db.Model):
+class Account(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(10), unique=True, nullable=False)
     password = db.Column(db.String(10))
     email = db.Column(db.String(10))
-    stocks = db.Column(db.String(20), unique=True, nullable=False)
+    stocks = db.Column(db.String(20))
+
+def __repr__(self):
+    return '<Account %r>' % (self.name)
 
 ##### SIGNUP #####
 
+@app.route('/home/')
+def home():
+    return render_template('home.html')
+
 @app.route('/signup/', methods=['GET', 'POST'])
 def signup():
-    form = SignUpForm()
+    sform = SignUpForm()
+  
+    if sform.validate_on_submit():
+        sname = sform.username.data
+        spasswd = sform.password.data
+        semail = sform.email.data
+        sstocks = sform.stocks.data
 
-    if form.validate_on_submit():
-        username = form.username.data
-        password = form.password.data
-        email = form.email.data
-        stocks = form.stocks.data
-
-        user_info = account.query.filter_by(username=username).first()
-        if not user_info:
-            user_info = account(username=username, email=email,password = password, stocks = stocks)
-            db.session.add(user_info)
+        if Account.query(Account).filter_by(username=sname).count() < 1:
+            new = Account(username=sname, password=spasswd, email=semail, stocks=sstocks)
+            db.session.add(new)
             db.session.commit()
-            return render_template('dashboard.html', form=form, 
-                    display_message='Welcome. You are all set.')
-        return render_template('login.html', form=form, 
-                    display_message='user already exists.')
-    return render_template('signup.html', form=form)
+            return render_template('dashboard.html', form=sform, display_message='Welcome. You are all set.')
+        
+        return render_template('home.html',
+                    display_message='User already exists.')
+    return render_template('signup.html', form=sform)
 
 ##### LOGIN #####
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
-    username = form.username.data
-    password = form.password.data
+    lform = LoginForm()
+    username = lform.username.data
+    password = lform.password.data
 
-    if form.validate_on_submit():
+    if lform.validate_on_submit():
         session.permanent=True
         session['user'] = username
 
         # Check db for username & password match
-        user_info = account.query.filter_by(username=username).first()
+        user_info = Account.query.filter_by(username=username).first()
         usern = user_info.username
         passwd = user_info.password
         if usern == username and passwd == password:
-            return render_template('dashboard.html', form=form, 
-            display_message='Remember logout when you are done.')
+            return render_template('dashboard.html', form=lform, 
+                        display_message='Remember logout when you are done.')
                 
-        return render_template('login.html', form=form,
+        return render_template('login.html', form=lform,
                                                 display_message='Incorrect Login')
     else:
         if 'user' in session:
-            return render_template('dashboard.html', form=form, 
+            return render_template('dashboard.html', form=lform, 
                                 display_message='Remember logout when you are done.')
-            
-        return render_template('login.html', form=form, display_message='User Login')
+        else:
+            return render_template('login.html', form=lform, display_message='User Login')
   
 ##### PROFILE #####
 
@@ -81,7 +89,7 @@ def login():
 def dashboard():
     if 'user' in session:
         # Create a query here that will get a list of symbols from the user's stocks column in the users table.
-        stocks = account.query.filter_by(username=session['user']).first()
+        stocks = Account.query.filter_by(username=session['user']).first()
         return render_template('dashboard.html', stocks=stocks)
     else:
         form = LoginForm()
@@ -100,7 +108,7 @@ def update():
         email = uform.email.data
         stocks = uform.stocks.data
 
-        user_info = account.query.filter_by(username=username).first()
+        user_info = Account.query.filter_by(username=username).first()
         usern = user_info.username
         if usern == username:
             user_info.password = password
@@ -108,11 +116,11 @@ def update():
             user_info.stocks = stocks
             db.session.commit()
             return render_template('dashboard.html', form=uform, 
-                                 display_message='Successfully updated your info')
+                                 display_message='Your account info is updated')
                 
         else:
             return render_template('update.html', form=uform, 
-                                        display_message='Wrong user name')
+                                        display_message="User doesn't exist")
 
         
     return render_template('update.html', form=uform)
@@ -121,11 +129,11 @@ def update():
 
 @app.route('/logout/', methods=['GET', 'POST'])
 def logout():
-    lform = LogoutForm()
-    if lform.validate_on_submit():
+    loform = LogoutForm()
+    if loform.validate_on_submit():
         session.pop('user', None)
-        return render_template('home.html', form=lform, 
-                                        display_message='Successfully logged out')
+        return render_template('home.html', form=loform, 
+                                        display_message='You are logged out')
     else:
         return render_template('dashboard.html')
 

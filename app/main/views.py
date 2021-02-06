@@ -5,9 +5,11 @@ from forms import LoginForm, LogoutForm, SignUpForm
 from keychain import Keys
 
 import json
-import datetime as dt
-import yfinance as yf
-import pandas as pd
+import requests
+from datetime import date
+
+today = date.today()
+date = today.strftime('%Y-%m-%d')
 
 app = Flask(__name__, template_folder='../templates')
 app.config['SECRET_KEY'] = Keys.secret()
@@ -30,6 +32,8 @@ db.session.commit()
 # for key,value in df.items():
 #     print(key, ":", value)
 
+db.create_all()
+db.session.commit()
 
 ##### DASHBOARD #####
 
@@ -53,10 +57,40 @@ def dashboard():
 # Add a new symbol to track in DB
 @app.route("/add", methods=["POST"])
 def add():
-    symbol = request.form.get("symbol")
-    new_ticker = Ticker(symbol=symbol)
-    print(new_ticker)
-    db.session.add(new_ticker)
+
+    # Format the API request and get a response object
+    symbol = request.form.get("symbol").upper()
+    api_request = api + apiFunction + '&symbol=' + symbol + apiOption + '&apikey=' + apiKey # this creates a URL for the request
+    response = requests.get(api_request).json() # request and stores response object to 'response' variable
+
+    # parse through response object to get the data we want to access
+    data = response['Time Series (60min)']
+    open = list(response['Time Series (60min)'])[-1] # last dictionary in response object
+    latest = next(iter(response['Time Series (60min)'])) # latest dictionary in response object
+
+    earliest_data = data[open] # earliest dictionary of data available today
+    latest_data = data[latest] # latest dictionary of data available today
+
+    print(earliest_data)
+    print(latest_data)
+
+    current_price = latest_data['4. close'] # gets latest hour closing price. This is not a great reflection of current price, but works well for testing & to find the current price every 60 mins.
+    #market_high = max([k['2. high'] for k, v in data.items()]) # gets highest number from highs today
+    #market_low = min([k['3. low'] for k, v in data.items()]) # gets lowest number from lows today
+    #market_open = earliest_data['1. open']
+    #market_close = latest_data['4. close']
+
+
+    ticker_data = Ticker(
+        symbol = symbol,
+        current_price = current_price,
+        market_high = 'n/a',
+        market_low = 'n/a',
+        market_open = 'n/a',
+        market_close = 'n/a'
+        )
+
+    db.session.add(ticker_data)
     db.session.commit()
     return redirect('/dashboard')
 

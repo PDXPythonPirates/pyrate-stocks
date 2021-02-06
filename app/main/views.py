@@ -29,6 +29,9 @@ db.session.commit()
 
 @app.route("/dashboard")
 def dashboard():
+
+    # TODO: Create a query here that will get a list of symbols from the user's followed_tickers column in the users table.
+    # TODO: Feed the list of symbols through the yf.Ticker()
     ticker_list = Ticker.query.all()
     ticker = yf.Ticker('TSLA') # TODO: Need to pass ticker, using TSLA to temporarily render data as a test
     current_price = ticker.info['bid'] 
@@ -36,13 +39,15 @@ def dashboard():
     market_low = ticker.info['dayLow']
     market_open = ticker.info['open']
     market_close = ticker.info['previousClose']
-    return render_template("dashboard.html", 
-                           ticker_list=ticker_list, 
-                           current_price=current_price, 
-                           market_high=market_high, 
-                           market_low=market_low,
-                           market_open=market_open,
-                           market_close=market_close)
+    # TODO: Create a context for all of the data and pass a single context variable to the dashboard template
+    return render_template(
+        "dashboard.html", 
+        ticker_list=ticker_list, 
+        current_price=current_price, 
+        market_high=market_high, 
+        market_low=market_low,
+        market_open=market_open,
+        market_close=market_close)
 
 # Add a new symbol to track in DB
 @app.route("/add", methods=["POST"])

@@ -7,28 +7,29 @@
 {% endblock %}
 
 {% block content %}
-<div>
-   <h1>Ticker Tracker</h1>
-   <form action="/add" method="post">
-       <div class="field">
-           <label>Ticker Symbol</label>
-           <input type="text" name="symbol" placeholder="Ex: AAPL">
-           <button type="submit" class="btn btn-primary">Add</button>
-      </div>
+<div class="pt-4">
+  <h1>Dashboard</h1>
+  <form action="/add" method="post">
+    <div class="field">
+      <label>Stock Symbol</label>
+      <input type="text" name="symbol" placeholder="Ex: AAPL">
+      <button type="submit" class="btn btn-primary btn-sm">Add</button>
+    </div>
+  </form>
 </div>
 {% for ticker in ticker_list %}
-<div>
+<div class="mt-4 p-4 border border-primary">
   <h2>{{ ticker.symbol }}</h2>
   <a href="/delete/{{ ticker.id }}">Delete</a>
   <div>
     <table>
       <thead>
         <tr>
-          <th>Current Price</th>
-          <th>Market High</th>
-          <th>Market Low</th>
-          <th>Market Open</th>
-          <th>Market Close</th>
+          <th class="pr-2">Current Price</th>
+          <th class="pr-2">Market High</th>
+          <th class="pr-2">Market Low</th>
+          <th class="pr-2">Market Open</th>
+          <th class="pr-2">Market Close</th>
         </tr>
       </thead>
       <tbody>

@@ -3,37 +3,19 @@
 {% block content %}
 <div class="container">
     <h2 style="color:rgb(84, 36, 116)" ><strong>Sign Up</strong></h2>
-    <hr/>
+    
     <div>
         <form class="" name="" action="/signup/" method="POST">
             {{form.csrf_token}}
-            {{form.username.label}}
-            {{form.username(size=30)}}
+            {{form.username.label}}  {{form.username(size=30)}}
             <br>
-            {{form.password.label}}
-            {{form.password(size=30)}}
+            {{form.email.label}}  {{form.email(size=30)}}
             <br>
-            {{form.email.label}}
-            {{form.email(size=30)}}
+            {{form.password.label}}  {{form.password(size=30)}}
             <br>
-            {{form.phone.label}}
-            {{form.phone(size=30)}}
-            <br>
-            {{form.address.label}}
-            {{form.address(size=30)}}
-            <br>
-            {{form.addressLine2.label}}
-            {{form.addressLine2(size=30)}}
-            <br>
-            {{form.city.label}}
-            {{form.city(size=30)}}
-            <br>
-            {{form.state.label}}
-            {{form.state(size=30)}}
-            <br>
-            {{form.zipcode.label}}
-            {{form.zipcode(size=30)}}
-            <hr/>
+            {{form.stocks.label}}  {{form.stocks(size=50)}}
+            <h5><strong>&emsp;&emsp;&emsp;Separate stock symbols by comma, leave black if you need more research</strong></h5>
+            <br><hr>
             <input style="background-color:rgb(215, 247, 189) " type="submit" value="Signup"/>
         </form>
     </div>

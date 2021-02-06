@@ -1,27 +1,39 @@
-{% extends 'bootstrap/base.html' %}
-
-{% block head %}
-    {{super()}}
-    <meta charset='UTF-8'>
-    <meta name='description' content='Finantial App'>
-    <title> Finantial App </title>
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}  
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="..static/styles.css" />
+    <title>Finantial App</title>
     
     <div class="container">
-        <ul class="nav nav-pills">
-            <li style="background-color:rgb(215, 247, 189) "  
-                class="nav-item"><a href="{{ url_for('home') }}">Home</a></li>
-            <li style="background-color:rgb(215, 247, 189) " 
-                class="nav-item"><a href="{{ url_for('signup') }}">Signup</a></li>
-            <li style="background-color:rgb(215, 247, 189) "  
-                class="nav-item"><a href="{{ url_for('login') }}">Login</a></li>
-       </ul>
-    </div>
-{% endblock %}
+      <ul class="nav nav-pills">
+          <li style="background-color:rgb(215, 247, 189) "  
+              class="nav-item"><a href="{{ url_for('home') }}">Home</a></li>
+          <li style="background-color:rgb(215, 247, 189) " 
+              class="nav-item"><a href="{{ url_for('signup') }}">Signup</a></li>
+          <li style="background-color:rgb(215, 247, 189) "  
+              class="nav-item"><a href="{{ url_for('login') }}">Login</a></li>
+     </ul>
+  </div>
+ 
+  </head>
+  {% endblock %}
 
-{% block body %}
-    
+  <body>
     {% block content %}
     
     {% endblock %}
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+{% block body %}
+   
 
 {% endblock %}

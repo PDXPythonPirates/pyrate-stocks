@@ -21,15 +21,23 @@
   <h2>{{ ticker.symbol }}</h2>
   <a href="/delete/{{ ticker.id }}">Delete</a>
   <div>
-    <table class="table">
+    <table>
       <thead>
         <tr>
           <th>Current Price</th>
+          <th>Market High</th>
+          <th>Market Low</th>
+          <th>Market Open</th>
+          <th>Market Close</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>{{ ticker.current_price }}</td>
+          <td>{{ current_price }}</td>
+          <td>{{ market_high }}</td>
+          <td>{{ market_low }}</td>
+          <td>{{ market_open }}</td>
+          <td>{{ market_close }}</td>
         </tr>
       </tbody>
     </table>

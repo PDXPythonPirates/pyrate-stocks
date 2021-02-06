@@ -11,30 +11,24 @@ import pandas as pd
 
 app = Flask(__name__, template_folder='../templates')
 app.config['SECRET_KEY'] = Keys.secret()
-Bootstrap(app)
+# Bootstrap(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-db.create_all()
 
 class Ticker(db.Model):
     id = db.Column('id', db.Integer, primary_key=True)
     symbol = db.Column(db.String(10))
     
-    ####### SAVE JUST IN CASE NEED TO CHANGE BACK ########
-    # class Ticker(db.Model):
-    # id = db.Column('id', db.Integer, primary_key=True)
-    # symbol = db.Column(db.String(10))
-    # current_price = db.Column(db.Float)
-    # market_high = db.Column(db.Float)
-    # market_low = db.Column(db.Float)
-    # market_open = db.Column(db.Float)
-    # market_close = db.Column(db.Float)
+db.create_all()
+db.session.commit()
+
 
 ### TEST TO PRINT STOCK DATA ###
-ticker = yf.Ticker('TSLA')
-df = ticker.info
-print(df)
+# ticker = yf.Ticker('TSLA')
+# df = ticker.info
+# for key,value in df.items():
+#     print(key, ":", value)
 
 
 ##### DASHBOARD #####
@@ -42,13 +36,12 @@ print(df)
 @app.route("/dashboard")
 def dashboard():
     ticker_list = Ticker.query.all()
-    ticker = yf.Ticker('TSLA') # temporary.... how to pass 'symbol' from Ticker class?
-    df = ticker.history(period="today")
-    current_price = df['Close'] # Where do I get current price??? 
-    market_high = df['High']
-    market_low = df['Low']
-    market_open = df['Open']
-    market_close = df['Close']
+    ticker = yf.Ticker('TSLA') # TODO: temporary.... how to pass 'symbol' from Ticker class?
+    current_price = ticker.info['bid'] 
+    market_high = ticker.info['dayHigh']
+    market_low = ticker.info['dayLow']
+    market_open = ticker.info['open']
+    market_close = ticker.info['previousClose']
     return render_template("dashboard.html", 
                            ticker_list=ticker_list, 
                            current_price=current_price, 

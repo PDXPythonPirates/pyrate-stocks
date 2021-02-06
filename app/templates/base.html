@@ -8,21 +8,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Hello, world!</title>
   </head>
-  <body>
-    <h1>Hello, world!</h1>
-    
+  <body class="p-4">    
     {% block body %}
-    <div>
-        <ul class="list-inline">
-            <li class="list-inline-item"><a href="{{ url_for('home') }}">Home</a></li>
-            <li class="list-inline-item"><a href="{{ url_for('login') }}">Login</a></li>
-            <li class="list-inline-item"><a href="{{ url_for('signup') }}">Signup</a></li>
-            <li class="list-inline-item"><a href="{{ url_for('profile') }}">Profile</a></li>
-        </ul>
-    </div>
-    {% block content %}
+        <div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="{{ url_for('home') }}">Home</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('login') }}">Login</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('signup') }}">Signup</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('profile') }}">Profile</a></li>
+            </ul>
+        </div>
+        {% block content %}
+        {% endblock %}
     {% endblock %}
-{% endblock %}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

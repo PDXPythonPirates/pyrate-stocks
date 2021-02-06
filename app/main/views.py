@@ -4,12 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from forms import LoginForm, LogoutForm, SignUpForm
 from keychain import Keys
 
-import json
-import requests
-from datetime import date
-
-today = date.today()
-date = today.strftime('%Y-%m-%d')
 
 app = Flask(__name__, template_folder='../templates')
 app.config['SECRET_KEY'] = Keys.secret()
@@ -25,15 +19,6 @@ class Ticker(db.Model):
 db.create_all()
 db.session.commit()
 
-
-### TEST TO PRINT STOCK DATA ###
-# ticker = yf.Ticker('TSLA')
-# df = ticker.info
-# for key,value in df.items():
-#     print(key, ":", value)
-
-db.create_all()
-db.session.commit()
 
 ##### DASHBOARD #####
 

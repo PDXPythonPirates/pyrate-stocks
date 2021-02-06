@@ -8,24 +8,20 @@ import json
 
 app = Flask(__name__, template_folder='../templates')
 app.config['SECRET_KEY'] = Keys.secret()
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.permanent_session_lifetime = timedelta(days = 1)
 Bootstrap(app)
 
 db = SQLAlchemy(app)
 
-# Database models
+# account table
 class account(db.Model):
-    id = db.Column('user_id', db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(10), unique=True, nullable=False)
     password = db.Column(db.String(10))
     email = db.Column(db.String(10))
     stocks = db.Column(db.String(20), unique=True, nullable=False)
-
-# Database table init & save to ensure tables are created
-db.create_all()
-db.session.commit()
 
 ##### SIGNUP #####
 

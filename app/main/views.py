@@ -5,65 +5,82 @@ from forms import LoginForm, LogoutForm, SignUpForm
 from keychain import Keys
 
 import json
-import datetime as dt
-import yfinance as yf
-import pandas as pd
+import requests
+from datetime import date
+
+today = date.today()
+date = today.strftime('%Y-%m-%d')
 
 app = Flask(__name__, template_folder='../templates')
 app.config['SECRET_KEY'] = Keys.secret()
 Bootstrap(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.sqlite3'
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-db.create_all()
+
+api = 'https://www.alphavantage.co/query?'
+apiFunction = 'function=TIME_SERIES_INTRADAY'
+apiOption = '&interval=60min'
+apiKey = Keys.api()
 
 class Ticker(db.Model):
     id = db.Column('id', db.Integer, primary_key=True)
     symbol = db.Column(db.String(10))
-    
-    ####### SAVE JUST IN CASE NEED TO CHANGE BACK ########
-    # class Ticker(db.Model):
-    # id = db.Column('id', db.Integer, primary_key=True)
-    # symbol = db.Column(db.String(10))
-    # current_price = db.Column(db.Float)
-    # market_high = db.Column(db.Float)
-    # market_low = db.Column(db.Float)
-    # market_open = db.Column(db.Float)
-    # market_close = db.Column(db.Float)
+    current_price = db.Column(db.String)
+    market_high = db.Column(db.String)
+    market_low = db.Column(db.String)
+    market_open = db.Column(db.String)
+    market_close = db.Column(db.String)
 
-### TEST TO PRINT STOCK DATA ###
-ticker = yf.Ticker('TSLA')
-df = ticker.info
-print(df)
-
+db.create_all()
+db.session.commit()
 
 ##### DASHBOARD #####
 
 @app.route("/dashboard")
 def dashboard():
     ticker_list = Ticker.query.all()
-    ticker = yf.Ticker('TSLA') # temporary.... how to pass 'symbol' from Ticker class?
-    df = ticker.history(period="today")
-    current_price = df['Close'] # Where do I get current price??? 
-    market_high = df['High']
-    market_low = df['Low']
-    market_open = df['Open']
-    market_close = df['Close']
-    return render_template("dashboard.html", 
-                           ticker_list=ticker_list, 
-                           current_price=current_price, 
-                           market_high=market_high, 
-                           market_low=market_low,
-                           market_open=market_open,
-                           market_close=market_close)
+
+    return render_template("dashboard.html", ticker_list=ticker_list)
     
 # Add a new symbol to track in DB
 @app.route("/add", methods=["POST"])
 def add():
-    symbol = request.form.get("symbol")
-    new_ticker = Ticker(symbol=symbol)
-    print(new_ticker)
-    db.session.add(new_ticker)
+
+    # Format the API request and get a response object
+    symbol = request.form.get("symbol").upper()
+    api_request = api + apiFunction + '&symbol=' + symbol + apiOption + '&apikey=' + apiKey # this creates a URL for the request
+    response = requests.get(api_request).json() # request and stores response object to 'response' variable
+
+    # parse through response object to get the data we want to access
+    data = response['Time Series (60min)']
+    open = list(response['Time Series (60min)'])[-1] # last dictionary in response object
+    latest = next(iter(response['Time Series (60min)'])) # latest dictionary in response object
+
+    earliest_data = data[open] # earliest dictionary of data available today
+    latest_data = data[latest] # latest dictionary of data available today
+
+    print(earliest_data)
+    print(latest_data)
+
+    current_price = latest_data['4. close'] # gets latest hour closing price. This is not a great reflection of current price, but works well for testing & to find the current price every 60 mins.
+    #market_high = max([k['2. high'] for k, v in data.items()]) # gets highest number from highs today
+    #market_low = min([k['3. low'] for k, v in data.items()]) # gets lowest number from lows today
+    #market_open = earliest_data['1. open']
+    #market_close = latest_data['4. close']
+
+
+    ticker_data = Ticker(
+        symbol = symbol,
+        current_price = current_price,
+        market_high = 'n/a',
+        market_low = 'n/a',
+        market_open = 'n/a',
+        market_close = 'n/a'
+        )
+
+    db.session.add(ticker_data)
     db.session.commit()
     return redirect('/dashboard')
 

@@ -7,8 +7,6 @@
 {% endblock %}
 
 {% block content %}
-<p>{{ display_message }}!</p>
-
 <div>
    <h1>Ticker Tracker</h1>
    <form action="/add" method="post">
@@ -27,19 +25,11 @@
       <thead>
         <tr>
           <th>Current Price</th>
-          <th>Market High</th>
-          <th>Market Low</th>
-          <th>Market Open</th>
-          <th>Market Close</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>{{ current_price }}</td>
-          <td>{{ market_high }}</td>
-          <td>{{ market_low }}</td>
-          <td>{{ market_open }}</td>
-          <td>{{ market_close }}</td>
+          <td>{{ ticker.current_price }}</td>
         </tr>
       </tbody>
     </table>

@@ -3,6 +3,9 @@
 {% block content %}
 <div class="container">
     <h2 style="color:rgb(84, 36, 116)" ><strong>Sign Up</strong></h2>
+    {% if display_message %}
+        <p>{{ display_message }}</p>
+    {% endif %}
     
     <div>
         <form class="" name="" action="/signup/" method="POST">
@@ -16,8 +19,8 @@
             {{form.stocks.label}}  {{form.stocks(size=50)}}
             <h5><strong>&emsp;&emsp;&emsp;Separate stock symbols by comma, leave black if you need more research</strong></h5>
             <br><hr>
-            <input style="background-color:rgb(215, 247, 189) " type="submit" value="Signup"/>
+            <input style="background-color:rgb(215, 247, 189)" type="submit" value="Signup"/>
         </form>
     </div>
 </div>
-{% endblock %}  
+{% endblock %}

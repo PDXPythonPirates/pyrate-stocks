@@ -42,8 +42,12 @@ def home():
 
 @app.route('/signup/', methods=['GET', 'POST'])
 def signup():
+    # lform = LoginForm()
+    # if 'user' in session:
+    #     return render_template('dashboard.html', form=lform, 
+    #                         display_message='You are stil logged in.')
     sform = SignUpForm()
-  
+   
     if sform.validate_on_submit():
         username = sform.username.data
         password = sform.password.data
@@ -75,8 +79,8 @@ def login():
 
         # check user existence
         if Account.query.filter_by(username=username).count() < 1:
-            return render_template('signup.html', form=sform, 
-                                display_message='User not found. Please signup.') 
+            return render_template('home.html',
+                    display_message='User not found. Please signup.') 
         
         else:
             # Check db for username & password match

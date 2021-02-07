@@ -30,14 +30,18 @@
    <div class="account-update">
       <form class="" name="" action="/update/" method="POST">
          {{ form.csrf_token }}
-         <input style="background-color:rgb(215, 247, 189) " type="submit" value="Update Account Info"/>
+         <input style="background-color:rgb(215, 247, 189) " 
+                        type="submit" value="Update Account Info"/>
       </form>
    </div>
    <br>
    <div class="account-logout">
       <form class="" name="" action="/logout/" method="POST">
          {{ form.csrf_token }}
-         <h5 style="color:rgb(36, 113, 116)"> {{ display_message }} <input style="background-color:rgb(215, 247, 189) " type="submit" value="Logout"/> </h5>
+         <h5 style="color:rgb(36, 113, 116)"> {{ display_message }}
+                  <input style="background-color:rgb(215, 247, 189) " 
+                  type="submit" value="Logout"/> 
+         </h5>
          
       </form>
    </div>

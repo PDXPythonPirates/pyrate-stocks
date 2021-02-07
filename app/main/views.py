@@ -19,14 +19,21 @@ db = SQLAlchemy(app)
 
 # account table
 class Account(db.Model):
+
+    __tablename__ = 'account'
+
     user_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(10), unique=True, nullable=False)
     password = db.Column(db.String(10))
     email = db.Column(db.String(10))
     stocks = db.Column(db.String(20))
 
-def __repr__(self):
-    return '<Account %r>' % (self.name)
+    def __init__(self, username, password, email, stocks):
+        self.username = username
+        self.password = password
+        self.email = email
+        self.stocks = stocks
+
 
 ##### SIGNUP #####
 
@@ -39,17 +46,18 @@ def signup():
     sform = SignUpForm()
   
     if sform.validate_on_submit():
-        sname = sform.username.data
-        spasswd = sform.password.data
-        semail = sform.email.data
-        sstocks = sform.stocks.data
+        username = sform.username.data
+        password = sform.password.data
+        email = sform.email.data
+        stocks = sform.stocks.data
 
-        if Account.query(Account).filter_by(username=sname).count() < 1:
-            new = Account(sname, spasswd, semail, sstocks)
+        if Account.query.filter_by(username=username).count() < 1:
+            new = Account(username, password, email, stocks)
             db.session.add(new)
             db.session.commit()
             return render_template('dashboard.html', form=sform, display_message='Welcome. You are all set.')
         
+        logout()
         return render_template('home.html',
                     display_message='User already exists.')
     return render_template('signup.html', form=sform)
@@ -72,14 +80,14 @@ def login():
         passwd = user_info.password
         if usern == username and passwd == password:
             return render_template('dashboard.html', form=lform, 
-                        display_message='Remember logout when you are done.')
+                        display_message='Remember logout when you are done --')
                 
         return render_template('login.html', form=lform,
                                                 display_message='Incorrect Login')
     else:
         if 'user' in session:
             return render_template('dashboard.html', form=lform, 
-                                display_message='Remember logout when you are done.')
+                                display_message='Remember logout when you are done --')
         else:
             return render_template('login.html', form=lform, display_message='User Login')
   
@@ -114,6 +122,8 @@ def update():
             user_info.password = password
             user_info.email = email
             user_info.stocks = stocks
+            db.session.merge(user_info)
+            db.session.flush()
             db.session.commit()
             return render_template('dashboard.html', form=uform, 
                                  display_message='Your account info is updated')

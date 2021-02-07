@@ -1,5 +1,5 @@
 from operator import irshift
-from flask import Flask, render_template, redirect, session
+from flask import Flask, render_template, redirect, request, session
 from flask_bootstrap import Bootstrap
 from werkzeug.utils import secure_filename
 from forms import SignUpForm, LoginForm, UpdateForm, LogoutForm
@@ -25,7 +25,7 @@ class Account(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(10), unique=True, nullable=False)
     password = db.Column(db.String(10))
-    email = db.Column(db.String(10))
+    email = db.Column(db.String(20))
     stocks = db.Column(db.String(20))
 
     def __init__(self, username, password, email, stocks):
@@ -34,10 +34,9 @@ class Account(db.Model):
         self.email = email
         self.stocks = stocks
 
-
 ##### SIGNUP #####
 
-@app.route('/home/')
+@app.route('/')
 def home():
     return render_template('home.html')
 
@@ -57,9 +56,8 @@ def signup():
             db.session.commit()
             return render_template('dashboard.html', form=sform, display_message='Welcome. You are all set.')
         
-        logout()
         return render_template('home.html',
-                    display_message='User already exists.')
+                    display_message='User already exists. Try it again.')
     return render_template('signup.html', form=sform)
 
 ##### LOGIN #####
@@ -95,12 +93,16 @@ def login():
 
 @app.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
+    lform = LoginForm()
+    uform = UpdateForm()
+
     if 'user' in session:
         # Create a query here that will get a list of symbols from the user's stocks column in the users table.
         stocks = Account.query.filter_by(username=session['user']).first()
         return render_template('dashboard.html', stocks=stocks)
+    elif uform.validate_on_submit():
+        return render_template('update.html', form=uform)
     else:
-        form = LoginForm()
         return render_template('login.html', form=form, display_message='User Login')
     
 
@@ -140,6 +142,7 @@ def update():
 @app.route('/logout/', methods=['GET', 'POST'])
 def logout():
     loform = LogoutForm()
+
     if loform.validate_on_submit():
         session.pop('user', None)
         return render_template('home.html', form=loform, 

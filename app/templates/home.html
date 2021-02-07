@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if display_message %}
-   <p>{{ display_message }}</p>
-{% endif %}
 
 <div class="container">
    <h1 style="color:rgb(84, 36, 116)"><strong>Financial App Home</strong></h1>
 
+   {% if display_message %}
+   <p><h4>{{ display_message }}</h4></p>
+   {% endif %}
+   <hr>
    <table class="table table-bordered">
       <caption style="color:rgb(61, 35, 131)"><h4><strong> Market Watch </strong></h4></caption>
       <thead>

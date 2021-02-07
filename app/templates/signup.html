@@ -1,9 +1,11 @@
 {% extends "base.html" %} 
 
 {% block content %}
+
 <div class="container">
     <h2 style="color:rgb(84, 36, 116)" ><strong>Sign Up</strong></h2>
-    
+    <h2 style="color:rgb(36, 113, 116)" >{{ display_message }}</h2>
+
     <div>
         <form class="" name="" action="/signup/" method="POST">
             {{form.csrf_token}}
@@ -19,6 +21,5 @@
             <input style="background-color:rgb(215, 247, 189) " type="submit" value="Signup"/>
         </form>
     </div>
-    <h2 style="color:rgb(36, 113, 116)" >{{ display_message }}</h2>
 </div>
 {% endblock %}  

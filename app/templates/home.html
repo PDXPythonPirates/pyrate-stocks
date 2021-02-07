@@ -1,10 +1,5 @@
 {% extends "base.html" %}
 
-{% block title %}{{super()}}Home{% endblock %}
-
-{% block head %}
-    {{super()}}
-{% endblock %}
 
 {% block content %}
     {% if display_message %}
@@ -16,11 +11,14 @@
     </div>
 
 
-    <h4 class="pt-4 ">Most followed</h4>
-    <p>Maybe show a data stream with the most saved stocks?</p>
+    <h4 class="pt-4 ">Most followed stock tickers on Financial App</h4>
+    <p>Maybe show a data stream with the most popular or most saved stocks?</p>
 
-    <h4 class="pt-4">Feed</h4>
-    <p>Find new stocks</p>
+    <h4 class="pt-4">Check out more cool stuff, wow!</h4>
+    <p>
+        What else would we want people to see on the front page when users arrive? 
+        Would this display different information if that user was logged in versus 
+        if the user was visiting for the first time?
+    </p>
 
-    <p>Just brainstorming some ideas (matthias)</p>
 {% endblock %}

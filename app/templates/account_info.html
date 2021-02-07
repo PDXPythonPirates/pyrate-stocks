@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block body %}
+{{super()}}
+<div class="container">
+   <h4 style="color:rgb(36, 113, 116)"> {{ display_message }}! </h4>
+
+   <div class="stock-info">
+      <li></li>
+
+      <table class="table table-bordered">
+         <caption style="color:rgb(61, 35, 131)"><h4><strong>Information on your favorite stocks </strong></h4></caption>
+         <thead>
+            <tr>
+               <th> Symbol </th>
+               <th> Closing Price </th>
+               <th> Price Change </th>
+               <th> %Change </th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>AAPL</td>
+               <td>200</td>
+               <td>20</td>
+               <td>0.1</td>
+            </tr>
+         </tbody>
+      </table>
+   
+   </div>
+
+   <div class="account-update">
+      <form class="" name="" action="/update/" method="POST">
+         {{ form.csrf_token }}
+         <input style="background-color:rgb(215, 247, 189) " type="submit" value="Update Personal Info"/>
+      </form>
+   </div>
+   <br>
+   <div class="account-logout">
+      <form class="" name="" action="/logout/" method="POST">
+         {{ form.csrf_token }}
+         <input style="background-color:rgb(215, 247, 189) " type="submit" value="Logout"/>
+      </form>
+   </div>
+</div>
+{% endblock %}

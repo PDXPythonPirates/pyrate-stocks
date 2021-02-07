@@ -45,7 +45,7 @@ def signup():
         sstocks = sform.stocks.data
 
         if Account.query(Account).filter_by(username=sname).count() < 1:
-            new = Account(username=sname, password=spasswd, email=semail, stocks=sstocks)
+            new = Account(sname, spasswd, semail, sstocks)
             db.session.add(new)
             db.session.commit()
             return render_template('dashboard.html', form=sform, display_message='Welcome. You are all set.')

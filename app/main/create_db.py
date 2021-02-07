@@ -1,12 +1,15 @@
-
+# create database
 from views import db
 db.create_all()
 
 """ 
+# create a new user
+
 The following commands need to be issued on python command line one by one.
 
-from views import account
-xuehong = account(username='xuehong', email='xuehong@example.com',password = 'qqq', stocks = 'aapl')
+from views import db
+from views import Account
+xuehong = account(username='xuehong', email='xuehong@example.com', password = 'qqq', stocks = 'aapl')
 
 db.session.add(xuehong)
 db.session.commit()

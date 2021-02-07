@@ -65,6 +65,7 @@ def signup():
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     lform = LoginForm()
+    sform = SignUpForm()
     username = lform.username.data
     password = lform.password.data
 
@@ -72,23 +73,30 @@ def login():
         session.permanent=True
         session['user'] = username
 
-        # Check db for username & password match
-        user_info = Account.query.filter_by(username=username).first()
-        usern = user_info.username
-        passwd = user_info.password
-        if usern == username and passwd == password:
-            return render_template('dashboard.html', form=lform, 
-                        display_message='Remember logout when you are done --')
-                
-        return render_template('login.html', form=lform,
-                                                display_message='Incorrect Login')
+        # check user existence
+        if Account.query.filter_by(username=username).count() < 1:
+            return render_template('signup.html', form=sform, 
+                                display_message='User not found. Please signup.') 
+        
+        else:
+            # Check db for username & password match
+            user_info = Account.query.filter_by(username=username).first()
+            usern = user_info.username
+            passwd = user_info.password
+            
+            if usern == username and passwd == password:
+                return render_template('dashboard.html', form=lform, 
+                            display_message='Remember logout when you are done --')
+                    
+            return render_template('login.html', form=lform,
+                                                    display_message='Incorrect Login')
     else:
         if 'user' in session:
             return render_template('dashboard.html', form=lform, 
                                 display_message='Remember logout when you are done --')
         else:
             return render_template('login.html', form=lform, display_message='User Login')
-  
+
 ##### PROFILE #####
 
 @app.route('/dashboard/', methods=['GET', 'POST'])
@@ -103,7 +111,7 @@ def dashboard():
     elif uform.validate_on_submit():
         return render_template('update.html', form=uform)
     else:
-        return render_template('login.html', form=form, display_message='User Login')
+        return render_template('login.html', form=lform, display_message='User Login')
     
 
 ##### UPDATE #####

@@ -13,9 +13,15 @@
         {% block body %}
             <div>
                 <ul class="list-inline">
+                    {% if session['user'] %}
+                    <li class="list-inline-item"><a href="{{ url_for('home') }}">Home</a></li>
+                    <li class="list-inline-item"><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                    <li class="list-inline-item"><a href="{{ url_for('update') }}">Settings</a></li>
+                    {% else %}
                     <li class="list-inline-item"><a href="{{ url_for('home') }}">Home</a></li>
                     <li class="list-inline-item"><a href="{{ url_for('login') }}">Login</a></li>
                     <li class="list-inline-item"><a href="{{ url_for('signup') }}">Signup</a></li>
+                    {% endif %}
                 </ul>
             </div>
             {% block content %}

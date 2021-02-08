@@ -77,7 +77,7 @@ def signup():
             db.session.commit()
 
             # Added user account information to DB. Render the dashboard.
-            return render_template('dashboard.html', form=sform, display_message='Welcome to Financial App!')
+            return render_template('dashboard.html', loform=LogoutForm(), uform=UpdateForm(), display_message='Welcome to Financial App!')
         
         # If the username already exists, go back to the signup form with empty fields.
         sform = SignUpForm()
@@ -98,13 +98,17 @@ def login():
 
     # If the user is logged in already, send them back to their dashboard
     if 'user' in session:
-        return render_template('dashboard.html', form=lform, display_message='You are already logged in!')
+       return render_template('dashboard.html', loform=LogoutForm(), uform=UpdateForm(), display_message='You are already logged in!')
 
     # When the login form is submitted
     if lform.validate_on_submit():
 
         # Check db for username & password match
         user_info = Account.query.filter_by(username=username).first()
+        
+        if user_info == None:
+            return render_template('signup.html', form=SignUpForm(), display_message='You\'re the first user! Sign up quick!')
+
         _username = user_info.username
         _password = user_info.password
 
@@ -114,7 +118,7 @@ def login():
             session['user'] = username
 
             # Login successful
-            return render_template('dashboard.html', form=lform, display_message='Welcome back!')
+            return render_template('dashboard.html', loform=LogoutForm(), uform=UpdateForm(), display_message='Welcome back!')
         
         # Login information could not be matched with username/password from account table in the DB
         return render_template('login.html', form=lform, display_message='Incorrect Login')
@@ -128,43 +132,51 @@ def login():
 @app.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
     if 'user' in session:
+
         # TODO: Check to make sure following logic will get a list of symbols from the user's stocks column in the Account table.
-        user_data = Account.query.filter_by(username=session['user'])
-        stocks = user_data.stocks
+        user_data = Account.query.filter_by(username=session['user']).first()
+        symbols = user_data.stocks.replace(" ", "")
+        symbols = symbols.split(",")
+        stocks = []
 
-        # unfinished
-        stocks = stocks.split().strip()
-        for i in stocks:
-            t = yf.Ticker(i)
+        for s in symbols:
+            ticker = yf.Ticker(s)
+            current_price = ticker.info['bid']
 
+            stock_data = {}
+            stock_data['symbol'] = s
+            stock_data['current_price'] = current_price
 
-        # TODO: Create a query here that will get all of the ticker data for each item in the "stocks" variable
+            stocks.append(stock_data)
 
+        print(stocks)
         # Load dashboard and return stock ticker data
-        return render_template('dashboard.html', tickers=tickers)
+        return render_template('dashboard.html', stocks=stocks, loform=LogoutForm(), uform=UpdateForm())
 
     else:
         form = LoginForm()
         return render_template('login.html', form=form, display_message='User Login')
 
 
-################# THIS WILL NOT BE EXECUTED ######################
-    ticker_list = Ticker.query.all()
-    ticker = yf.Ticker('TSLA') # TODO: Need to pass ticker, using TSLA to temporarily render data as a test
-    current_price = ticker.info['bid'] 
-    market_high = ticker.info['dayHigh']
-    market_low = ticker.info['dayLow']
-    market_open = ticker.info['open']
-    market_close = ticker.info['previousClose']
-    return render_template(
-        "dashboard.html", 
-        ticker_list=ticker_list, 
-        current_price=current_price, 
-        market_high=market_high, 
-        market_low=market_low,
-        market_open=market_open,
-        market_close=market_close)
-##################################################################
+""" 
+Using as reference:
+
+ticker_list = Ticker.query.all()
+ticker = yf.Ticker('TSLA')
+current_price = ticker.info['bid'] 
+market_high = ticker.info['dayHigh']
+market_low = ticker.info['dayLow']
+market_open = ticker.info['open']
+market_close = ticker.info['previousClose']
+return render_template(
+    "dashboard.html", 
+    ticker_list=ticker_list, 
+    current_price=current_price, 
+    market_high=market_high, 
+    market_low=market_low,
+    market_open=market_open,
+    market_close=market_close)
+"""
 
 
 ##### ADD STOCK TICKER SYMBOL #####
@@ -232,7 +244,7 @@ def update():
             user_info.email = email
             user_info.stocks = stocks
             db.session.commit()
-            return render_template('dashboard.html', form=uform, display_message='Your account info is updated')
+            return redirect('/dashboard/')
         
         else:
             return render_template('update.html', form=uform, display_message="User doesn't exist")

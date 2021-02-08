@@ -38,6 +38,12 @@ class Account(db.Model):
     email = db.Column(db.String(10))
     stocks = db.Column(db.String(32))
 
+    def __init__(self, username, password, email, stocks):
+        self.username = username
+        self.password = password
+        self.email = email
+        self.stocks = stocks
+
 # Database table init & save to ensure tables are created
 db.create_all()
 db.session.commit()
@@ -124,7 +130,13 @@ def dashboard():
     if 'user' in session:
         # TODO: Check to make sure following logic will get a list of symbols from the user's stocks column in the Account table.
         user_data = Account.query.filter_by(username=session['user'])
-        stocks = user_data['stocks']
+        stocks = user_data.stocks
+
+        # unfinished
+        stocks = stocks.split().strip()
+        for i in stocks:
+            t = yf.Ticker(i)
+
 
         # TODO: Create a query here that will get all of the ticker data for each item in the "stocks" variable
 

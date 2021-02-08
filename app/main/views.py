@@ -49,7 +49,6 @@ class Account(db.Model):
 
 # Database table init & save to ensure tables are created
 db.create_all()
-db.session.commit()
 
 
 ##### HOME #####
@@ -182,7 +181,7 @@ def add():
         # If the above check returns "False", create new ticker entry and update the user profile to include the newly followed stock symbol.
         # If the above check returns "True", retrieve the ticker entry, check to see if symbol exists in user's "stocks" column,
             # and update the user profile to include the newly followed stock symbol.
-
+    return
 
 ##### DELETE STOCK TICKER SYMBOL #####
 

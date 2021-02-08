@@ -16,7 +16,7 @@
                     {% if session['user'] %}
                     <li class="list-inline-item"><a href="{{ url_for('home') }}">Home</a></li>
                     <li class="list-inline-item"><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
-                    <li class="list-inline-item"><a href="{{ url_for('update') }}">Settings</a></li>
+                    <li class="list-inline-item"><a href="{{ url_for('update') }}">Update Account</a></li>
                     {% else %}
                     <li class="list-inline-item"><a href="{{ url_for('home') }}">Home</a></li>
                     <li class="list-inline-item"><a href="{{ url_for('login') }}">Login</a></li>

@@ -1,19 +1,17 @@
 {% extends "base.html" %}
 
-{% block title %}{{super()}}Login{% endblock %}
-
-{% block head %}
-    {{super()}}
-{% endblock %}
-
 {% block content %}
-<h1>{{ display_message }}</h1>
-<div class="login-form">
+<div class="container">
+  <h1 style="color:rgb(84, 36, 116)"> <strong>{{ display_message }}</strong></h1>
+ 
+  <div class="login-form">
     <form class="" name="" action="/login/" method="POST">
         {{ form.csrf_token }}
         {{ form.username.label }} {{ form.username(size=20) }}<br>
-        {{ form.password.label }} {{ form.password(size=20) }}<br>
-        <input type="submit" value="Login"/>
+       
+        {{ form.password.label }} {{ form.password(size=20) }}
+        <input style="background-color:rgb(215, 247, 189) " type="submit" value="Login"/>
     </form>
   </div>
+</div> 
 {% endblock %}

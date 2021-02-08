@@ -1,102 +1,166 @@
-from flask import Flask, render_template, redirect, request, url_for
+from operator import irshift
+from flask import Flask, render_template, redirect, request, session
 from flask_bootstrap import Bootstrap
-from forms import LoginForm, LogoutForm, SignUpForm
+from werkzeug.utils import secure_filename
+from forms import SignUpForm, LoginForm, UpdateForm, LogoutForm
+from flask_sqlalchemy import SQLAlchemy
+from datetime import timedelta
 from keychain import Keys
-import csv
 import json
-
 
 app = Flask(__name__, template_folder='../templates')
 app.config['SECRET_KEY'] = Keys.secret()
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.permanent_session_lifetime = timedelta(days = 1)
 Bootstrap(app)
 
+db = SQLAlchemy(app)
 
-##### HOME #####
+# account table
+class Account(db.Model):
 
-@app.route('/', methods=['GET', 'POST'])
-def home():
+    __tablename__ = 'account'
 
-    return render_template('home.html')
+    user_id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(10), unique=True, nullable=False)
+    password = db.Column(db.String(10))
+    email = db.Column(db.String(20))
+    stocks = db.Column(db.String(20))
 
+    def __init__(self, username, password, email, stocks):
+        self.username = username
+        self.password = password
+        self.email = email
+        self.stocks = stocks
 
 ##### SIGNUP #####
 
+@app.route('/')
+def home():
+    return render_template('home.html')
+
 @app.route('/signup/', methods=['GET', 'POST'])
 def signup():
-    form = SignUpForm()
+    # lform = LoginForm()
+    # if 'user' in session:
+    #     return render_template('dashboard.html', form=lform, 
+    #                         display_message='You are stil logged in.')
+    sform = SignUpForm()
+   
+    if sform.validate_on_submit():
+        username = sform.username.data
+        password = sform.password.data
+        email = sform.email.data
+        stocks = sform.stocks.data
 
-    print('signup page accessed')
-    if form.validate_on_submit():
-        username = form.username.data
-        password = form.password.data
-        email = form.email.data
-
-        with open('app/main/user_data.json', mode='r') as file:
-            data = json.load(file)
-
-        with open('app/main/user_data.json', mode='w') as file:
-            all_users = data['users']
-            user_data = {
-                'password': password,
-                'email': email
-            }
-            user = {username: user_data}
-            all_users.append(user)
-            data = {"users":all_users}
-            json.dump(data, file)
-
-        return redirect('/login')
-
-    return render_template('signup.html', form=form)
-
+        if Account.query.filter_by(username=username).count() < 1:
+            new = Account(username, password, email, stocks)
+            db.session.add(new)
+            db.session.commit()
+            return render_template('dashboard.html', form=sform, display_message='Welcome. You are all set.')
+        
+        return render_template('home.html',
+                    display_message='User already exists. Try it again.')
+    return render_template('signup.html', form=sform)
 
 ##### LOGIN #####
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
+    lform = LoginForm()
+    sform = SignUpForm()
+    username = lform.username.data
+    password = lform.password.data
 
-    if form.validate_on_submit():
-        username = form.username.data
-        password = form.password.data
+    if lform.validate_on_submit():
+        session.permanent=True
+        session['user'] = username
 
-        # Check user_data.json for username & password match
-        with open('app/main/user_data.json', 'r') as file:
-            data = json.load(file)
-            all_users = data['users']
-
-            for user in all_users:
-                _username = list(user.keys())[0]
-                if username == _username and password == user[_username]['password']:
-                    return render_template('profile.html', form=LogoutForm(), display_message='Login Success')
+        # check user existence
+        if Account.query.filter_by(username=username).count() < 1:
+            return render_template('home.html',
+                    display_message='User not found. Please signup.') 
         
-            return render_template('login.html', form=form, display_message='Incorrect Login')
-
-    return render_template('login.html', form=form, display_message='User Login')
-
+        else:
+            # Check db for username & password match
+            user_info = Account.query.filter_by(username=username).first()
+            usern = user_info.username
+            passwd = user_info.password
+            
+            if usern == username and passwd == password:
+                return render_template('dashboard.html', form=lform, 
+                            display_message='Remember logout when you are done --')
+                    
+            return render_template('login.html', form=lform,
+                                                    display_message='Incorrect Login')
+    else:
+        if 'user' in session:
+            return render_template('dashboard.html', form=lform, 
+                                display_message='Remember logout when you are done --')
+        else:
+            return render_template('login.html', form=lform, display_message='User Login')
 
 ##### PROFILE #####
 
-@app.route('/profile/', methods=['GET', 'POST'])
-def profile():
-    form = LogoutForm()
+@app.route('/dashboard/', methods=['GET', 'POST'])
+def dashboard():
+    lform = LoginForm()
+    uform = UpdateForm()
 
-    return render_template('profile.html', form=form)
+    if 'user' in session:
+        # Create a query here that will get a list of symbols from the user's stocks column in the users table.
+        stocks = Account.query.filter_by(username=session['user']).first()
+        return render_template('dashboard.html', stocks=stocks)
+    elif uform.validate_on_submit():
+        return render_template('update.html', form=uform)
+    else:
+        return render_template('login.html', form=lform, display_message='User Login')
+    
 
+##### UPDATE #####
+
+@app.route('/update/', methods=['GET', 'POST'])
+def update():
+    uform = UpdateForm()
+        
+    if uform.validate_on_submit():
+        username = uform.username.data
+        password = uform.password.data
+        email = uform.email.data
+        stocks = uform.stocks.data
+
+        user_info = Account.query.filter_by(username=username).first()
+        usern = user_info.username
+        if usern == username:
+            user_info.password = password
+            user_info.email = email
+            user_info.stocks = stocks
+            db.session.merge(user_info)
+            db.session.flush()
+            db.session.commit()
+            return render_template('dashboard.html', form=uform, 
+                                 display_message='Your account info is updated')
+                
+        else:
+            return render_template('update.html', form=uform, 
+                                        display_message="User doesn't exist")
+
+        
+    return render_template('update.html', form=uform)
 
 ##### LOGOUT #####
 
 @app.route('/logout/', methods=['GET', 'POST'])
 def logout():
-    form = LogoutForm()
-    
-    if form.validate_on_submit():
+    loform = LogoutForm()
 
-        return render_template('home.html', form=form, display_message='Successfully logged out')
+    if loform.validate_on_submit():
+        session.pop('user', None)
+        return render_template('home.html', form=loform, 
+                                        display_message='You are logged out')
     else:
-        
-        return render_template('profile.html')
-
+        return render_template('dashboard.html')
 
 ##### RUN APP #####
 

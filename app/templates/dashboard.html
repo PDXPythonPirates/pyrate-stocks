@@ -1,49 +1,56 @@
 {% extends "base.html" %}
 
-{% block body %}
-{{super()}}
-<div class="container">
-   
-   <div class="account-info">
-      
-      <table class="table table-bordered">
-         <caption style="color:rgb(61, 35, 131)"><h4><strong>Information on your favorite stocks </strong></h4></caption>
-         <thead>
-            <tr>
-               <th> Symbol </th>
-               <th> Closing Price </th>
-               <th> Price Change </th>
-               <th> %Change </th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-               <td>AAPL</td>
-               <td>200</td>
-               <td>20</td>
-               <td>0.1</td>
-            </tr>
-         </tbody>
-      </table>
-      </div>
-      <hr>
-   <div class="account-update">
-      <form class="" name="" action="/update/" method="POST">
-         {{ form.csrf_token }}
-         <input style="background-color:rgb(215, 247, 189) " 
-                        type="submit" value="Update Account Info"/>
-      </form>
-   </div>
-   <br>
-   <div class="account-logout">
-      <form class="" name="" action="/logout/" method="POST">
-         {{ form.csrf_token }}
-         <h5 style="color:rgb(36, 113, 116)"> {{ display_message }}
-                  <input style="background-color:rgb(215, 247, 189) " 
-                  type="submit" value="Logout"/> 
-         </h5>
-         
-      </form>
-   </div>
+{% block title %}{{super()}}{{ username }}{% endblock %}
+
+{% block head %}
+    {{super()}}
+{% endblock %}
+
+{% block content %}
+<div class="pt-4">
+  <h1>Dashboard</h1>
+  <form action="/add" method="post">
+    <div class="field">
+      <label>This feature does not work!</label> <!--   ATTN   -->
+      <input type="text" name="symbol" placeholder="Ex: AAPL">
+      <button type="submit" class="btn btn-primary btn-sm">Add</button>
+    </div>
+  </form>
+</div>
+{% for stock in stocks %}
+<div class="mt-4 p-4 border border-primary">
+  <h2>{{ stock.symbol }}</h2>
+  <!-- Need to address delete functionality
+     <a href="/delete/">Delete</a>-->
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th class="pr-2">Current Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ stock.current_price }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endfor %}
+<div class="account-update">
+   <form class="" name="" action="/update/" method="POST">
+      {{ uform.csrf_token }}
+      <input style="background-color:rgb(215, 247, 189) " type="submit" value="Update Account Info"/>
+   </form>
+</div>
+<br>
+<div class="account-logout">
+   <form class="" name="" action="/logout/" method="POST">
+      <h5 style="color:rgb(36, 113, 116)"> {{ display_message }}
+         {{ loform.csrf_token }}
+         <input style="background-color:rgb(215, 247, 189) " type="submit" value="Logout"/>
+      </h5>
+   </form>
 </div>
 {% endblock %}

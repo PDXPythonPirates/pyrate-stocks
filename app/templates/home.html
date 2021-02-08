@@ -1,35 +1,23 @@
 {% extends "base.html" %}
 
+
 {% block content %}
+    {% if display_message %}
+        <p>{{ display_message }}</p>
+    {% endif %}
+    <div class="py-4 bg-dark">
+        <h1 class="text-light text-center">Welcome to Financial App!</h1>
+        <p class="text-light text-center">Check the status of your favorite stocks with the hottest new finance app</p>
+    </div>
 
-<div class="container">
-   <h1 style="color:rgb(84, 36, 116)"><strong>Financial App Home</strong></h1>
 
-   {% if display_message %}
-   <p><h4>{{ display_message }}</h4></p>
-   {% endif %}
-   <hr>
-   <table class="table table-bordered">
-      <caption style="color:rgb(61, 35, 131)"><h4><strong> Market Watch </strong></h4></caption>
-      <thead>
-         <tr class="d-flex">
-            <th class="col-1">Symbol</th>
-            <th class="col-3">Closing Price</th>
-            <th class="col-3">Price change</th>
-            <th class="col-5">Change</th>
-      </tr>
-      </thead>
+    <h4 class="pt-4 ">Most followed stock tickers on Financial App</h4>
+    <p>Maybe show a data stream with the most popular or most saved stocks?</p>
+    <h4 class="pt-4">Check out more cool stuff, wow!</h4>
+    <p class="text-danger">
+        What else would we want people to see on the front page when users arrive? 
+        Would this display different information if that user was logged in versus 
+        if the user was visiting for the first time?
+    </p>
 
-      <tbody>
-         <tr class="d-flex">
-            <th class="col-1">Dow</th>
-            <th class="col-3">30000</th>
-            <th class="col-3">+300</th>
-            <th class="col-5">+1%</th>
-         </tr>
-
-      </tbody>
-
-   </table>
-</div>
 {% endblock %}

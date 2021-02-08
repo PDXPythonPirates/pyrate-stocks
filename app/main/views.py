@@ -210,6 +210,8 @@ def add():
 def delete(ticker_id):
 
     """
+    TODO: Create new issue.
+
     This code needs to be updated so that it does not delete from the ticker table, 
     but from the "stock" column in the user's Account table entry:
 
@@ -223,6 +225,8 @@ def delete(ticker_id):
 
 @app.route('/update/', methods=['GET', 'POST'])
 def update():
+    # TODO: Add user session check to make sure user is logged in
+    # Currently, you can change someone's pass without logging in
     uform = UpdateForm()
     
     # If the form was submitted as a POST request
@@ -238,7 +242,6 @@ def update():
         user_info = Account.query.filter_by(username=username).first()
         _username = user_info.username
 
-        # Is this 'if' statement necessary?
         if _username == username:
             user_info.password = password
             user_info.email = email

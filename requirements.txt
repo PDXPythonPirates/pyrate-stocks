@@ -25,5 +25,10 @@ urllib3==1.26.3
 visitor==0.1.3
 Werkzeug==1.0.1
 WTForms==2.3.3
+<<<<<<< HEAD
 yfinance==0.1.55
 Flask-Login==0.5.0
+=======
+Flask-Login==0.5.0
+Flask-SQLAlchemy==2.4.4
+>>>>>>> main

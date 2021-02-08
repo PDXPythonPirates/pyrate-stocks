@@ -32,6 +32,9 @@ class Ticker(db.Model):
 
 # Account table
 class Account(db.Model):
+
+    __tablename__ = 'account'
+
     user_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(10), unique=True, nullable=False)
     password = db.Column(db.String(10))
@@ -60,6 +63,10 @@ def home():
 
 @app.route('/signup/', methods=['GET', 'POST'])
 def signup():
+    # lform = LoginForm()
+    # if 'user' in session:
+    #     return render_template('dashboard.html', form=lform, 
+    #                         display_message='You are stil logged in.')
     sform = SignUpForm()
   
     # When form is submitted, assign data to local variables
@@ -93,6 +100,7 @@ def signup():
 def login():
     # Load loginform and assign both fields to local variables
     lform = LoginForm()
+    sform = SignUpForm()
     username = lform.username.data
     password = lform.password.data
 
@@ -108,7 +116,9 @@ def login():
         
         if user_info == None:
             return render_template('signup.html', form=SignUpForm(), display_message='You\'re the first user! Sign up quick!')
-
+        elif 'user' in session:
+            return render_template('dashboard.html', loform=LogoutForm(), uform=UpdateForm(), display_message='Remember logout when you are done --')
+        
         _username = user_info.username
         _password = user_info.password
 
@@ -131,6 +141,9 @@ def login():
 
 @app.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
+    lform = LoginForm()
+    uform = UpdateForm()
+
     if 'user' in session:
 
         # TODO: Check to make sure following logic will get a list of symbols from the user's stocks column in the Account table.
@@ -158,27 +171,6 @@ def dashboard():
         return render_template('login.html', form=form, display_message='User Login')
 
 
-""" 
-Using as reference:
-
-ticker_list = Ticker.query.all()
-ticker = yf.Ticker('TSLA')
-current_price = ticker.info['bid'] 
-market_high = ticker.info['dayHigh']
-market_low = ticker.info['dayLow']
-market_open = ticker.info['open']
-market_close = ticker.info['previousClose']
-return render_template(
-    "dashboard.html", 
-    ticker_list=ticker_list, 
-    current_price=current_price, 
-    market_high=market_high, 
-    market_low=market_low,
-    market_open=market_open,
-    market_close=market_close)
-"""
-
-
 ##### ADD STOCK TICKER SYMBOL #####
 
 # Add a new symbol to track in DB
@@ -190,17 +182,6 @@ def add():
         # If the above check returns "False", create new ticker entry and update the user profile to include the newly followed stock symbol.
         # If the above check returns "True", retrieve the ticker entry, check to see if symbol exists in user's "stocks" column,
             # and update the user profile to include the newly followed stock symbol.
-    
-    """
-    This is the previously used code for adding a stock ticker symbol to the dashboard:
-
-    symbol = request.form.get("symbol")
-    new_ticker = Ticker(symbol=symbol) # TODO: Instead of adding a new ticker to the ticker table, we need to add the ticker symbol to the user's account information
-    print(new_ticker)
-    db.session.add(new_ticker)
-    db.session.commit()
-    return redirect('/dashboard')
-    """
 
 
 ##### DELETE STOCK TICKER SYMBOL #####
@@ -246,6 +227,8 @@ def update():
             user_info.password = password
             user_info.email = email
             user_info.stocks = stocks
+            db.session.merge(user_info)
+            db.session.flush()
             db.session.commit()
             return redirect('/dashboard/')
         

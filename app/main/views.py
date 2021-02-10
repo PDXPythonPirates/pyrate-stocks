@@ -1,55 +1,7 @@
-from flask import Flask, render_template, redirect, session
-from flask_bootstrap import Bootstrap
-from flask_sqlalchemy import SQLAlchemy
-
-from werkzeug.utils import secure_filename
-from operator import irshift
-from datetime import timedelta
-from keychain import Keys
+from .forms import SignUpForm, LoginForm, UpdateForm, LogoutForm
+from flask import render_template, redirect, session
 import yfinance as yf
-import json
-
-from forms import SignUpForm, LoginForm, UpdateForm, LogoutForm
-from keychain import Keys
-
-# App configuration
-app = Flask(__name__, template_folder='../templates')
-app.config['SECRET_KEY'] = Keys.secret()
-app.permanent_session_lifetime = timedelta(days = 1)
-
-# Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-
-
-##### MODELS #####
-
-# Ticker table
-class Ticker(db.Model):
-    id = db.Column('id', db.Integer, primary_key=True)
-    symbol = db.Column(db.String(10))
-
-# Account table
-class Account(db.Model):
-
-    __tablename__ = 'account'
-
-    user_id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(10), unique=True, nullable=False)
-    password = db.Column(db.String(10))
-    email = db.Column(db.String(10))
-    stocks = db.Column(db.String(32))
-
-    def __init__(self, username, password, email, stocks):
-        self.username = username
-        self.password = password
-        self.email = email
-        self.stocks = stocks
-
-# Database table init & save to ensure tables are created
-db.create_all()
-
+import fin_app
 
 ##### HOME #####
 

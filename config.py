@@ -17,7 +17,7 @@ class Config():
     FIN_APP_ADMIN = os.environ.get('FIN_APP_ADMIN')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    # Takes the application instance as instance - for now, 
+    # Takes the application instance as an argument - for now, 
     # the base Config class implements an empty init_app() method.
     @staticmethod
     def init_app(app):

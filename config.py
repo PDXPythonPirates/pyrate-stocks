@@ -5,7 +5,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 # There is functionality included that we won't need *yet*, but this
 # allows for future customization of the app as needed - and provides
 # a roadmap to make that happen
-class Config():
+class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard-to-guess-string'
     MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.googlemail.com')
     MAIL_PORT = int(os.environ.get('MAIL_PORT', '587'))

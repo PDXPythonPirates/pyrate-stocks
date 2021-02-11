@@ -1,18 +1,20 @@
+from flask import render_template, session, redirect, url_for, current_app
+from .. import db
+from .. models import Account
+from . import main
 from .forms import SignUpForm, LoginForm, UpdateForm, LogoutForm
-from flask import render_template, redirect, session
-import yfinance as yf
-import fin_app
+import yfinance as yf # TODO: Verify that this import lives here
 
 ##### HOME #####
 
-@app.route('/')
+@main.route('/')
 def home():
     return render_template('home.html')
 
 
 ##### SIGNUP #####
 
-@app.route('/signup/', methods=['GET', 'POST'])
+@main.route('/signup/', methods=['GET', 'POST'])
 def signup():
     # lform = LoginForm()
     # if 'user' in session:
@@ -47,7 +49,7 @@ def signup():
 
 ##### LOGIN #####
 
-@app.route('/login/', methods=['GET', 'POST'])
+@main.route('/login/', methods=['GET', 'POST'])
 def login():
     # Load loginform and assign both fields to local variables
     lform = LoginForm()
@@ -90,7 +92,7 @@ def login():
 
 ##### DASHBOARD #####
 
-@app.route('/dashboard/', methods=['GET', 'POST'])
+@main.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
     lform = LoginForm()
     uform = UpdateForm()
@@ -125,7 +127,7 @@ def dashboard():
 ##### ADD STOCK TICKER SYMBOL #####
 
 # Add a new symbol to track in DB
-@app.route("/add", methods=["POST"])
+@main.route("/add", methods=["POST"])
 def add():
 
     # TODO: Create a query here that will get a list of symbols from the user's "stocks" column in the Account table.
@@ -138,7 +140,7 @@ def add():
 ##### DELETE STOCK TICKER SYMBOL #####
 
 # Delete a symbol being tracked in DB             
-@app.route("/delete/<int:ticker_id>")   
+@main.route("/delete/<int:ticker_id>")   
 def delete(ticker_id):
 
     """
@@ -155,7 +157,7 @@ def delete(ticker_id):
 
 ##### UPDATE #####
 
-@app.route('/update/', methods=['GET', 'POST'])
+@main.route('/update/', methods=['GET', 'POST'])
 def update():
     # TODO: Add user session check to make sure user is logged in
     # Currently, you can change someone's pass without logging in
@@ -191,7 +193,7 @@ def update():
 
 ##### LOGOUT #####
 
-@app.route('/logout/', methods=['GET', 'POST'])
+@main.route('/logout/', methods=['GET', 'POST'])
 def logout():
     loform = LogoutForm()
 
@@ -207,4 +209,4 @@ def logout():
 ##### RUN APP #####
 
 if __name__=='__main__':
-    app.run(debug=True)
+    main.run(debug=True)

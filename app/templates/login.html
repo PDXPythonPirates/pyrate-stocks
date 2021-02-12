@@ -5,7 +5,7 @@
   <h1 style="color:rgb(84, 36, 116)"> <strong>{{ display_message }}</strong></h1>
  
   <div class="login-form">
-    <form class="" name="" action="/login/" method="POST">
+    <form class="" name="" action="{{ url_for('login') }}" method="POST">
         {{ form.csrf_token }}
         {{ form.username.label }} {{ form.username(size=20) }}<br>
        

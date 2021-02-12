@@ -1,8 +1,8 @@
-from flask import redirect, Blueprint
+from flask import render_template, redirect, session
+from app.main import user
 from app.models import Ticker, Account
 from app.main.forms import LoginForm, LogoutForm, UpdateForm, SignUpForm
 
-user = Blueprint('user', __name__, url_prefix='/user')
 
 @user.route('/signup/', methods=['GET', 'POST'])
 def signup():

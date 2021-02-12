@@ -1,8 +1,8 @@
-from flask import redirect, Blueprint
+from flask import render_template, redirect, session
+from app.main import ticker
 from app.models import Ticker, Account
 from app.main.forms import LoginForm, LogoutForm, UpdateForm
 
-ticker = Blueprint('ticker', __name__, url_prefix='/ticker')
 
 # Add a new symbol to track in DB
 @ticker.route("/add", methods=["POST"])

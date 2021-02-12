@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, session
+from flask import render_template, redirect, session
 from app.main import main # blueprints
 from app.models import Ticker, Account
 from app.main.forms import LoginForm, LogoutForm, UpdateForm

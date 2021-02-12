@@ -1,7 +1,7 @@
 from flask import render_template, redirect, session
 import yfinance as yf
 
-from app.main import main # blueprints
+from app.main import main
 from app.models import Ticker, Account
 from app.main.forms import LoginForm, LogoutForm, UpdateForm
 

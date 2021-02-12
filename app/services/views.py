@@ -2,6 +2,9 @@ from flask import Flask, render_template, redirect, session
 from ..main.forms import SignUpForm, LoginForm, UpdateForm, LogoutForm
 from ..models import Ticker, Account
 from ..main import main
+from app import db
+import yfinance as yf
+
 
 @main.route('/')
 def home():

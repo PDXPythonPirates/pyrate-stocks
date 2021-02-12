@@ -1,10 +1,8 @@
 from flask import Flask
-from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from datetime import timedelta
 from config import config
 
-bootstrap = Bootstrap()
 db = SQLAlchemy()
 
 def create_app(config_name):

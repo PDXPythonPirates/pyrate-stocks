@@ -1,5 +1,5 @@
 from flask import redirect
-from .. import main
+from ..main import main
 from . import user
 
 @main.route('/ticker')

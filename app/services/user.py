@@ -1,4 +1,5 @@
 from flask import render_template, redirect, session
+from app import db
 from app.main import user
 from app.models import Ticker, Account
 from app.main.forms import LoginForm, LogoutForm, UpdateForm, SignUpForm

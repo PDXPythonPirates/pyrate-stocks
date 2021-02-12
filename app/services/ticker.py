@@ -17,7 +17,7 @@ def add():
 
 
 # Delete a symbol being tracked in DB             
-@ticker.route("/delete/<int:ticker_id>")   
+@ticker.route("/delete/<int:ticker_id>")
 def delete(ticker_id):
 
     # Pop from user's symbols

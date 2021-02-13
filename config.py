@@ -1,10 +1,6 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-# Contains settings that are common to all configurations.
-# There is functionality included that we won't need *yet*, but this
-# allows for future customization of the app as needed - and provides
-# a roadmap to make that happen
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard-to-guess-string'
     FIN_APP_ADMIN = os.environ.get('FIN_APP_ADMIN')

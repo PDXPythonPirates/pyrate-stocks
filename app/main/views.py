@@ -27,8 +27,3 @@ def dashboard():
     else:
         form = LoginForm()
         return render_template('login.html', form=form, display_message='User Login')
-
-
-
-if __name__=='__main__':
-    main_bp.run(debug=True)

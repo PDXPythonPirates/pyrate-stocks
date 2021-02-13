@@ -6,6 +6,7 @@ from app.models import Account
 from app.main.forms import LoginForm, UpdateForm, SignUpForm
 
 
+
 @user_bp.route('/signup/', methods=['GET', 'POST'])
 def signup():
     if current_user.is_authenticated:
@@ -35,7 +36,7 @@ def login():
     if lform.validate_on_submit():
         user = Account.query.filter_by(username=lform.username.data).first()
         if user is None or not user.check_password(lform.password.data):
-            flash('Please sign up first!')
+            flash('Inccorrect login!')
             return redirect(url_for('user_bp.login'))
 
         flash('You are logged in.')
@@ -49,16 +50,19 @@ def login():
 def update():
     uform = UpdateForm()
     if uform.validate_on_submit():
-        current_user.username = uform.username.data
-        current_user.email = uform.email.data
-        current_user.password = uform.password.data
-        current_user.set_password(uform.password.data)
-        db.session.commit()
-        flash('Your changes have been saved.')
-        return redirect(url_for('main_bp.dashboard'))
-      
+        try:
+            current_user.username = uform.username.data
+            current_user.email = uform.email.data
+            current_user.password = uform.password.data
+            current_user.set_password(uform.password.data)
+            db.session.commit()
+            flash('Your changes have been saved.')
+            return redirect(url_for('main_bp.dashboard'))
+        
+        except:
+            return 'not updated'
     return render_template('update.html', title='Update',
-                           form=uform)
+                        form=uform)
 
 
 @user_bp.route('/logout/', methods=['GET', 'POST'])

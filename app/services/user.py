@@ -1,11 +1,11 @@
-from flask import render_template, redirect, session
+from flask import render_template, redirect, session, url_for
 from app import db
-from app.main import user
+from app.main import user_bp
 from app.models import Ticker, Account
 from app.main.forms import LoginForm, LogoutForm, UpdateForm, SignUpForm
 
 
-@user.route('/signup/', methods=['GET', 'POST'])
+@user_bp.route('/signup/', methods=['GET', 'POST'])
 def signup():
     # lform = LoginForm()
     # if 'user' in session:
@@ -28,7 +28,7 @@ def signup():
             db.session.commit()
 
             # Added user account information to DB. Render the dashboard.
-            return render_template('dashboard.html', loform=LogoutForm(), uform=UpdateForm(), display_message='Welcome to Financial App!')
+            return redirect(url_for('user_bp.login'))
         
         # If the username already exists, go back to the signup form with empty fields.
         sform = SignUpForm()
@@ -38,7 +38,7 @@ def signup():
     return render_template('signup.html', form=sform)
 
 
-@user.route('/login/', methods=['GET', 'POST'])
+@user_bp.route('/login/', methods=['GET', 'POST'])
 def login():
     # Load loginform and assign both fields to local variables
     lform = LoginForm()
@@ -48,7 +48,7 @@ def login():
 
     # If the user is logged in already, send them back to their dashboard
     if 'user' in session:
-       return render_template('dashboard.html', loform=LogoutForm(), uform=UpdateForm(), display_message='You are already logged in!')
+       return redirect(url_for('main_bp.dashboard'))
 
     # When the login form is submitted
     if lform.validate_on_submit():
@@ -70,7 +70,7 @@ def login():
             session['user'] = username
 
             # Login successful
-            return render_template('dashboard.html', loform=LogoutForm(), uform=UpdateForm(), display_message='Welcome back!')
+            return redirect(url_for('main_bp.dashboard'))
         
         # Login information could not be matched with username/password from account table in the DB
         return render_template('login.html', form=lform, display_message='Incorrect Login')
@@ -79,7 +79,7 @@ def login():
     return render_template('login.html', form=lform, display_message='User Login')
 
 
-@user.route('/update/', methods=['GET', 'POST'])
+@user_bp.route('/update/', methods=['GET', 'POST'])
 def update():
     # TODO: Add user session check to make sure user is logged in
     # Currently, you can change someone's pass without logging in
@@ -113,7 +113,7 @@ def update():
     return render_template('update.html', form=uform)
 
 
-@user.route('/logout/', methods=['GET', 'POST'])
+@user_bp.route('/logout/', methods=['GET', 'POST'])
 def logout():
     loform = LogoutForm()
 

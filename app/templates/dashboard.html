@@ -9,7 +9,7 @@
 {% block content %}
 <div class="pt-4">
   <h1>Dashboard</h1>
-  <form action="{{ url_for('ticker.add') }}" method="post">
+  <form action="{{ url_for('ticker_bp.add') }}" method="post">
     <div class="field">
       <label>This feature does not work!</label> <!--   ATTN   -->
       <input type="text" name="symbol" placeholder="Ex: AAPL">
@@ -17,36 +17,39 @@
     </div>
   </form>
 </div>
-{% for stock in stocks %}
-<div class="mt-4 p-4 border border-primary">
-  <h2>{{ stock.symbol }}</h2>
-  <!-- Need to address delete functionality
-     <a href="/delete/">Delete</a>-->
-  <div>
-    <table>
-      <thead>
-        <tr>
-          <th class="pr-2">Current Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{ stock.current_price }}</td>
-        </tr>
-      </tbody>
-    </table>
+{% if stocks %}
+  {% for stock in stocks %}
+  <div class="mt-4 p-4 border border-primary">
+    <h2>{{ stock.symbol }}</h2>
+    <!-- Need to address delete functionality
+      <a href="/delete/">Delete</a>-->
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th class="pr-2">Current Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ stock.current_price }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
-{% endfor %}
+  {% endfor %}
+{% else %}
+{% endif %}
 <div class="account-update">
-   <form class="" name="" action="{{ url_for('user.update') }}" method="POST">
+   <form class="" name="" action="{{ url_for('user_bp.update') }}" method="POST">
       {{ uform.csrf_token }}
       <input style="background-color:rgb(215, 247, 189) " type="submit" value="Update Account Info"/>
    </form>
 </div>
 <br>
 <div class="account-logout">
-   <form class="" name="" action="{{ url_for('user.logout') }}" method="POST">
+   <form class="" name="" action="{{ url_for('user_bp.logout') }}" method="POST">
       <h5 style="color:rgb(36, 113, 116)"> {{ display_message }}
          {{ loform.csrf_token }}
          <input style="background-color:rgb(215, 247, 189) " type="submit" value="Logout"/>

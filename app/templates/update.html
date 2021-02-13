@@ -7,7 +7,7 @@
     <h3 style="color:rgb(84, 36, 116)"> <strong>Update your information below:</strong></h3>
     <hr/>
     <div class="account-update">
-        <form class="" name="" action="{{ url_for('user.update') }}" method="POST">
+        <form class="" name="" action="{{ url_for('user_bp.update') }}" method="POST">
             {{ form.csrf_token }}
             {{form.username.label}}  {{form.username(size=30)}}
             <br>

@@ -12,11 +12,11 @@ def create_app(config_name):
     from .models import db
     db.init_app(app)
 
-    from app.main import main
+    from app.main import main_bp
     from app.services import ticker, user
-    app.register_blueprint(main)
-    app.register_blueprint(ticker.ticker)
-    app.register_blueprint(user.user)
+    app.register_blueprint(main_bp)
+    app.register_blueprint(ticker.ticker_bp)
+    app.register_blueprint(user.user_bp)
 
     with app.app_context():
         db.create_all()

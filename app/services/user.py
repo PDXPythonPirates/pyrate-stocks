@@ -58,8 +58,6 @@ def login():
         
         if user_info == None:
             return render_template('signup.html', form=SignUpForm(), display_message='You\'re the first user! Sign up quick!')
-        elif 'user' in session:
-            return render_template('dashboard.html', loform=LogoutForm(), uform=UpdateForm(), display_message='Remember logout when you are done --')
         
         _username = user_info.username
         _password = user_info.password

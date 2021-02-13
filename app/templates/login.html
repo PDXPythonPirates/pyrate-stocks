@@ -8,10 +8,12 @@
     <form class="" name="" action="{{ url_for('user_bp.login') }}" method="POST">
         {{ form.csrf_token }}
         {{ form.username.label }} {{ form.username(size=20) }}<br>
-       
-        {{ form.password.label }} {{ form.password(size=20) }}
+        {{ form.password.label }} {{ form.password(size=20) }} <br>
+        {{ form.remember.label }} &emsp;{{ form.remember }} <br>
+        <hr>
         <input style="background-color:rgb(215, 247, 189)" type="submit" value="Login"/>
     </form>
   </div>
+  
 </div> 
 {% endblock %}

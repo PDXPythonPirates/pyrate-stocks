@@ -10,27 +10,18 @@
         <title>Ticker Tracker</title>
     </head>
 
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <p>{{ message }}</p>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
-
     <body class="p-4">    
         {% block body %}
             <div>
-                <ul class="list-inline">
-                    {% if session['user'] %}
-                    <li class="list-inline-item"><a href="{{ url_for('main_bp.home') }}">Home</a></li>
-                    <li class="list-inline-item"><a href="{{ url_for('main_bp.dashboard') }}">Dashboard</a></li>
-                    <li class="list-inline-item"><a href="{{ url_for('user_bp.update') }}">Update Account</a></li>
+                <nav class="navbar-brand" >
+                 <ul>  
+                  <li><a href="{{ url_for('main_bp.home') }}">Home</a></li>
+                   {% if current_user.is_anonymous %}
+                   <li>  <a href="{{ url_for('user_bp.login') }}">Login</a></li>
                     {% else %}
-                    <li class="list-inline-item"><a href="{{ url_for('user_bp.login') }}">Login</a></li>
-                    <li class="list-inline-item"><a href="{{ url_for('user_bp.signup') }}">Signup</a></li>
+                    <li>  <a href="{{ url_for('main_bp.dashboard') }}">Dashboard</a></li>
+                    <li> <a href="{{ url_for('user_bp.update') }}">Update Account</a></li>
+                    <li> <a href="{{ url_for('user_bp.logout') }}">Logout</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -42,5 +33,17 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+<hr> <strong>     
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+  <ul class=flashes>
+  {% for message in messages %}
+    <p>{{ message }}</p>
+  {% endfor %}
+  </ul>
+{% endif %}
+{% endwith %} </strong> 
+
     </body>
 </html>

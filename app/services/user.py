@@ -50,17 +50,14 @@ def login():
 def update():
     uform = UpdateForm()
     if uform.validate_on_submit():
-        try:
-            current_user.username = uform.username.data
-            current_user.email = uform.email.data
-            current_user.password = uform.password.data
-            current_user.set_password(uform.password.data)
-            db.session.commit()
-            flash('Your changes have been saved.')
-            return redirect(url_for('main_bp.dashboard'))
-        
-        except:
-            return 'not updated'
+        current_user.username = uform.username.data
+        current_user.email = uform.email.data
+        current_user.password = uform.password.data
+        current_user.set_password(uform.password.data)
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('main_bp.dashboard'))
+    flash('form not validated.')   
     return render_template('update.html', title='Update',
                         form=uform)
 

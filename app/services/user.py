@@ -5,8 +5,6 @@ from app.main import user_bp,main_bp
 from app.models import Account
 from app.main.forms import LoginForm, UpdateForm, SignUpForm
 
-
-
 @user_bp.route('/signup/', methods=['GET', 'POST'])
 def signup():
     if current_user.is_authenticated:
@@ -25,7 +23,6 @@ def signup():
     flash('Please sign Up')
     return render_template('signup.html', title='Signup', form=sform)
     
-
 @user_bp.route('/login/', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -58,9 +55,7 @@ def update():
         flash('Your changes have been saved.')
         return redirect(url_for('main_bp.dashboard'))
     flash('form not validated.')   
-    return render_template('update.html', title='Update',
-                        form=uform)
-
+    return render_template('update.html', title='Update',form=uform)
 
 @user_bp.route('/logout/', methods=['GET', 'POST'])
 @login_required

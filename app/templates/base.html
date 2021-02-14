@@ -16,10 +16,10 @@
                     {% if session['user'] %}
                     <li class="list-inline-item"><a href="{{ url_for('main_bp.home') }}">Home</a></li>
                     <li class="list-inline-item"><a href="{{ url_for('main_bp.dashboard') }}">Dashboard</a></li>
-                    <li class="list-inline-item"><a href="{{ url_for('user_bp.update') }}">Update Account</a></li>
+                    <li class="list-inline-item"><a href="{{ url_for('main_bp.update') }}">Update Account</a></li>
                     {% else %}
-                    <li class="list-inline-item"><a href="{{ url_for('user_bp.login') }}">Login</a></li>
-                    <li class="list-inline-item"><a href="{{ url_for('user_bp.signup') }}">Signup</a></li>
+                    <li class="list-inline-item"><a href="{{ url_for('main_bp.login') }}">Login</a></li>
+                    <li class="list-inline-item"><a href="{{ url_for('main_bp.signup') }}">Signup</a></li>
                     {% endif %}
                 </ul>
             </div>

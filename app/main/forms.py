@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_login import current_user
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import InputRequired, ValidationError, Length, Email
 from app.models import Account
@@ -31,6 +32,7 @@ class UpdateForm(SignUpForm):
     password = PasswordField('Password', validators=[InputRequired(), Length(min=2, max=15)])
     email = StringField('Email')
     update = SubmitField('Submit')
+
 
 class LogoutForm(FlaskForm):
     logout = SubmitField('Submit')

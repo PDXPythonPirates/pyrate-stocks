@@ -31,6 +31,10 @@ def login():
 
     lform = LoginForm()
     if lform.validate_on_submit():
+        if Account.query.filter_by(username=lform.username.data).count() < 1:
+            flash('Please sign Up')
+            return render_template('signup.html', title='Signup', form=SignUpForm())
+
         user = Account.query.filter_by(username=lform.username.data).first()
         if user is None or not user.check_password(lform.password.data):
             flash('Inccorrect login!')
@@ -46,17 +50,31 @@ def login():
 @login_required
 def update():
     uform = UpdateForm()
+    
+    # If the form was submitted as a POST request
     if uform.validate_on_submit():
-        current_user.username = uform.username.data
-        current_user.email = uform.email.data
-        current_user.password = uform.password.data
-        current_user.set_password(uform.password.data)
-        db.session.commit()
-        flash('Your changes have been saved.')
-        return redirect(url_for('main_bp.dashboard'))
-    flash('form not validated.')   
-    return render_template('update.html', title='Update',form=uform)
+        # Form data stored in local variables
+        password = uform.password.data
+        email = uform.email.data
+        stocks = uform.stocks.data
 
+        # Query the account table (using username column) to get all of the user's information
+        user = Account.query.filter_by(username=current_user.username).first()
+        if current_user:
+            user.password = password
+            current_user.password = uform.password.data
+            user.email = email
+            user.stocks = stocks
+            db.session.merge(user)
+            db.session.flush()
+            db.session.commit()
+            return redirect(url_for('main_bp.dashboard'))
+        
+        else:
+            return render_template('update.html', form=uform, display_message="User doesn't exist")
+    flash('Form not validated.')
+    return render_template('update.html', form=uform)
+    
 @user_bp.route('/logout/', methods=['GET', 'POST'])
 @login_required
 def logout():

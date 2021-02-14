@@ -13,15 +13,12 @@ def home():
 
 @main_bp.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
-
     if 'user' in session:
         # Grab user data
         user_data = Account.query.filter_by(username=session['user']).first()
         # Get stock ticker data for the symbols they follow
         stocks = TService.ticker_data(user_data)
-
         return render_template('dashboard.html', stocks=stocks, loform=LogoutForm(), uform=UpdateForm())
-
     else:
         return render_template('login.html', form=LoginForm(), display_message='User Login')
 

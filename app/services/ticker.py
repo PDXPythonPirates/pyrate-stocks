@@ -2,7 +2,7 @@ import yfinance as yf
 
 
 class TService:
-
+    
     def ticker_data(user_data):
         symbols = user_data.stocks.replace(" ", "")
         symbols = symbols.split(",")

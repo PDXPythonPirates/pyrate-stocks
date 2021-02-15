@@ -131,6 +131,7 @@ def logout():
 @main_bp.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
     user = UService.get_data()
+    # User is logged in and has data
     if 'user' in session and user:
         # Takes user data as an input, gets followed symbols, retrieve ticker data
         user_symbols = UService.get_symbols(UService, user)
@@ -151,7 +152,7 @@ def add():
     user = UService.get_data()
     symbol = request.form['symbol']
     user_symbols = UService.get_symbols(UService, user)
-    if(symbol not in user_symbols):
+    if symbol not in user_symbols:
         UService.add_ticker(UService, symbol)
     return redirect(url_for('main_bp.dashboard'))
 

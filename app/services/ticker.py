@@ -1,4 +1,3 @@
-from app.services.user import UService
 import yfinance as yf
 
 

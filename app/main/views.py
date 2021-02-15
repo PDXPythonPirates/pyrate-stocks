@@ -114,11 +114,10 @@ def update():
     return render_template('update.html', form=uform)
 
 
+# If the logout button was clicked, remove user from session.
 @main_bp.route('/logout/', methods=['GET', 'POST'])
 def logout():
     loform = LogoutForm()
-
-    # If the logout button was clicked, remove user from session.
     if loform.validate_on_submit():
         session.pop('user', None)
         return render_template('home.html', form=loform, display_message='You are logged out')
@@ -127,9 +126,9 @@ def logout():
         return render_template('dashboard.html')
 
 
+# Get stock ticker data and render dashboard
 @main_bp.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
-    # Get stock ticker data and render dashboard
     if 'user' in session:
         user_symbols = UService.get_symbols(UService.get_data())
         ticker_data = TService.ticker_data(user_symbols)

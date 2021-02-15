@@ -49,7 +49,6 @@ class User:
         uform = UpdateForm()
         if current_user.is_authenticated:
             print('current user: ', current_user.username, current_user.email)
-            print(uform.validate_on_submit())
             if uform.validate_on_submit():
                 print('update data: ', uform.username.data, uform.email.data)
                 user = Account(username=current_user.username, email=uform.email.data, password_hash='xxx', stocks=uform.stocks.data)

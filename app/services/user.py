@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, session
+from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, login_required, logout_user
 from app import db
 from app.models import Account
@@ -46,16 +46,17 @@ class User:
 
     @login_required
     def update():
-        uform = UpdateForm()
         if current_user.is_authenticated:
-            print('current user: ', current_user.username, current_user.email)
-            if uform.validate_on_submit():
-                print('update data: ', uform.username.data, uform.email.data)
-                user = Account(username=current_user.username, email=uform.email.data, password_hash='xxx', stocks=uform.stocks.data)
-                user.set_password(uform.password.data)
-                db.session.commit()
-                flash('Your inforamtion is update!')
-                return redirect(url_for('main_bp.dashboard'))
+            _username = current_user.username
+            user = Account.query.filter_by(username=_username).first()
+            uform = UpdateForm()
+            if request.method == 'POST':
+                if uform.validate_on_submit():
+                    uform.populate_obj(user)
+                    user.set_password(uform.password.data)
+                    db.session.commit()
+                    flash('Your inforamtion is update!')
+                    return redirect(url_for('main_bp.dashboard'))
             flash('Form not validated')
             return render_template('update.html', form=uform)
         

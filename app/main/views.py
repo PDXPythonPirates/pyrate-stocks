@@ -130,6 +130,7 @@ def logout():
 @main_bp.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
     if 'user' in session:
+        # UService.get_symbols() takes user data as an input
         user_symbols = UService.get_symbols(UService.get_data())
         ticker_data = TService.ticker_data(user_symbols)
         return render_template('dashboard.html', stocks=ticker_data, loform=LogoutForm(), uform=UpdateForm())
@@ -148,11 +149,9 @@ def add():
     return redirect(url_for('main_bp.dashboard'))
 
 
-# Delete a symbol being tracked in DB             
+# Delete the symbol from user's followed symbols
 @main_bp.route("/delete/<symbol>")
 def delete(symbol):
     user_symbols = UService.get_symbols(UService.get_data())
-    if(symbol in user_symbols):
-        user_symbols.remove(symbol)
-        UService.update_tickers(UService, user_symbols)
+    UService.delete_ticker(UService, user_symbols, symbol)
     return redirect(url_for('main_bp.dashboard'))

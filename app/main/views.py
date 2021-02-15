@@ -1,4 +1,4 @@
-from flask import render_template, redirect, session, flash,url_for
+from flask import render_template, redirect, before_render_template, flash,url_for
 from flask_login import current_user, login_user, login_required, logout_user
 from app.main import main_bp
 from app.models import Account, Ticker
@@ -36,8 +36,7 @@ def logout():
 @main_bp.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
     if current_user.is_authenticated:
-        
-        return redirect(url_for('main_bp.dashboard'))
+        return 'dashboard'
     # Not logged in
     else:
         return render_template('login.html', form=LoginForm(), display_message='User Login')

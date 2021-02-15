@@ -47,28 +47,23 @@ class User:
     @login_required
     def update():
         uform = UpdateForm()
-        
-        if uform.validate_on_submit():
-            password = uform.password.data
-            email = uform.email.data
-            stocks = uform.stocks.data
-            user = Account.query.filter_by(username=current_user.username).first()
-            
-            if current_user:
-                user.password = password
-                current_user.password = uform.password.data
-                user.email = email
-                user.stocks = stocks
+        if current_user.is_authenticated:
+            print('current user: ', current_user.username, current_user.email)
+            print(uform.validate_on_submit())
+            if uform.validate_on_submit():
+                print('update data: ', uform.username.data, uform.email.data)
+                user = Account(username=current_user.username, email=uform.email.data, password_hash='xxx', stocks=uform.stocks.data)
+                user.set_password(uform.password.data)
                 db.session.merge(user)
-                db.session.flush()
+                db.session.flush()              
                 db.session.commit()
+                flash('Your inforamtion is update!')
                 return redirect(url_for('main_bp.dashboard'))
-            
-            else:
-                return render_template('update.html', form=uform, display_message="User doesn't exist")
+            flash('Form not validated')
+            return render_template('update.html', form=uform)
         
-        flash('Form not validated.')
-        return render_template('update.html', form=uform)
+        flash('Please login first.')
+        render_template('login.html', title='Sign In', form=LoginForm())
         
     @login_required
     def logout():

@@ -3,7 +3,6 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard-to-guess-string'
-    FIN_APP_ADMIN = os.environ.get('FIN_APP_ADMIN')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Takes the application instance as an argument - for now, 

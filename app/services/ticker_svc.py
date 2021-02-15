@@ -4,7 +4,7 @@ import yfinance as yf
 class TService:
     
     def ticker_data(symbols):
-        stocks = []
+        ticker_data = []
         for s in symbols:
             try:
                 ticker = yf.Ticker(s)
@@ -12,9 +12,9 @@ class TService:
                 stock_data = {}
                 stock_data['symbol'] = s
                 stock_data['current_price'] = current_price
-                stocks.append(stock_data)
+                ticker_data.append(stock_data)
             except KeyError:
-                print('couldn\'t find stock ticker data')
-                return
+                print(ticker_data)
+                return ticker_data
 
-        return stocks
+        return ticker_data

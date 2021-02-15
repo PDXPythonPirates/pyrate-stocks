@@ -1,9 +1,5 @@
 from app import db
 
-class Ticker(db.Model):
-    id = db.Column('id', db.Integer, primary_key=True)
-    symbol = db.Column(db.String(10))
-
 class Account(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(10), unique=True, nullable=False)

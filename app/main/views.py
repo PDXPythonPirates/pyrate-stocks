@@ -1,7 +1,7 @@
 from flask import render_template, redirect, session, url_for, request
 from app import db
 from app.main import main_bp
-from app.models import Ticker, Account
+from app.models import Account
 from app.main.forms import LoginForm, LogoutForm, UpdateForm, SignUpForm
 from app.services.ticker_svc import TService
 from app.services.user_svc import UService
@@ -130,7 +130,7 @@ def logout():
 @main_bp.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
     if 'user' in session:
-        # UService.get_symbols() takes user data as an input
+        # Takes user data as an input, gets followed symbols, retrieve ticker data
         user_symbols = UService.get_symbols(UService.get_data())
         ticker_data = TService.ticker_data(user_symbols)
         return render_template('dashboard.html', stocks=ticker_data, loform=LogoutForm(), uform=UpdateForm())

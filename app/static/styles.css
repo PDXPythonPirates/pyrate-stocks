@@ -1,0 +1,13 @@
+.nav a {
+    color: azure;
+    font-size: 24px;
+    font-weight: 200;
+}
+
+.nav a.current {
+    font-weight: 700;
+}
+
+.add-ticker {
+    margin-top: 0;
+}

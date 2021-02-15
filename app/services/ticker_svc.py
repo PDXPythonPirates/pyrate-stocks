@@ -6,6 +6,7 @@ class TService:
     def ticker_data(symbols):
         ticker_data = []
         for s in symbols:
+            s = s.upper()
             # Check for symbols short enough to exist
             if(len(s) <= 5):
                 try:

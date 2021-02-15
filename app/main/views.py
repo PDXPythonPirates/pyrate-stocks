@@ -3,7 +3,8 @@ from app import db
 from app.main import main_bp
 from app.models import Ticker, Account
 from app.main.forms import LoginForm, LogoutForm, UpdateForm, SignUpForm
-from app.services.ticker import TService, UService
+from app.services.ticker_svc import TService
+from app.services.user_svc import UService
 
 
 @main_bp.route('/')

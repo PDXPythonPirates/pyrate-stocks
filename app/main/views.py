@@ -1,9 +1,9 @@
-from flask import render_template, redirect, session, url_for
+from flask import render_template, redirect, session, url_for, request
 from app import db
 from app.main import main_bp
 from app.models import Ticker, Account
 from app.main.forms import LoginForm, LogoutForm, UpdateForm, SignUpForm
-from app.services.ticker import TService
+from app.services.ticker import TService, UService
 
 
 @main_bp.route('/')
@@ -11,24 +11,8 @@ def home():
     return render_template('home.html')
 
 
-@main_bp.route('/dashboard/', methods=['GET', 'POST'])
-def dashboard():
-    if 'user' in session:
-        # Grab user data
-        user_data = Account.query.filter_by(username=session['user']).first()
-        # Get stock ticker data for the symbols they follow
-        stocks = TService.ticker_data(user_data)
-        return render_template('dashboard.html', stocks=stocks, loform=LogoutForm(), uform=UpdateForm())
-    else:
-        return render_template('login.html', form=LoginForm(), display_message='User Login')
-
-
 @main_bp.route('/signup/', methods=['GET', 'POST'])
 def signup():
-    # lform = LoginForm()
-    # if 'user' in session:
-    #     return render_template('dashboard.html', form=lform, 
-    #                         display_message='You are stil logged in.')
     sform = SignUpForm()
   
     # When form is submitted, assign data to local variables
@@ -142,23 +126,33 @@ def logout():
         return render_template('dashboard.html')
 
 
+@main_bp.route('/dashboard/', methods=['GET', 'POST'])
+def dashboard():
+    # Get stock ticker data and render dashboard
+    if 'user' in session:
+        user_symbols = UService.get_symbols(UService.get_data())
+        ticker_data = TService.ticker_data(user_symbols)
+        return render_template('dashboard.html', stocks=ticker_data, loform=LogoutForm(), uform=UpdateForm())
+    # Not logged in
+    else:
+        return render_template('login.html', form=LoginForm(), display_message='User Login')
+
 
 # Add a new symbol to track in DB
-@main_bp.route("/add", methods=["POST"])
+@main_bp.route("/add/", methods=["POST"])
 def add():
-
-    # TODO: Get list of user's symbols and check for added symbol, if exists, return to dashboard
-    # TODO: Check if added symbol exists in ticker table
-        # Create new ticker OR Retrieve ticker entry
-        # Update user stocks
-
-    return
+    symbol = request.form['symbol']
+    user_symbols = UService.get_symbols(UService.get_data())
+    if(symbol not in user_symbols):
+        UService.add_ticker(UService, symbol)
+    return redirect(url_for('main_bp.dashboard'))
 
 
 # Delete a symbol being tracked in DB             
-@main_bp.route("/delete/<int:ticker_id>")
-def delete(ticker_id):
-
-    # TODO: Pop from user's symbols, but do not remove from the db
-
-    return
+@main_bp.route("/delete/<symbol>")
+def delete(symbol):
+    user_symbols = UService.get_symbols(UService.get_data())
+    if(symbol in user_symbols):
+        user_symbols.remove(symbol)
+        UService.update_tickers(UService, user_symbols)
+    return redirect(url_for('main_bp.dashboard'))

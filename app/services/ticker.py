@@ -1,13 +1,11 @@
+from app.services.user import UService
 import yfinance as yf
 
 
 class TService:
     
-    def ticker_data(user_data):
-        symbols = user_data.stocks.replace(" ", "")
-        symbols = symbols.split(",")
+    def ticker_data(symbols):
         stocks = []
-
         for s in symbols:
             try:
                 ticker = yf.Ticker(s)
@@ -21,9 +19,3 @@ class TService:
                 return
 
         return stocks
-
-    def add_ticker():
-        return
-
-    def delete_ticker():
-        return

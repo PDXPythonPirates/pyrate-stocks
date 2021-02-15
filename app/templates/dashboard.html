@@ -21,8 +21,7 @@
   {% for stock in stocks %}
   <div class="mt-4 p-4 border border-primary">
     <h2>{{ stock.symbol }}</h2>
-    <!-- Need to address delete functionality
-      <a href="/delete/">Delete</a>-->
+    <a href="/delete/{{ stock.symbol }}">Delete</a>
     <div>
       <table>
         <thead>

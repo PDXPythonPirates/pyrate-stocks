@@ -1,4 +1,5 @@
 from flask import render_template, redirect, session, url_for, request
+from requests.exceptions import HTTPError
 from app import db
 from app.main import main_bp
 from app.models import Account
@@ -31,7 +32,7 @@ def signup():
             db.session.commit()
 
             # Added user account information to DB. Render the dashboard.
-            return redirect(url_for('user_bp.login'))
+            return redirect(url_for('main_bp.login'))
         
         # If the username already exists, go back to the signup form with empty fields.
         sform = SignUpForm()
@@ -132,7 +133,7 @@ def dashboard():
     user = UService.get_data()
     if 'user' in session and user:
         # Takes user data as an input, gets followed symbols, retrieve ticker data
-        user_symbols = UService.get_symbols(user)
+        user_symbols = UService.get_symbols(UService, user)
         ticker_data = TService.ticker_data(user_symbols)
         return render_template('dashboard.html', stocks=ticker_data, loform=LogoutForm(), uform=UpdateForm())
     # Not logged in
@@ -144,8 +145,10 @@ def dashboard():
 # Add a new symbol to track in DB
 @main_bp.route("/add/", methods=["POST"])
 def add():
+    user = UService.get_data()
     symbol = request.form['symbol']
-    user_symbols = UService.get_symbols(UService.get_data())
+    print(symbol)
+    user_symbols = UService.get_symbols(UService, user)
     if(symbol not in user_symbols):
         UService.add_ticker(UService, symbol)
     return redirect(url_for('main_bp.dashboard'))
@@ -154,6 +157,6 @@ def add():
 # Delete the symbol from user's followed symbols
 @main_bp.route("/delete/<symbol>")
 def delete(symbol):
-    user_symbols = UService.get_symbols(UService.get_data())
+    user_symbols = UService.get_symbols(UService, UService.get_data())
     UService.delete_ticker(UService, user_symbols, symbol)
     return redirect(url_for('main_bp.dashboard'))

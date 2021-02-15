@@ -11,12 +11,33 @@ class UService:
         return user_data
 
     # Get a list of symbols the user follows
-    def get_symbols(user_data):
-        if(user_data.stocks == None):
-            symbol_list = []
+    def get_symbols(self, user_data):
+
+        # Turn string of symbols into list
+        # NOTE: If the user entered a comma, it will produce 2 empty symbols
+        symbol_list = user_data.stocks.replace(' ', '').split(',')
+        new_symbols = []
+        print('List of symbols to process: ' + str(symbol_list))
+
+        # If the user accidentally put a comma at the end or beginning of their string,
+        # this check will remove the empty symbols to prevent ticker data error
+        for item in range(len(symbol_list)):
+            if symbol_list[item] != '':
+                if symbol_list[item] in new_symbols:
+                    continue
+                else:
+                    new_symbols.append(symbol_list[item])
+                    print('Index item ' + str(item) + ' is valid.')
+            else:
+                print('Index item ' + str(item) + ' is NOT valid.')
+        
+        # If there's an issue with the symbol list, update user symbols in db
+        if not new_symbols:
+            return symbol_list
         else:
-            symbol_list = user_data.stocks.replace(' ', '').split(',')
-        return symbol_list
+            self.update_tickers(self, new_symbols)
+            print('Updated list of symbols: ' + str(new_symbols))
+            return new_symbols
 
     # Add a stock ticker symbol to the user's followed symbols
     def add_ticker(self, ticker):

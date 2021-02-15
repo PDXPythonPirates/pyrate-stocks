@@ -132,7 +132,7 @@ def dashboard():
     user = UService.get_data()
     if 'user' in session and user:
         # Takes user data as an input, gets followed symbols, retrieve ticker data
-        user_symbols = UService.get_symbols(UService.get_data())
+        user_symbols = UService.get_symbols(user)
         ticker_data = TService.ticker_data(user_symbols)
         return render_template('dashboard.html', stocks=ticker_data, loform=LogoutForm(), uform=UpdateForm())
     # Not logged in

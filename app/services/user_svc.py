@@ -2,6 +2,7 @@ from flask import session
 from app import db
 from app.models import Account
 
+
 class UService:
 
     def get_data():

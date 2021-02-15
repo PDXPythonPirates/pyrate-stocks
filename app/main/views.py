@@ -37,15 +37,15 @@ def dashboard():
     ticker_dashboard = Ticker.dashboard()
     return ticker_dashboard
 
-@main_bp.route('/add', methods=['POST'])
-def add():
-    ticker_add = Ticker.add()
-    return ticker_add
+# @main_bp.route('/add', methods=['POST'])
+# def add():
+#     ticker_add = Ticker.add()
+#     return ticker_add
 
-@main_bp.route('/delete/<int:ticker_id>')
-def delete():
-    ticker_delete = Ticker.delete()
-    return ticker_delete
+# @main_bp.route('/delete/<int:ticker_id>')
+# def delete():
+#     ticker_delete = Ticker.delete()
+#     return ticker_delete
 
 
 

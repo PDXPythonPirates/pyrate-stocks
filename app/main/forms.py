@@ -27,10 +27,11 @@ class LoginForm(FlaskForm):
     remember = BooleanField('Remember me')
     submit = SubmitField('Login')
 
-class UpdateForm(SignUpForm):
+class UpdateForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired(), Length(min=2, max=15)])
+    email = StringField('Email', validators=[InputRequired(), Email(message='Invalid Email'), Length(max=20)])
     password = PasswordField('Password', validators=[InputRequired(), Length(min=2, max=15)])
-    email = StringField('Email')
+    stocks = StringField('stocks', validators=[ Length(min=2, max=32)])
     update = SubmitField('Submit')
 
 class LogoutForm(FlaskForm):

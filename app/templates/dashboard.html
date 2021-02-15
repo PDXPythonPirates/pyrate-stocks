@@ -40,7 +40,7 @@
   {% endfor %}
 {% else %}
 {% endif %}
-<div class="account-update">
+<div class="account-update pt-4">
    <form class="" name="" action="{{ url_for('main_bp.update') }}" method="POST">
       {{ uform.csrf_token }}
       <input style="background-color:rgb(215, 247, 189) " type="submit" value="Update Account Info"/>

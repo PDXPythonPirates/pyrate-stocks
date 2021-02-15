@@ -7,27 +7,39 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/styles.css">
         <title>Ticker Tracker</title>
     </head>
-    <body class="p-4">    
+    <body>    
         {% block body %}
-            <div>
-                <ul class="list-inline">
+            <div class="nav p-4 bg-dark">
+                <ul class="my-3 list-inline">
                     {% if session['user'] %}
-                    <li class="list-inline-item"><a href="{{ url_for('home') }}">Home</a></li>
-                    <li class="list-inline-item"><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
-                    <li class="list-inline-item"><a href="{{ url_for('update') }}">Update Account</a></li>
+                    <li class="pr-2 list-inline-item"><a href="{{ url_for('main_bp.home') }}">Home</a></li>
+                    <li class="pr-2 list-inline-item"><a href="{{ url_for('main_bp.dashboard') }}">Dashboard</a></li>
+                    <li class="list-inline-item"><a href="{{ url_for('main_bp.update') }}">Update Account</a></li>
                     {% else %}
-                    <li class="list-inline-item"><a href="{{ url_for('home') }}">Home</a></li>
-                    <li class="list-inline-item"><a href="{{ url_for('login') }}">Login</a></li>
-                    <li class="list-inline-item"><a href="{{ url_for('signup') }}">Signup</a></li>
+                    <li class="pr-2 list-inline-item"><a href="{{ url_for('main_bp.login') }}">Login</a></li>
+                    <li class="list-inline-item"><a href="{{ url_for('main_bp.signup') }}">Signup</a></li>
                     {% endif %}
                 </ul>
             </div>
-            {% block content %}
-            {% endblock %}
+            <div class="p-4">
+                {% block content %}
+                {% endblock %}
+            </div>
         {% endblock %}
         <!-- Optional JavaScript -->
+        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script>
+            $(function(){
+                $('a').each(function() {
+                    if ($(this).prop('href') == window.location.href) {
+                    $(this).addClass('current');
+                    }
+                });
+            });
+        </script>
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -1,71 +1,20 @@
-from flask import Flask, render_template, redirect, session
-from flask_bootstrap import Bootstrap
-from flask_sqlalchemy import SQLAlchemy
-
-from werkzeug.utils import secure_filename
-from operator import irshift
-from datetime import timedelta
-from keychain import Keys
-import yfinance as yf
-import json
-
-from forms import SignUpForm, LoginForm, UpdateForm, LogoutForm
-from keychain import Keys
-
-# App configuration
-app = Flask(__name__, template_folder='../templates')
-app.config['SECRET_KEY'] = Keys.secret()
-app.permanent_session_lifetime = timedelta(days = 1)
-
-# Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+from flask import render_template, redirect, session, url_for, request
+from requests.exceptions import HTTPError
+from app import db
+from app.main import main_bp
+from app.models import Account
+from app.main.forms import LoginForm, LogoutForm, UpdateForm, SignUpForm
+from app.services.ticker_svc import TService
+from app.services.user_svc import UService
 
 
-##### MODELS #####
-
-# Ticker table
-class Ticker(db.Model):
-    id = db.Column('id', db.Integer, primary_key=True)
-    symbol = db.Column(db.String(10))
-
-# Account table
-class Account(db.Model):
-
-    __tablename__ = 'account'
-
-    user_id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(10), unique=True, nullable=False)
-    password = db.Column(db.String(10))
-    email = db.Column(db.String(10))
-    stocks = db.Column(db.String(32))
-
-    def __init__(self, username, password, email, stocks):
-        self.username = username
-        self.password = password
-        self.email = email
-        self.stocks = stocks
-
-# Database table init & save to ensure tables are created
-db.create_all()
-
-
-##### HOME #####
-
-@app.route('/')
+@main_bp.route('/')
 def home():
     return render_template('home.html')
 
 
-##### SIGNUP #####
-
-@app.route('/signup/', methods=['GET', 'POST'])
+@main_bp.route('/signup/', methods=['GET', 'POST'])
 def signup():
-    # lform = LoginForm()
-    # if 'user' in session:
-    #     return render_template('dashboard.html', form=lform, 
-    #                         display_message='You are stil logged in.')
     sform = SignUpForm()
   
     # When form is submitted, assign data to local variables
@@ -83,7 +32,7 @@ def signup():
             db.session.commit()
 
             # Added user account information to DB. Render the dashboard.
-            return render_template('dashboard.html', loform=LogoutForm(), uform=UpdateForm(), display_message='Welcome to Financial App!')
+            return redirect(url_for('main_bp.login'))
         
         # If the username already exists, go back to the signup form with empty fields.
         sform = SignUpForm()
@@ -93,9 +42,7 @@ def signup():
     return render_template('signup.html', form=sform)
 
 
-##### LOGIN #####
-
-@app.route('/login/', methods=['GET', 'POST'])
+@main_bp.route('/login/', methods=['GET', 'POST'])
 def login():
     # Load loginform and assign both fields to local variables
     lform = LoginForm()
@@ -105,7 +52,7 @@ def login():
 
     # If the user is logged in already, send them back to their dashboard
     if 'user' in session:
-       return render_template('dashboard.html', loform=LogoutForm(), uform=UpdateForm(), display_message='You are already logged in!')
+       return redirect(url_for('main_bp.dashboard'))
 
     # When the login form is submitted
     if lform.validate_on_submit():
@@ -115,8 +62,6 @@ def login():
         
         if user_info == None:
             return render_template('signup.html', form=SignUpForm(), display_message='You\'re the first user! Sign up quick!')
-        elif 'user' in session:
-            return render_template('dashboard.html', loform=LogoutForm(), uform=UpdateForm(), display_message='Remember logout when you are done --')
         
         _username = user_info.username
         _password = user_info.password
@@ -127,7 +72,7 @@ def login():
             session['user'] = username
 
             # Login successful
-            return render_template('dashboard.html', loform=LogoutForm(), uform=UpdateForm(), display_message='Welcome back!')
+            return redirect(url_for('main_bp.dashboard'))
         
         # Login information could not be matched with username/password from account table in the DB
         return render_template('login.html', form=lform, display_message='Incorrect Login')
@@ -136,74 +81,7 @@ def login():
     return render_template('login.html', form=lform, display_message='User Login')
 
 
-##### DASHBOARD #####
-
-@app.route('/dashboard/', methods=['GET', 'POST'])
-def dashboard():
-    lform = LoginForm()
-    uform = UpdateForm()
-
-    if 'user' in session:
-
-        # TODO: Check to make sure following logic will get a list of symbols from the user's stocks column in the Account table.
-        user_data = Account.query.filter_by(username=session['user']).first()
-        symbols = user_data.stocks.replace(" ", "")
-        symbols = symbols.split(",")
-        stocks = []
-
-        for s in symbols:
-            ticker = yf.Ticker(s)
-            current_price = ticker.info['bid']
-
-            stock_data = {}
-            stock_data['symbol'] = s
-            stock_data['current_price'] = current_price
-
-            stocks.append(stock_data)
-
-        print(stocks)
-        # Load dashboard and return stock ticker data
-        return render_template('dashboard.html', stocks=stocks, loform=LogoutForm(), uform=UpdateForm())
-
-    else:
-        form = LoginForm()
-        return render_template('login.html', form=form, display_message='User Login')
-
-
-##### ADD STOCK TICKER SYMBOL #####
-
-# Add a new symbol to track in DB
-@app.route("/add", methods=["POST"])
-def add():
-
-    # TODO: Create a query here that will get a list of symbols from the user's "stocks" column in the Account table.
-    # TODO: Check if the stock data for this specific stock already exists in the ticker table
-        # If the above check returns "False", create new ticker entry and update the user profile to include the newly followed stock symbol.
-        # If the above check returns "True", retrieve the ticker entry, check to see if symbol exists in user's "stocks" column,
-            # and update the user profile to include the newly followed stock symbol.
-    return
-
-##### DELETE STOCK TICKER SYMBOL #####
-
-# Delete a symbol being tracked in DB             
-@app.route("/delete/<int:ticker_id>")   
-def delete(ticker_id):
-
-    """
-    TODO: Create new issue.
-
-    This code needs to be updated so that it does not delete from the ticker table, 
-    but from the "stock" column in the user's Account table entry:
-
-    Ticker.query.filter_by(id=ticker_id).delete()
-    db.session.commit()
-    return redirect('/dashboard')
-    """
-
-
-##### UPDATE #####
-
-@app.route('/update/', methods=['GET', 'POST'])
+@main_bp.route('/update/', methods=['GET', 'POST'])
 def update():
     # TODO: Add user session check to make sure user is logged in
     # Currently, you can change someone's pass without logging in
@@ -237,13 +115,10 @@ def update():
     return render_template('update.html', form=uform)
 
 
-##### LOGOUT #####
-
-@app.route('/logout/', methods=['GET', 'POST'])
+# If the logout button was clicked, remove user from session.
+@main_bp.route('/logout/', methods=['GET', 'POST'])
 def logout():
     loform = LogoutForm()
-
-    # If the logout button was clicked, remove user from session.
     if loform.validate_on_submit():
         session.pop('user', None)
         return render_template('home.html', form=loform, display_message='You are logged out')
@@ -252,7 +127,39 @@ def logout():
         return render_template('dashboard.html')
 
 
-##### RUN APP #####
+# Get stock ticker data and render dashboard
+@main_bp.route('/dashboard/', methods=['GET', 'POST'])
+def dashboard():
+    user = UService.get_data()
+    # User is logged in and has data
+    if 'user' in session and user:
+        # Takes user data as an input, gets followed symbols, retrieve ticker data
+        user_symbols = UService.get_symbols(UService, user)
+        if user.stocks:
+            ticker_data = TService.ticker_data(user_symbols)
+        else:
+            ticker_data = None
+        return render_template('dashboard.html', stocks=ticker_data, loform=LogoutForm(), uform=UpdateForm())
+    # Not logged in
+    else:
+        session.pop('user', None)
+        return render_template('login.html', form=LoginForm(), display_message='User Login')
 
-if __name__=='__main__':
-    app.run(debug=True)
+
+# Add a new symbol to track in DB
+@main_bp.route("/add/", methods=["POST"])
+def add():
+    user = UService.get_data()
+    symbol = request.form['symbol']
+    user_symbols = UService.get_symbols(UService, user)
+    if symbol not in user_symbols:
+        UService.add_ticker(UService, symbol)
+    return redirect(url_for('main_bp.dashboard'))
+
+
+# Delete the symbol from user's followed symbols
+@main_bp.route("/delete/<symbol>")
+def delete(symbol):
+    user_symbols = UService.get_symbols(UService, UService.get_data())
+    UService.delete_ticker(UService, user_symbols, symbol)
+    return redirect(url_for('main_bp.dashboard'))

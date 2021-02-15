@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, session
 from flask_login import current_user, login_user, login_required, logout_user
 from app import db
 from app.models import Account
@@ -6,13 +6,11 @@ from app.main import main_bp
 from app.main.forms import LoginForm, UpdateForm, SignUpForm
 
 class User:
-    def __init__():
-        pass
-
     def signup():
         if current_user.is_authenticated:
             flash('You already signed in!')
             return redirect(url_for('main_bp.dashboard'))
+        
         sform = SignUpForm()
         lform = LoginForm()
 
@@ -24,14 +22,14 @@ class User:
             flash('You were successfully logged in')
             return render_template('login.html', form=lform)
         flash('Please sign Up')
-        return render_template('signup.html', title='Signup', form=sform)
+        return render_template('signup.html', title='Signup', form=sform)    
         
     def login():
-        
         if current_user.is_authenticated:
-            flash('You already signed in!')
+            flash('You are already signed in.')
             return redirect(url_for('main_bp.dashboard'))
         lform = LoginForm()
+        
         if lform.validate_on_submit():
             if Account.query.filter_by(username=lform.username.data).count() < 1:
                 flash('Please sign Up')
@@ -49,15 +47,12 @@ class User:
     def update():
         uform = UpdateForm()
         
-        # If the form was submitted as a POST request
         if uform.validate_on_submit():
-            # Form data stored in local variables
             password = uform.password.data
             email = uform.email.data
             stocks = uform.stocks.data
-
-            # Query the account table (using username column) to get all of the user's information
             user = Account.query.filter_by(username=current_user.username).first()
+            
             if current_user:
                 user.password = password
                 current_user.password = uform.password.data
@@ -70,6 +65,7 @@ class User:
             
             else:
                 return render_template('update.html', form=uform, display_message="User doesn't exist")
+        
         flash('Form not validated.')
         return render_template('update.html', form=uform)
         

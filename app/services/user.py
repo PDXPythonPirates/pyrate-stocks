@@ -53,8 +53,6 @@ class User:
                 print('update data: ', uform.username.data, uform.email.data)
                 user = Account(username=current_user.username, email=uform.email.data, password_hash='xxx', stocks=uform.stocks.data)
                 user.set_password(uform.password.data)
-                db.session.merge(user)
-                db.session.flush()              
                 db.session.commit()
                 flash('Your inforamtion is update!')
                 return redirect(url_for('main_bp.dashboard'))

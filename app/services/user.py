@@ -25,11 +25,12 @@ class User:
         return render_template('signup.html', title='Signup', form=sform)    
         
     def login():
-        if current_user.is_authenticated:
-            flash('You are already signed in.')
-            return redirect(url_for('main_bp.dashboard'))
-        lform = LoginForm()
         
+        if current_user.is_authenticated:
+            flash('You already signed in!')
+            return redirect(url_for('main_bp.dashboard'))
+
+        lform = LoginForm()
         if lform.validate_on_submit():
             if Account.query.filter_by(username=lform.username.data).count() < 1:
                 flash('Please sign Up')

@@ -17,12 +17,12 @@
                  <ul>  
                   <li><a href="{{ url_for('main_bp.home') }}">Home</a></li>
                    {% if current_user.is_anonymous %}
-                   <li>  <a href="{{ url_for('user_bp.login') }}">Login</a></li>
-                   <li>  <a href="{{ url_for('user_bp.signup') }}">Signup</a></li>
+                   <li>  <a href="{{ url_for('main_bp.login') }}">Login</a></li>
+                   <li>  <a href="{{ url_for('main_bp.signup') }}">Signup</a></li>
                     {% else %}
                     <li>  <a href="{{ url_for('main_bp.dashboard') }}">Dashboard</a></li>
-                    <li> <a href="{{ url_for('user_bp.update') }}">Update Account</a></li>
-                    <li> <a href="{{ url_for('user_bp.logout') }}">Logout</a></li>
+                    <li> <a href="{{ url_for('main_bp.update') }}">Update Account</a></li>
+                    <li> <a href="{{ url_for('main_bp.logout') }}">Logout</a></li>
                     {% endif %}
                 </ul>
             </div>

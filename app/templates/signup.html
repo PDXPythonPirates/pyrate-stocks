@@ -9,7 +9,7 @@
     {% endif %}
     
     <div>
-        <form class="" name="" action="{{ url_for('user_bp.signup') }}" method="POST">
+        <form class="" name="" action="{{ url_for('main_bp.signup') }}" method="POST">
             {{form.csrf_token}}
             {{form.username.label}}  {{form.username(size=30)}}
             {% for error in form.username.errors %}

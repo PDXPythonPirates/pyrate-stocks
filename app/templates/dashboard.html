@@ -5,7 +5,7 @@
 {% block content %}
 <div class="pt-4">
   <h1>Dashboard</h1>
-  <form action="{{ url_for('ticker_bp.add') }}" method="post">
+  <form action="{{ url_for('main_bp.add') }}" method="post">
     <div class="field">
       <label>This feature does not work!</label> <!--   ATTN   -->
       <input type="text" name="symbol" placeholder="Ex: AAPL">
@@ -38,7 +38,7 @@
 {% else %}
 {% endif %}
 <div class="account-update">
-   <form class="" name="" action="{{ url_for('user_bp.update') }}" method="POST">
+   <form class="" name="" action="{{ url_for('main_bp.update') }}" method="POST">
       {{ uform.csrf_token }}
       
 </div>

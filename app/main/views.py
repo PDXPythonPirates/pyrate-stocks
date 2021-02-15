@@ -33,12 +33,15 @@ def logout():
     user_logout = User.logout()
     return user_logout
 
-
 @main_bp.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
     if current_user.is_authenticated:
         
         return redirect(url_for('main_bp.dashboard'))
+    # Not logged in
     else:
-        form = LoginForm()
-        return render_template('login.html', form=form, display_message='User Login')
+        return render_template('login.html', form=LoginForm(), display_message='User Login')
+
+
+
+

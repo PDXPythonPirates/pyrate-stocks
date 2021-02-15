@@ -33,6 +33,5 @@ class UpdateForm(SignUpForm):
     email = StringField('Email')
     update = SubmitField('Submit')
 
-
 class LogoutForm(FlaskForm):
     logout = SubmitField('Submit')

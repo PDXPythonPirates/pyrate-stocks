@@ -12,7 +12,10 @@ class UService:
 
     # Get a list of symbols the user follows
     def get_symbols(user_data):
-        symbol_list = user_data.stocks.replace(' ', '').split(',')
+        if(user_data.stocks == None):
+            symbol_list = []
+        else:
+            symbol_list = user_data.stocks.replace(' ', '').split(',')
         return symbol_list
 
     # Add a stock ticker symbol to the user's followed symbols

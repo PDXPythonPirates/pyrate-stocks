@@ -129,13 +129,15 @@ def logout():
 # Get stock ticker data and render dashboard
 @main_bp.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
-    if 'user' in session:
+    user = UService.get_data()
+    if 'user' in session and user:
         # Takes user data as an input, gets followed symbols, retrieve ticker data
         user_symbols = UService.get_symbols(UService.get_data())
         ticker_data = TService.ticker_data(user_symbols)
         return render_template('dashboard.html', stocks=ticker_data, loform=LogoutForm(), uform=UpdateForm())
     # Not logged in
     else:
+        session.pop('user', None)
         return render_template('login.html', form=LoginForm(), display_message='User Login')
 
 

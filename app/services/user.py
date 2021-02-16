@@ -51,6 +51,9 @@ class User:
             user = Account.query.filter_by(username=_username).first()
             uform = UpdateForm()
             if request.method == 'POST':
+                if uform.username.data != _username:
+                    flash('Your username is incorrect.')
+                    return render_template('update.html', form=uform)
                 if uform.validate_on_submit():
                     uform.populate_obj(user)
                     user.set_password(uform.password.data)

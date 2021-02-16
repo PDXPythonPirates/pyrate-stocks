@@ -25,7 +25,6 @@ class User:
         return render_template('signup.html', title='Signup', form=sform)    
         
     def login():
-        
         if current_user.is_authenticated:
             flash('You already signed in!')
             return redirect(url_for('main_bp.dashboard'))
@@ -36,9 +35,14 @@ class User:
                 flash('Please sign Up')
                 return render_template('signup.html', title='Signup', form=SignUpForm())
             user = Account.query.filter_by(username=lform.username.data).first()
-            if user is None or not user.check_password(lform.password.data):
-                flash('Inccorrect login!')
-                return redirect(url_for('main_bp.login'))
+            if user is None:
+                flash('Please sign Up')
+                return render_template('signup.html', title='Signup', form=SignUpForm())
+
+            if not user.check_password(lform.password.data):    
+                flash('Wrong password!')
+                lform.username.data = user.username
+                return render_template('login.html', title='Sign In', form=lform)
             flash('You are logged in.')
             login_user(user, remember=lform.remember.data)
             return redirect(url_for('main_bp.dashboard'))

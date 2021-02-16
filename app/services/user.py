@@ -44,7 +44,7 @@ class User:
             return redirect(url_for('main_bp.dashboard'))
         return render_template('login.html', title='Sign In', form=lform)
 
-    @login_required
+    
     def update():
         if current_user.is_authenticated:
             _username = current_user.username
@@ -60,13 +60,15 @@ class User:
                     db.session.commit()
                     flash('Your inforamtion is update!')
                     return redirect(url_for('main_bp.dashboard'))
-            flash('Form not validated')
+            
+            uform.username.data = current_user.username
+            uform.email.data = current_user.email
             return render_template('update.html', form=uform)
         
         flash('Please login first.')
         render_template('login.html', title='Sign In', form=LoginForm())
         
-    @login_required
+    
     def logout():
         logout_user()
         flash('You are logged out!')

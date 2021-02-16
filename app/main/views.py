@@ -22,17 +22,20 @@ def login():
     return user_login
 
 @main_bp.route('/logout/', methods=['GET', 'POST'])
+
 def logout():
     user_logout = User.logout()
     return user_logout
 
 @main_bp.route('/update/', methods=['GET', 'POST'])
+
 def update():
     user_update = User.update()
     return user_update
 
 ##### TICKER SERVICE ROUTES #####
 @main_bp.route('/dashboard/', methods=['GET', 'POST'])
+
 def dashboard():
     ticker_dashboard = Ticker.dashboard()
     return ticker_dashboard

@@ -8,12 +8,8 @@ from app import login
 def load_user(id):
     return Account.query.get(int(id))
 
-class Ticker(db.Model):
-    id = db.Column('id', db.Integer, primary_key=True)
-    symbol = db.Column(db.String(10))
-
-class Account(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+class Account(db.Model):
+    user_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(10), unique=True, nullable=False)
     email = db.Column(db.String(10))
     password_hash = db.Column(db.String(128))

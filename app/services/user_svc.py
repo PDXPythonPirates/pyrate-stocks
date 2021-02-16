@@ -5,7 +5,7 @@ from app.models import Account
 from app.main import main_bp
 from app.main.forms import LoginForm, UpdateForm, SignUpForm
 
-class User:
+class UserService:
     def signup():
         if current_user.is_authenticated:
             flash('You already signed in!')

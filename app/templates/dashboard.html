@@ -3,46 +3,34 @@
 {% block title %}{{super()}}{{ username }}{% endblock %}
 
 {% block content %}
-<div class="pt-4">
+<div class="p-4">
   <h1>Dashboard</h1>
-  
+  <form action="{{ url_for('main_bp.add') }}" method="post">
+    <div>
+      <input type="text" name="symbol" placeholder="Ex: AAPL" required><br>
+      <button class="add-ticker btn btn-primary btn-sm mt-3" type="submit">Add Ticker</button>
+    </div>
+  </form>
 </div>
 {% if stocks %}
+<div class="p-4">
+  <h3>Followed Stock Tickers</h3>
   {% for stock in stocks %}
-  <div class="mt-4 p-4 border border-primary">
-    <h2>{{ stock.symbol }}</h2>
-    <!-- Need to address delete functionality
-      <a href="/delete/">Delete</a>-->
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th class="pr-2">Current Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{ stock.current_price }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="mb-3 p-3 border border-primary">
+    <h2 class="text-primary">{{ stock.symbol }}</h2>
+    <p class="text-primary">Current Price: <span class="text-success">${{ stock.current_price }}</span></p>
+    <a class="text-danger" href="/delete/{{ stock.symbol }}">Delete Ticker</a>
   </div>
   {% endfor %}
+</div>
 {% else %}
 {% endif %}
-<div class="account-update">
-   <form class="" name="" action="{{ url_for('main_bp.update') }}" method="POST">
-      {{ uform.csrf_token }}
-      
-</div>
-<br>
-<div class="account-logout">
+
+<div class="account-logout p-4">
    <form class="" name="" action="{{ url_for('main_bp.logout') }}" method="POST">
-      <h5 style="color:rgb(36, 113, 116)"> {{ display_message }}
-         {{ loform.csrf_token }}
-         
-      </h5>
+      {{ display_message }}
+      {{ loform.csrf_token }}
+      <input class="btn btn-primary btn-sm" type="submit" value="Logout"/>
    </form>
 </div>
 {% endblock %}

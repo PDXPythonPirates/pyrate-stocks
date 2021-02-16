@@ -7,44 +7,56 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/styles.css">
         <title>Ticker Tracker</title>
     </head>
 
-    <body class="p-4">    
+    <body>    
         {% block body %}
-            <div>
-                <nav class="navbar-brand" >
-                 <ul>  
-                  <li><a href="{{ url_for('main_bp.home') }}">Home</a></li>
-                   {% if current_user.is_anonymous %}
-                   <li>  <a href="{{ url_for('main_bp.login') }}">Login</a></li>
-                   <li>  <a href="{{ url_for('main_bp.signup') }}">Signup</a></li>
-                    {% else %}
-                    <li>  <a href="{{ url_for('main_bp.dashboard') }}">Dashboard</a></li>
-                    <li> <a href="{{ url_for('main_bp.update') }}">Update Account</a></li>
-                    <li> <a href="{{ url_for('main_bp.logout') }}">Logout</a></li>
-                    {% endif %}
-                </ul>
-            </div>
+        <strong>     
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %} </strong> 
+        
+        <div class="nav p-4 bg-dark">
+            <ul class="my-3 list-inline">
+                <li class="pr-2 list-inline-item"><a href="{{ url_for('main_bp.home') }}">Home</a></li>
+                {% if current_user.is_anonymous %}
+                <li class="pr-2 list-inline-item"><a href="{{ url_for('main_bp.dashboard') }}">Dashboard</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('main_bp.update') }}">Update Account</a></li>
+                {% else %}
+                <li class="pr-2 list-inline-item"><a href="{{ url_for('main_bp.login') }}">Login</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('main_bp.signup') }}">Signup</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="p-4">
             {% block content %}
             {% endblock %}
+        </div>
         {% endblock %}
         <!-- Optional JavaScript -->
+        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script>
+            $(function(){
+                $('a').each(function() {
+                    if ($(this).prop('href') == window.location.href) {
+                    $(this).addClass('current');
+                    }
+                });
+            });
+        </script>
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
-<hr> <strong>     
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-  <ul class=flashes>
-  {% for message in messages %}
-    <p>{{ message }}</p>
-  {% endfor %}
-  </ul>
-{% endif %}
-{% endwith %} </strong> 
-
+    
     </body>
 </html>

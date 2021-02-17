@@ -82,6 +82,8 @@ class UserService():
         # Turn string of symbols into list
         # NOTE: If the user entered a comma, it will produce 2 empty symbols
         user = UserService.get_data()
+
+        # Format list
         symbol_list = user.stocks.replace(' ', '').split(',')
         new_symbols = []
         print('List of symbols to process: ' + str(symbol_list))

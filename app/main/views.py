@@ -41,7 +41,10 @@ def update():
 def dashboard():
     if current_user.is_authenticated:
         user_symbols = UserService.get_symbols()
-        ticker_data = TickerService.ticker_data(user_symbols)
+        if len(user_symbols) == 1 and user_symbols[0] == '':
+            ticker_data = None
+        else:
+            ticker_data = TickerService.ticker_data(user_symbols)
         return render_template('dashboard.html', stocks=ticker_data, loform=LogoutForm(), uform=UpdateForm())
     else:
         return render_template('login.html', form=LoginForm(), display_message='User Login')

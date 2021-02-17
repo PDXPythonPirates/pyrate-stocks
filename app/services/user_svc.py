@@ -70,14 +70,18 @@ class UserService():
         
         flash('Please login first.')
         render_template('login.html', title='Sign In', form=LoginForm())
-        
+    
+
+    def get_data():
+        user = Account.query.filter_by(username=current_user.username).first()
+        return user
 
     # Get a list of symbols the user follows
     def get_symbols():
 
         # Turn string of symbols into list
         # NOTE: If the user entered a comma, it will produce 2 empty symbols
-        user = Account.query.filter_by(username=current_user.username).first()
+        user = UserService.get_data()
         symbol_list = user.stocks.replace(' ', '').split(',')
         new_symbols = []
         print('List of symbols to process: ' + str(symbol_list))
@@ -114,12 +118,14 @@ class UserService():
         ticker_list = ','.join(ticker_list)
         user = Account.query.filter_by(username=current_user.username).first()
         user.stocks = ticker_list
+        print(f'Updated ticker list: {ticker_list}')
         db.session.commit()
 
     # Delete stock ticker symbol from user's followed symbols
     def delete_ticker(user_symbols, symbol):
-        symbol = symbol.upper()
+        symbol = symbol.lower()
         user_symbols.remove(symbol)
+        print(f'Taking the garbage out: {symbol}')
         UserService.update_tickers(user_symbols)
 
   

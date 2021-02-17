@@ -45,7 +45,7 @@ def dashboard():
     if current_user.is_authenticated:
         # Takes user data as an input, gets followed symbols, retrieve ticker data
         user_symbols = UserService.get_symbols()
-        if user.stocks:
+        if user_symbols:
             ticker_data = TickerService.ticker_data(user_symbols)
         else:
             ticker_data = None

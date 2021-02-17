@@ -1,5 +1,4 @@
 import yfinance as yf
-from urllib.error import HTTPError
 from app.services.user_svc import UserService
 
 class TickerService:

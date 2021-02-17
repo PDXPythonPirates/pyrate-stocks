@@ -4,7 +4,6 @@ from app.main import main_bp
 from app.models import Account
 from app.main.forms import SignUpForm, LoginForm, LogoutForm, UpdateForm
 from app.services.user_svc import UserService
-from requests.exceptions import HTTPError
 from app import db
 from app.services.ticker_svc import TickerService
 

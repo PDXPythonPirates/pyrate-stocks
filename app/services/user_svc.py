@@ -109,14 +109,14 @@ class UserService():
     # Add a stock ticker symbol to the user's followed symbols
     def add_ticker(ticker):
         ticker = ticker.replace(' ', '')
-        user = Account.query.filter_by(username=current_user.username).first()
+        user = UserService.get_data()
         user.stocks = user.stocks + f',{ticker}'
         db.session.commit()
 
     # Update the list of stock ticker symbols the user follows
     def update_tickers(ticker_list):
         ticker_list = ','.join(ticker_list)
-        user = Account.query.filter_by(username=current_user.username).first()
+        user = UserService.get_data()
         user.stocks = ticker_list
         print(f'Updated ticker list: {ticker_list}')
         db.session.commit()

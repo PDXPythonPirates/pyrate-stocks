@@ -21,16 +21,17 @@ class TickerService:
                 except (KeyError, ImportError, HTTPError) as e:
                     # Print the problem ticker to console and delete it from the user's followed tickers
                     print(f'Cannot fetch the {s} ticker info OR may not exist. Deleting from user\'s tickers.')
-                    UserService.delete_ticker(UserService.get_symbols(), s)
+                    UserService.delete_ticker(UserService.get_symbols(), s.lower())
                     ticker = None
                     pass
                 
                 # If the ticker was found, finish getting the data
-                if(ticker):
+                if ticker:
                     stock_data = {}
                     stock_data['symbol'] = s
                     stock_data['current_price'] = current_price
                     ticker_data.append(stock_data)
+
             else:
                 # Ticker is too long to exist and will be deleted
                 print(f'Ticker symbol {s} was too long. Deleting from user\'s tickers.')

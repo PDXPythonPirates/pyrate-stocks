@@ -40,11 +40,11 @@ def update():
 # Get stock ticker data and render dashboard
 @main_bp.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
-    user = UserService.get_data()
+    user = Account.query.filter_by(username=current_user.username).first()
     # User is logged in and has data
     if current_user.is_authenticated:
         # Takes user data as an input, gets followed symbols, retrieve ticker data
-        user_symbols = UserService.get_symbols(UserService, user)
+        user_symbols = UserService.get_symbols()
         if user.stocks:
             ticker_data = TickerService.ticker_data(user_symbols)
         else:
@@ -58,17 +58,18 @@ def dashboard():
 # Add a new symbol to track in DB
 @main_bp.route("/add/", methods=["POST"])
 def add():
-    user = UserService.get_data()
+    user = Account.query.filter_by(username=current_user.username).first()
     symbol = request.form['symbol']
-    user_symbols = UserService.get_symbols(UserService, user)
+    user_symbols = UserService.get_symbols()
     if symbol not in user_symbols:
-        UserService.add_ticker(UserService, symbol)
+        UserService.add_ticker(symbol)
     return redirect(url_for('main_bp.dashboard'))
 
 
 # Delete the symbol from user's followed symbols
 @main_bp.route("/delete/<symbol>")
 def delete(symbol):
-    user_symbols = UserService.get_symbols(UserService, UserService.get_data())
-    UserService.delete_ticker(UserService, user_symbols, symbol)
+    user = Account.query.filter_by(username=current_user.username).first()
+    user_symbols = UserService.get_symbols()
+    UserService.delete_ticker(user_symbols, symbol)
     return redirect(url_for('main_bp.dashboard'))

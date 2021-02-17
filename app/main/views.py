@@ -39,17 +39,10 @@ def update():
 # Get stock ticker data and render dashboard
 @main_bp.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
-    user = Account.query.filter_by(username=current_user.username).first()
-    # User is logged in and has data
     if current_user.is_authenticated:
-        # Takes user data as an input, gets followed symbols, retrieve ticker data
         user_symbols = UserService.get_symbols()
-        if user_symbols:
-            ticker_data = TickerService.ticker_data(user_symbols)
-        else:
-            ticker_data = None
+        ticker_data = TickerService.ticker_data(user_symbols)
         return render_template('dashboard.html', stocks=ticker_data, loform=LogoutForm(), uform=UpdateForm())
-    # Not logged in
     else:
         return render_template('login.html', form=LoginForm(), display_message='User Login')
 
@@ -57,7 +50,6 @@ def dashboard():
 # Add a new symbol to track in DB
 @main_bp.route("/add/", methods=["POST"])
 def add():
-    user = Account.query.filter_by(username=current_user.username).first()
     symbol = request.form['symbol']
     user_symbols = UserService.get_symbols()
     if symbol not in user_symbols:
@@ -68,7 +60,6 @@ def add():
 # Delete the symbol from user's followed symbols
 @main_bp.route("/delete/<symbol>")
 def delete(symbol):
-    user = Account.query.filter_by(username=current_user.username).first()
     user_symbols = UserService.get_symbols()
     UserService.delete_ticker(user_symbols, symbol)
     return redirect(url_for('main_bp.dashboard'))

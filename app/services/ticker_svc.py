@@ -1,4 +1,5 @@
 import yfinance as yf
+from urllib.error import HTTPError
 from app.services.user_svc import UserService
 
 class TickerService:
@@ -13,7 +14,7 @@ class TickerService:
                     # Create ticker object and try to retrieve ticker data
                     ticker = yf.Ticker(s)
                     current_price = ticker.info['bid']
-                except (KeyError, ImportError) as e:
+                except (KeyError, ImportError, HTTPError) as e:
                     # Print the problem ticker to console and delete it from the user's followed tickers
                     print(f'Cannot fetch the {s} ticker info OR may not exist. Deleting from user\'s tickers.')
                     UserService.delete_ticker(UserService.get_symbols(), s)

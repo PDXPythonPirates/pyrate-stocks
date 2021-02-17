@@ -125,7 +125,6 @@ class UserService():
 
     # Delete stock ticker symbol from user's followed symbols
     def delete_ticker(user_symbols, symbol):
-        symbol = symbol.lower()
         user_symbols.remove(symbol)
         print(f'Taking the garbage out: {symbol}')
         UserService.update_tickers(user_symbols)

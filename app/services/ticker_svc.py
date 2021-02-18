@@ -18,7 +18,12 @@ class TickerService:
                 try:
                     # Try to retrieve ticker data
                     ticker = yf.Ticker(s)
+                    name = ticker.info['shortName']
                     current_price = ticker.info['bid']
+                    high = ticker.info['regularMarketDayHigh']
+                    low = ticker.info['regularMarketDayLow']
+                    open = ticker.info['open']
+                    close = ticker.info['previousClose']
                 except (KeyError, ImportError, HTTPError, URLError) as e:
                     # Print the problem ticker to console and delete it from the user's followed tickers
                     flash(f'Ticker {s} is not a valid entry. ')
@@ -30,7 +35,12 @@ class TickerService:
                 if ticker:
                     stock_data = {}
                     stock_data['symbol'] = s
+                    stock_data['name'] = name
                     stock_data['current_price'] = current_price
+                    stock_data['high'] = high
+                    stock_data['low'] = low
+                    stock_data['open'] = open
+                    stock_data['close'] = close
                     ticker_data.append(stock_data)
 
             else:

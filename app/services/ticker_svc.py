@@ -1,3 +1,4 @@
+from flask import flash
 import yfinance as yf
 from urllib.error import HTTPError, URLError
 from app.services.user_svc import UserService
@@ -20,7 +21,7 @@ class TickerService:
                     current_price = ticker.info['bid']
                 except (KeyError, ImportError, HTTPError, URLError) as e:
                     # Print the problem ticker to console and delete it from the user's followed tickers
-                    print(f'Cannot fetch the {s} ticker info OR may not exist. Deleting from user\'s tickers.')
+                    flash(f'Ticker {s} is not a valid entry. ')
                     UserService.delete_ticker(UserService.get_symbols(), s.lower())
                     ticker = None
                     pass
@@ -34,7 +35,7 @@ class TickerService:
 
             else:
                 # Ticker is too long to exist and will be deleted
-                print(f'Ticker symbol {s} was too long. Deleting from user\'s tickers.')
+                flash(f'Ticker symbol {s} was too long. Deleting from user\'s tickers.')
                 UserService.delete_ticker(UserService, UserService.get_symbols(UserService.get_data()), s)
 
         return ticker_data

@@ -1,17 +1,16 @@
 {% extends "base.html" %}
-
 {% block content %}
-<div class="container">
-  <h1 style="color:rgb(84, 36, 116)"> <strong>{{ display_message }}</strong></h1>
- 
-  <div class="login-form">
+
+<div class="login-form">
     <form class="" name="" action="{{ url_for('main_bp.login') }}" method="POST">
         {{ form.csrf_token }}
         {{ form.username.label }} {{ form.username(size=20) }}<br>
-       
-        {{ form.password.label }} {{ form.password(size=20) }}
+        {{ form.password.label }} {{ form.password(size=20) }} <br>
+        {{ form.remember.label }} &emsp;{{ form.remember }} <br>
+        <hr>
         <input style="background-color:rgb(215, 247, 189)" type="submit" value="Login"/>
     </form>
   </div>
+  
 </div> 
 {% endblock %}

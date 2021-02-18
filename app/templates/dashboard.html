@@ -2,10 +2,6 @@
 
 {% block title %}{{super()}}{{ username }}{% endblock %}
 
-{% block head %}
-    {{super()}}
-{% endblock %}
-
 {% block content %}
 <div class="p-4">
   <h1>Dashboard</h1>
@@ -22,19 +18,19 @@
   {% for stock in stocks %}
   <div class="mb-3 p-3 border border-primary">
     <h2 class="text-primary">{{ stock.symbol }}</h2>
+    <p class="text-primary">{{ stock.name }}</p>
     <p class="text-primary">Current Price: <span class="text-success">${{ stock.current_price }}</span></p>
+    <p class="text-primary">High: <span class="text-secondary">${{ stock.high }}</span></p>
+    <p class="text-primary">Low: <span class="text-secondary">${{ stock.low }}</span></p>
+    <p class="text-primary">Open: <span class="text-secondary">${{ stock.open }}</span></p>
+    <p class="text-primary">Close: <span class="text-secondary">${{ stock.close }}</span></p>
     <a class="text-danger" href="/delete/{{ stock.symbol }}">Delete Ticker</a>
   </div>
   {% endfor %}
 </div>
 {% else %}
 {% endif %}
-<div class="account-update px-4">
-   <form class="" name="" action="{{ url_for('main_bp.update') }}" method="POST">
-      {{ uform.csrf_token }}
-      <input class="btn btn-primary btn-sm" type="submit" value="Update Account Info"/>
-   </form>
-</div>
+
 <div class="account-logout p-4">
    <form class="" name="" action="{{ url_for('main_bp.logout') }}" method="POST">
       {{ display_message }}

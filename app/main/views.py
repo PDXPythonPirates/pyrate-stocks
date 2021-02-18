@@ -54,6 +54,7 @@ def dashboard():
 @main_bp.route("/add/", methods=["POST"])
 def add():
     symbol = request.form['symbol']
+    symbol = symbol.lower()
     user_symbols = UserService.get_symbols()
     if symbol not in user_symbols:
         UserService.add_ticker(symbol)

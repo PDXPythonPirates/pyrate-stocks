@@ -20,6 +20,8 @@ class TickerService:
                     current_price = ticker.info['bid']
                     high = ticker.info['regularMarketDayHigh']
                     low = ticker.info['regularMarketDayLow']
+                    open = ticker.info['open']
+                    close = ticker.info['previousClose']
                 except (KeyError, ImportError, HTTPError, URLError) as e:
                     # Print the problem ticker to console and delete it from the user's followed tickers
                     print(f'Cannot fetch the {s} ticker info OR may not exist. Deleting from user\'s tickers.')
@@ -34,6 +36,8 @@ class TickerService:
                     stock_data['current_price'] = current_price
                     stock_data['high'] = high
                     stock_data['low'] = low
+                    stock_data['open'] = open
+                    stock_data['close'] = close
                     ticker_data.append(stock_data)
 
             else:

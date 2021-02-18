@@ -19,8 +19,10 @@
   <div class="mb-3 p-3 border border-primary">
     <h2 class="text-primary">{{ stock.symbol }}</h2>
     <p class="text-primary">Current Price: <span class="text-success">${{ stock.current_price }}</span></p>
-    <p class="text-primary">Market high: <span class="text-secondary">${{ stock.high }}</span></p>
-    <p class="text-primary">Market low: <span class="text-secondary">${{ stock.low }}</span></p>
+    <p class="text-primary">High: <span class="text-secondary">${{ stock.high }}</span></p>
+    <p class="text-primary">Low: <span class="text-secondary">${{ stock.low }}</span></p>
+    <p class="text-primary">Open: <span class="text-secondary">${{ stock.open }}</span></p>
+    <p class="text-primary">Close: <span class="text-secondary">${{ stock.close }}</span></p>
     <a class="text-danger" href="/delete/{{ stock.symbol }}">Delete Ticker</a>
   </div>
   {% endfor %}

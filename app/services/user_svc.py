@@ -19,8 +19,9 @@ class UserService():
             user.set_password(sform.password.data)
             db.session.add(user)
             db.session.commit()
-            flash('You were successfully logged in')
-            return render_template('login.html', form=lform)
+            flash(f'Welcome {user.username}! Please login.')
+            # lform.username.data = user.username
+            return redirect(url_for('main_bp.dashboard'))
         flash('Please sign Up')
         return render_template('signup.html', title='Signup', form=sform)    
         

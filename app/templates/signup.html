@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="container">
-    <h2 style="color:rgb(84, 36, 116)" ><strong>Sign Up</strong></h2>
+    <h2><strong>Sign Up</strong></h2>
     {% if display_message %}
         <p>{{ display_message }}</p>
     {% endif %}
@@ -13,20 +13,20 @@
             {{form.csrf_token}}
             {{form.username.label}}  {{form.username(size=30)}}
             {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+            <span>[{{ error }}]</span>
             {% endfor %}
             <br>
             {{form.email.label}}  {{form.email(size=30)}}
             <br>
             {{form.password.label}}  {{form.password(size=30)}}
             {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+            <span>[{{ error }}]</span>
             {% endfor %}
             <br>
             {{form.stocks.label}}  {{form.stocks(size=50)}}
             <h5><strong>&emsp;&emsp;&emsp;Separate stock symbols by comma, leave black if you need more research</strong></h5>
             <br><hr>
-            <input style="background-color:rgb(215, 247, 189)" type="submit" value="Register"/>
+            <input type="submit" value="Register"/>
         </form>
     </div>
 </div>

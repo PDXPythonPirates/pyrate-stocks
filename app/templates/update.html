@@ -2,9 +2,9 @@
 
 {% block content %}
 <div class="container">
-    <h2 style="color:rgb(36, 113, 116)" >{{ display_message }}</h2>
+    <h2>{{ display_message }}</h2>
 
-    <h3 style="color:rgb(84, 36, 116)"> <strong>Update your information below:</strong></h3>
+    <h3> <strong>Update your information below:</strong></h3>
     <hr/>
     <div class="account-update">
         <form class="" name="" action="{{ url_for('main_bp.update') }}" method="POST">
@@ -18,7 +18,7 @@
             {{form.stocks.label}}    {{form.stocks(size=80)}}
             <h5><strong>&emsp;&emsp;&emsp;Separate stock symbols by comma</strong></h5>
             <br>
-            <input style="background-color:rgb(215, 247, 189) " type="submit" value="Submit"/>
+            <input type="submit" value="Submit"/>
         </form>
     </div>
 </div>

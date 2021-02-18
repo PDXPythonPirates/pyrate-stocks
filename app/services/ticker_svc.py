@@ -17,6 +17,7 @@ class TickerService:
                 try:
                     # Try to retrieve ticker data
                     ticker = yf.Ticker(s)
+                    name = ticker.info['shortName']
                     current_price = ticker.info['bid']
                     high = ticker.info['regularMarketDayHigh']
                     low = ticker.info['regularMarketDayLow']
@@ -33,6 +34,7 @@ class TickerService:
                 if ticker:
                     stock_data = {}
                     stock_data['symbol'] = s
+                    stock_data['name'] = name
                     stock_data['current_price'] = current_price
                     stock_data['high'] = high
                     stock_data['low'] = low

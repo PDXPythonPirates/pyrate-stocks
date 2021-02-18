@@ -18,6 +18,7 @@
   {% for stock in stocks %}
   <div class="mb-3 p-3 border border-primary">
     <h2 class="text-primary">{{ stock.symbol }}</h2>
+    <p class="text-primary">{{ stock.name }}</p>
     <p class="text-primary">Current Price: <span class="text-success">${{ stock.current_price }}</span></p>
     <p class="text-primary">High: <span class="text-secondary">${{ stock.high }}</span></p>
     <p class="text-primary">Low: <span class="text-secondary">${{ stock.low }}</span></p>

@@ -1,11 +1,11 @@
-*Personal finicial app*
+** Personal finicial app 
 
-   **** This app provides an interactive environment for users to access up-to-date data on stocks of their interests. ****
+   ** This app provides an interactive environment for users to access up-to-date data on stocks of their interests. **
 	
 **Contributers**
 
 
-    **Set up 
+    **Set up** 
 	
     **1. Creating virtural inveirnemnt**
 	

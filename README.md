@@ -1,13 +1,18 @@
-## **About The Project**
+## **About The Project** 
+<br>
 
 **Project Title**
 
-A Personal Investment App
+A Personal Investment App 
+
+<br>
 
 **Built with**
 - Python 3.8.5
 - Flask 1.1.2
-	
+
+<br>
+
 **Getting Started**
 
 **1**. Prerequisites
@@ -17,8 +22,7 @@ A Personal Investment App
 	- _Method 1_:  from cmd or terminal, run
 
 			`conda create -n myenv python=3.8`.    
-		_Note: python3.8 was the version used to create this app_
-
+		
 	- _Method 2_: from cmd or terminal, run
 
 			`python3 -m venv myenv`.
@@ -31,24 +35,25 @@ A Personal Investment App
 
 	- _Method 2_: 
 
-		- on Windows, run 
-	
-			`myenv\Scripts\activate.bat`
+		- on Windows, run
+
+				`myenv\Scripts\activate.bat`
 
 		- on Unix or MacOS, run 
 
-			`source myenv/bin/activate`	
+				`source myenv/bin/activate`	
 
 **Installation**
 
-**1**. Clone repo. From cmd or terminal, run
+**1**. Clone repo: from cmd or terminal, run
 
 		git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
 
-**2**. Install requiremnets. From cmd or terminal, run  
+**2**. Install requiremnets: from cmd or terminal, run  
 
 		pip3 install -r requirements.txt
 
+<br>
 
 ## **Features**
 

@@ -2,8 +2,7 @@
 
    This app provides an interactive environment for users to access up-to-date data on stocks of their interests.
 
-
-## **Set up** 
+## **Set up environment** 
 #### **1. Creating virtural environment**
 	 
 - **_Method 1_**: with conda installed, at command prompt, run 
@@ -27,11 +26,18 @@
 
 	- on Unix or MacOS, run `source myenv/bin/activate`	
 
-## **Install requiremnets**	 
+## **Installation**
+**1**. Install requiremnets**	 
 
 	run pip3 install -r requirements.txt
 
-## **App Function Summary**
+**2**. Clone repo
+
+from cmd or terminal, run
+
+git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
+
+## **Features**
 
 **1**. Annonomous users are presented with Home, Login and Signup options on the menu bar.
 

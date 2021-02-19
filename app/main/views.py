@@ -7,8 +7,6 @@ from app.services.user_svc import UserService
 from app import db
 from app.services.ticker_svc import TickerService
 
-
-##### USER SERVICE ROUTES #####
 @main_bp.route('/')
 def home():
     return render_template('home.html')
@@ -35,7 +33,6 @@ def update():
     user_update = UserService.update()
     return user_update
 
-
 # Get stock ticker data and render dashboard
 @main_bp.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
@@ -49,7 +46,6 @@ def dashboard():
     else:
         return render_template('login.html', form=LoginForm(), display_message='User Login')
 
-
 # Add a new symbol to track in DB
 @main_bp.route("/add/", methods=["POST"])
 def add():
@@ -59,7 +55,6 @@ def add():
     if symbol not in user_symbols:
         UserService.add_ticker(symbol)
     return redirect(url_for('main_bp.dashboard'))
-
 
 # Delete the symbol from user's followed symbols
 @main_bp.route("/delete/<symbol>")

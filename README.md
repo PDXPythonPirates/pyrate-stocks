@@ -19,13 +19,12 @@
 
 - **_Method 1_**: at command prompt, run `conda activate myenv`
 
--**_*_Method 2_*_**: 
+- **_*_Method 2_*_**: 
 - on Windows, run `myenv\Scripts\activate.bat`
 - on Unix or MacOS, run `source myenv/bin/activate`	
 
-## **Install requiremnets
+## **Install requiremnets**	 
 `run pip3 install -r requirements.txt`
-
 
 ## **App Funcitonality Summary**
 

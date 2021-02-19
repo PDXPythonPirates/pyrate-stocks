@@ -41,11 +41,11 @@ A Personal Investment App
 
 **Installation**
 
-**1**. Clone repo.   From cmd or terminal, run
+**1**. Clone repo. From cmd or terminal, run
 
 		git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
 
-**2**. Install requiremnets.  From cmd or terminal, run  
+**2**. Install requiremnets. From cmd or terminal, run  
 
 		pip3 install -r requirements.txt
 

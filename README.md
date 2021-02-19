@@ -1,44 +1,54 @@
-# **Personal Financial App**
+## **About The Project**
 
-   This app provides an interactive environment for users to access up-to-date data on stocks of their interests.
+**Project Title**
 
-## **Set up environment** 
+A Personal Investment App
 
-#### **1. Creating virtural environment**
+**Built with**
+- Python 3.8.5
+- Flask 1.1.2
+	
+**Getting Started**
+
+**1**. Prerequisites
+
+- create virtural environment
 	 
-- _Method 1_: with conda installed, from cmd or terminal, run 
-	`conda create -n myenv python=3.8`.    
-	_Note: python3.8 was the version used to create this app_
+	- _Method 1_:  from cmd or terminal, run
 
+			`conda create -n myenv python=3.8`.    
+		_Note: python3.8 was the version used to create this app_
 
-- _Method 2_: from cmd or terminal, run
+	- _Method 2_: from cmd or terminal, run
 
-	`python3 -m venv myenv`.
+			`python3 -m venv myenv`.
 
-#### **2. Activate virtural environment**
+- Activate virtural environment**
 
-- _Method 1_: from cmd or terminal, run 
+	- _Method 1_: from cmd or terminal, run 
 
-	`conda activate myenv`
+			`conda activate myenv`
 
-- _Method 2_: 
+	- _Method 2_: 
 
-	- on Windows, run `myenv\Scripts\activate.bat`
+		- on Windows, run 
+	
+			`myenv\Scripts\activate.bat`
 
-	- on Unix or MacOS, run `source myenv/bin/activate`	
+		- on Unix or MacOS, run 
 
-## **Installation**
+			`source myenv/bin/activate`	
 
-**1**. Install requiremnets
+**Installation**
 
-	from cmd or terminal, run  
+**1**. Clone repo.   From cmd or terminal, run
+
+		git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
+
+**2**. Install requiremnets.  From cmd or terminal, run  
 
 		pip3 install -r requirements.txt
 
-**2**. Clone repo
-	from cmd or terminal, run
-
-		git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
 
 ## **Features**
 

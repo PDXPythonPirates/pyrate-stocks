@@ -3,39 +3,42 @@
    This app provides an interactive environment for users to access up-to-date data on stocks of their interests.
 
 ## **Set up environment** 
+
 #### **1. Creating virtural environment**
 	 
-- **_Method 1_**: with conda installed, at command prompt, run 
+- _Method 1_: with conda installed, from cmd or terminal, run 
 	`conda create -n myenv python=3.8`.    
 	_Note: python3.8 was the version used to create this app_
 
 
-- **_Method 2_**: at command prompt, run
+- _Method 2_: from cmd or terminal, run
 
 	`python3 -m venv myenv`.
 
 #### **2. Activate virtural environment**
 
-- **_Method 1_**: at command prompt, run 
+- _Method 1_: from cmd or terminal, run 
 
 	`conda activate myenv`
 
-- **_*_Method 2_*_**: 
+- _Method 2_: 
 
 	- on Windows, run `myenv\Scripts\activate.bat`
 
 	- on Unix or MacOS, run `source myenv/bin/activate`	
 
 ## **Installation**
-**1**. Install requiremnets**	 
 
-	run pip3 install -r requirements.txt
+**1**. Install requiremnets
+
+	from cmd or terminal, run  
+
+		pip3 install -r requirements.txt
 
 **2**. Clone repo
+	from cmd or terminal, run
 
-from cmd or terminal, run
-
-git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
+		git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
 
 ## **Features**
 

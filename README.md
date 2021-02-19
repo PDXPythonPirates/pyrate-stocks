@@ -26,9 +26,9 @@
 
 - **_*_Method 2_*_**: 
 
-- on Windows, run `myenv\Scripts\activate.bat`
+	- on Windows, run `myenv\Scripts\activate.bat`
 
-- on Unix or MacOS, run `source myenv/bin/activate`	
+	- on Unix or MacOS, run `source myenv/bin/activate`	
 
 ## **Install requiremnets**	 
 

@@ -1,10 +1,10 @@
-# **Personal Finicial App**
+# **Personal Financial App**
 
    This app provides an interactive environment for users to access up-to-date data on stocks of their interests.
 
 
 ## **Set up** 
-#### **1. Creating virtural inveirnemnt**
+#### **1. Creating virtural environment**
 	 
 - **_Method 1_**: with conda installed, at command prompt, run 
 	`conda create -n myenv python=3.8`.    
@@ -15,7 +15,7 @@
 
 	`python3 -m venv myenv`.
 
-#### **2. Activate virtural inveirnemnt**
+#### **2. Activate virtural environment**
 
 - **_Method 1_**: at command prompt, run 
 
@@ -29,7 +29,7 @@
 
 ## **Install requiremnets**	 
 
-	`run pip3 install -r requirements.txt`
+	run pip3 install -r requirements.txt
 
 ## **App Function Summary**
 
@@ -45,4 +45,4 @@
 
 	**6**. On the Update page, the user can change username, password, email and enter stocks symbols.   The form is preloaded with username, email and any stocks in the account.  *These inforamtion was preloaded with the assumption that they typically don't change.  But if user enters new inforamtion, it will be saved.*
 
-	**7**. The user stay login as log as the logout option is not chosen.   
+	**7**. The user stays logged in as log as the logout option is not chosen.   

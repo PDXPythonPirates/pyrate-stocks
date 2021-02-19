@@ -1,13 +1,7 @@
 # **Personal Finicial App**
 
    This app provides an interactive environment for users to access up-to-date data on stocks of their interests.
-	
-[![Contributors][contributors-shield]][https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/network/dependencies]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/stargazers]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+
 
 ## **Set up** 
 #### **1. Creating virtural inveirnemnt**

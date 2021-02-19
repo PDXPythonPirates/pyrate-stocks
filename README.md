@@ -21,27 +21,27 @@ A Personal Investment App
 	 
 	- _Method 1_:  from cmd or terminal, run
 
-			`conda create -n myenv python=3.8`.    
+			conda create -n myenv python=3.8    
 		
 	- _Method 2_: from cmd or terminal, run
 
-			`python3 -m venv myenv`.
+			python3 -m venv myenv
 
 - Activate virtural environment**
 
 	- _Method 1_: from cmd or terminal, run 
 
-			`conda activate myenv`
+			conda activate myenv
 
 	- _Method 2_: 
 
 		- on Windows, run
 
-				`myenv\Scripts\activate.bat`
+				myenv\Scripts\activate.bat
 
 		- on Unix or MacOS, run 
 
-				`source myenv/bin/activate`	
+				source myenv/bin/activate	
 
 **Installation**
 

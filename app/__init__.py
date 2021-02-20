@@ -2,16 +2,16 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
-from config import config
+from config import Config
 
 db = SQLAlchemy()
 login = LoginManager()
 migrate = Migrate(db)
 
-def create_app(config_name):
+def create_app(config_class=Config):
     app = Flask(__name__)
-    app.config.from_object(config[config_name])
-    config[config_name].init_app(app)
+    app.config.from_object(config_class)
+    config_class.init_app(app)
             
     from app.models import db
     db.init_app(app)

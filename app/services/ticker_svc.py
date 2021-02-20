@@ -57,13 +57,13 @@ class TickerService:
         return ticker_data
 
     def plot(symbol):
-        symbol = yf.Ticker('aapl')
-        df = symbol.history('max')
+        t = yf.Ticker(symbol)
+        df = t.history('max')
         df = df.reset_index()
         df['Date'] = pd.to_datetime(df['Date'])
 
         p = figure(plot_width=400, plot_height=150, tools='pan, box_zoom, wheel_zoom')
-        #p.yaxis.axis_label = symbol
+        p.yaxis.axis_label = symbol
         p.line(df.Date, df.Close, line_width=2)
         p.xaxis.formatter = DatetimeTickFormatter(hourmin = ['%Y:%M'])
         p.yaxis[0].ticker.desired_num_ticks = 3

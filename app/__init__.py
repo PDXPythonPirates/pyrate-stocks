@@ -6,7 +6,7 @@ from config import Config
 
 db = SQLAlchemy()
 login = LoginManager()
-migrate = Migrate(db)
+migrate = Migrate()
 
 def create_app(config_class=Config):
     app = Flask(__name__)

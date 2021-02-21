@@ -1,5 +1,6 @@
 from flask import render_template, redirect, flash, url_for, request
 from flask_login import current_user, login_user, login_required, logout_user
+from sqlalchemy.orm import synonym
 from app.main import main_bp
 from app.models import Account
 from app.main.forms import SignUpForm, LoginForm, LogoutForm, UpdateForm
@@ -45,7 +46,17 @@ def dashboard():
             ticker_data = None
         else:
             ticker_data = TickerService.ticker_data(user_symbols)
-        return render_template('dashboard.html', stocks=ticker_data, loform=LogoutForm(), uform=UpdateForm())
+            
+            # Add plots
+            for tdata in ticker_data:
+                s = tdata['symbol']
+                script, div, cdn_js, cdn_css = TickerService.plot(s)
+                return render_template('dashboard.html', 
+                    stocks=ticker_data, loform=LogoutForm(), uform=UpdateForm(),
+                    script = script, 
+                    div =  div, 
+                    cdn_js = cdn_js, 
+                    cdn_css = cdn_css)
     else:
         return render_template('login.html', form=LoginForm(), display_message='User Login')
 
@@ -60,7 +71,6 @@ def plot(symbol):
 @main_bp.route("/add/", methods=["POST"])
 def add():
     symbol = request.form['symbol']
-    symbol = symbol.lower()
     user_symbols = UserService.get_symbols()
     if symbol not in user_symbols:
         UserService.add_ticker(symbol)

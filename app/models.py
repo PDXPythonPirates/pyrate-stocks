@@ -35,7 +35,14 @@ class Account(UserMixin, db.Model):
 class DummyTable(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     phone_number = db.Column(db.String(15))
+    mobile_number = db.Column(db.String(15))
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'))
     
     def __repr__(self):
         return '<DummyTable info: {}>'.format(self.username)
+
+# Another temporary table for experimenting with migrating changes through Alembic
+class NewTable(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    home_address = db.Column(db.String(128))
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'))

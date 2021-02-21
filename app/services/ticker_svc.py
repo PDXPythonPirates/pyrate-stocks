@@ -63,8 +63,10 @@ class TickerService:
         df['Date'] = pd.to_datetime(df['Date'])
 
         p = figure(title ='Closing Price History', plot_width=1000, plot_height=300, tools='pan, box_zoom, wheel_zoom, reset')
-        p.line(df.Date, df.Close, line_width=2)
         p.title.text_font_size = '20pt'
+        p.title.align = "center"
+        p.title.text_color = "orange"   
+        p.line(df.Date, df.Close, line_width=2)
         p.xaxis.formatter = DatetimeTickFormatter(hourmin = ['%Y:%M'])
         p.xaxis.major_label_text_font_size = "14pt"
         p.yaxis.axis_label = symbol

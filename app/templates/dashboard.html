@@ -5,9 +5,7 @@
 {% block content %}
 <div class="p-4">
   <h1>Dashboard</h1>
-  <link rel='stylesheet' href={{ cdn_css | safe}} type="text/css" />>
-  <script type='text/javascript' src={{ cdn_js | safe }}></script>
-
+ 
   <form action="{{ url_for('main_bp.add') }}" method="post">
     <div>
       <input type="text" name="symbol" placeholder="Ex: AAPL" required><br>

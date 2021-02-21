@@ -49,6 +49,12 @@ def dashboard():
     else:
         return render_template('login.html', form=LoginForm(), display_message='User Login')
 
+# Plot historical data
+@main_bp.route('/plot//<symbol>', methods=['GET', 'POST'])
+def plot(symbol):
+    script, div, cdn_js, cdn_css = TickerService.plot(symbol)
+    return render_template('plot.html', script=script, div=div, cdn_js =cdn_js, cdn_css=cdn_css)
+
 
 # Add a new symbol to track in DB
 @main_bp.route("/add/", methods=["POST"])

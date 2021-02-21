@@ -1,5 +1,11 @@
 from flask import flash
 import yfinance as yf
+import pandas as pd
+from datetime import datetime
+from bokeh.models import DatetimeTickFormatter
+from bokeh.plotting import figure, output_file
+from bokeh.embed import components
+from bokeh.resources import CDN
 from urllib.error import HTTPError, URLError
 from app.services.user_svc import UserService
 
@@ -49,3 +55,20 @@ class TickerService:
                 UserService.delete_ticker(UserService, UserService.get_symbols(UserService.get_data()), s)
 
         return ticker_data
+
+    def plot(symbol):
+        t = yf.Ticker(symbol)
+        df = t.history('max')
+        df = df.reset_index()
+        df['Date'] = pd.to_datetime(df['Date'])
+
+        p = figure(plot_width=1000, plot_height=300, tools='pan, box_zoom, wheel_zoom, reset')
+        p.yaxis.axis_label = symbol
+        p.line(df.Date, df.Close, line_width=2)
+        p.xaxis.formatter = DatetimeTickFormatter(hourmin = ['%Y:%M'])
+        p.yaxis[0].ticker.desired_num_ticks = 3
+        script, div = components(p)
+        cdn_js = CDN.js_files
+        cdn_css = CDN.css_files
+        
+        return script, div, cdn_js[0], cdn_css

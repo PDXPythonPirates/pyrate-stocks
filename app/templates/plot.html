@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="p-4">
+  <h1>Plot</h1>
+  <link rel='stylesheet' href={{ cdn_css | safe}} type="text/css" />>
+  <script type='text/javascript' src={{ cdn_js | safe }}></script>
+
+    <!-- insert plots-->
+    {{script | safe}}
+    {{div | safe}}
+    {{script1 | safe}}
+    {{div1 | safe}}
+
+  </div>
+ 
+{% endblock %}

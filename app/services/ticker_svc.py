@@ -62,10 +62,15 @@ class TickerService:
         df = df.reset_index()
         df['Date'] = pd.to_datetime(df['Date'])
 
-        p = figure(plot_width=1000, plot_height=300, tools='pan, box_zoom, wheel_zoom, reset')
-        p.yaxis.axis_label = symbol
+        p = figure(title ='Closing Price History', plot_width=1000, plot_height=300, tools='pan, box_zoom, wheel_zoom, reset')
         p.line(df.Date, df.Close, line_width=2)
+        p.title.text_font_size = '20pt'
         p.xaxis.formatter = DatetimeTickFormatter(hourmin = ['%Y:%M'])
+        p.xaxis.major_label_text_font_size = "14pt"
+        p.yaxis.axis_label = symbol
+        p.yaxis.axis_label_text_font_size = '18pt'
+      
+        p.yaxis.major_label_text_font_size = "14pt"
         p.yaxis[0].ticker.desired_num_ticks = 3
         script, div = components(p)
         cdn_js = CDN.js_files

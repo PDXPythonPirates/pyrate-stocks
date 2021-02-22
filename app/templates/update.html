@@ -1,25 +1,23 @@
 {% extends "base.html" %} 
 
 {% block content %}
-<div class="container">
-    <h2>{{ display_message }}</h2>
+<h2>{{ display_message }}</h2>
 
-    <h3> <strong>Update your information below:</strong></h3>
-    <hr/>
-    <div class="account-update">
-        <form class="" name="" action="{{ url_for('main_bp.update') }}" method="POST">
-            {{ form.csrf_token }}
-            {{form.username.label}}  {{form.username(size=30)}}
-            <br>
-            {{form.email.label}}     {{form.email(size=30)}}
-            <br>
-            {{form.password.label}}  {{form.password(size=30)}}
-            <br>
-            {{form.stocks.label}}    {{form.stocks(size=80)}}
-            <h5><strong>&emsp;&emsp;&emsp;Separate stock symbols by comma</strong></h5>
-            <br>
-            <input type="submit" value="Submit"/>
-        </form>
-    </div>
+<h3> <strong>Update your information below:</strong></h3>
+<hr/>
+<div class="">
+    <form class="" name="" action="{{ url_for('main_bp.update') }}" method="POST">
+        {{ form.csrf_token }}
+        {{form.username.label}}  {{form.username(size=30)}}
+        <br>
+        {{form.email.label}}     {{form.email(size=30)}}
+        <br>
+        {{form.password.label}}  {{form.password(size=30)}}
+        <br>
+        {{form.stocks.label}}    {{form.stocks(size=80)}}
+        <h5><strong>&emsp;&emsp;&emsp;Separate stock symbols by comma</strong></h5>
+        <br>
+        <input type="submit" value="Submit"/>
+    </form>
 </div>
 {% endblock %}

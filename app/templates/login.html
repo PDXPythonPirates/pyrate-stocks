@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="login-form">
+<div class="">
     <form class="" name="" action="{{ url_for('main_bp.login') }}" method="POST">
         {{ form.csrf_token }}
         {{ form.username.label }} {{ form.username(size=20) }}<br>

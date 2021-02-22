@@ -1,11 +1,33 @@
 .nav a {
-    color: azure;
+    color: rgb(227, 246, 248);
     font-size: 24px;
     font-weight: 200;
 }
 
+.nav a:hover {
+    text-decoration: none;
+    color: rgb(50, 207, 155);
+}
+
 .nav a.current {
     font-weight: 700;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: rgb(50, 207, 155);
+    text-decoration-thickness: 2px;
+    color: rgb(50, 207, 155);
+}
+
+.block-content {
+    background: rgb(88, 94, 99);
+}
+
+.text-logo {
+    color: rgb(50, 207, 155);
+}
+
+.top-tickers p {
+    word-wrap: break-word;
 }
 
 .add-ticker {

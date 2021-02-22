@@ -16,7 +16,7 @@
         <strong>     
             {% with messages = get_flashed_messages() %}
             {% if messages %}
-            <ul class=flashes>
+            <ul class="">
                 {% for message in messages %}
                     <p>{{ message }}</p>
                 {% endfor %}
@@ -38,7 +38,7 @@
                 {% endif %}
             </ul>
         </div>
-        <div class="p-4">
+        <div class="block-content">
             {% block content %}
             {% endblock %}
         </div>

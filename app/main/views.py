@@ -46,17 +46,7 @@ def dashboard():
             ticker_data = None
         else:
             ticker_data = TickerService.ticker_data(user_symbols)
-            
-            # Add plots
-            for tdata in ticker_data:
-                s = tdata['symbol']
-                script, div, cdn_js, cdn_css = TickerService.plot(s)
-                return render_template('dashboard.html', 
-                    stocks=ticker_data, loform=LogoutForm(), uform=UpdateForm(),
-                    script = script, 
-                    div =  div, 
-                    cdn_js = cdn_js, 
-                    cdn_css = cdn_css)
+        return render_template('dashboard.html', stocks=ticker_data, loform=LogoutForm(), uform=UpdateForm())
     else:
         return render_template('login.html', form=LoginForm(), display_message='User Login')
 

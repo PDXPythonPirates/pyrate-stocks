@@ -1,20 +1,21 @@
+import flask
 import pytest
 from app import create_app
 from app.models import Account
 
+# Test all view functions in the app/views.py file
+@pytest.fixture(scope='module')
+def test_client():
+    flask_app = create_app()
+
+    # Create a test client using the Flask application configured for testing
+    with flask_app.test_client() as testing_client:
+        # Establish an application context
+        with flask_app.app_context():
+            yield testing_client # this is where the testing happens!
+
+# Test new account set-up
 @pytest.fixture(scope='module')
 def new_account():
     account = Account('matt', 'mgriffes@example.com', '123', 'aapl')
     return account
-
-def test_new_account(new_account):
-    """
-    Given an Account db.Model
-    When a new Account is created
-    Then check the username, email, password_hash, and stock fields are defined correctly
-    """
-    assert new_account.username == 'matt'
-    assert new_account.email == 'mgriffes@example.com'
-    assert new_account.password_hash == '123'
-    assert new_account.stocks == 'aapl'
-

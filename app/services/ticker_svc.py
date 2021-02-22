@@ -2,8 +2,8 @@ from flask import flash
 import yfinance as yf
 import pandas as pd
 from datetime import datetime
-from bokeh.models import DatetimeTickFormatter
-from bokeh.plotting import figure, output_file
+from bokeh.models import DatetimeTickFormatter, HoverTool,ColumnDataSource
+from bokeh.plotting import figure
 from bokeh.embed import components
 from bokeh.resources import CDN
 from urllib.error import HTTPError, URLError
@@ -60,18 +60,24 @@ class TickerService:
         t = yf.Ticker(symbol)
         df = t.history('max')
         df = df.reset_index()
-        df['Date'] = pd.to_datetime(df['Date'])
-
-        p = figure(title ='Closing Price History', plot_width=1000, plot_height=300, tools='pan, box_zoom, wheel_zoom, reset')
+        df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d')
+        df["DateString"] = df["Date"].dt.strftime("%Y-%m-%d")
+        source = ColumnDataSource(df)
+        p = figure(title ='Closing Price History', plot_width=1000, plot_height=300, 
+                    tools='pan, box_zoom, wheel_zoom, hover, reset',
+                    tooltips = [("Date","@DateString"),("Close", "@Close")])
+                            
         p.title.text_font_size = '20pt'
         p.title.align = "center"
-        p.title.text_color = "orange"   
-        p.line(df.Date, df.Close, line_width=2)
+        p.title.text_color = "orange"  
+
+        
+        p.line('Date', 'Close', line_width=2, source=source)
         p.xaxis.formatter = DatetimeTickFormatter(hourmin = ['%Y:%M'])
         p.xaxis.major_label_text_font_size = "14pt"
         p.yaxis.axis_label = symbol
         p.yaxis.axis_label_text_font_size = '18pt'
-      
+
         p.yaxis.major_label_text_font_size = "14pt"
         p.yaxis[0].ticker.desired_num_ticks = 3
         script, div = components(p)

@@ -4,27 +4,22 @@
 
 {% block content %}
 <div class="p-4">
-  <h1>Dashboard</h1>
   <form action="{{ url_for('main_bp.add') }}" method="post">
-    <div>
-      <input type="text" name="symbol" placeholder="Ex: AAPL" required><br>
-      <button class="add-ticker btn btn-primary btn-sm mt-3" type="submit">Add Ticker</button>
-    </div>
+    <input type="text" name="symbol" placeholder="Ex: AAPL" required><br>
+    <button class="add-ticker btn btn-dark btn-sm mt-3" type="submit">Add Ticker</button>
   </form>
 </div>
 {% if stocks %}
-<div class="p-4">
-  <h3>Followed Stock Tickers</h3>
+<div class="dash-container">
   {% for stock in stocks %}
-  <div class="mb-3 p-3 border border-primary">
-    <h2 class="text-primary">{{ stock.symbol }}</h2>
-    <p class="text-primary">{{ stock.name }}</p>
-    <p class="text-primary">Current Price: <span class="text-success">${{ stock.current_price }}</span></p>
-    <p class="text-secondary">High: ${{ stock.high }}</p>
-    <p class="text-secondary">Low: ${{ stock.low }}</p>
-    <p class="text-secondary">Open: ${{ stock.open }}</p>
-    <p class="text-secondary">Close: ${{ stock.close }}</p>
-    <a class="text-danger" href="/delete/{{ stock.symbol }}">Delete Ticker</a>
+  <div class="m-4 bg-dark">
+    <ul class="dash-data pt-2">
+      <li class="float-left p-2"><h2 class="text-light">{{ stock.symbol }}</h2><p class="text-light">{{ stock.name }}</p></li>
+      <li class="float-left p-2"><h2 class="text-success">${{ stock.current_price }}</h2></li>
+      <li class="float-left p-2"><p class="text-success">High: ${{ stock.high }}<br><span class="text-danger">Low: ${{ stock.low }}</span></li>
+      <li class="float-left p-2"><p class="text-secondary">Open: ${{ stock.open }}<br>Prev. close: ${{ stock.close }}</p></li>
+      <li class="float-right p-2"><a class="text-danger" href="/delete/{{ stock.symbol }}">Delete Ticker</a></li>
+    </ul>
   </div>
   {% endfor %}
 </div>
@@ -35,7 +30,7 @@
    <form class="" name="" action="{{ url_for('main_bp.logout') }}" method="POST">
       {{ display_message }}
       {{ loform.csrf_token }}
-      <input class="btn btn-primary btn-sm" type="submit" value="Logout"/>
+      <input class="btn btn-dark btn-sm" type="submit" value="Logout"/>
    </form>
 </div>
 {% endblock %}

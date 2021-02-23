@@ -1,9 +1,8 @@
 from flask import render_template, redirect, flash, url_for, request
-from flask_login import current_user, login_user, login_required, logout_user
+from flask_login import current_user
 from sqlalchemy.orm import synonym
 from app.main import main_bp
-from app.models import Account
-from app.main.forms import SignUpForm, LoginForm, LogoutForm, UpdateForm
+from app.main.forms import LoginForm, LogoutForm, UpdateForm
 from app.services.user_svc import UserService
 from app import db
 from app.services.ticker_svc import TickerService

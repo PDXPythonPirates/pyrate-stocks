@@ -34,7 +34,26 @@
     margin-top: 0;
 }
 
-.dash-data {
-    list-style-type: none;
-    overflow: auto;
-}
+.col {
+    float: left;
+    width: 33%;
+  }
+  
+  /* Clear floats after the columns */
+  .ticker-container:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .ticker-container {
+      margin-bottom: 1em;
+  }
+
+  .ticker-price {
+      font-size: 64px;
+  }
+
+  .t-success {
+    color: rgb(50, 207, 155);
+  }

@@ -2,7 +2,7 @@ from flask import flash
 import yfinance as yf
 import pandas as pd
 from datetime import datetime
-from bokeh.models import DatetimeTickFormatter, HoverTool,ColumnDataSource
+from bokeh.models import DatetimeTickFormatter, ColumnDataSource
 from bokeh.plotting import figure
 from bokeh.embed import components
 from bokeh.resources import CDN
@@ -63,8 +63,8 @@ class TickerService:
         df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d')
         df["DateString"] = df["Date"].dt.strftime("%Y-%m-%d")
         source = ColumnDataSource(df)
-        p = figure(title ='Closing Price History', plot_width=1000, plot_height=300, 
-                    tools='pan, box_zoom, wheel_zoom, hover, reset',
+        p = figure(title ='Closing Price History', plot_width=1000, plot_height=300,
+                    sizing_mode='scale_width',tools='pan, box_zoom, wheel_zoom, hover, reset',
                     tooltips = [("Date","@DateString"),("Close", "@Close")])
                             
         p.title.text_font_size = '20pt'

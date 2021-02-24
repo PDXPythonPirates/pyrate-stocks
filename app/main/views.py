@@ -4,7 +4,6 @@ from sqlalchemy.orm import synonym
 from app.main import main_bp
 from app.main.forms import LoginForm, LogoutForm, UpdateForm
 from app.services.user_svc import UserService
-from app import db
 from app.services.ticker_svc import TickerService
 
 

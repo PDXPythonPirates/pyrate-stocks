@@ -1,4 +1,4 @@
-from flask import render_template, redirect, flash, url_for, request
+from flask import render_template, redirect, url_for, request
 from flask_login import current_user
 from sqlalchemy.orm import synonym
 from app.main import main_bp

@@ -1,4 +1,12 @@
 ## **About The Project** 
+We, the python-pirates-project-cohort-1 greatly appreciate @lildonpancho (Chris Thompson) and @imattman (Matt Phillips) for guiding us through the creation of this app and enable us to experience the typical workflow for software developemnt.  This app provides an interactive dashboard for users to monitor up-to-date stocks inforamtion of their choices.
+
+<br>
+
+**Contributors**
+
+@MattiWheels, @Xuehong-pdx, @midCenturyDude7, @cassjsdev
+
 <br>
 
 **Project Title**
@@ -69,4 +77,13 @@ A Personal Investment App
 
 **6**. On the Update page, the user can change username, password, email and enter stocks symbols.   The form is preloaded with username, email and any stocks in the account.  *These inforamtion was preloaded with the assumption that they typically don't change.  But if user enters new inforamtion, it will be saved.*
 
-**7**. The user stays logged in as log as the logout option is not chosen.   
+**7**. The user stays logged in unless logout was performed.   
+
+## **Resources**
+[https://github.com/PDXPythonPirates] visit Portland Python Pirates to see more cool stuff
+[https://flask.palletsprojects.com/en/1.1.x/]
+[https://blog.miguelgrinberg.com/category/Flask]
+[https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world]
+
+
+## **License**

@@ -7,7 +7,7 @@ This app provides an interactive dashboard for users to monitor up-to-date stock
 
 **Contributors**
 
-@MattiWheels, @Xuehong-pdx, @midCenturyDude7, @cassjsdev, @lildonpancho, @imattman)
+@MattiWheels, @Xuehong-pdx, @midCenturyDude7, @cassjsdev, @lildonpancho, @imattman
 
 <br>
 

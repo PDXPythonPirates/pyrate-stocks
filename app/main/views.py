@@ -1,10 +1,9 @@
-from flask import render_template, redirect, flash, url_for, request
-from flask_login import current_user, login_user, login_required, logout_user
+from flask import render_template, redirect, url_for, request
+from flask_login import current_user
+from sqlalchemy.orm import synonym
 from app.main import main_bp
-from app.models import Account
-from app.main.forms import SignUpForm, LoginForm, LogoutForm, UpdateForm
+from app.main.forms import LoginForm, LogoutForm, UpdateForm
 from app.services.user_svc import UserService
-from app import db
 from app.services.ticker_svc import TickerService
 
 
@@ -49,12 +48,17 @@ def dashboard():
     else:
         return render_template('login.html', form=LoginForm(), display_message='User Login')
 
+# Plot historical data
+@main_bp.route('/plot//<symbol>', methods=['GET', 'POST'])
+def plot(symbol):
+    script, div, cdn_js, cdn_css = TickerService.plot(symbol)
+    return render_template('plot.html', script=script, div=div, cdn_js =cdn_js, cdn_css=cdn_css)
+
 
 # Add a new symbol to track in DB
 @main_bp.route("/add/", methods=["POST"])
 def add():
     symbol = request.form['symbol']
-    symbol = symbol.lower()
     user_symbols = UserService.get_symbols()
     if symbol not in user_symbols:
         UserService.add_ticker(symbol)

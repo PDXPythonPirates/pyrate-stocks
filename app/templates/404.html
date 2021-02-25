@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>File Not Found</h1>
+    <p>Please try again later</p>
+
+    <div class="col-lg-1" style="padding: 0">
+        <img src="{{url_for('static', filename='pirates.jpg', align='middle')}}  />
+    </div>
+    
+    <a href="{{ url_for('main_bp.home') }}"><strong>Portland_Python_Pyrates</strong></a>
+    
+{% endblock %}

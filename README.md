@@ -1,13 +1,17 @@
 ## **About The Project** 
-We, the python-pirates-project-cohort-1 greatly appreciate @lildonpancho (Chris Thompson) and @imattman (Matt Phillips) for guiding us through the creation of this app and enable us to experience the typical workflow for software developemnt.  This app provides an interactive dashboard for users to monitor up-to-date stocks inforamtion of their choices.
+We, the python-pirates-project-cohort-1 greatly appreciate Chris Thompson and Matt Phillips for guiding us through the creation of this app and enable us to experience the typical workflow for software developemnt.  
+
+This app provides an interactive dashboard for users to monitor up-to-date stocks inforamtion of their choices.  Users can also choose to plot historical data for picked stocks.
 
 <br>
 
 **Contributors**
 
-@MattiWheels, @Xuehong-pdx, @midCenturyDude7, @cassjsdev
+[![](https://github.com/MattiWheels.png?size=30)](https://github.com/https://github.com/MattiWheels)    [![](https://github.com/Xuehong-pdx.png?size=30)](https://github.com/https://github.com/Xuehong-pdx)    [![](https://github.com/midCenturyDude7.png?size=30)](https://github.com/https://github.com/midCenturyDude7)    [![](https://github.com/cassjsdev.png?size=30)](https://github.com/https://github.com/cassjsdev)   [![](https://github.com/lildonpancho.png?size=30)](https://github.com/https://github.com/lildonpancho)   [![](https://github.com/imattman.png?size=30)](https://github.com/https://github.com/imattman)
 
 <br>
+
+
 
 **Project Title**
 

@@ -1,7 +1,7 @@
 from flask import render_template, redirect, flash, url_for, request
 from flask_login import current_user, login_user, login_required, logout_user
 from app.main import main_bp
-from app.models import Account
+from app.models import Account, importCsvSymbols
 from app.main.forms import SignUpForm, LoginForm, LogoutForm, UpdateForm
 from app.services.user_svc import UserService
 from app import db
@@ -36,16 +36,26 @@ def update():
 # Get stock ticker data and render dashboard
 @main_bp.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
+    import_symbols = importCsvSymbols.importCsvDb()
+    return import_symbols
+  
+    # Query symbolList table
+    symbolList = db.Table('symbolList', db.metadata, autoload=True, autoload_with=db.engine)
+    results = [i.Symbol for i in db.session.query(symbolList)]
+
+    # Render data from symbolList table to ticker/symbol dropdown on dashboard
+    return render_template('index.html', results=results)
+
     if current_user.is_authenticated:
         user_symbols = UserService.get_symbols()
         if len(user_symbols) == 1 and user_symbols[0] == '':
             ticker_data = None
         else:
             ticker_data = TickerService.ticker_data(user_symbols)
-        return render_template('dashboard.html', stocks=ticker_data, loform=LogoutForm(), uform=UpdateForm())
+        return render_template('dashboard.html', results=results, stocks=ticker_data, loform=LogoutForm(), uform=UpdateForm())
     else:
         return render_template('login.html', form=LoginForm(), display_message='User Login')
-
+    
 # Add a new symbol to track in DB
 @main_bp.route("/add/", methods=["POST"])
 def add():

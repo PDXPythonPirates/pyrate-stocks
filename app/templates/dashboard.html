@@ -3,8 +3,16 @@
 {% block title %}{{super()}}{{ username }}{% endblock %}
 
 {% block content %}
+<!-- Symbol/Ticker Dropdown -->
 <div class="p-4">
   <h1>Dashboard</h1>
+  <input type="text" list="symbollist" Placeholder="Search Symbol..">
+  <datalist id="symbollist">
+  {% for i in results %}
+      <option>{{ i }}</option>
+  {% endfor %}
+  </datalist>
+
   <form action="{{ url_for('main_bp.add') }}" method="post">
     <div>
       <input type="text" name="symbol" placeholder="Ex: AAPL" required><br>

@@ -36,7 +36,7 @@
 
 .col {
     float: left;
-    width: 33%;
+    width: 45%;
     position: relative;
 }
   
@@ -48,13 +48,29 @@
 }
 
 .ticker-container {
-    margin-bottom: 1em;
+    height: 148px;
 }
 
 .ticker-price {
-    font-size: 64px;
+    font-size: 70px;
+    line-height: 70px;
 }
 
 .ticker-success {
     color: rgb(50, 207, 155);
+}
+
+.delete-ticker {
+    height: 100%;
+    width: 10%;
+    background: rgb(192, 36, 36);
+}
+
+.delete-ticker a {
+    color: #fff;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }

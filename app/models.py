@@ -30,34 +30,39 @@ class Account(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-class importCsvSymbols():
-    def importCsvDb():
-        # Read original csv data
-        # CSV Source: https://www.nasdaq.com/market-activity/stocks/screener 
-        symbolList = pd.read_csv("app/csvfiles/nasdaq_screener_1614251368892.csv", usecols=["Symbol", "Name"], index_col=['Symbol'])
-        print("Reading csv columns ... ")
 
-        # Parse original csv data to columns needed & save to new csv file
-        symbolList.to_csv('app/csvfiles/symbolList.csv', index_label=None)
-        print("Parsing csv ... ")
+def importCsvDb():
+    # Read original csv data
+    # CSV Source: https://www.nasdaq.com/market-activity/stocks/screener 
+    symbolList = pd.read_csv("app/csvfiles/nasdaq_screener_1614251368892.csv", usecols=["Symbol", "Name"], index_col=['Symbol'])
+    print("Reading csv columns ... ")
 
-        # Open database connection
-        con = sqlite3.connect("data-dev.sqlite3")
-        cur = con.cursor()
-        print("Connecting to database ...")
+    # Parse original csv data to columns needed & save to new csv file
+    symbolList.to_csv('app/csvfiles/symbolList.csv', index_label=None)
+    print("Parsing csv ... ")
 
-        # Database read csv 
-        df = pd.read_csv("app/csvfiles/symbolList.csv")
-        print("Reading csv file ...")
+    # Open database connection
+    con = sqlite3.connect("data-dev.sqlite3")
+    cur = con.cursor()
+    print("Connecting to database ...")
 
-        # Import csv data into table
-        df.to_sql(
-            name='symbolList',
-            con = con,
-            index=False,
-            if_exists='replace')
-        print("Creating symbolList table in database ...")
+    # Database read csv 
+    df = pd.read_csv("app/csvfiles/symbolList.csv")
+    print("Reading csv file ...")
+
+    # Import csv data into table
+    df.to_sql(
+        name='symbolList',
+        con = con,
+        index=False,
+        if_exists='replace')
+    print("Creating symbolList table in database ...")
         
-        # Close database connection
-        con.close()
-        print("Closing database connection ...")
+    # Close database connection
+    con.close()
+    print("Closing database connection ...")
+  
+    # Query symbolList table to dashboard symbol/Ticker dropdown
+    symbolList = db.Table('symbolList', db.metadata, autoload=True, autoload_with=db.engine)
+    results = [i.Symbol for i in db.session.query(symbolList)]
+    print("Loading symbols to dashboard ticker dropdown ...")

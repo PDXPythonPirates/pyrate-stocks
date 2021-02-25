@@ -1,7 +1,7 @@
 from flask import render_template, redirect, flash, url_for, request
 from flask_login import current_user, login_user, login_required, logout_user
 from app.main import main_bp
-from app.models import Account, importCsvSymbols
+from app.models import Account, importCsvDb
 from app.main.forms import SignUpForm, LoginForm, LogoutForm, UpdateForm
 from app.services.user_svc import UserService
 from app import db
@@ -36,11 +36,7 @@ def update():
 # Get stock ticker data and render dashboard
 @main_bp.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
-    import_symbols = importCsvSymbols.importCsvDb()
-  
-    # Query symbolList table
-    symbolList = db.Table('symbolList', db.metadata, autoload=True, autoload_with=db.engine)
-    results = [i.Symbol for i in db.session.query(symbolList)]
+    import_symbols = importCsvDb()
     return import_symbols
 
     if current_user.is_authenticated:

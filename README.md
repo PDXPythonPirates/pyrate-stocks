@@ -7,7 +7,7 @@ This app provides an interactive dashboard for users to monitor up-to-date stock
 
 **Contributors**
 
-[![](https://github.com/MattiWheels.png?size=30)](https://github.com/https://github.com/MattiWheels)    [![](https://github.com/Xuehong-pdx.png?size=30)](https://github.com/https://github.com/Xuehong-pdx)    [![](https://github.com/midCenturyDude7.png?size=30)](https://github.com/https://github.com/midCenturyDude7)    [![](https://github.com/cassjsdev.png?size=30)](https://github.com/https://github.com/cassjsdev)   [![](https://github.com/lildonpancho.png?size=30)](https://github.com/https://github.com/lildonpancho)   [![](https://github.com/imattman.png?size=30)](https://github.com/https://github.com/imattman)
+@MattiWheels, @Xuehong-pdx, @midCenturyDude7, @cassjsdev, @lildonpancho, @imattman)
 
 <br>
 

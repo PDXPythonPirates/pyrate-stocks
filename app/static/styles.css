@@ -37,23 +37,24 @@
 .col {
     float: left;
     width: 33%;
-  }
+    position: relative;
+}
   
-  /* Clear floats after the columns */
-  .ticker-container:after {
+/* Clear floats after the columns */
+.ticker-container:after {
     content: "";
     display: table;
     clear: both;
-  }
+}
 
-  .ticker-container {
-      margin-bottom: 1em;
-  }
+.ticker-container {
+    margin-bottom: 1em;
+}
 
-  .ticker-price {
-      font-size: 64px;
-  }
+.ticker-price {
+    font-size: 64px;
+}
 
-  .t-success {
+.ticker-success {
     color: rgb(50, 207, 155);
-  }
+}

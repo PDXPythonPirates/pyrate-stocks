@@ -2,21 +2,29 @@
 
 {% block content %}
 
-<h3> <strong>Update your information below:</strong></h3>
-<hr/>
-<div class="">
-    <form class="" name="" action="{{ url_for('main_bp.update') }}" method="POST">
-        {{ form.csrf_token }}
-        {{form.username.label}}  {{form.username(size=30)}}
-        <br>
-        {{form.email.label}}     {{form.email(size=30)}}
-        <br>
-        {{form.password.label}}  {{form.password(size=30)}}
-        <br>
-        {{form.stocks.label}}    {{form.stocks(size=80)}}
-        <h5><strong>&emsp;&emsp;&emsp;Separate stock symbols by comma</strong></h5>
-        <br>
-        <input type="submit" value="Submit"/>
-    </form>
+<div class="p-4">
+    <h3 class="text-light">Update account information</h3>
+    <div class="form-container pt-4">
+        <form class="signup-form text-light" name="" action="{{ url_for('main_bp.update') }}" method="POST">
+            {{ form.csrf_token }}
+            <div class="form-group">
+                <label for="username-input">Username</label>
+                <input name="username" type="text" class="form-control bg-dark border-0" id="username-input" placeholder="Enter Username" required>
+            </div>
+            <div class="form-group">
+                <label for="email-input">Email address</label>
+                <input name="email" type="email" class="form-control bg-dark border-0" id="email-input" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="password-input">Password</label>
+                <input name="password" type="password" class="form-control bg-dark border-0" id="password-input" placeholder="Enter password" required>
+            </div>
+            <div class="form-group">
+                <label for="stock-input">Symbols</label>
+                <input name="stocks" type="text" class="form-control bg-dark border-0" id="stock-input" placeholder="Stock symbols separated by comma (e.g., AAPL,TSLA,FB,MSFT)">
+            </div>
+            <button type="submit" class="btn btn-secondary btn-sm mt-4">Submit</button>
+        </form>
+    </div>
 </div>
 {% endblock %}

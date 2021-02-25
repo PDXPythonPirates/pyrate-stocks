@@ -75,7 +75,7 @@ This app provides an interactive dashboard for users to monitor up-to-date stock
 
 **4**. After login, the user has options for Home, Dashboard, Update and Logout pages.
 
-**5**. On the Dashboard page, the user is presented with the curent information on stocks they selected.  The user has options to add and delete stocks (tickers).
+**5**. On the Dashboard page, the user is presented with the curent information on stocks they selected.  The user has options to add and delete stocks (tickers) and to plot historical data.
 
 **6**. On the Update page, the user can change username, password, email and enter stocks symbols.   The form is preloaded with username, email and any stocks in the account.  *These inforamtion was preloaded with the assumption that they typically don't change.  But if user enters new inforamtion, it will be saved.*
 

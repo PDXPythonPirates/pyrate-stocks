@@ -33,6 +33,7 @@ class Account(UserMixin, db.Model):
 class importCsvSymbols():
     def importCsvDb():
         # Read original csv data
+        # CSV Source: https://www.nasdaq.com/market-activity/stocks/screener 
         symbolList = pd.read_csv("app/csvfiles/nasdaq_screener_1614251368892.csv", usecols=["Symbol", "Name"], index_col=['Symbol'])
         print("Reading csv columns ... ")
 

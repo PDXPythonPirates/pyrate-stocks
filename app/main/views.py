@@ -37,11 +37,11 @@ def update():
 @main_bp.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
     import_symbols = importCsvSymbols.importCsvDb()
-    return import_symbols
   
     # Query symbolList table
     symbolList = db.Table('symbolList', db.metadata, autoload=True, autoload_with=db.engine)
     results = [i.Symbol for i in db.session.query(symbolList)]
+    return import_symbols
 
     if current_user.is_authenticated:
         user_symbols = UserService.get_symbols()

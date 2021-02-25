@@ -27,37 +27,27 @@ This app provides an interactive dashboard for users to monitor up-to-date stock
 
 - create virtural environment
 	 
-	- _Method 1_:
-
+	_Method 1_:
 			conda create -n myenv python=3.8    
 		
-	- _Method 2_:
-
+	_Method 2_:
 			python -m venv myenv
 
-- Activate virtural environment**
-
-	- _Method 1_: 
-
+- Activate virtural environment
+	_Method 1_: 
 			conda activate myenv
 
-	- _Method 2_: 
-
+	_Method 2_: 
 		- Windows
-
 				myenv\Scripts\activate.bat
 
 		- Unix or MacOS
-
 				source myenv/bin/activate	
 
-
 - Clone repo
-
 		git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
 
 - Install requirements.txt
-
 		pip install -r requirements.txt
 
 <br>

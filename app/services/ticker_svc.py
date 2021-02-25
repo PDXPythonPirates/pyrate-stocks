@@ -1,9 +1,41 @@
 from flask import flash
-import yfinance as yf
 from urllib.error import HTTPError, URLError
 from app.services.user_svc import UserService
+import yfinance as yf
+import pandas as pd
+import sqlite3
 
 class TickerService:
+    def importCsvDb():
+        # Read original csv data
+        # CSV Source: https://www.nasdaq.com/market-activity/stocks/screener 
+        symbolList = pd.read_csv("app/csvfiles/nasdaq_screener_1614251368892.csv", usecols=["Symbol", "Name"], index_col=['Symbol'])
+        print("Reading csv columns ... ")
+
+        # Parse original csv data to columns needed & save to new csv file
+        symbolList.to_csv('app/csvfiles/symbolList.csv', index_label=None)
+        print("Parsing csv ... ")
+
+        # Open database connection
+        con = sqlite3.connect("data-dev.sqlite3")
+        cur = con.cursor()
+        print("Connecting to database ...")
+
+        # Database read csv 
+        df = pd.read_csv("app/csvfiles/symbolList.csv")
+        print("Reading csv file ...")
+
+        # Import csv data into table
+        df.to_sql(
+            name='symbolList',
+            con = con,
+            index=False,
+            if_exists='replace')
+        print("Creating symbolList table in database ...")
+            
+        # Close database connection
+        con.close()
+        print("Closing database connection ...")
     
     def ticker_data(symbols):
         ticker_data = []

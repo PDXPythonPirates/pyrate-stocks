@@ -14,7 +14,6 @@ def create_app(config_name):
     from app.models import db
     db.init_app(app)
     login.init_app(app)
-    
 
     from app.main import main_bp
     app.register_blueprint(main_bp)

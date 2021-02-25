@@ -1,7 +1,7 @@
 ## **About The Project** 
 We, the **python-pirates-project-cohort-1** greatly appreciate Chris Thompson and Matt Phillips for guiding us through the creation of this app and enable us to experience the typical workflow for software development.  
 
-This app provides an interactive dashboard for users to monitor up-to-date stocks inforamtion of their choices.  Users can also choose to plot historical data for picked stocks.
+This app provides an interactive dashboard for users to monitor up-to-date stocks inforamtion of their choices.  Users can also choose to plot historical data for stock of their interest.
 
 <br>
 

@@ -25,7 +25,7 @@ This app provides an interactive dashboard for users to monitor up-to-date stock
 
 **Getting Started**
 
-- create virtural environment
+- Create virtural environment
 	 
 	- _Method 1_:
 
@@ -49,7 +49,7 @@ This app provides an interactive dashboard for users to monitor up-to-date stock
 
 				source myenv/bin/activate	
 
-- Clone repo
+- Clone repository
 
 		git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
 
@@ -57,7 +57,6 @@ This app provides an interactive dashboard for users to monitor up-to-date stock
 
 		pip install -r requirements.txt
 
-<br>
 
 ## **Features**
 

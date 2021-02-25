@@ -43,9 +43,6 @@ def dashboard():
     symbolList = db.Table('symbolList', db.metadata, autoload=True, autoload_with=db.engine)
     results = [i.Symbol for i in db.session.query(symbolList)]
 
-    # Render data from symbolList table to ticker/symbol dropdown on dashboard
-    return render_template('index.html', results=results)
-
     if current_user.is_authenticated:
         user_symbols = UserService.get_symbols()
         if len(user_symbols) == 1 and user_symbols[0] == '':

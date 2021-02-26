@@ -18,6 +18,10 @@
     color: rgb(50, 207, 155);
 }
 
+.home-page {
+    padding: 200px;
+}
+
 .block-content {
     background: rgb(88, 94, 99);
 }
@@ -36,7 +40,7 @@
 
 .col {
     float: left;
-    width: 45%;
+    width: 30%;
     position: relative;
 }
   
@@ -48,12 +52,7 @@
 }
 
 .ticker-container {
-    height: 148px;
-}
-
-.ticker-price {
-    font-size: 70px;
-    line-height: 70px;
+    height: 136px;
 }
 
 .ticker-success {
@@ -68,7 +67,8 @@
 
 .delete-ticker a {
     color: #fff;
-    margin: 0;
+    font-weight: 100;
+    margin: auto;
     position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);

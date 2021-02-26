@@ -3,36 +3,35 @@
 {% block title %}{{super()}}{{ username }}{% endblock %}
 
 {% block content %}
-<div class="p-4">
+<div class="dashboard-container p-4">
   <form action="{{ url_for('main_bp.add') }}" method="post">
     <input type="text" name="symbol" placeholder="Ex: AAPL" required><br>
     <button class="add-ticker btn btn-dark btn-sm mt-3" type="submit">Add Ticker</button>
   </form>
-</div>
-{% if stocks %}
-<div class="data-container m-4 pt-2">
+  {% if stocks %}
   {% for stock in stocks %}
-    <div class="ticker-container bg-dark">
-      <div class="col pt-2">
-        <h2 class="text-light">{{ stock.symbol }}</h2>
-        <p class="text-light">{{ stock.name }}</p>
-        <p class="text-secondary">Open: ${{ stock.open }}<br>Prev. close: ${{ stock.close }}</p>
-      </div>
-      <div class="col pt-2">
-        <h2 class="ticker-price ticker-success">${{ stock.current_price }}</h2>
-        <p></p>
-        <p class="ticker-success">High: ${{ stock.high }}<br><span class="text-danger">Low: ${{ stock.low }}</span></p>
-      </div>
-      <div class="col delete-ticker">
-        <a class="" href="/delete/{{ stock.symbol }}">Delete Ticker</a>
-      </div>
+  <div class="ticker-container bg-dark mt-4">
+    <div class="ticker-name col pt-2">
+      <h2 class="text-light">{{ stock.symbol }}</h2>
+      <p class="text-light">{{ stock.name }}</p>
+      <h2 class="ticker-success mb-2">${{ stock.current_price }}</h2>
     </div>
+    <div class="ticker-graph col pt-2">
+    </div>
+    <div class="ticker-details col pt-2">
+      <p class="ticker-success">High: ${{ stock.high }}<br><span class="text-danger">Low: ${{ stock.low }}</span></p>
+      <p class="text-secondary">Open: ${{ stock.open }}<br>Prev. close: ${{ stock.close }}</p>
+    </div>
+    <div class="col delete-ticker">
+      <a class="" href="/delete/{{ stock.symbol }}">Delete</a>
+    </div>
+  </div>
   {% endfor %}
 </div>
 {% else %}
 {% endif %}
 
-<div class="p-4">
+<div class="logout-button p-4">
    <form class="" name="" action="{{ url_for('main_bp.logout') }}" method="POST">
       {{ display_message }}
       {{ loform.csrf_token }}

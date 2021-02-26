@@ -22,13 +22,11 @@ def login():
     return user_login
 
 @main_bp.route('/logout/', methods=['GET', 'POST'])
-
 def logout():
     user_logout = UserService.logout()
     return user_logout
 
 @main_bp.route('/update/', methods=['GET', 'POST'])
-
 def update():
     user_update = UserService.update()
     return user_update
@@ -65,7 +63,7 @@ def add():
 @main_bp.route("/delete/<symbol>")
 def delete(symbol):
     user_symbols = UserService.get_symbols()
-    symbol = symbol.upper()
+    symbol = symbol.casefold()
     if symbol in user_symbols:
         UserService.delete_ticker(user_symbols, symbol)
     return redirect(url_for('main_bp.dashboard'))

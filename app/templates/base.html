@@ -13,17 +13,12 @@
 
     <body>    
         {% block body %}
-        <strong>     
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            <ul class="">
-                {% for message in messages %}
-                    <p>{{ message }}</p>
-                {% endfor %}
-            </ul>
-            {% endif %}
-            {% endwith %}
-        </strong> 
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endwith %}
 
         <div class="nav p-4 bg-dark">
             <ul class="my-3 list-inline">

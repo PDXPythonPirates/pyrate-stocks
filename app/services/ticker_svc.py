@@ -26,7 +26,7 @@ class TickerService:
                     close = ticker.info['previousClose']
                 except (KeyError, ImportError, HTTPError, URLError) as e:
                     # Print the problem ticker to console and delete it from the user's followed tickers
-                    flash(f'Ticker {s} is not a valid entry. ')
+                    flash(f'Ticker {s} is not a valid entry. ', 'alert')
                     UserService.delete_ticker(UserService.get_symbols(), s.lower())
                     ticker = None
                     pass
@@ -45,7 +45,7 @@ class TickerService:
 
             else:
                 # Ticker is too long to exist and will be deleted
-                flash(f'Ticker symbol {s} was too long. Deleting from user\'s tickers.')
-                UserService.delete_ticker(UserService, UserService.get_symbols(UserService.get_data()), s)
+                flash(f'Ticker symbol {s} was too long. Deleting from user\'s tickers.', 'alert')
+                UserService.delete_ticker(UserService.get_symbols(), s.lower())
 
         return ticker_data

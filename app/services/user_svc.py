@@ -8,7 +8,7 @@ from app.main.forms import LoginForm, UpdateForm, SignUpForm
 class UserService():
     def signup():
         if current_user.is_authenticated:
-            flash('You already signed in!')
+            flash('You already signed in!', 'notify')
             return redirect(url_for('main_bp.dashboard'))
         
         sform = SignUpForm()
@@ -19,30 +19,30 @@ class UserService():
             user.set_password(sform.password.data)
             db.session.add(user)
             db.session.commit()
-            flash(f'Welcome {user.username}! Please login.')
+            flash(f'Welcome {user.username}! Please login.', 'notify')
             # lform.username.data = user.username
             return redirect(url_for('main_bp.dashboard'))
-        flash('Please sign Up')
+        flash('Please sign Up', 'notify')
         return render_template('signup.html', title='Signup', form=sform)    
         
     def login():
         if current_user.is_authenticated:
-            flash('You already signed in!')
+            flash('You already signed in!', 'notify')
             return redirect(url_for('main_bp.dashboard'))
 
         lform = LoginForm()
         if lform.validate_on_submit():
             user = Account.query.filter_by(username=lform.username.data).first()
             if user is None:
-                flash('Please sign Up')
+                flash('Please sign Up', 'notify')
                 return render_template('signup.html', title='Signup', form=SignUpForm())
 
             if not user.check_password(lform.password.data):    
-                flash('Wrong password!')
+                flash('Wrong password!', 'alert')
                 lform.username.data = user.username
                 return render_template('login.html', title='Sign In', form=lform)
             
-            flash('You are logged in.')
+            flash('You are logged in.', 'notify')
             login_user(user, remember=lform.remember.data)
             return redirect(url_for('main_bp.dashboard'))
         return render_template('login.html', title='Sign In', form=lform)
@@ -55,13 +55,13 @@ class UserService():
             uform = UpdateForm()
             if request.method == 'POST':
                 if uform.username.data != _username:
-                    flash('Your username is incorrect.')
+                    flash('Your username is incorrect.', 'alert')
                     return render_template('update.html', form=uform)
                 if uform.validate_on_submit():
                     uform.populate_obj(user)
                     user.set_password(uform.password.data)
                     db.session.commit()
-                    flash('Your inforamtion is update!')
+                    flash('Your inforamtion has been updated.', 'notify')
                     return redirect(url_for('main_bp.dashboard'))
             
             uform.username.data = current_user.username
@@ -69,7 +69,7 @@ class UserService():
             uform.stocks.data = current_user.stocks
             return render_template('update.html', form=uform)
         
-        flash('Please login first.')
+        flash('Please login first.', 'alert')
         render_template('login.html', title='Sign In', form=LoginForm())
     
 
@@ -133,5 +133,5 @@ class UserService():
   
     def logout():
         logout_user()
-        flash('You are logged out!')
+        flash('You are logged out!', 'notify')
         return redirect(url_for('main_bp.home'))

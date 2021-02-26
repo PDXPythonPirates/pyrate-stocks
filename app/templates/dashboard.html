@@ -8,8 +8,9 @@
   <h1>Dashboard</h1>
   <form action="{{ url_for('main_bp.add') }}" method="post"> 
     <div>
-    <input type="text" list="symbollist" name="symbol" Placeholder="Search Ticker..">
-    <button class="add-ticker btn btn-primary btn-sm mt-3" type="submit">Add Ticker</button>
+    <!-- Note: autocomplete="off" ensures the user is shown values in the <datalist> but not values they previously entered in the browser. -->
+    <input type="text" list="symbollist" name="symbol" autocomplete="off" Placeholder="Search Ticker..">
+    <button class="add-ticker btn btn-primary btn-sm ml-1" type="submit">Add Ticker</button>
     <datalist id="symbollist">
     {% for i in results %}
         <option>{{ i }}</option> 

@@ -55,7 +55,7 @@ def dashboard():
 @main_bp.route("/add/", methods=["POST"])
 def add():
     symbol = request.form['symbol']
-    symbol = symbol.lower()
+    symbol = symbol.upper()
     user_symbols = UserService.get_symbols()
     if symbol not in user_symbols:
         UserService.add_ticker(symbol)
@@ -65,7 +65,7 @@ def add():
 @main_bp.route("/delete/<symbol>")
 def delete(symbol):
     user_symbols = UserService.get_symbols()
-    symbol = symbol.lower()
+    symbol = symbol.upper()
     if symbol in user_symbols:
         UserService.delete_ticker(user_symbols, symbol)
     return redirect(url_for('main_bp.dashboard'))

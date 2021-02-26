@@ -282,7 +282,6 @@ AL,Air Lease Corporation Class A Common Stock
 AL^A,Air Lease Corporation 6.150% Fixed-to-Floating Rate Non-Cumulative Perpetual Preferred Stock Series A
 ALAC,Alberton Acquisition Corporation Ordinary Shares
 ALACR,Alberton Acquisition Corporation Rights exp April 26 2021
-ALACU,Alberton Acquisition Corporation Unit
 ALACW,Alberton Acquisition Corporation Warrant
 ALB,Albemarle Corporation Common Stock
 ALBO,Albireo Pharma Inc. Common Stock
@@ -1307,7 +1306,6 @@ CFACU,CF Finance Acquisition Corp. III Unit
 CFACW,CF Finance Acquisition Corp. III Warrant
 CFB,CrossFirst Bankshares Inc. Common Stock
 CFBK,CF Bankshares Inc. Common Stock
-CFCV,ClearBridge Focus Value ETF
 CFFI,C&F Financial Corporation Common Stock
 CFFN,Capitol Federal Financial Inc. Common Stock
 CFFVU,CF Acquisition Corp. V Unit
@@ -2145,6 +2143,7 @@ EIG,Employers Holdings Inc Common Stock
 EIGR,Eiger BioPharmaceuticals Inc. Common Stock
 EIM,Eaton Vance Municipal Bond Fund Common Shares of Beneficial Interest $.01 par value
 EIX,Edison International Common Stock
+EJFAU,EJF Acquisition Corp. Unit
 EKSO,Ekso Bionics Holdings Inc. Common Stock
 EL,Estee Lauder Companies Inc. (The) Common Stock
 ELA,Envela Corporation Common Stock
@@ -2439,7 +2438,6 @@ FDUSG,Fidus Investment Corporation 5.375% Notes Due 2024
 FDUSZ,Fidus Investment Corporation 6% Notes due 2024
 FDX,FedEx Corporation Common Stock
 FE,FirstEnergy Corp. Common Stock
-FEBZ,TrueShares Structured Outcome (February) ETF
 FEDU,Four Seasons Education (Cayman) Inc. American Depositary Shares each two ADSs representing one ordinary share
 FEDX,Emles Federal Contractors ETF
 FEI           ,First Trust MLP and Energy Income Fund Common Shares of Beneficial Interest
@@ -2786,12 +2784,12 @@ GGG,Graco Inc. Common Stock
 GGM,Guggenheim Credit Allocation Fund Common Shares of Beneficial Interest
 GGN,GAMCO Global Gold Natural Resources & Income Trust
 GGN^B,GAMCO Global Gold Natural Reources & Income Trust 5.00% Series B Cumulative 25.00 Liquidation Preference
-GGO,The Gabelli Go Anywhere Trust Common Shares of Beneficial Interest
 GGO^A,The Gabelli Go Anywhere Trust Series A Cumulative Puttable and Callable Preferred Shares
 GGT,Gabelli Multi-Media Trust Inc. (The) Common Stock
 GGT^E,Gabelli Multi-Media Trust Inc. (The) 5.125% Series E Cumulative Preferred Stock
 GGT^G,Gabelli Multi-Media Trust Inc. (The) 5.125% Series G Cumulative Preferred Shares
 GGZ,Gabelli Global Small and Mid Cap Value Trust (The) Common Shares of Beneficial Interest
+GGZ^A,Gabelli Global Small and Mid Cap Value Trust (The) 5.450% Series A Cumulative Preferred Shares (Liquidation Preference $25.00 per share)
 GH,Guardant Health Inc. Common Stock
 GHACU,Gaming & Hospitality Acquisition Corp. Unit
 GHC,Graham Holdings Company Common Stock
@@ -2809,6 +2807,7 @@ GIFI,Gulf Island Fabrication Inc. Common Stock
 GIGGU,GigCapital4 Inc. Unit
 GIGM,GigaMedia Limited Ordinary Shares
 GIII,G-III Apparel Group LTD. Common Stock
+GIIXU,Gores Holdings VIII Inc. Unit
 GIK,GigCapital3 Inc. Common Stock
 GIL,Gildan Activewear Inc. Class A Sub. Vot. Common Stock
 GILD,Gilead Sciences Inc. Common Stock
@@ -2949,6 +2948,7 @@ GRBK,Green Brick Partners Inc. Common Stock
 GRC,Gorman-Rupp Company (The) Common Stock
 GRCL,Gracell Biotechnologies Inc. American Depositary Shares
 GRCY,Greencity Acquisition Corporation Ordinary Shares
+GRCYU,Greencity Acquisition Corporation Unit
 GRCYW,Greencity Acquisition Corporation Warrants
 GRF,Eagle Capital Growth Fund Inc. Common Stock
 GRFS,Grifols S.A. American Depositary Shares
@@ -2986,6 +2986,7 @@ GSBD,Goldman Sachs BDC Inc. Common Stock
 GSEE,Goldman Sachs MarketBeta Emerging Markets Equity ETF
 GSEVU,Gores Holdings VII Inc. Units
 GSHD,Goosehead Insurance Inc. Class A Common Stock
+GSID,Goldman Sachs MarketBeta International Equity ETF
 GSIT,GSI Technology Common Stock
 GSK,GlaxoSmithKline PLC Common Stock
 GSKY,GreenSky Inc. Class A Common Stock
@@ -3052,6 +3053,7 @@ HAYN,Haynes International Inc. Common Stock
 HBAN,Huntington Bancshares Incorporated Common Stock
 HBANN,Huntington Bancshares Incorporated Depositary Shares each representing a 1/40th interest in a share of 5.875% Series C Non-Cumulative Perpetual Preferred Stock
 HBANO,Huntington Bancshares Incorporated Depositary Shares
+HBANP,Huntington Bancshares Incorporated Depositary Shares 4.500% Series H Non-Cumulative Perpetual Preferred Stock
 HBB,Hamilton Beach Brands Holding Company Class A Common Stock 
 HBCP,Home Bancorp Inc. Common Stock
 HBI,Hanesbrands Inc. Common Stock
@@ -3154,7 +3156,7 @@ HMCOU,HumanCo Acquisition Corp. Unit
 HMCOW,HumanCo Acquisition Corp. Warrant
 HMG,HMG/Courtland Properties Inc. Common Stock
 HMHC,Houghton Mifflin Harcourt Company Common Stock
-HMI,Huami Corporation American Depositary Shares each representing four Class A Ordinary Shares
+HMI,Huami Corporation
 HMLP,Hoegh LNG Partners LP Common Units representing Limited Partner Interests
 HMLP^A,Hoegh LNG Partners LP 8.75% Series A Cumulative Redeemable Preferred Units
 HMN,Horace Mann Educators Corporation Common Stock
@@ -3330,7 +3332,7 @@ IDEX,Ideanomics Inc. Common Stock
 IDN,Intellicheck Inc. Common Stock
 IDRA,Idera Pharmaceuticals Inc. Common Stock
 IDT,IDT Corporation Class B Common Stock
-IDXG,Interpace Biosciences Inc. Common Stock
+IDXG,Interpace Biosciences Inc.
 IDXX,IDEXX Laboratories Inc. Common Stock
 IDYA,IDEAYA Biosciences Inc. Common Stock
 IEA,Infrastructure and Energy Alternatives Inc. Common Stock
@@ -3391,7 +3393,7 @@ IMACW,IMAC Holdings Inc. Warrant
 IMAX,Imax Corporation Common Stock
 IMBI,iMedia Brands Inc. Class A Common Stock
 IMCR,Immunocore Holdings plc American Depositary Shares
-IMFL,Invesco Exchange-Traded Self-Indexed Fund Trust
+IMFL,Invesco International Developed Dynamic Multifactor ETF
 IMGN,ImmunoGen Inc. Common Stock
 IMH,Impac Mortgage Holdings Inc. Common Stock 
 IMKTA,Ingles Markets Incorporated Class A Common Stock
@@ -3500,6 +3502,7 @@ ISD,PGIM High Yield Bond Fund Inc.
 ISDR,Issuer Direct Corporation Common Stock
 ISEE,IVERIC bio Inc. Common Stock
 ISIG,Insignia Systems Inc. Common Stock
+ISLEU,Isleworth Healthcare Acquisition Corporation Unit
 ISNS,Image Sensing Systems Inc. Common Stock
 ISR,IsoRay Inc. Common Stock (DE)
 ISRG,Intuitive Surgical Inc. Common Stock
@@ -5011,11 +5014,12 @@ PCB,PCB Bancorp Common Stock
 PCF,High Income Securities Fund Common Stock
 PCG,Pacific Gas & Electric Co. Common Stock
 PCG^A,Pacific Gas & Electric Co. 6% Preferred Stock
-PCG^B,Pacific Gas & Electric Co. 5 1/2% Preferred Stock
 PCG^C,Pacific Gas & Electric Co. 5% 1st Preferred Stock
 PCG^D,Pacific Gas & Electric Co. 5% 1st  Red. Preferred Stock
 PCG^E,Pacific Gas & Electric Co. 5% 1st A Preferred Stock
 PCG^G,Pacific Gas & Electric Co. 4.80% 1st Preferred Stock
+PCG^H,Pacific Gas & Electric Co. 4.50% 1st Preferred Stock
+PCG^I,Pacific Gas & Electric Co. 4.36% 1st Preferred Stock
 PCGU,Pacific Gas & Electric Co. Equity Unit
 PCH,PotlatchDeltic Corporation Common Stock
 PCI,PIMCO Dynamic Credit and Mortgage Income Fund Common Shares of Beneficial Interest
@@ -5276,6 +5280,7 @@ PRSRU,Prospector Capital Corp. Unit
 PRT,PermRock Royalty Trust Trust Units
 PRTA,Prothena Corporation plc Ordinary Shares
 PRTC,PureTech Health plc American Depositary Shares
+PRTG,Portage Biotech Inc. Common Stock
 PRTH,Priority Technology Holdings Inc. Common Stock
 PRTK,Paratek Pharmaceuticals Inc. Common Stock
 PRTS,CarParts.com Inc. Common Stock
@@ -5524,7 +5529,7 @@ RFI,Cohen & Steers Total Return Realty Fund Inc. Common Stock
 RFIL,RF Industries Ltd. Common Stock
 RFL,Rafael Holdings Inc. Class B Common Stock
 RFM,RiverNorth Flexible Municipal Income Fund Inc. Common Stock
-RFMZ,RiverNorth Flexible Municipal Income Fund II Inc.
+RFMZ,RiverNorth Flexible Municipal Income Fund II Inc. Common Stock
 RFP,Resolute Forest Products Inc. Common Stock
 RGA,Reinsurance Group of America Incorporated Common Stock
 RGCO,RGC Resources Inc. Common Stock
@@ -5773,6 +5778,7 @@ SCPE,SC Health Corporation Class A Ordinary Shares
 SCPH,scPharmaceuticals Inc. Common Stock
 SCPL,SciPlay Corporation Class A Common Stock
 SCPS,Scopus BioPharma Inc. Common Stock
+SCR,Score Media and Gaming Inc. Class A Subordinate Voting Shares
 SCS,Steelcase Inc. Common Stock
 SCSC,ScanSource Inc. Common Stock
 SCU,Sculptor Capital Management Inc. Class A Common Stock
@@ -5929,7 +5935,7 @@ SLN,Silence Therapeutics Plc American Depository Share
 SLNO,Soleno Therapeutics Inc. Common Stock
 SLP,Simulations Plus Inc. Common Stock
 SLQT,SelectQuote Inc. Common Stock
-SLRC,Solar Capital Ltd. Common Stock
+SLRC,SLR Investment Corp. Common Stock
 SLRX,Salarius Pharmaceuticals Inc. Common Stock
 SLS,SELLAS Life Sciences Group Inc. Common Stock
 SM,SM Energy Company Common Stock
@@ -5982,7 +5988,6 @@ SNRH,Senior Connect Acquisition Corp. I Class A Common Stock
 SNRHU,Senior Connect Acquisition Corp. I Unit
 SNRHW,Senior Connect Acquisition Corp. I Warrant
 SNSE,Sensei Biotherapeutics Inc. Common Stock
-SNSS,Sunesis Pharmaceuticals Inc. Common Stock
 SNV,Synovus Financial Corp. Common Stock
 SNV^D,Synovus Financial Corp. Fixed-to-Floating Rate Non-Cumulative Perpetual Preferred Stock Series D Liquation Preference $25.00 per Share
 SNV^E,Synovus Financial Corp. 5.875% Fixed-Rate Reset Non-Cumulative Perpetual Preferred Stock Series E
@@ -6171,7 +6176,7 @@ SUM,Summit Materials Inc. Class A Common Stock
 SUMO,Sumo Logic Inc. Common Stock
 SUMR,Summer Infant Inc. Common Stock
 SUN,Sunoco LP Common Units representing limited partner interests
-SUNS,Solar Senior Capital Ltd. Common Stock
+SUNS,SLR Senior Investment Corp. Common Stock
 SUNW,Sunworks Inc. Common Stock
 SUP,Superior Industries International Inc. Common Stock (DE)
 SUPN,Supernus Pharmaceuticals Inc. Common Stock

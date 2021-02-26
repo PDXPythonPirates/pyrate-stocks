@@ -8,8 +8,8 @@ import sqlite3
 class TickerService:
     def importCsvDb():
         # Read original csv data
-        # CSV Source: https://www.nasdaq.com/market-activity/stocks/screener 
-        symbolList = pd.read_csv("app/csvfiles/nasdaq_screener_1614251368892.csv", usecols=["Symbol", "Name"], index_col=['Symbol'])
+        # CSV Source: https://www.nasdaq.com/market-activity/stocks/screener
+        symbolList = pd.read_csv("app/csvfiles/nasdaq_screener_1614316526441.csv", usecols=["Symbol", "Name"], index_col=['Symbol'])
         print("Reading csv columns ... ")
 
         # Parse original csv data to columns needed & save to new csv file
@@ -41,8 +41,7 @@ class TickerService:
         ticker_data = []
         for s in symbols:
             s = s.upper()
-            # Check for symbols short enough to exist
-            if(len(s) <= 5):
+            if(len(s) <= 6):
                 try:
                     # Try to retrieve ticker data
                     ticker = yf.Ticker(s)
@@ -55,7 +54,7 @@ class TickerService:
                 except (KeyError, ImportError, HTTPError, URLError) as e:
                     # Print the problem ticker to console and delete it from the user's followed tickers
                     flash(f'Ticker {s} is not a valid entry. ')
-                    UserService.delete_ticker(UserService.get_symbols(), s.lower())
+                    UserService.delete_ticker(UserService.get_symbols(), s.upper())
                     ticker = None
                     pass
                 

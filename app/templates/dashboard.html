@@ -6,20 +6,18 @@
 <!-- Symbol/Ticker Dropdown -->
 <div class="p-4">
   <h1>Dashboard</h1>
-  <input type="text" list="symbollist" Placeholder="Search Symbol..">
-  <datalist id="symbollist">
-  {% for i in results %}
-      <option>{{ i }}</option>
-  {% endfor %}
-  </datalist>
-
-  <form action="{{ url_for('main_bp.add') }}" method="post">
+  <form action="{{ url_for('main_bp.add') }}" method="post"> 
     <div>
-      <input type="text" name="symbol" placeholder="Ex: AAPL" required><br>
-      <button class="add-ticker btn btn-primary btn-sm mt-3" type="submit">Add Ticker</button>
-    </div>
+    <input type="text" list="symbollist" name="symbol" Placeholder="Search Ticker..">
+    <button class="add-ticker btn btn-primary btn-sm mt-3" type="submit">Add Ticker</button>
+    <datalist id="symbollist">
+    {% for i in results %}
+        <option>{{ i }}</option> 
+    {% endfor %}
+    </datalist>
+  </div>
   </form>
-</div>
+
 {% if stocks %}
 <div class="p-4">
   <h3>Followed Stock Tickers</h3>

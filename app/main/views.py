@@ -63,7 +63,7 @@ def add():
 @main_bp.route("/delete/<symbol>")
 def delete(symbol):
     user_symbols = UserService.get_symbols()
-    symbol = symbol.casefold()
+    symbol = symbol.upper()
     if symbol in user_symbols:
         UserService.delete_ticker(user_symbols, symbol)
     return redirect(url_for('main_bp.dashboard'))

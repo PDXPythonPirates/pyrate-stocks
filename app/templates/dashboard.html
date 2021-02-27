@@ -11,12 +11,12 @@
   {% if stocks %}
   {% for stock in stocks %}
   <div class="ticker-container bg-dark mt-4">
-    <div class="ticker-name col pt-2">
+    <div class="ticker-name col pt-1">
       <h2 class="text-light">{{ stock.symbol }}</h2>
       <p class="text-light">{{ stock.name }}</p>
-      <h2 class="ticker-success mb-2">${{ stock.current_price }}</h2>
+      <h2 class="ticker-success">${{ stock.current_price }}</h2>
     </div>
-    <div class="ticker-graph col pt-2">
+    <div class="ticker-graph col pt-1">
     </div>
     <div class="ticker-details col pt-2">
       <p class="ticker-success">High: ${{ stock.high }}<br><span class="text-danger">Low: ${{ stock.low }}</span></p>
@@ -27,15 +27,16 @@
     </div>
   </div>
   {% endfor %}
-</div>
-{% else %}
-{% endif %}
-
-<div class="logout-button p-4">
-   <form class="" name="" action="{{ url_for('main_bp.logout') }}" method="POST">
+  {% else %}
+  {% endif %}
+  <div class="logout-button pt-3">
+    <form class="" name="" action="{{ url_for('main_bp.logout') }}" method="POST">
       {{ display_message }}
       {{ loform.csrf_token }}
       <input class="btn btn-dark btn-sm" type="submit" value="Logout"/>
-   </form>
+    </form>
+  </div>
 </div>
+
+
 {% endblock %}

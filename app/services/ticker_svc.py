@@ -45,7 +45,7 @@ class TickerService:
 
             else:
                 # Ticker is too long to exist and will be deleted
-                flash(f'Ticker symbol {s} was too long. Deleting from user\'s tickers.', 'alert')
+                flash(f'Ticker symbol {s} was too long.', 'alert')
                 UserService.delete_ticker(UserService.get_symbols(), s.lower())
 
         return ticker_data

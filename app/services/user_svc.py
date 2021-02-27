@@ -22,7 +22,6 @@ class UserService():
             flash(f'Welcome {user.username}! Please login.', 'notify')
             # lform.username.data = user.username
             return redirect(url_for('main_bp.dashboard'))
-        flash('Please sign Up', 'notify')
         return render_template('signup.html', title='Signup', form=sform)    
         
     def login():
@@ -42,7 +41,7 @@ class UserService():
                 lform.username.data = user.username
                 return render_template('login.html', title='Sign In', form=lform)
             
-            flash('You are logged in.', 'notify')
+            flash(f'Welcome, {user.username}!', 'notify')
             login_user(user, remember=lform.remember.data)
             return redirect(url_for('main_bp.dashboard'))
         return render_template('login.html', title='Sign In', form=lform)

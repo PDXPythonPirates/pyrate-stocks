@@ -4,6 +4,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard-to-guess-string'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    TRAP_HTTP_EXCEPTIONS=True
 
     # Takes the application instance as an argument - for now, 
     # the base Config class implements an empty init_app() method.

@@ -269,7 +269,9 @@ AJXA,Great Ajax Corp. 7.25% Convertible Senior Notes due 2024
 AKAM,Akamai Technologies Inc. Common Stock
 AKBA,Akebia Therapeutics Inc. Common Stock
 AKER,Akers Biosciences Inc. Common Stock
+AKIC,Sports Ventures Acquisition Corp. Class A Ordinary Shares
 AKICU,Sports Ventures Acquisition Corp. Unit
+AKICW,Sports Ventures Acquisition Corp. Warrant
 AKO/A,Embotelladora Andina S.A.
 AKO/B,Embotelladora Andina S.A.
 AKR,Acadia Realty Trust Common Stock
@@ -282,6 +284,7 @@ AL,Air Lease Corporation Class A Common Stock
 AL^A,Air Lease Corporation 6.150% Fixed-to-Floating Rate Non-Cumulative Perpetual Preferred Stock Series A
 ALAC,Alberton Acquisition Corporation Ordinary Shares
 ALACR,Alberton Acquisition Corporation Rights exp April 26 2021
+ALACU,Alberton Acquisition Corporation Unit
 ALACW,Alberton Acquisition Corporation Warrant
 ALB,Albemarle Corporation Common Stock
 ALBO,Albireo Pharma Inc. Common Stock
@@ -535,6 +538,7 @@ ARVN,Arvinas Inc. Common Stock
 ARW,Arrow Electronics Inc. Common Stock
 ARWR,Arrowhead Pharmaceuticals Inc. Common Stock
 ARYA,ARYA Sciences Acquisition Corp III Class A Ordinary Shares
+ARYD,ARYA Sciences Acquisition Corp IV Class A Odinary Shares
 ASA,ASA  Gold and Precious Metals Limited
 ASAN,Asana Inc. Class A Common Stock
 ASAQ,Atlantic Street Acquisition Corp Class A Common Stock
@@ -626,7 +630,6 @@ AUB,Atlantic Union Bankshares Corporation Common Stock
 AUBAP,Atlantic Union Bankshares Corporation Depositary Shares each representing a 1/400th ownership interest in a share of 6.875% Perpetual Non-Cumulative Preferred Stock Series A
 AUBN,Auburn National Bancorporation Inc. Common Stock
 AUDC,AudioCodes Ltd. Common Stock
-AUGZ,TrueShares Structured Outcome (August) ETF
 AUMN,Golden Minerals Company Common Stock
 AUPH,Aurinia Pharmaceuticals Inc Ordinary Shares
 AUTL,Autolus Therapeutics plc American Depositary Share
@@ -1022,7 +1025,6 @@ BREZR,Breeze Holdings Acquisition Corp. Right
 BREZW,Breeze Holdings Acquisition Corp. Warrant
 BRFS,BRF S.A.
 BRG,Bluerock Residential Growth REIT Inc. Class A Common Stock
-BRG^A,Bluerock Residential Growth REIT Inc. 8.250% Series A Cumulative Redeemable Preferred Stock ($0.01 par value per share)
 BRG^C,Bluerock Residential Growth REIT Inc. 7.625% Series C Cumulative Redeemable Preferred Stock
 BRG^D,Bluerock Residential Growth REIT Inc. 7.125% Series D Cumulative Preferred Stock ($0.01 par value per share)
 BRID,Bridgford Foods Corporation Common Stock
@@ -1306,6 +1308,7 @@ CFACU,CF Finance Acquisition Corp. III Unit
 CFACW,CF Finance Acquisition Corp. III Warrant
 CFB,CrossFirst Bankshares Inc. Common Stock
 CFBK,CF Bankshares Inc. Common Stock
+CFCV,ClearBridge Focus Value ETF
 CFFI,C&F Financial Corporation Common Stock
 CFFN,Capitol Federal Financial Inc. Common Stock
 CFFVU,CF Acquisition Corp. V Unit
@@ -1329,7 +1332,7 @@ CG,The Carlyle Group Inc. Common Stock
 CGA,China Green Agriculture Inc. Common Stock
 CGBD,TCG BDC Inc. Common Stock
 CGC,Canopy Growth Corporation Common Shares
-CGEM,Cullinan Management Inc. Common Stock
+CGEM,Cullinan Oncology Inc. Common Stock
 CGEN,Compugen Ltd. Ordinary Shares
 CGIX,Cancer Genetics Inc. Common Stock
 CGNT,Cognyte Software Ltd. Ordinary Shares
@@ -1668,6 +1671,7 @@ CRTD,Creatd Inc. Common Stock
 CRTDW,Creatd Inc. Warrant
 CRTO,Criteo S.A. American Depositary Shares
 CRTX,Cortexyme Inc. Common Stock
+CRU,Crucible Acquisition Corporation Class A Common Stock
 CRUS,Cirrus Logic Inc. Common Stock
 CRVL,CorVel Corp. Common Stock
 CRVS,Corvus Pharmaceuticals Inc. Common Stock
@@ -1862,7 +1866,6 @@ DDT,Dillard's Capital Trust I
 DE,Deere & Company Common Stock
 DEA,Easterly Government Properties Inc. Common Stock
 DECK,Deckers Outdoor Corporation Common Stock
-DECZ,TrueShares Structured Outcome (December) ETF
 DEFN,Emles Trust Emles Protective Allocation ETF
 DEH,D8 Holdings Corp. Class A Ordinary Shares
 DEI,Douglas Emmett Inc. Common Stock
@@ -2091,7 +2094,6 @@ ECF^A,Ellsworth Growth and Income Fund Ltd. 5.25% Series A Cumulative Preferred 
 ECHO,Echo Global Logistics Inc. Common Stock
 ECL,Ecolab Inc. Common Stock
 ECOL,US Ecology Inc Common Stock
-ECOLW,US Ecology Inc. Warrant
 ECOM          ,ChannelAdvisor Corporation Common Stock
 ECOR,electroCore Inc. Common Stock
 ECPG,Encore Capital Group Inc Common Stock
@@ -2575,7 +2577,9 @@ FOUR,Shift4 Payments Inc. Class A Common Stock
 FOX,Fox Corporation Class B Common Stock
 FOXA,Fox Corporation Class A Common Stock
 FOXF,Fox Factory Holding Corp. Common Stock
+FOXW,FoxWayne Enterprises Acquisition Corp. Class A Common Stock
 FOXWU,FoxWayne Enterprises Acquisition Corp. Unit
+FOXWW,FoxWayne Enterprises Acquisition Corp. Warrant
 FPAC,Far Peak Acquisition Corporation Class A Ordinary Shares
 FPAY,FlexShopper Inc. Common Stock
 FPF,First Trust Intermediate Duration Preferred & Income Fund Common Shares of Beneficial Interest
@@ -2689,6 +2693,7 @@ FVAM,5:01 Acquisition Corp. Class A Common Stock
 FVCB,FVCBankcorp Inc. Common Stock
 FVE,Five Star Senior Living Inc. Common Stock
 FVRR,Fiverr International Ltd. Ordinary Shares no par value
+FVT,Fortress Value Acquisition Corp. III Class A Common Stock
 FWAA,Fifth Wall Acquisition Corp. I Class A Common Stock
 FWONA,Liberty Media Corporation Series A Liberty Formula One Common Stock
 FWONK,Liberty Media Corporation Series C Liberty Formula One Common Stock
@@ -3156,7 +3161,6 @@ HMCOU,HumanCo Acquisition Corp. Unit
 HMCOW,HumanCo Acquisition Corp. Warrant
 HMG,HMG/Courtland Properties Inc. Common Stock
 HMHC,Houghton Mifflin Harcourt Company Common Stock
-HMI,Huami Corporation
 HMLP,Hoegh LNG Partners LP Common Units representing Limited Partner Interests
 HMLP^A,Hoegh LNG Partners LP 8.75% Series A Cumulative Redeemable Preferred Units
 HMN,Horace Mann Educators Corporation Common Stock
@@ -3332,7 +3336,6 @@ IDEX,Ideanomics Inc. Common Stock
 IDN,Intellicheck Inc. Common Stock
 IDRA,Idera Pharmaceuticals Inc. Common Stock
 IDT,IDT Corporation Class B Common Stock
-IDXG,Interpace Biosciences Inc.
 IDXX,IDEXX Laboratories Inc. Common Stock
 IDYA,IDEAYA Biosciences Inc. Common Stock
 IEA,Infrastructure and Energy Alternatives Inc. Common Stock
@@ -3551,6 +3554,7 @@ JAGX,Jaguar Health Inc. Common Stock
 JAKK,JAKKS Pacific Inc. Common Stock
 JAMF,Jamf Holding Corp. Common Stock
 JAN,JanOne Inc. Common Stock (NV)
+JANZ,TrueShares Structured Outcome (January) ETF
 JAX,J. Alexander's Holdings Inc. Common Stock
 JAZZ,Jazz Pharmaceuticals plc Common Stock (Ireland)
 JBGS,JBG SMITH Properties Common Shares 
@@ -3641,7 +3645,9 @@ JYNT,The Joint Corp. Common Stock
 K,Kellogg Company Common Stock
 KAI,Kadant Inc Common Stock
 KAIIU,Kismet Acquisition Two Corp. Unit
+KAIR,Kairos Acquisition Corp. Class A Ordinary Shares
 KAIRU,Kairos Acquisition Corp. Unit
+KAIRW,Kairos Acquisition Corp. Warrant
 KALA,Kala Pharmaceuticals Inc. Common Stock
 KALU,Kaiser Aluminum Corporation Common Stock
 KALV,KalVista Pharmaceuticals Inc. Common Stock
@@ -4022,6 +4028,7 @@ MAACW,Montes Archimedes Acquisition Corp. Warrant
 MAC,Macerich Company (The) Common Stock
 MACAU,Moringa Acquisition Corp Units
 MACK,Merrimack Pharmaceuticals Inc. Common Stock
+MACQU,MCAP Acquisition Corporation Unit
 MACU,Mallard Acquisition Corp. Common stock
 MACUU,Mallard Acquisition Corp. Unit
 MACUW,Mallard Acquisition Corp. Warrant
@@ -4434,7 +4441,6 @@ NATH,Nathan's Famous Inc. Common Stock
 NATI,National Instruments Corporation Common Stock
 NATR,Nature's Sunshine Products Inc. Common Stock
 NAV,Navistar International Corporation Common Stock
-NAV^D,Navistar International Corporation Preferred Stock
 NAVB,Navidea Biopharmaceuticals Inc. Common Stock
 NAVI,Navient Corporation Common Stock
 NAZ,Nuveen Arizona Quality Municipal Income Fund Common Stock
@@ -4548,8 +4554,6 @@ NHI,National Health Investors Inc. Common Stock
 NHIC,NewHold Investment Corp. Class A Common Stock
 NHICU,NewHold Investment Corp. Unit
 NHICW,NewHold Investment Corp. Warrant
-NHLD,National Holdings Corporation Common Stock
-NHLDW,National Holdings Corporation Warrants
 NHS,Neuberger Berman High Yield Strategies Fund
 NHTC,Natural Health Trends Corp. Common Stock
 NI,NiSource Inc Common Stock
@@ -5017,7 +5021,6 @@ PCG^A,Pacific Gas & Electric Co. 6% Preferred Stock
 PCG^C,Pacific Gas & Electric Co. 5% 1st Preferred Stock
 PCG^D,Pacific Gas & Electric Co. 5% 1st  Red. Preferred Stock
 PCG^E,Pacific Gas & Electric Co. 5% 1st A Preferred Stock
-PCG^G,Pacific Gas & Electric Co. 4.80% 1st Preferred Stock
 PCG^H,Pacific Gas & Electric Co. 4.50% 1st Preferred Stock
 PCG^I,Pacific Gas & Electric Co. 4.36% 1st Preferred Stock
 PCGU,Pacific Gas & Electric Co. Equity Unit
@@ -5310,7 +5313,6 @@ PSB^W,PS Business Parks Inc. Depositary Shares Each Representing 1/1000 of a Sha
 PSB^X,PS Business Parks Inc. Depositary Shares Each Representing 1/1000 of a Share of 5.25% Cumulative Preferred Stock Series X
 PSB^Y,PS Business Parks Inc. 5.20% Cumulative Preferred Stock Series Y
 PSB^Z,PS Business Parks Inc. Depositary Shares Each Representing 1/1000 of a Share of 4.875% Cumulative Preferred Stock Series Z  par value $0.01 per share
-PSCX,Pacer Swan SOS Conservative (December) ETF
 PSEC,Prospect Capital Corporation Common Stock
 PSF,Cohen & Steers Select Preferred and Income Fund Inc. Common Stock
 PSFD,Pacer Funds ETF
@@ -5731,6 +5733,7 @@ SBBA,Scorpio Tankers Inc. 7.00% Senior Notes due 2025
 SBBP,Strongbridge Biopharma plc Ordinary Shares
 SBCF,Seacoast Banking Corporation of Florida Common Stock
 SBE,Switchback Energy Acquisition Corporation Class A Common Stock
+SBEAU,SilverBox Engaged Merger Corp I Units
 SBFG,SB Financial Group Inc. Common Stock
 SBG,Sandbridge Acquisition Corporation Class A Common Stock
 SBGI,Sinclair Broadcast Group Inc. Class A Common Stock
@@ -6146,6 +6149,7 @@ STNG,Scorpio Tankers Inc. Common Shares
 STOK,Stoke Therapeutics Inc. Common Stock
 STON,StoneMor Inc. Common Stock
 STOR,STORE Capital Corporation Common Stock
+STPC,Star Peak Corp II
 STPK,Star Peak Energy Transition Corp. Class A Common Stock
 STRA,Strategic Education Inc. Common Stock
 STRL,Sterling Construction Company Inc Common Stock
@@ -6569,6 +6573,7 @@ TWCTW,TWC Tech Holdings II Corp. Warrant
 TWI,Titan International Inc. (DE) Common Stock
 TWIN,Twin Disc Incorporated Common Stock
 TWLO,Twilio Inc. Class A Common Stock
+TWLVU,Twelve Seas Investment Company II Unit
 TWN,Taiwan Fund Inc. (The) Common Stock
 TWND,Tailwind Acquisition Corp. Class A Common Stock
 TWNK,Hostess Brands Inc. Class A Common Stock
@@ -6790,7 +6795,6 @@ VII,7GC & Co. Holdings Inc. Class A common stock
 VIIAU,7GC & Co. Holdings Inc. Unit
 VIIAW,7GC & Co. Holdings Inc. Warrant
 VINC,Vincerx Pharma Inc. Common Stock
-VINCU,Vincerx Pharma Inc. Unit 
 VINCW,Vincerx Pharma Inc. Warrant
 VINO,Gaucho Group Holdings Inc. Common Stock
 VINP,Vinci Partners Investments Ltd. Class A Common Shares
@@ -6801,6 +6805,7 @@ VIRC,Virco Manufacturing Corporation Common Stock
 VIRI,Virios Therapeutics Inc. Common Stock
 VIRS,Pacer BioThreat Strategy ETF
 VIRT,Virtu Financial Inc. Class A Common Stock
+VIRX,Viracta Therapeutics Inc. Common Stock
 VISL,Vislink Technologies Inc. Common Stock
 VIST,Vista Oil & Gas S.A.B. de C.V. American Depositary Shares each representing one series A share with no par value
 VITL,Vital Farms Inc. Common Stock
@@ -7162,6 +7167,7 @@ ZCMD,Zhongchao Inc. Class A Ordinary Shares
 ZDGE,Zedge Inc. Class B Common Stock 
 ZEAL,Zealand Pharma A/S American Depositary Shares
 ZEN,Zendesk Inc. Common Stock
+ZEPP,Zepp Health Corporation American Depositary Shares
 ZEUS,Olympic Steel Inc. Common Stock
 ZG,Zillow Group Inc. Class A Common Stock
 ZGNX,Zogenix Inc. Common Stock

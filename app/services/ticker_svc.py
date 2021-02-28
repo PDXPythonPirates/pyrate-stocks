@@ -7,10 +7,12 @@ import sqlite3
 
 class TickerService:
     def importCsvDb():
-
-        # NOTE: CSV Source: https://www.nasdaq.com/market-activity/stocks/screener
+        # NOTE: CSV Source: https://www.nasdaq.com/market-activity/stocks/screener. 
+        # To use a different csv, update the file below with either a .csv link or .csv file name
+        # and place the csv in the csvfiles directory if applicable. 
+        
         # Read original csv data
-        symbolList = pd.read_csv("app/csvfiles/nasdaq_screener_1614316526441.csv", usecols=["Symbol", "Name"], index_col=['Symbol'])
+        symbolList = pd.read_csv("app/csvfiles/nasdaq_screener_1614500646091.csv", usecols=["Symbol", "Name"], index_col=['Symbol'])
         print("Reading csv columns ... ")
 
         # Parse original csv data to columns needed & save to new csv file

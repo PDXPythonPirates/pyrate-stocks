@@ -9,7 +9,7 @@ def send_password_reset_email(user):
     token = user.get_reset_password_token()
     print('useremail for send_password_reset_email function in email.py=', user.email)
     send_email('Reset Your Password',
-               sender=Config.ADMINS[0],
+               sender=Config.MAIL_USERNAME,
                recipients=[user.email],
                text_body=render_template('reset_password.txt', user=user, token=token),
                html_body=render_template('reset_password.html', user=user, token=token, form=ResetPasswordForm()))

@@ -6,11 +6,26 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     TRAP_HTTP_EXCEPTIONS=True
 
-    MAIL_SERVER = 'smtp.gmail.com'
+    # MAIL_SERVER = 'smtp.gmail.com'
+    # MAIL_PORT = 465
+    # MAIL_USE_TLS = False
+    # MAIL_USE_SSL = True
+    
+    # MAIL_SERVER = 'smtp.gmail.com'
+    # MAIL_PORT = 465
+    # MAIL_USE_TLS = False
+    # MAIL_USE_SSL = True
+    # MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    # MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+
+    MAIL_SERVER='smtp.mailtrap.io'
     MAIL_PORT = 465
-    MAIL_USE_TLS = False
-    MAIL_USE_SSL = True
-    ADMINS = ['ppp.cohort1@gmail.com']
+    MAIL_USERNAME = 'c13b6e757c1db6'
+    MAIL_PASSWORD = '614aa52c9cceb3'
+    MAIL_USE_TLS = True
+    MAIL_USE_SSL = False
+    
+    # MAIL_USERNAME = 'ppp.cohort1@gmail.com'
     
     #MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.gmail.com')
     #MAIL_PORT =  int(os.environ.get('MAIL_PORT',  '465'))

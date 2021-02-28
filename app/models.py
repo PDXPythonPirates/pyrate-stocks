@@ -29,7 +29,7 @@ class Account(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-    def get_reset_password_token(self, expires_in=600):
+    def get_reset_password_token(self, expires_in=1800):
         return jwt.encode(
             {'reset_password': self.id, 'exp': time() + expires_in},
             Config.SECRET_KEY, algorithm='HS256')

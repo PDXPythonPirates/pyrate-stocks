@@ -13,7 +13,7 @@
     <button class="add-ticker btn btn-primary btn-sm ml-1" type="submit">Add Ticker</button>
     <datalist id="tickerlist">
     {% for i in results %}
-        <option>{{ i }}</option> 
+        <option value="{{ i }}"></option> 
     {% endfor %}
     </datalist>
   </div>

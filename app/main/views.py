@@ -7,6 +7,12 @@ from app.services.user_svc import UserService
 from app import db
 from app.services.ticker_svc import TickerService
 
+@main_bp.before_app_first_request
+def before_app_first_request():
+    print("before_app_first_request started running.")
+    TickerService.importCsvDb()
+    print("before_app_first_request finished running.")
+
 @main_bp.route('/')
 def home():
     return render_template('home.html')
@@ -34,7 +40,6 @@ def update():
 # Get stock ticker data and render dashboard
 @main_bp.route('/dashboard/', methods=['GET', 'POST'])
 def dashboard():
-    TickerService.importCsvDb()
     # Query symbolList table to dashboard symbol/Ticker dropdown
     symbolList = db.Table('symbolList', db.metadata, autoload=True, autoload_with=db.engine)
     results = [i.Symbol for i in db.session.query(symbolList)]

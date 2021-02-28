@@ -2,7 +2,9 @@ from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user
 from app import db
 from app.models import Account
-from app.main.forms import LoginForm, UpdateForm, SignUpForm
+from app.services.email import send_password_reset_email
+from app.main.forms import LoginForm, UpdateForm, SignUpForm, ResetPasswordRequestForm, ResetPasswordForm
+
 
 class UserService():
     def signup():
@@ -11,8 +13,6 @@ class UserService():
             return redirect(url_for('main_bp.dashboard'))
         
         sform = SignUpForm()
-        lform = LoginForm()
-
         if sform.validate_on_submit():
             user = Account(username=sform.username.data, email=sform.email.data, password_hash='xxx', stocks=sform.stocks.data)
             user.set_password(sform.password.data)
@@ -46,7 +46,33 @@ class UserService():
             return redirect(url_for('main_bp.dashboard'))
         return render_template('login.html', title='Sign In', form=lform)
 
-    
+    def reset_passwd_request():
+        if current_user.is_authenticated:
+            return redirect(url_for('main_bp.login'))
+        form = ResetPasswordRequestForm()
+        if form.validate_on_submit():
+            user = Account.query.filter_by(email=form.email.data).first()
+            if user:
+                send_password_reset_email(user)
+            flash('Check your email for the instructions to reset your password')
+            return redirect(url_for('main_bp.login'))
+        return render_template('reset_password_request.html',
+                            title='Reset Password', form=form)
+
+    def reset_passwd(token):
+        if current_user.is_authenticated:
+            return redirect(url_for('main_bp.dashboard'))
+        user = Account.verify_reset_password_token(token)
+        if not user:
+            return redirect(url_for('main_bp.login'))
+        form = ResetPasswordForm()
+        if form.validate_on_submit():
+            user.set_password(form.password.data)
+            db.session.commit()
+            flash('Your password has been reset.')
+            return redirect(url_for('main_bp.login'))
+        return render_template('reset_password.html', form=form)
+
     def update():
         if current_user.is_authenticated:
             _username = current_user.username

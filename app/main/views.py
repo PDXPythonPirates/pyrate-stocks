@@ -22,14 +22,22 @@ def login():
     user_login = UserService.login()
     return user_login
 
-@main_bp.route('/logout/', methods=['GET', 'POST'])
+@main_bp.route('/reset_passwd_request', methods=['GET', 'POST'])
+def reset_passwd_request():
+    pass_req = UserService.reset_passwd_request()
+    return pass_req
 
+@main_bp.route('/reset_passwd/<token>', methods=['GET', 'POST'])
+def reset_passwd(token):
+    pass_reset = UserService.reset_passwd(token)
+    return pass_reset
+
+@main_bp.route('/logout/', methods=['GET', 'POST'])
 def logout():
     user_logout = UserService.logout()
     return user_logout
 
 @main_bp.route('/update/', methods=['GET', 'POST'])
-
 def update():
     user_update = UserService.update()
     return user_update

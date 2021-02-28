@@ -6,7 +6,18 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     TRAP_HTTP_EXCEPTIONS=True
 
-    # Takes the application instance as an argument - for now, 
+    MAIL_SERVER = 'smtp.gmail.com'
+    MAIL_PORT = 465
+    MAIL_USE_TLS = False
+    MAIL_USE_SSL = True
+    ADMINS = ['ppp.cohort1@gmail.com']
+    
+    #MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.gmail.com')
+    #MAIL_PORT =  int(os.environ.get('MAIL_PORT',  '465'))
+    #MAIL_USE_TLS =  int(os.environ.get('MAIL_USE_TLS',  False))
+    #MAIL_USE_SSL = int(os.environ.get('MAIL_USE_SSL',  True))
+    
+        
     # the base Config class implements an empty init_app() method.
     @staticmethod
     def init_app(app):

@@ -6,7 +6,7 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 **Project Title**
 
-*A Personal Investment App*
+*Pyrate Stocks*
 
 <br>
 

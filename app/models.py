@@ -11,7 +11,7 @@ def load_user(id):
 class Account(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(10), unique=True, nullable=False)
-    email = db.Column(db.String(10))
+    email = db.Column(db.String(30))
     password_hash = db.Column(db.String(128))
     stocks = db.Column(db.String(32))
     profiles = db.relationship('DummyTable', backref='link', lazy='dynamic')

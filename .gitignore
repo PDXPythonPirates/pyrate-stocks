@@ -140,3 +140,6 @@ app/main/keychain.py
 
 #vscode
 **/.vscode/
+
+fin_app.sqlite3
+data-dev.sqlite3

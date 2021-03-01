@@ -5,46 +5,9 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard-to-guess-string'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     TRAP_HTTP_EXCEPTIONS=True
-
-    MAIL_SERVER='smtp.mailtrap.io'
-    MAIL_PORT = 465
-    MAIL_USERNAME = 'c13b6e757c1db6'
-    MAIL_PASSWORD = '614aa52c9cceb3'
-    MAIL_USE_TLS = True
-    MAIL_USE_SSL = False
-    
-    # MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.gmail.com')
-    # MAIL_USERNAME = os.environ.get('MAIL_USERNAME', 'ppp.cohort1@gmail.com')
-    # MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD',  'vnvjffjfjf')
-    # MAIL_SENDER =  os.environ.get('MAIL_SENDER', 'ppp.cohort1@gmail.com')
-    # MAIL_PORT =  int(os.environ.get('MAIL_PORT',  '465'))
-    # MAIL_USE_TLS =  int(os.environ.get('MAIL_USE_TLS',  False))
-    # MAIL_USE_SSL = int(os.environ.get('MAIL_USE_SSL',  True))
-    
-    #MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.gmail.com')
-    #MAIL_PORT =  int(os.environ.get('MAIL_PORT',  '465'))
-    #MAIL_USE_TLS =  int(os.environ.get('MAIL_USE_TLS',  False))
-    #MAIL_USE_SSL = int(os.environ.get('MAIL_USE_SSL',  True))
-    # MAIL_USERNAME = 'ppp.cohort1@gmail.com'
-        
-    # MAIL_SERVER ='smtp.gmail.com'
-    # MAIL_PORT = 465
-    # MAIL_USE_TLS= False
-    # MAIL_USE_SSL= True
-    # MAIL_USERNAME= os.environ.get('MAIL_USERNAME')
-    # MAIL_PASSWORD= os.environ.get('EMAIL_PASSWORD')
-
-    # MAIL_SERVER = 'smtp.gmail.com'
-    # MAIL_PORT = 465
-    # MAIL_USE_TLS = False
-    # MAIL_USE_SSL = True
-    
-    # MAIL_SERVER = 'smtp.gmail.com'
-    # MAIL_PORT = 465
-    # MAIL_USE_TLS = False
-    # MAIL_USE_SSL = True
-    # MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-    # MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+   
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
     # the base Config class implements an empty init_app() method.
     @staticmethod

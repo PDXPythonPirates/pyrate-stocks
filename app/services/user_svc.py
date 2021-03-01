@@ -44,20 +44,21 @@ class UserService():
             flash('You are logged in.')
             login_user(user, remember=lform.remember.data)
             return redirect(url_for('main_bp.dashboard'))
-        return render_template('login.html', title='Sign In', form=lform)
+        return render_template('login.html', title='Sign In', form=LoginForm())
 
     def reset_passwd_request():
         if current_user.is_authenticated:
-            return redirect(url_for('main_bp.login'))
-        form = ResetPasswordRequestForm()
-        if form.validate_on_submit():
-            user = Account.query.filter_by(email=form.email.data).first()
-            if user:
+            form = ResetPasswordRequestForm()
+            if form.validate_on_submit():
+                user = Account.query.filter_by(email=current_user.email).first()
+                print('useremail for send_password_reset_email function in user_srv.py=', user.email)
                 send_password_reset_email(user)
-            flash('Check your email for the instructions to reset your password')
-            return redirect(url_for('main_bp.login'))
-        return render_template('reset_password_request.html',
-                            title='Reset Password', form=form)
+                flash('Check your email for the instructions to reset your password')
+                return redirect(url_for('main_bp.login'))
+            return render_template('reset_password_request.html',
+                title='Reset Password', form=form)
+        flash('Please login.')
+        return render_template('login.html', title='Sign In', form=LoginForm())
 
     def reset_passwd(token):
         if current_user.is_authenticated:

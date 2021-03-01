@@ -33,12 +33,12 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 			conda activate myenv
 
-	- _Method 2_: 
-		Windows \
+	- _Method 2_: \
+		Windows
 
 				myenv\Scripts\activate.bat
 
-		Unix or MacOS \
+		Unix or MacOS
 
 				source myenv/bin/activate	
 

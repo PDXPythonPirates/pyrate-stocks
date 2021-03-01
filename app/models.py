@@ -16,6 +16,7 @@ class Account(UserMixin, db.Model):
     email = db.Column(db.String(30))
     password_hash = db.Column(db.String(128))
     stocks = db.Column(db.String(32))
+    profiles = db.relationship('DummyTable', backref='link', lazy='dynamic')
 
     def __init__(self, username, email, password_hash, stocks):
         self.username = username
@@ -42,3 +43,22 @@ class Account(UserMixin, db.Model):
         except:
             return
         return Account.query.get(id)
+    
+    def __repr__(self):
+        return '<Account info: {}>'.format(self.username)
+
+# Temporary table for experimenting with relationships between tables and foreign keys
+class DummyTable(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    phone_number = db.Column(db.String(15))
+    mobile_number = db.Column(db.String(15))
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'))
+    
+    def __repr__(self):
+        return '<DummyTable info: {}>'.format(self.username)
+
+# Another temporary table for experimenting with migrating changes through Alembic
+class NewTable(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    home_address = db.Column(db.String(128))
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'))

@@ -8,7 +8,7 @@ class SignUpForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired(), Length(min=2, max=15)])
     email = StringField('Email', validators=[InputRequired(), Email(message='Invalid Email'), Length(max=30)])
     password = PasswordField('Password', validators=[InputRequired(), Length(min=2, max=15)])
-    stocks = StringField('stocks', validators=[ Length(min=2, max=32)])
+    stocks = StringField('stocks', validators=[ Length(min=2, max=50)])
     submit = SubmitField('Submit')
 
     def validate_username(self, username):
@@ -31,7 +31,7 @@ class UpdateForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired(), Length(min=2, max=15)])
     email = StringField('Email', validators=[InputRequired(), Email(message='Invalid Email'), Length(max=30)])
     password = PasswordField('Password', validators=[InputRequired(), Length(min=2, max=15)])
-    stocks = StringField('stocks', validators=[ Length(min=2, max=32)])
+    stocks = StringField('stocks', validators=[ Length(min=2, max=50)])
     submit = SubmitField('Submit')
 
 class ResetPasswordRequestForm(FlaskForm):

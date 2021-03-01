@@ -48,17 +48,17 @@ class UserService():
 
     def reset_passwd_request():
         if current_user.is_authenticated:
-            form = ResetPasswordRequestForm()
-            if form.validate_on_submit():
-                user = Account.query.filter_by(email=current_user.email).first()
+            return redirect(url_for('main_bp.dashboard'))
+        form = ResetPasswordRequestForm()
+        if form.validate_on_submit():
+            user = Account.query.filter_by(email=form.email.data).first()
+            if user:
                 print('useremail for send_password_reset_email function in user_srv.py=', user.email)
                 send_password_reset_email(user)
-                flash('Check your email for the instructions to reset your password')
-                return redirect(url_for('main_bp.login'))
-            return render_template('reset_password_request.html',
-                title='Reset Password', form=form)
-        flash('Please login.')
-        return render_template('login.html', title='Sign In', form=LoginForm())
+            flash('Check your email for the instructions to reset your password')
+            return redirect(url_for('main_bp.login'))
+        return render_template('reset_password_request.html',
+                            title='Reset Password', form=form)
 
     def reset_passwd(token):
         if current_user.is_authenticated:
@@ -118,6 +118,7 @@ class UserService():
         # this check will remove the empty symbols to prevent ticker data error
         for item in range(len(symbol_list)):
             if symbol_list[item] != '':
+                symbol_list[item] = symbol_list[item].lower()
                 if symbol_list[item] in new_symbols:
                     continue
                 else:

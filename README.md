@@ -4,7 +4,7 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 <br>
 
-##### *Pyrate Stocks*
+###### *Pyrate Stocks*
 
 **Built with**
 

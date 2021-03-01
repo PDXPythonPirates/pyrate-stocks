@@ -1,7 +1,6 @@
 ## **About The Project** 
-We, the **python-pirates-project-cohort-1** greatly appreciate Chris Thompson and Matt Phillips for guiding us through the creation of this app and enabling us to experience the typical workflow for software development.  
 
-This app provides an interactive dashboard for users to monitor up-to-date stock inforamtion of their choice.  Users can also choose to view historical data on stocks of their interest.
+This app was created by the first cohort of the Python Pyrates Project, hosted by Matt Phillips and Chris Thompson. We are entry level software developers working together to explore the Flask framework and the software development lifecycle. This app provides an interactive dashboard for users to monitor up-to-date (and historical) stock inforamtion.
 
 <br>
 
@@ -83,6 +82,10 @@ This app provides an interactive dashboard for users to monitor up-to-date stock
 [Nasdaq Symbol List](https://www.nasdaq.com/market-activity/stocks/screener) \
 [Pandas Documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html)\
 [yFinance Package](https://pypi.org/project/yfinance/)
+
+## **Special Thanks**
+
+Thank you, Chris Thompson and Matt Phillips for hosting the **Python Pyrates Project Cohort 1**! We greatly appreciate your guidance and support throughout the creation of this app, as well as the opportunity to experience the software lifecycle on a real-world application.
 
 
 ## **License**

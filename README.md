@@ -30,15 +30,15 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 - Activate virtural environment
 
-	- Conda:
-
+	- Conda
+	
 	    conda activate myenv
 	    
-	- venv (Windows):
-	    
+	- venv (Windows)
+	
 	    myenv\Scripts\activate.bat
 	    
-	- venv (Mac / Unix):
+	- venv (Mac / Unix)
 	    
 	    source myenv/bin/activate`
 

@@ -30,6 +30,7 @@
     <p class="text-primary">Low: <span class="text-secondary">${{ stock.low }}</span></p>
     <p class="text-primary">Open: <span class="text-secondary">${{ stock.open }}</span></p>
     <p class="text-primary">Close: <span class="text-secondary">${{ stock.close }}</span></p>
+    <a class="text-primary" href="/plot/{{ stock.symbol }}">Ticker Historical Closing Data</a>
     <a class="text-danger" href="/delete/{{ stock.symbol }}">Delete Ticker</a>
   </div>
   {% endfor %}

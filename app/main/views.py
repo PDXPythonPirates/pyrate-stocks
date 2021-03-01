@@ -1,11 +1,11 @@
-from flask import render_template, redirect, flash, url_for, request
-from flask_login import current_user, login_user, login_required, logout_user
+from flask import render_template, redirect, url_for, request
+from flask_login import current_user
+from sqlalchemy.orm import synonym
 from app.main import main_bp
-from app.models import Account
-from app.main.forms import SignUpForm, LoginForm, LogoutForm, UpdateForm
+from app.main.forms import LoginForm, LogoutForm, UpdateForm
 from app.services.user_svc import UserService
-from app import db
 from app.services.ticker_svc import TickerService
+from app import db
 
 @main_bp.before_app_first_request
 def before_app_first_request():
@@ -53,12 +53,18 @@ def dashboard():
         return render_template('dashboard.html', results=results, stocks=ticker_data, loform=LogoutForm(), uform=UpdateForm())
     else:
         return render_template('login.html', form=LoginForm(), display_message='User Login')
-    
+
+# Plot historical data
+@main_bp.route('/plot//<symbol>', methods=['GET', 'POST'])
+def plot(symbol):
+    script, div, cdn_js, cdn_css = TickerService.plot(symbol)
+    return render_template('plot.html', script=script, div=div, cdn_js =cdn_js, cdn_css=cdn_css)
+
+
 # Add a new symbol to track in DB
 @main_bp.route("/add/", methods=["POST"])
 def add():
     symbol = request.form['symbol']
-    symbol = symbol.upper()
     user_symbols = UserService.get_symbols()
     if symbol not in user_symbols:
         UserService.add_ticker(symbol)
@@ -68,7 +74,7 @@ def add():
 @main_bp.route("/delete/<symbol>")
 def delete(symbol):
     user_symbols = UserService.get_symbols()
-    symbol = symbol.upper()
+    symbol = symbol.lower()
     if symbol in user_symbols:
         UserService.delete_ticker(user_symbols, symbol)
     return redirect(url_for('main_bp.dashboard'))

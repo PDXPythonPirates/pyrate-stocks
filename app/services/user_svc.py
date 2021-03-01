@@ -1,8 +1,7 @@
 from flask import render_template, flash, redirect, url_for, request
-from flask_login import UserMixin,current_user, login_user, logout_user
+from flask_login import current_user, login_user, logout_user
 from app import db
 from app.models import Account
-from app.main import main_bp
 from app.main.forms import LoginForm, UpdateForm, SignUpForm
 
 class UserService():
@@ -19,8 +18,9 @@ class UserService():
             user.set_password(sform.password.data)
             db.session.add(user)
             db.session.commit()
-            flash('You were successfully logged in')
-            return render_template('login.html', form=lform)
+            flash(f'Welcome {user.username}! You\'re now a new user.')
+            # lform.username.data = user.username
+            return redirect(url_for('main_bp.dashboard'))
         flash('Please sign Up')
         return render_template('signup.html', title='Signup', form=sform)    
         
@@ -60,7 +60,7 @@ class UserService():
                     uform.populate_obj(user)
                     user.set_password(uform.password.data)
                     db.session.commit()
-                    flash('Your inforamtion is update!')
+                    flash('Your inforamtion is updated!')
                     return redirect(url_for('main_bp.dashboard'))
             
             uform.username.data = current_user.username
@@ -86,26 +86,24 @@ class UserService():
         # Format list
         symbol_list = user.stocks.replace(' ', '').split(',')
         new_symbols = []
-        print('List of symbols to process: ' + str(symbol_list))
-
+        
         # If the user accidentally put a comma at the end or beginning of their string,
         # this check will remove the empty symbols to prevent ticker data error
         for item in range(len(symbol_list)):
             if symbol_list[item] != '':
+                symbol_list[item] = symbol_list[item].lower()
                 if symbol_list[item] in new_symbols:
                     continue
                 else:
                     new_symbols.append(symbol_list[item])
-                    print('Index item ' + str(item) + ' is valid.')
             else:
-                print('Index item ' + str(item) + ' is NOT valid.')
+                flash('Index item ' + str(item) + ' is NOT valid.')
         
         # If there's an issue with the symbol list, update user symbols in db
         if not new_symbols:
             return symbol_list
         else:
             UserService.update_tickers(new_symbols)
-            print('Updated list of symbols: ' + str(new_symbols))
             return new_symbols
 
     # Add a stock ticker symbol to the user's followed symbols
@@ -120,13 +118,11 @@ class UserService():
         ticker_list = ','.join(ticker_list)
         user = UserService.get_data()
         user.stocks = ticker_list
-        print(f'Updated ticker list: {ticker_list}')
         db.session.commit()
 
     # Delete stock ticker symbol from user's followed symbols
     def delete_ticker(user_symbols, symbol):
         user_symbols.remove(symbol)
-        print(f'Taking the garbage out: {symbol}')
         UserService.update_tickers(user_symbols)
 
   

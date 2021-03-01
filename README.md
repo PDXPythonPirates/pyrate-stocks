@@ -55,11 +55,11 @@ This app provides an interactive dashboard for users to monitor up-to-date stock
 ## **Features**
 
 - Anonymous users are presented with Home, Login, and Signup options.
-- 
+
 - If a new user attempts to login, they will be directed to the signup page.
-- 
+ 
 - After signup, the user is directed to the login page. Any existing users can go diretly to the login page.
-- 
+ 
 - After login, the user can navigate to Home, Dashboard, Update, and Logout pages.
 
 - On the Dashboard page: 

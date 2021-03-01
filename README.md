@@ -28,16 +28,27 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
             python -m venv myenv
 
-- Activate virtural environment \
-  Conda: `conda activate myenv` \
-  venv (Windows): `myenv\Scripts\activate.bat` \
-  venv (Mac / Unix): `source myenv/bin/activate`
+- Activate virtural environment
 
-- Clone repository \
-  `git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main`
+	- Conda:
 
-- Install requirements.txt \
-  `pip install -r requirements.txt`
+	  conda activate myenv
+	    
+	- venv (Windows):
+	    
+	  myenv\Scripts\activate.bat
+	    
+	- venv (Mac / Unix):
+	    
+	  source myenv/bin/activate`
+
+- Clone repository
+
+      git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
+
+- Install requirements.txt
+
+      pip install -r requirements.txt`
 
 
 ## **Features**

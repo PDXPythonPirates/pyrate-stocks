@@ -18,10 +18,13 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 ## **Getting Started**
 
-- Create virtural environment \
-      - Conda
-          conda create -n myenv python=3.8
-  venv: `python -m venv myenv`
+- Create virtural environment
+
+	- Conda
+    conda create -n myenv python=3.8
+    
+	- venv
+    python -m venv myenv
 
 - Activate virtural environment \
   Conda: `conda activate myenv` \

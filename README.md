@@ -24,15 +24,13 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 - Activate virtural environment \
   `conda activate myenv` (conda environments) or \
   `myenv\Scripts\activate.bat` (Windows) \
-  `source myenv/bin/activate` (Mac or Unix based) \
+  `source myenv/bin/activate` (Mac or Unix based)
 
 - Clone repository
-
-		git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
+  `git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main`
 
 - Install requirements.txt
-
-		pip install -r requirements.txt
+  `pip install -r requirements.txt`
 
 
 ## **Features**

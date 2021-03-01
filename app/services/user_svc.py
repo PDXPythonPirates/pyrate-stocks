@@ -85,10 +85,12 @@ class UserService():
                     return render_template('update.html', form=uform)
                 if uform.validate_on_submit():
                     uform.populate_obj(user)
-                    user.set_password(uform.password.data)
-                    db.session.commit()
-                    flash('Your inforamtion is updated!')
-                    return redirect(url_for('main_bp.dashboard'))
+                    if uform.password.data:
+                        user.set_password(uform.password.data)
+                    else:
+                        db.session.commit()
+                        flash('Your inforamtion is updated!')
+                        return redirect(url_for('main_bp.dashboard'))
             
             uform.username.data = current_user.username
             uform.email.data = current_user.email

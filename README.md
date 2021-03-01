@@ -26,10 +26,10 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
   `myenv\Scripts\activate.bat` (Windows) \
   `source myenv/bin/activate` (Mac or Unix based)
 
-- Clone repository
+- Clone repository \
   `git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main`
 
-- Install requirements.txt
+- Install requirements.txt \
   `pip install -r requirements.txt`
 
 

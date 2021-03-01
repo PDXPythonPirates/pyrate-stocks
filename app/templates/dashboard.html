@@ -4,10 +4,12 @@
 
 {% block content %}
 <div class="dashboard-container p-4">
-  <form action="{{ url_for('main_bp.add') }}" method="post">
-    <input type="text" name="symbol" placeholder="Ex: AAPL" required><br>
-    <button class="add-ticker btn btn-dark btn-sm mt-3" type="submit">Add Ticker</button>
-  </form>
+  <div class="form-group w-50">
+    <form action="{{ url_for('main_bp.add') }}" method="post">
+      <input type="text" name="symbol" class="form-control bg-dark text-light border-0" placeholder="Ex: AAPL" required><br>
+      <button class="add-ticker btn btn-dark btn-sm mt-3" type="submit">Add Ticker</button>
+    </form>
+  </div>
   {% if stocks %}
   {% for stock in stocks %}
   <div class="ticker-container bg-dark mt-4">
@@ -29,7 +31,7 @@
   {% endfor %}
   {% else %}
   {% endif %}
-  <div class="logout-button pt-3">
+  <div class="logout-button pt-4">
     <form class="" name="" action="{{ url_for('main_bp.logout') }}" method="POST">
       {{ display_message }}
       {{ loform.csrf_token }}

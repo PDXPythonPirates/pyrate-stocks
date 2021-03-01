@@ -94,3 +94,17 @@
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #343a40 inset !important;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+/*Change text in autofill textbox*/
+input:-webkit-autofill {
+    -webkit-text-fill-color: rgb(226, 226, 226) !important;
+}

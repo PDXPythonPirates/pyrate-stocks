@@ -6,6 +6,7 @@ from app.services.user_svc import UserService
 class TickerService:
     
     def ticker_data(symbols):
+        print('Fetching ticker data...')
 
         if symbols == None:
             return None

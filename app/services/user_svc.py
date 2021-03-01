@@ -71,7 +71,7 @@ class UserService():
         flash('Please login first.', 'alert')
         render_template('login.html', title='Sign In', form=LoginForm())
     
-
+    # Get user data based on the current_user's username
     def get_data():
         user = Account.query.filter_by(username=current_user.username).first()
         return user
@@ -79,36 +79,36 @@ class UserService():
     # Get a list of symbols the user follows
     def get_symbols():
 
-        # Turn string of symbols into list
-        # NOTE: If the user entered a comma, it will produce 2 empty symbols
+        # Retrieve all user data
         user = UserService.get_data()
 
-        # Format list
+        # Parse through user's stock symbol list
         symbol_list = user.stocks.replace(' ', '').split(',')
         new_symbols = []
-        print('List of symbols to process: ' + str(symbol_list))
+        print('Parsing through list: ' + str(symbol_list))
 
         # If the user accidentally put a comma at the end or beginning of their string,
         # this check will remove the empty symbols to prevent ticker data error
         for item in range(len(symbol_list)):
-            if symbol_list[item] != '':
-                if symbol_list[item] in new_symbols:
+            symbol = symbol_list[item].lower()
+            if symbol != '':
+                if symbol in new_symbols:
                     continue
                 else:
-                    new_symbols.append(symbol_list[item])
-                    print('Index item ' + str(item) + ' is valid.')
+                    new_symbols.append(symbol)
+                    print('Ticker symbol \'' + str(symbol) + '\' is valid.')
             else:
-                print('Index item ' + str(item) + ' is NOT valid.')
+                print('Ticker symbol \'' + str(symbol) + '\' is NOT valid.')
         
         # If there's an issue with the symbol list, update user symbols in db
         if not new_symbols:
             return symbol_list
         else:
+            print('Updated list: ' + str(new_symbols))
             UserService.update_tickers(new_symbols)
-            print('Updated list of symbols: ' + str(new_symbols))
             return new_symbols
 
-    # Add a stock ticker symbol to the user's followed symbols
+    # Add a stock ticker symbol to end of the user's followed symbols
     def add_ticker(ticker):
         ticker = ticker.replace(' ', '')
         user = UserService.get_data()
@@ -120,16 +120,16 @@ class UserService():
         ticker_list = ','.join(ticker_list)
         user = UserService.get_data()
         user.stocks = ticker_list
-        print(f'Updated ticker list: {ticker_list}')
+        print('Updating symbols saved to user profile...')
         db.session.commit()
 
     # Delete stock ticker symbol from user's followed symbols
     def delete_ticker(user_symbols, symbol):
         user_symbols.remove(symbol)
-        print(f'Taking the garbage out: {symbol}')
+        print(f'Deleting: {symbol}')
         UserService.update_tickers(user_symbols)
 
-  
+    # Remove user from current_user session
     def logout():
         logout_user()
         flash('You are logged out!', 'notify')

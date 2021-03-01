@@ -4,9 +4,9 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 <br>
 
-###### *Pyrate Stocks*
+###### **Pyrate Stocks**
 
-**Built with**
+Built with:
 
 [![Python](https://img.shields.io/badge/python-3.8.5-blue.svg)](https://www.python.org/downloads/release/python-385/) &emsp;
 [![Flask](https://img.shields.io/badge/flask-1.1.2-blue.svg)](https://flask.palletsprojects.com/en/1.1.x/installation/)  

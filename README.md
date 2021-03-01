@@ -90,6 +90,5 @@ Thank you, Chris Thompson and Matt Phillips, for hosting the **Python Pyrates Pr
 
 ## **License**
 
-MIT License
-
+[MIT License](https://opensource.org/licenses/MIT) \
 Copyright (c) 2021 Portland Python Pirates

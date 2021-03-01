@@ -1,6 +1,4 @@
 from flask import flash
-import yfinance as yf
-import pandas as pd
 from datetime import datetime
 from bokeh.models import DatetimeTickFormatter, ColumnDataSource
 from bokeh.plotting import figure
@@ -8,19 +6,50 @@ from bokeh.embed import components
 from bokeh.resources import CDN
 from urllib.error import HTTPError, URLError
 from app.services.user_svc import UserService
+import yfinance as yf
+import pandas as pd
+import sqlite3
 
 class TickerService:
+    def importCsvDb():
+        # NOTE: CSV Source: https://www.nasdaq.com/market-activity/stocks/screener. 
+        # To use a different csv, update the file below with either a .csv link or .csv file name
+        # and place the csv in the csvfiles directory if applicable. 
+        
+        # Read original csv data
+        symbolList = pd.read_csv("app/csvfiles/nasdaq_screener_1614500646091.csv", usecols=["Symbol", "Name"], index_col=['Symbol'])
+        print("Reading csv columns ... ")
+
+        # Parse original csv data to columns needed & save to new csv file
+        symbolList.to_csv('app/csvfiles/symbolList.csv', index_label=None)
+        print("Parsing csv ... ")
+
+        # Open database connection
+        con = sqlite3.connect("fin_app.sqlite3")
+        cur = con.cursor()
+        print("Connecting to database ...")
+
+        # Database read csv 
+        df = pd.read_csv("app/csvfiles/symbolList.csv")
+        print("Reading csv file ...")
+
+        # Import csv data into table
+        df.to_sql(
+            name='symbolList',
+            con = con,
+            index=False,
+            if_exists='replace')
+        print("Creating symbolList table in database ...")
+            
+        # Close database connection
+        con.close()
+        print("Closing database connection ...")
     
     def ticker_data(symbols):
-
-        if symbols == None:
-            return None
-
         ticker_data = []
         for s in symbols:
             s = s.upper()
-            # Check for symbols short enough to exist
-            if(len(s) <= 5):
+            if(len(s) <= 6):
                 try:
                     # Try to retrieve ticker data
                     ticker = yf.Ticker(s)
@@ -34,7 +63,7 @@ class TickerService:
                 except (KeyError, ImportError, HTTPError, URLError) as e:
                     # Print the problem ticker to console and delete it from the user's followed tickers
                     flash(f'Ticker {s} is not a valid entry. ')
-                    UserService.delete_ticker(UserService.get_symbols(), s.lower())
+                    UserService.delete_ticker(UserService.get_symbols(), s.upper())
                     ticker = None
                     pass
                 

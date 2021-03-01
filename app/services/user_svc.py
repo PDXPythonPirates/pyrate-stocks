@@ -91,6 +91,7 @@ class UserService():
         # this check will remove the empty symbols to prevent ticker data error
         for item in range(len(symbol_list)):
             if symbol_list[item] != '':
+                symbol_list[item] = symbol_list[item].lower()
                 if symbol_list[item] in new_symbols:
                     continue
                 else:

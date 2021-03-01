@@ -3,16 +3,21 @@
 {% block title %}{{super()}}{{ username }}{% endblock %}
 
 {% block content %}
+<!-- Ticker Dropdown -->
 <div class="p-4">
   <h1>Dashboard</h1>
- 
-  <form action="{{ url_for('main_bp.add') }}" method="post">
+  <form action="{{ url_for('main_bp.add') }}" method="post"> 
     <div>
-      <input type="text" name="symbol" placeholder="Ex: AAPL" required><br>
-      <button class="add-ticker btn btn-primary btn-sm mt-3" type="submit">Add Ticker</button>
-    </div>
+    <input type="text" list="tickerlist" name="symbol" id="tickerInput" Placeholder="Search Ticker..">
+    <button class="add-ticker btn btn-primary btn-sm ml-1" type="submit">Add Ticker</button>
+    <datalist id="tickerlist">
+    {% for i in results %}
+        <option value="{{ i }}"></option> 
+    {% endfor %}
+    </datalist>
+  </div>
   </form>
-</div>
+
 {% if stocks %}
 <div class="p-4">
   <h3>Followed Stock Tickers</h3>
@@ -33,11 +38,31 @@
 {% else %}
 {% endif %}
 
-<div class="account-logout p-4">
-   <form class="" name="" action="{{ url_for('main_bp.logout') }}" method="POST">
-      {{ display_message }}
-      {{ loform.csrf_token }}
-      <input class="btn btn-primary btn-sm" type="submit" value="Logout"/>
-   </form>
-</div>
+<!-- jQuery for Ticker Dropdown -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+  var initialArray = [];
+          initialArray = $('#tickerlist option');
+          $("#tickerInput").keyup(function() {
+            var inputVal = $('#tickerInput').val();
+            var first = [];
+            first = $('#tickerlist option');
+            if (inputVal != '' && inputVal != 'undefined') {
+              var options = '';
+              for (var i = 0; i < first.length; i++) {
+                if (first[i].value.toLowerCase().startsWith(inputVal.toLowerCase())) {
+                  options += '<option value="' + first[i].value + '" />';
+                }
+              }
+              document.getElementById('tickerlist').innerHTML = options;
+            } else {
+              var options = '';
+              for (var i = 0; i < initialArray.length; i++) {
+                options += '<option value="' + initialArray[i].value + '" />';
+              }
+              document.getElementById('tickerlist').innerHTML = options;
+            }
+          });
+</script>
+
 {% endblock %}

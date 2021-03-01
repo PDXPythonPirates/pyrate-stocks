@@ -85,7 +85,7 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 ## **Special Thanks**
 
-Thank you, Chris Thompson and Matt Phillips for hosting the **Python Pyrates Project Cohort 1**! We greatly appreciate your guidance and support throughout the creation of this app, as well as the opportunity to experience the software lifecycle on a real-world application.
+Thank you, Chris Thompson and Matt Phillips, for hosting the **Python Pyrates Project Cohort 1**! We greatly appreciate your guidance and support throughout the creation of this app, as well as the opportunity to experience the software lifecycle on a real-world application.
 
 
 ## **License**

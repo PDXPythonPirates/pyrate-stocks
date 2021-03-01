@@ -30,14 +30,14 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 			conda activate myenv
 
-	or <br><br>
-		Windows
+	or
 
-				myenv\Scripts\activate.bat
+			myenv\Scripts\activate.bat
+		(Windows)
 
-		Unix or MacOS
 
-				source myenv/bin/activate	
+			source myenv/bin/activate
+		(Mac or Unix based)
 
 - Clone repository
 

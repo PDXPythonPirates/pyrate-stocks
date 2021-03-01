@@ -18,26 +18,14 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 ## **Getting Started**
 
-- Create virtural environment
+- Create virtural environment \
+  `conda create -n myenv python=3.8` or `python -m venv myenv`
 
-			conda create -n myenv python=3.8    
-		
-	or
+- Activate virtural environment \
 
-			python -m venv myenv
-
-- Activate virtural environment
-
-			conda activate myenv
-
-	or
-
-			myenv\Scripts\activate.bat
-		(Windows)
-
-
-			source myenv/bin/activate
-		(Mac or Unix based)
+  `conda activate myenv` or \
+  `myenv\Scripts\activate.bat` (Windows) \
+  `source myenv/bin/activate` (Mac or Unix based) \
 
 - Clone repository
 

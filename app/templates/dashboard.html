@@ -7,7 +7,7 @@
   <div class="form-group w-50">
     <form action="{{ url_for('main_bp.add') }}" method="post"> 
       <input type="text" list="tickerlist" name="symbol" class="form-control bg-dark text-light border-0" id="tickerInput" Placeholder="Search stock symbol..">
-      <button class="add-ticker btn btn-dark btn-sm mt-3" type="submit">Add Ticker</button>
+      <button class="add-ticker btn btn-dark btn-sm mt-3" type="submit">Add</button>
       <datalist id="tickerlist">
         {% for i in results %}
             <option value="{{ i }}"></option> 

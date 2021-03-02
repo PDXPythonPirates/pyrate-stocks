@@ -108,6 +108,7 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 ## **Resources**
 
 - [Portland Python Pirates](https://github.com/PDXPythonPirates)
+- [Bootstrap Documentation](https://getbootstrap.com/)
 - [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/)
 - [Hackers and Slackers' Flask Series](https://hackersandslackers.com/series/build-flask-apps/)
 - [Miguel Grinberg's Dev Blog](https://blog.miguelgrinberg.com/category/Flask)

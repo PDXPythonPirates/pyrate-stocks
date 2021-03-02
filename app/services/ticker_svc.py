@@ -106,26 +106,28 @@ class TickerService:
         p = figure(title ='Closing Price History', plot_width=1000, plot_height=400,
                     sizing_mode='scale_width',tools='pan, box_zoom, wheel_zoom, hover, reset',
                     tooltips = [("Date","@DateString"),("Close", "@Close")])
-        
-        p.title.align = "center"
-        p.title.text_font_size = '20pt'
-        p.title.text_color = _fontColor  
 
         p.line('Date', 'Close', line_width=2, source=source, line_color=_lineColor)
         
         p.xaxis.formatter = DatetimeTickFormatter(hourmin = ['%Y:%M'])
-        p.xaxis.major_label_text_font_size = "14pt"
+
+        p.title.align = "center"
+        p.title.text_font_size = '20pt'
+        p.title.text_color = _fontColor  
+
         p.yaxis.axis_label = symbol
+        p.xaxis.major_label_text_font_size = "14pt"
         p.yaxis.axis_label_text_font_size = '18pt'
         p.yaxis.major_label_text_font_size = "14pt"
         p.yaxis[0].ticker.desired_num_ticks = 3
 
-        p.background_fill_alpha = 0
         p.border_fill_color = "#343a40"
         p.outline_line_color = "#343a40"
         p.yaxis.major_label_text_color = "#6c757d"
         p.xaxis.major_label_text_color = "#6c757d"
         p.yaxis.axis_label_text_color = "#6c757d"
+
+        p.background_fill_alpha = 0
         p.yaxis.axis_line_alpha = .3
         p.xaxis.axis_line_alpha = .3
         p.yaxis.minor_tick_line_alpha = .3

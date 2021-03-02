@@ -60,7 +60,7 @@ coverage.xml
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-**/.sqlite3/
+**.sqlite3
 
 # Flask stuff:
 instance/
@@ -138,4 +138,4 @@ app/main/keychain.py
 .DS_Store
 
 #vscode
-**/.vscode/
+**.vscode/

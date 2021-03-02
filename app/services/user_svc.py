@@ -124,9 +124,14 @@ class UserService():
 
     # Delete stock ticker symbol from user's followed symbols
     def delete_ticker(user_symbols, symbol):
-        user_symbols.remove(symbol)
-        print(f'Deleting: {symbol}')
-        UserService.update_tickers(user_symbols)
+        symbol = symbol.lower()
+        if symbol in user_symbols:
+            user_symbols.remove(symbol)
+            print(f'Deleting: {symbol}')
+            UserService.update_tickers(user_symbols)
+        else:
+            print(f'Symbol {symbol} is not in the user symbols')
+            return
 
     # Remove user from current_user session
     def logout():

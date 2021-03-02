@@ -36,11 +36,11 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 #### **Installation**
 
-- Clone repository
+1. Clone repository
 
             git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
 
-- Create virtual environment
+2. Create virtual environment
 
 	- Conda
 
@@ -50,7 +50,7 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
             python -m venv myenv
 
-- Activate virtual environment
+3. Activate virtual environment
 
 	- Conda
 
@@ -64,11 +64,11 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
             source myenv/bin/activate
 
-- Install requirements.txt
+4. Install requirements.txt
 
             pip install -r requirements.txt
 
-- Set FLASK_ENV
+5. Set FLASK_ENV
 
 	- Windows
 
@@ -78,7 +78,7 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 			export FLASK_ENV=fin_app.py
 
-- Run application
+6. Run application
 
 			flask run
 

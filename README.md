@@ -8,7 +8,6 @@
 - [Built With](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#built-with)
 
 - [Getting Started](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#getting-started)
-	* [Prerequisites](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#prerequisites)
 	* [Installation](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#installation)
 
 - [Features](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#features)
@@ -35,7 +34,11 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 ## **Getting Started**
 
-#### **Prerequisites**
+#### **Installation**
+
+- Clone repository
+
+            git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
 
 - Create virtual environment
 
@@ -61,15 +64,23 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
             source myenv/bin/activate
 
-#### **Installation**
-
-- Clone repository
-
-            git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
-
 - Install requirements.txt
 
             pip install -r requirements.txt
+
+- Set FLASK_ENV
+
+	- Windows
+
+			set FLASK_ENV=fin_app.py
+
+	- Mac / Unix / WSL
+
+			export FLASK_ENV=fin_app.py
+
+- Run application
+
+			flask run
 
 
 ## **Features**

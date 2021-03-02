@@ -1,77 +1,99 @@
+## **Pyrate Stocks**
+
+ A simple finance application built with Flask and Python
+ [Explore the docs >>](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1)
+
+## **Table of Contents**
+- [About the Project](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#about-the-project)
+
+- [Built With](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#built-with)
+
+- [Getting Started](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#getting-started)
+	* [Prerequisites](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#prerequisites)
+	* [Installation](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#installation)
+
+- [Features](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#features)
+
+- [Contributors](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#contributors)
+
+- [Resources](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#resources)
+
+- [Special Thanks](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#special-thanks)
+
+- [License](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#license)
+
 ## **About The Project** 
-We, the **python-pirates-project-cohort-1** greatly appreciate Chris Thompson and Matt Phillips for guiding us through the creation of this app and enabling us to experience the typical workflow for software development.  
 
-This app provides an interactive dashboard for users to monitor up-to-date stock inforamtion of their choice.  Users can also choose to view historical data on stocks of their interest.
+This app was created by the first cohort of the Python Pyrates Project, hosted by Matt Phillips and Chris Thompson. We are entry level software developers working together to explore the Flask framework and the software development lifecycle. This app provides an interactive dashboard for users to monitor up-to-date (and historical) stock information.
 
-<br>
 
-<a href="/PDXPythonPirates/python-pirates-project-cohort-1/graphs/contributors" class="Link--primary no-underline "> <mark>Contributors</mark> &emsp;   <span title="5" class="Counter ">5</span> &emsp; </a> <mark>Star</mark> &emsp;
-<a class="social-count js-social-count" href="/PDXPythonPirates/python-pirates-project-cohort-1/stargazers" aria-label="0 users starred this repository">0</a> &emsp;<span class="btn btn-sm btn-with-count disabled tooltipped tooltipped-sw" aria-label="Cannot fork because forking is disabled.">
-            <svg class="octicon octicon-repo-forked" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path></svg><mark>Fork</mark> &emsp; <a href="/PDXPythonPirates/python-pirates-project-cohort-1/network/members" class="social-count" aria-label="0 users forked this repository">0</a>
-			
-			
-<br>
+## **Built with:**
 
-**Project Title**
+* [![Python](https://img.shields.io/badge/python-3.8.5-blue.svg)](https://www.python.org/downloads/release/python-385/)
+* [![Flask](https://img.shields.io/badge/flask-1.1.2-blue.svg)](https://flask.palletsprojects.com/en/1.1.x/installation/)  
+* [![Bootstrap](https://img.shields.io/badge/bootstrap-v5.0-blue)](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 
-*A Personal Investment App*
-
-<br>
-
-**Built with**
-
-[![Python](https://img.shields.io/badge/python-3.8.5-blue.svg)](https://www.python.org/downloads/release/python-385/) &emsp;
-[![Flask](https://img.shields.io/badge/flask-1.1.2-blue.svg)](https://flask.palletsprojects.com/en/1.1.x/installation/)  
-
-<br>
 
 ## **Getting Started**
 
-- Create virtural environment
-	 
-	- _Method 1_:
+#### **Prerequisites**
 
-			conda create -n myenv python=3.8    
-		
-	- _Method 2_:
+- Create virtual environment
 
-			python -m venv myenv
+	- Conda
 
-- Activate virtural environment
-	- _Method 1_: 
+            conda create -n myenv python=3.8
+    
+	- venv
 
-			conda activate myenv
+            python -m venv myenv
 
-	- _Method 2_: 
-		- Windows
+- Activate virtual environment
 
-				myenv\Scripts\activate.bat
+	- Conda
 
-		- Unix or MacOS
+            conda activate myenv
+	    
+	- venv (Windows)
 
-				source myenv/bin/activate	
+            myenv/Scripts/activate
+	    
+	- venv (Mac / Unix / WSL)
+
+            source myenv/bin/activate
+
+#### **Installation**
 
 - Clone repository
 
-		git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
+            git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
 
 - Install requirements.txt
 
-		pip install -r requirements.txt
+            pip install -r requirements.txt
 
 
 ## **Features**
 
 - Anonymous users are presented with Home, Login, and Signup options.
+
 - If a new user attempts to login, they will be directed to the signup page.
+ 
 - After signup, the user is directed to the login page. Any existing users can go diretly to the login page.
+ 
 - After login, the user can navigate to Home, Dashboard, Update, and Logout pages.
+
 - On the Dashboard page: 
  	- The user is presented with the curent information on stocks they selected.  With any ticker the user chooses to follow, the stocks' current price, high, low, open, and close is pulled via the [yFinance](https://pypi.org/project/yfinance/) package that scrapes data from Yahoo! Finance. *Please note: Some tickers are not possible to add on the dashboard due to limitations based on the yFinance Package.*
+	
 	- The user has options to add and delete stock tickers, and view historical data. 
+	
 	- In the add ticker input field, the user is presented with recommended tickers as they type in different characters. Suggested tickers are pulled from a .csv file downloaded from [nasdaq.com](https://www.nasdaq.com/market-activity/stocks/screener). The user also has the ability to manually enter a ticker that does not appear in the suggestions.
-- On the Update page, the user can change username, password, email and enter stock symbols.  The form is preloaded with username, email and any stocks in the account. *This inforamtion was preloaded with the assumption that they typically don't change. If user enters new inforamtion, it will be saved.*
+
+- On the Update page, the user can change username, password, email and enter stock symbols.  The form is preloaded with username, email and any stocks in the account. *This inforamtion was preloaded with the assumption that they typically don't change. If user enters new information, it will be saved.*
+
 - The user stays logged in until the user decides to log out.  
+
 
 ## **Resources**
 
@@ -85,8 +107,27 @@ This app provides an interactive dashboard for users to monitor up-to-date stock
 [yFinance Package](https://pypi.org/project/yfinance/)
 
 
+## **Contributors**
+- Matthias Wheelhouse
+- Jessica Cassidy
+- Xuehong Liu
+- Matt Griffes
+
+## **Special Thanks**
+
+Thank you, Chris Thompson and Matt Phillips, for hosting the **Python Pyrates Project Cohort 1**! We greatly appreciate your guidance and support throughout the creation of this app, as well as the opportunity to experience the software lifecycle on a real-world application.
+
+We encourage any interested developers - regardless of experience - to apply for the next cohort. This is was an amazing experience for all four of us.
+
+
 ## **License**
 
-MIT License
+[MIT License](https://opensource.org/licenses/MIT)
 
 Copyright (c) 2021 Portland Python Pirates
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

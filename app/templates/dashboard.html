@@ -3,66 +3,74 @@
 {% block title %}{{super()}}{{ username }}{% endblock %}
 
 {% block content %}
-<!-- Ticker Dropdown -->
-<div class="p-4">
-  <h1>Dashboard</h1>
-  <form action="{{ url_for('main_bp.add') }}" method="post"> 
-    <div>
-    <input type="text" list="tickerlist" name="symbol" id="tickerInput" Placeholder="Search Ticker..">
-    <button class="add-ticker btn btn-primary btn-sm ml-1" type="submit">Add Ticker</button>
-    <datalist id="tickerlist">
-    {% for i in results %}
-        <option value="{{ i }}"></option> 
-    {% endfor %}
-    </datalist>
+<div class="dashboard-container p-4">
+  <div class="form-group w-50">
+    <form action="{{ url_for('main_bp.add') }}" method="post"> 
+      <input type="text" list="tickerlist" name="symbol" class="form-control bg-dark text-light border-0" id="tickerInput" Placeholder="Search stock symbol..">
+      <button class="add-ticker btn btn-dark btn-sm mt-3" type="submit">Add</button>
+      <datalist id="tickerlist">
+        {% for i in results %}
+            <option value="{{ i }}"></option> 
+        {% endfor %}
+      </datalist>
+    </form>
   </div>
-  </form>
-
-{% if stocks %}
-<div class="p-4">
-  <h3>Followed Stock Tickers</h3>
+  {% if stocks %}
   {% for stock in stocks %}
-  <div class="mb-3 p-3 border border-primary">
-    <h2 class="text-primary">{{ stock.symbol }}</h2>
-    <p class="text-primary">{{ stock.name }}</p>
-    <p class="text-primary">Current Price: <span class="text-success">${{ stock.current_price }}</span></p>
-    <p class="text-primary">High: <span class="text-secondary">${{ stock.high }}</span></p>
-    <p class="text-primary">Low: <span class="text-secondary">${{ stock.low }}</span></p>
-    <p class="text-primary">Open: <span class="text-secondary">${{ stock.open }}</span></p>
-    <p class="text-primary">Close: <span class="text-secondary">${{ stock.close }}</span></p>
-    <a class="text-primary" href="/plot/{{ stock.symbol }}">Ticker Historical Closing Data</a>
-    <a class="text-danger" href="/delete/{{ stock.symbol }}">Delete Ticker</a>
+  <div class="ticker-container bg-dark mt-4">
+    <div class="ticker-name col pt-2">
+      <h2 class="text-light">{{ stock.symbol }}</h2>
+      <p class="text-light">{{ stock.name }}</p>
+      <h2 class="ticker-success">${{ stock.current_price }}</h2>
+    </div>
+    <div class="ticker-graph col pt-2">
+      <a class="ticker-success" href="/plot/{{ stock.symbol }}">View chart</a>
+    </div>
+    <div class="ticker-details col pt-2">
+      <p class="ticker-success">High: ${{ stock.high }}<br><span class="text-danger">Low: ${{ stock.low }}</span></p>
+      <p class="text-secondary">Open: ${{ stock.open }}<br>Prev. close: ${{ stock.close }}</p>
+    </div>
+    <div class="col delete-ticker">
+      <a class="" href="/delete/{{ stock.symbol }}">Delete</a>
+    </div>
   </div>
   {% endfor %}
+  {% else %}
+  {% endif %}
+  <div class="logout-button pt-4">
+    <form class="" name="" action="{{ url_for('main_bp.logout') }}" method="POST">
+      {{ display_message }}
+      {{ loform.csrf_token }}
+      <input class="btn btn-dark btn-sm" type="submit" value="Logout"/>
+    </form>
+  </div>
 </div>
-{% else %}
-{% endif %}
 
 <!-- jQuery for Ticker Dropdown -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
   var initialArray = [];
-          initialArray = $('#tickerlist option');
-          $("#tickerInput").keyup(function() {
-            var inputVal = $('#tickerInput').val();
-            var first = [];
-            first = $('#tickerlist option');
-            if (inputVal != '' && inputVal != 'undefined') {
-              var options = '';
-              for (var i = 0; i < first.length; i++) {
-                if (first[i].value.toLowerCase().startsWith(inputVal.toLowerCase())) {
-                  options += '<option value="' + first[i].value + '" />';
-                }
-              }
-              document.getElementById('tickerlist').innerHTML = options;
-            } else {
-              var options = '';
-              for (var i = 0; i < initialArray.length; i++) {
-                options += '<option value="' + initialArray[i].value + '" />';
-              }
-              document.getElementById('tickerlist').innerHTML = options;
-            }
-          });
+  initialArray = $('#tickerlist option');
+  $("#tickerInput").keyup(function() {
+    var inputVal = $('#tickerInput').val();
+    var first = [];
+    first = $('#tickerlist option');
+    if (inputVal != '' && inputVal != 'undefined') {
+      var options = '';
+      for (var i = 0; i < first.length; i++) {
+        if (first[i].value.toLowerCase().startsWith(inputVal.toLowerCase())) {
+          options += '<option value="' + first[i].value + '" />';
+        }
+      }
+      document.getElementById('tickerlist').innerHTML = options;
+    } else {
+      var options = '';
+      for (var i = 0; i < initialArray.length; i++) {
+        options += '<option value="' + initialArray[i].value + '" />';
+      }
+      document.getElementById('tickerlist').innerHTML = options;
+    }
+  });
 </script>
 
 {% endblock %}

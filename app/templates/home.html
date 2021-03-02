@@ -1,23 +1,15 @@
 {% extends "base.html" %}
 
-
 {% block content %}
+
     {% if display_message %}
         <p>{{ display_message }}</p>
     {% endif %}
-    <div class="py-4 bg-secondary">
-        <h1 class="text-light text-center">Welcome to Financial App!</h1>
-        <p class="text-light text-center">Check the status of your favorite stocks with the hottest new finance app</p>
+    <div class="home-page bg-dark">
+        <div class="slogan">
+            <h1 class="text-light text-center">Welcome to <span class="text-logo">Pyrate Stocks</span></h1>
+            <p class="text-light text-center">Check the status of your favorite stocks</p>
+        </div>
     </div>
-
-
-    <h4 class="pt-4">Most followed stock tickers on Financial App</h4>
-    <p>Maybe show a data stream with the most popular or most saved stocks?</p>
-    <h4 class="pt-4">Check out more cool stuff, wow!</h4>
-    <p class="text-danger">
-        What else would we want people to see on the front page when users arrive? 
-        Would this display different information if that user was logged in versus 
-        if the user was visiting for the first time?
-    </p>
-
+    
 {% endblock %}

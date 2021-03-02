@@ -7,7 +7,7 @@ migrate = Migrate(app, db)
 
 @app.shell_context_processor
 def make_shell_context():
-    return {'db': db, 'Account': Account}
+    return dict(db=db, Account=Account)
 
 # Just playing with testing here...
 @app.cli.command()

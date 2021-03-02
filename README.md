@@ -17,6 +17,8 @@
 	6. Resources
 	7. Special Thanks
 	8. License
+</details>
+
 
 ## **About The Project** 
 

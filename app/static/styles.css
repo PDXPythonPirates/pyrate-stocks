@@ -46,6 +46,10 @@
     background: rgb(88, 94, 99);
 }
 
+.histogram {
+    background-color: #343a40;
+}
+
 .text-logo {
     color: rgb(50, 207, 155);
 }
@@ -76,6 +80,14 @@
 }
 
 .ticker-success {
+    color: rgb(50, 207, 155);
+}
+
+.ticker-graph {
+    font-weight: 400;
+}
+
+.ticker-graph a:hover {
     color: rgb(50, 207, 155);
 }
 

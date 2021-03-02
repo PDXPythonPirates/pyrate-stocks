@@ -1,8 +1,7 @@
 from flask import render_template, flash, redirect, url_for, request
-from flask_login import UserMixin,current_user, login_user, logout_user
+from flask_login import current_user, login_user, logout_user
 from app import db
 from app.models import Account
-from app.main import main_bp
 from app.main.forms import LoginForm, UpdateForm, SignUpForm
 
 class UserService():

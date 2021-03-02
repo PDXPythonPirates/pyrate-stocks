@@ -1,17 +1,11 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
 from app import db
-from app import login
-
-@login.user_loader
-def load_user(id):
-    return Account.query.get(int(id))
 
 class Account(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(10), unique=True, nullable=False)
-    email = db.Column(db.String(10))
+    email = db.Column(db.String(30))
     password_hash = db.Column(db.String(128))
     stocks = db.Column(db.String(32))
 
@@ -26,3 +20,6 @@ class Account(UserMixin, db.Model):
         
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+    
+    def __repr__(self):
+        return '<Account info: {}>'.format(self.username)

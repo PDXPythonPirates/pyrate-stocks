@@ -97,13 +97,13 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 ## **Resources**
 
-- [Portland Python Pirates](https://github.com/PDXPythonPirates) \
-- [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/)  \
-- [Hackers and Slackers' Flask Series](https://hackersandslackers.com/series/build-flask-apps/) \
-- [Miguel Grinberg's Dev Blog](https://blog.miguelgrinberg.com/category/Flask)  \
-- [Miguel Gringerg's Flask Mega Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)  \
-- [Nasdaq Symbol List](https://www.nasdaq.com/market-activity/stocks/screener) \
-- [Pandas Documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html)\
+- [Portland Python Pirates](https://github.com/PDXPythonPirates)
+- [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/)
+- [Hackers and Slackers' Flask Series](https://hackersandslackers.com/series/build-flask-apps/)
+- [Miguel Grinberg's Dev Blog](https://blog.miguelgrinberg.com/category/Flask)
+- [Miguel Gringerg's Flask Mega Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
+- [Nasdaq Symbol List](https://www.nasdaq.com/market-activity/stocks/screener)
+- [Pandas Documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html)
 - [yFinance Package](https://pypi.org/project/yfinance/)
 
 

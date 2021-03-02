@@ -1,9 +1,122 @@
+.alert {
+    padding: 5px;
+    margin: 0;
+    border-radius: 0%;
+    border-bottom: 1px solid rgb(209, 94, 59);
+    background-color: rgb(129, 48, 33);
+    color: rgb(243, 144, 87);
+    font-size: 12px;
+}
+
+.notify {
+    padding: 5px;
+    margin: 0;
+    border-radius: 0%;
+    border-bottom: 1px solid rgb(47, 179, 135);
+    background-color: rgb(42, 116, 91);
+    color: rgb(92, 230, 184);
+    font-size: 12px;
+}
+
 .nav a {
-    color: azure;
+    color: rgb(227, 246, 248);
     font-size: 24px;
     font-weight: 200;
 }
 
+.nav a:hover {
+    text-decoration: none;
+    color: rgb(50, 207, 155);
+}
+
 .nav a.current {
     font-weight: 700;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: rgb(50, 207, 155);
+    text-decoration-thickness: 2px;
+    color: rgb(50, 207, 155);
+}
+
+.home-page {
+    padding: 200px;
+}
+
+.block-content {
+    background: rgb(88, 94, 99);
+}
+
+.plot {
+    background-color: #343a40;
+}
+
+.text-logo {
+    color: rgb(50, 207, 155);
+}
+
+.top-tickers p {
+    word-wrap: break-word;
+}
+
+.add-ticker {
+    margin-top: 0;
+}
+
+.col {
+    float: left;
+    width: 30%;
+    position: relative;
+}
+  
+/* Clear floats after the columns */
+.ticker-container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.ticker-container {
+    height: 136px;
+}
+
+.ticker-success {
+    color: rgb(50, 207, 155);
+}
+
+.ticker-graph {
+    font-weight: 400;
+}
+
+.ticker-graph a:hover {
+    color: rgb(50, 207, 155);
+}
+
+.delete-ticker {
+    height: 100%;
+    width: 10%;
+    background: rgb(206, 61, 85);
+}
+
+.delete-ticker a {
+    width: 100%;
+    color: #fff;
+    font-weight: 100;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #343a40 inset !important;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+/*Change text in autofill textbox*/
+input:-webkit-autofill {
+    -webkit-text-fill-color: rgb(226, 226, 226) !important;
 }

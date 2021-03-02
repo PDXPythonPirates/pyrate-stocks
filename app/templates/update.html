@@ -1,24 +1,29 @@
 {% extends "base.html" %} 
 
 {% block content %}
-<div class="container">
-    <h2 style="color:rgb(36, 113, 116)" >{{ display_message }}</h2>
 
-    <h3 style="color:rgb(84, 36, 116)"> <strong>Update your information below:</strong></h3>
-    <hr/>
-    <div class="account-update">
-        <form class="" name="" action="{{ url_for('main_bp.update') }}" method="POST">
+<div class="p-4">
+    <h3 class="text-light">Update account information</h3>
+    <div class="update-container pt-4">
+        <form class="signup-form text-light" name="" action="{{ url_for('main_bp.update') }}" method="POST">
             {{ form.csrf_token }}
-            {{form.username.label}}  {{form.username(size=30)}}
-            <br>
-            {{form.email.label}}     {{form.email(size=30)}}
-            <br>
-            {{form.password.label}}  {{form.password(size=30)}}
-            <br>
-            {{form.stocks.label}}    {{form.stocks(size=80)}}
-            <h5><strong>&emsp;&emsp;&emsp;Separate stock symbols by comma</strong></h5>
-            <br>
-            <input type="submit" value="Submit"/>
+            <div class="form-group">
+                <label for="username-input">Username</label>
+                <input name="username" type="text" class="form-control bg-dark text-light border-0" id="username-input" placeholder="Enter Username" required>
+            </div>
+            <div class="form-group">
+                <label for="email-input">Email address</label>
+                <input name="email" type="email" class="form-control bg-dark text-light border-0" id="email-input" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="password-input">Password</label>
+                <input name="password" type="password" class="form-control bg-dark text-light border-0" id="password-input" placeholder="Enter password" required>
+            </div>
+            <div class="form-group">
+                <label for="stock-input">Symbols</label>
+                <input name="stocks" type="text" class="form-control bg-dark text-light border-0" id="stock-input" placeholder="Stock symbols separated by comma (e.g., AAPL,TSLA,FB,MSFT)">
+            </div>
+            <button type="submit" class="btn btn-secondary btn-sm mt-4">Submit</button>
         </form>
     </div>
 </div>

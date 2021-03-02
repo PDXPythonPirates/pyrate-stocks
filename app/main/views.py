@@ -5,6 +5,8 @@ from app.main import main_bp
 from app.main.forms import LoginForm, LogoutForm, UpdateForm
 from app.services.user_svc import UserService
 from app.services.ticker_svc import TickerService
+from app.models import Account
+from app import login
 from app import db
 
 @main_bp.before_app_first_request
@@ -12,6 +14,10 @@ def before_app_first_request():
     print("before_app_first_request started running.")
     TickerService.importCsvDb()
     print("before_app_first_request finished running.")
+
+@login.user_loader
+def load_user(id):
+    return Account.query.get(int(id))
 
 @main_bp.route('/')
 def home():
@@ -55,7 +61,7 @@ def dashboard():
         return render_template('login.html', form=LoginForm(), display_message='User Login')
 
 # Plot historical data
-@main_bp.route('/plot//<symbol>', methods=['GET', 'POST'])
+@main_bp.route('/plot/<symbol>', methods=['GET', 'POST'])
 def plot(symbol):
     script, div, cdn_js, cdn_css = TickerService.plot(symbol)
     return render_template('plot.html', script=script, div=div, cdn_js =cdn_js, cdn_css=cdn_css)

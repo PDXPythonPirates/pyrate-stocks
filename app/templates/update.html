@@ -8,12 +8,12 @@
         <form class="signup-form text-light" name="" action="{{ url_for('main_bp.update') }}" method="POST">
             {{ form.csrf_token }}
             <div class="form-group">
-                <label for="username-input">Username</label>
-                <input name="username" type="text" class="form-control bg-dark text-light border-0" id="username-input" placeholder="Enter Username" required>
+                <label class="text-light">Username</label>
+                {{ form.username(class="form-control bg-dark text-light border-0")   }}
             </div>
             <div class="form-group">
-                <label for="email-input">Email address</label>
-                <input name="email" type="email" class="form-control bg-dark text-light border-0" id="email-input" placeholder="Enter email" required>
+                <label class="text-light">Email</label>
+                {{ form.email(class="form-control bg-dark text-light border-0")   }}
             </div>
             <div class="form-group">
                 <label for="password-input">Password</label>

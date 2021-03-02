@@ -1,17 +1,40 @@
 ## **Pyrate Stocks**
 
-Built with:
+ A simple finance application built with Flask and Python
+ [Explore the docs >>](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1)
 
-[![Python](https://img.shields.io/badge/python-3.8.5-blue.svg)](https://www.python.org/downloads/release/python-385/) &emsp;
-[![Flask](https://img.shields.io/badge/flask-1.1.2-blue.svg)](https://flask.palletsprojects.com/en/1.1.x/installation/)  
+## **Table of Contents**
+<details>
+	<summary>Click to expand!</summary>
+
+	1. About The Project
+	2. Built With
+	3. Getting Started
+	..* Prerequisites
+	..* Installation
+	4. Features
+	5. Contributors
+	6. Resources
+	7. Special Thanks
+	8. License
 
 ## **About The Project** 
 
-This app was created by the first cohort of the Python Pyrates Project, hosted by Matt Phillips and Chris Thompson. We are entry level software developers working together to explore the Flask framework and the software development lifecycle. This app provides an interactive dashboard for users to monitor up-to-date (and historical) stock inforamtion.
+This app was created by the first cohort of the Python Pyrates Project, hosted by Matt Phillips and Chris Thompson. We are entry level software developers working together to explore the Flask framework and the software development lifecycle. This app provides an interactive dashboard for users to monitor up-to-date (and historical) stock information.
+
+
+## **Built with:**
+
+* [![Python](https://img.shields.io/badge/python-3.8.5-blue.svg)](https://www.python.org/downloads/release/python-385/)
+* [![Flask](https://img.shields.io/badge/flask-1.1.2-blue.svg)](https://flask.palletsprojects.com/en/1.1.x/installation/)  
+* [![Bootstrap](https://img.shields.io/badge/bootstrap-v5.0-blue)](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+
 
 ## **Getting Started**
 
-- Create virtural environment
+#### **Prequisites**
+
+- Create virtual environment
 
 	- Conda
 
@@ -21,7 +44,7 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
             python -m venv myenv
 
-- Activate virtural environment
+- Activate virtual environment
 
 	- Conda
 
@@ -29,11 +52,13 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 	    
 	- venv (Windows)
 
-            myenv\Scripts\activate.bat
+            myenv/Scripts/activate
 	    
-	- venv (Mac / Unix)
+	- venv (Mac / Unix / WSL)
 
             source myenv/bin/activate
+
+#### **Installation**
 
 - Clone repository
 
@@ -61,9 +86,10 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 	
 	- In the add ticker input field, the user is presented with recommended tickers as they type in different characters. Suggested tickers are pulled from a .csv file downloaded from [nasdaq.com](https://www.nasdaq.com/market-activity/stocks/screener). The user also has the ability to manually enter a ticker that does not appear in the suggestions.
 
-- On the Update page, the user can change username, password, email and enter stock symbols.  The form is preloaded with username, email and any stocks in the account. *This inforamtion was preloaded with the assumption that they typically don't change. If user enters new inforamtion, it will be saved.*
+- On the Update page, the user can change username, password, email and enter stock symbols.  The form is preloaded with username, email and any stocks in the account. *This inforamtion was preloaded with the assumption that they typically don't change. If user enters new information, it will be saved.*
 
 - The user stays logged in until the user decides to log out.  
+
 
 ## **Resources**
 
@@ -76,9 +102,18 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 [Pandas Documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html)\
 [yFinance Package](https://pypi.org/project/yfinance/)
 
+
+## **Contributors**
+- Matthias Wheelhouse
+- Jessica Cassidy
+- Xuehong Liu
+- Matt Griffes
+
 ## **Special Thanks**
 
 Thank you, Chris Thompson and Matt Phillips, for hosting the **Python Pyrates Project Cohort 1**! We greatly appreciate your guidance and support throughout the creation of this app, as well as the opportunity to experience the software lifecycle on a real-world application.
+
+We encourage any interested developers - regardless of experience - to apply for the next cohort. This is was an amazing experience for all four of us.
 
 
 ## **License**

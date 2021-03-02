@@ -6,7 +6,7 @@
 ## **Table of Contents**
 [About the Project](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#about-the-project)
 
-[Built With](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#built-wit	)
+[Built With]h(https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#built-with)
 
 [Getting Started](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#getting-started)
 * [Prerequisites](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#prerequisites)
@@ -36,7 +36,7 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 ## **Getting Started**
 
-#### **Prequisites**
+#### **Prerequisites**
 
 - Create virtual environment
 

@@ -4,21 +4,23 @@
  [Explore the docs >>](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1)
 
 ## **Table of Contents**
-<details>
-	<summary>Click to expand!</summary>
+[About the Project](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#about-the-project)
 
-	1. [About the Project](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#about-the-project)
-	2. [Built With](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#built-with)
-	3. [Getting Started](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#getting-started)
-		* [Prerequisites](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#prerequisites)
-		* [Installation](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#installation)
-	4. [Features](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#features)
-	5. [Contributors](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#contributors)
-	6. [Resources](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#resources)
-	7. [Special Thanks](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#special-thanks)
-	8. [License](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#license)
-</details>
+[Built With](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#built-wit	)
 
+[Getting Started](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#getting-started)
+* [Prerequisites](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#prerequisites)
+* [Installation](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#installation)
+
+[Features](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#features)
+
+[Contributors](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#contributors)
+
+[Resources](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#resources)
+
+[Special Thanks](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#special-thanks)
+
+[License](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#license)
 
 ## **About The Project** 
 

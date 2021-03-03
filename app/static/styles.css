@@ -121,7 +121,7 @@ input:-webkit-autofill {
     -webkit-text-fill-color: rgb(226, 226, 226) !important;
 }
 
-#myBtn {
+#return-top {
     display: none;
     position: fixed;
     width: 100%;
@@ -138,6 +138,6 @@ input:-webkit-autofill {
     cursor: pointer;
   }
   
-  #myBtn:hover {
+  #return-top:hover {
     background-color: rgb(76, 159, 180);
   }

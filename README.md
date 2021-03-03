@@ -2,7 +2,9 @@
 
  A simple finance application built with Flask and Python | [Explore the docs >>](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1)
 
+
 ## **Table of Contents**
+
 - [About the Project](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#about-the-project)
 
 - [Built With](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#built-with)
@@ -20,6 +22,7 @@
 
 - [License](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#license)
 
+
 ## **About The Project** 
 
 This app was created by the first cohort of the Python Pyrates Project, hosted by Matt Phillips and Chris Thompson. We are entry level software developers working together to explore the Flask framework and the software development lifecycle. This app provides an interactive dashboard for users to monitor up-to-date (and historical) stock information.
@@ -33,6 +36,7 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 
 ## **Getting Started**
+
 
 #### **Installation**
 
@@ -119,10 +123,12 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 
 ## **Contributors**
+
 - Matthias Wheelhouse
 - Jessica Cassidy
 - Xuehong Liu
 - Matt Griffes
+
 
 ## **Special Thanks**
 

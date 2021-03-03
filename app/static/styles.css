@@ -76,25 +76,11 @@ body {
 .ticker-success {
   color: #32CF9B;
 }
-@media (min-width: 320px) {
-}
 @media (min-width: 576px) {
-  .nav {
-    background-color: #ff668f;
-  }
 }
 @media (min-width: 768px) {
-  .nav {
-    background-color: #fff666;
-  }
 }
 @media (min-width: 992px) {
-  .nav {
-    background-color: #32CF9B;
-  }
 }
 @media (min-width: 1200px) {
-  .nav {
-    background-color: #CE3D55;
-  }
 }

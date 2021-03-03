@@ -1,10 +1,37 @@
 @import 'palette.less';
 // @import 'mixins.less';
 
-body { 
-    overflow: auto; 
+.block-content {
+    background: @color4;
 }
 
+.plot {
+    background-color: @color5;
+}
+
+.ticker-graph {
+    font-weight: 400;
+}
+
+.ticker-graph a:hover {
+    color: @color2;
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #343a40 inset !important;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+/*Change text in autofill textbox*/
+input:-webkit-autofill {
+    -webkit-text-fill-color: rgb(226, 226, 226) !important;
+}
+
+// ------ FLASHES ------
 .alert {
     padding: 5px;
     margin: 0;
@@ -25,8 +52,9 @@ body {
     font-size: 12px;
 }
 
-.block-content {
-    background: @color4;
+// ------ BASE.HTML ------
+body { 
+    overflow: auto; 
 }
 
 .nav a {
@@ -49,28 +77,23 @@ body {
     color: @color2;
 }
 
-.plot {
-    background-color: @color5;
-}
-
-.ticker-graph {
-    font-weight: 400;
-}
-
-.ticker-graph a:hover {
-    color: @color2;
+// home.html
+.slogan {
+    margin-top: 150px;
 }
 
 .text-logo {
     color: @color2;
 }
 
+// ------ DASHBOARD ------
+
 .delete-ticker {
     background-color: @color3;
-} 
+}
 
 .delete-ticker a {
-    color: @lightColor;
+    color: @color3;
     font-weight: 100;
 }
 
@@ -78,30 +101,14 @@ body {
     color: @color2;
 }
 
-/* Change the white to any color */
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #343a40 inset !important;
-            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-}
-
-/*Change text in autofill textbox*/
-input:-webkit-autofill {
-    -webkit-text-fill-color: rgb(226, 226, 226) !important;
-}
-
-
+// ------ MEDIA QUERIES ------
 // Extra small devices (portrait phones, less than 576px)
 // No media query since this is the default in Bootstrap
 
 // Small devices (portrait phones, 320px and up)
 @media (min-width: 320px) { 
     // temporary reference, remove before merge
-    .nav {
-        background-color: #66dbff;
-    }
+
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -134,9 +141,4 @@ input:-webkit-autofill {
     .nav {
         background-color: @color3;
     }
-
-    .ticker-name .ticker-graph .ticker-details .delete-ticker {
-        width: 400px;
-    }
-
 }

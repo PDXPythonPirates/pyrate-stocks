@@ -1,5 +1,26 @@
-body {
-  overflow: auto;
+.block-content {
+  background: #585E63;
+}
+.plot {
+  background-color: #343A40;
+}
+.ticker-graph {
+  font-weight: 400;
+}
+.ticker-graph a:hover {
+  color: #32CF9B;
+}
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #343a40 inset !important;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+/*Change text in autofill textbox*/
+input:-webkit-autofill {
+  -webkit-text-fill-color: #e2e2e2 !important;
 }
 .alert {
   padding: 5px;
@@ -19,8 +40,8 @@ body {
   color: #5ce6b8;
   font-size: 12px;
 }
-.block-content {
-  background: #585E63;
+body {
+  overflow: auto;
 }
 .nav a {
   color: #E3F6F8;
@@ -39,14 +60,8 @@ body {
   text-decoration: none;
   color: #32CF9B;
 }
-.plot {
-  background-color: #343A40;
-}
-.ticker-graph {
-  font-weight: 400;
-}
-.ticker-graph a:hover {
-  color: #32CF9B;
+.slogan {
+  margin-top: 150px;
 }
 .text-logo {
   color: #32CF9B;
@@ -55,28 +70,13 @@ body {
   background-color: #CE3D55;
 }
 .delete-ticker a {
-  color: #FFFFFE;
+  color: #CE3D55;
   font-weight: 100;
 }
 .ticker-success {
   color: #32CF9B;
 }
-/* Change the white to any color */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #343a40 inset !important;
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-}
-/*Change text in autofill textbox*/
-input:-webkit-autofill {
-  -webkit-text-fill-color: #e2e2e2 !important;
-}
 @media (min-width: 320px) {
-  .nav {
-    background-color: #66dbff;
-  }
 }
 @media (min-width: 576px) {
   .nav {
@@ -96,8 +96,5 @@ input:-webkit-autofill {
 @media (min-width: 1200px) {
   .nav {
     background-color: #CE3D55;
-  }
-  .ticker-name .ticker-graph .ticker-details .delete-ticker {
-    width: 400px;
   }
 }

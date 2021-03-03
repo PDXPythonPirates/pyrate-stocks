@@ -19,7 +19,7 @@
   {% for stock in stocks %}
   <div class="ticker-container w-100 mt-4">
     <div class="card-group d-flex">
-      <div class="rounded-left mb-0 p-4 bg-dark w-25 sm:w-100">
+      <div class="mb-0 p-4 bg-dark w-25 sm:w-100">
           <h2 class="text-light">{{ stock.symbol }}</h2>
           <p class="text-light">{{ stock.name }}</p>
           <h2 class="ticker-success">${{ stock.current_price }}</h2>
@@ -31,7 +31,7 @@
           <p class="ticker-success">High: ${{ stock.high }}<br><span class="text-danger">Low: ${{ stock.low }}</span></p>
           <p class="text-secondary">Open: ${{ stock.open }}<br>Prev. close: ${{ stock.close }}</p>
       </div>
-      <div class="rounded-right delete-ticker p-4 w-25 sm:w-100">
+      <div class="delete-ticker p-4 w-25 sm:w-100">
           <a class="text-light" href="/delete/{{ stock.symbol }}">Delete</a>
       </div>
     </div>

@@ -1,6 +1,6 @@
 ## **Pyrate Stocks**
 
- A simple finance application built with Flask and Python | [Explore the docs >>](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1)
+ A simple investment application built with Flask and Python | [Explore the docs >>](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1)
 
 
 ## **Table of Contents**

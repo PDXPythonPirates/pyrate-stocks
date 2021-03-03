@@ -37,17 +37,39 @@
   {% endfor %}
   {% else %}
   {% endif %}
-  <div class="logout-button pt-4">
-    <form class="" name="" action="{{ url_for('main_bp.logout') }}" method="POST">
-      {{ display_message }}
-      {{ loform.csrf_token }}
-      <input class="btn btn-dark btn-sm" type="submit" value="Logout"/>
-    </form>
-  </div>
 </div>
 
-<!-- jQuery for Ticker Dropdown -->
+<div class="return-top m-0 py-3">
+  <button onclick="topFunction()" id="myBtn" title="Go to top">- Return to the top -</button>
+</div>
+
+<!-- Additional Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<!-- Return to Top -->
+<script>
+  //Get the button
+  var mybutton = document.getElementById("myBtn");
+  
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function() {scrollFunction()};
+  
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+  
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+
+<!-- Predictive Search Functionality -->
 <script>
   var initialArray = [];
   initialArray = $('#tickerlist option');

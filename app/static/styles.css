@@ -1,122 +1,103 @@
+body {
+  overflow: auto;
+}
 .alert {
-    padding: 5px;
-    margin: 0;
-    border-radius: 0%;
-    border-bottom: 1px solid rgb(209, 94, 59);
-    background-color: rgb(129, 48, 33);
-    color: rgb(243, 144, 87);
-    font-size: 12px;
+  padding: 5px;
+  margin: 0;
+  border-radius: 0%;
+  border-bottom: 1px solid #d15e3b;
+  background-color: #813021;
+  color: #f39057;
+  font-size: 12px;
 }
-
 .notify {
-    padding: 5px;
-    margin: 0;
-    border-radius: 0%;
-    border-bottom: 1px solid rgb(47, 179, 135);
-    background-color: rgb(42, 116, 91);
-    color: rgb(92, 230, 184);
-    font-size: 12px;
+  padding: 5px;
+  margin: 0;
+  border-radius: 0%;
+  border-bottom: 1px solid #2fb387;
+  background-color: #2a745b;
+  color: #5ce6b8;
+  font-size: 12px;
 }
-
-.nav a {
-    color: rgb(227, 246, 248);
-    font-size: 24px;
-    font-weight: 200;
-}
-
-.nav a:hover {
-    text-decoration: none;
-    color: rgb(50, 207, 155);
-}
-
-.nav a.current {
-    font-weight: 700;
-    text-decoration-line: underline;
-    text-decoration-style: solid;
-    text-decoration-color: rgb(50, 207, 155);
-    text-decoration-thickness: 2px;
-    color: rgb(50, 207, 155);
-}
-
-.home-page {
-    padding: 200px;
-}
-
 .block-content {
-    background: rgb(88, 94, 99);
+  background: #585E63;
 }
-
+.nav a {
+  color: #E3F6F8;
+  font-size: 24px;
+  font-weight: 200;
+}
+.nav a.current {
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: #32CF9B;
+  text-decoration-thickness: 2px;
+  color: #32CF9B;
+}
+.nav a:hover {
+  text-decoration: none;
+  color: #32CF9B;
+}
 .plot {
-    background-color: #343a40;
+  background-color: #343A40;
 }
-
-.text-logo {
-    color: rgb(50, 207, 155);
-}
-
-.top-tickers p {
-    word-wrap: break-word;
-}
-
-.add-ticker {
-    margin-top: 0;
-}
-
-.col {
-    float: left;
-    width: 30%;
-    position: relative;
-}
-  
-/* Clear floats after the columns */
-.ticker-container:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.ticker-container {
-    height: 136px;
-}
-
-.ticker-success {
-    color: rgb(50, 207, 155);
-}
-
 .ticker-graph {
-    font-weight: 400;
+  font-weight: 400;
 }
-
 .ticker-graph a:hover {
-    color: rgb(50, 207, 155);
+  color: #32CF9B;
 }
-
+.text-logo {
+  color: #32CF9B;
+}
 .delete-ticker {
-    height: 100%;
-    width: 10%;
-    background: rgb(206, 61, 85);
+  background-color: #CE3D55;
 }
-
 .delete-ticker a {
-    width: 100%;
-    color: #fff;
-    font-weight: 100;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+  color: #FFFFFE;
+  font-weight: 100;
 }
-
+.ticker-success {
+  color: #32CF9B;
+}
 /* Change the white to any color */
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #343a40 inset !important;
-            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 0 0 30px #343a40 inset !important;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
 }
-
 /*Change text in autofill textbox*/
 input:-webkit-autofill {
-    -webkit-text-fill-color: rgb(226, 226, 226) !important;
+  -webkit-text-fill-color: #e2e2e2 !important;
+}
+@media (min-width: 320px) {
+  .nav {
+    background-color: #66dbff;
+  }
+}
+@media (min-width: 576px) {
+  .nav {
+    background-color: #ff668f;
+  }
+}
+@media (min-width: 768px) {
+  .nav {
+    background-color: #fff666;
+  }
+}
+@media (min-width: 992px) {
+  .nav {
+    background-color: #32CF9B;
+  }
+}
+@media (min-width: 1200px) {
+  .nav {
+    background-color: #CE3D55;
+  }
+  .ticker-name .ticker-graph .ticker-details .delete-ticker {
+    width: 400px;
+  }
 }

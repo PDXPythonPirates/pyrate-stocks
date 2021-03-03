@@ -4,9 +4,10 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- Custom CSS -->
         <link rel="stylesheet" href="../static/styles.css">
         <title>Pyrate Stocks</title>
     </head>
@@ -20,7 +21,8 @@
             {% endfor %}
         {% endwith %}
 
-        <div class="nav p-4 bg-dark">
+        <!-- TODO: add bg-dark back in -->
+        <div class="nav p-4">
             <ul class="my-3 list-inline">
                 <li class="pr-2 list-inline-item"><a href="{{ url_for('main_bp.home') }}">Home</a></li>
                 {% if current_user.is_anonymous %}

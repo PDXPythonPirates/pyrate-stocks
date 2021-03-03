@@ -1,0 +1,142 @@
+@import 'palette.less';
+// @import 'mixins.less';
+
+body { 
+    overflow: auto; 
+}
+
+.alert {
+    padding: 5px;
+    margin: 0;
+    border-radius: 0%;
+    border-bottom: 1px solid rgb(209, 94, 59);
+    background-color: rgb(129, 48, 33);
+    color: rgb(243, 144, 87);
+    font-size: 12px;
+}
+
+.notify {
+    padding: 5px;
+    margin: 0;
+    border-radius: 0%;
+    border-bottom: 1px solid rgb(47, 179, 135);
+    background-color: rgb(42, 116, 91);
+    color: rgb(92, 230, 184);
+    font-size: 12px;
+}
+
+.block-content {
+    background: @color4;
+}
+
+.nav a {
+    color: @color6;
+    font-size: 24px;
+    font-weight: 200;
+}
+
+.nav a.current {
+    font-weight: 700;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: @color2;
+    text-decoration-thickness: 2px;
+    color: @color2;
+}
+
+.nav a:hover {
+    text-decoration: none;
+    color: @color2;
+}
+
+.plot {
+    background-color: @color5;
+}
+
+.ticker-graph {
+    font-weight: 400;
+}
+
+.ticker-graph a:hover {
+    color: @color2;
+}
+
+.text-logo {
+    color: @color2;
+}
+
+.delete-ticker {
+    background-color: @color3;
+} 
+
+.delete-ticker a {
+    color: @lightColor;
+    font-weight: 100;
+}
+
+.ticker-success {
+    color: @color2;
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #343a40 inset !important;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+/*Change text in autofill textbox*/
+input:-webkit-autofill {
+    -webkit-text-fill-color: rgb(226, 226, 226) !important;
+}
+
+
+// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+
+// Small devices (portrait phones, 320px and up)
+@media (min-width: 320px) { 
+    // temporary reference, remove before merge
+    .nav {
+        background-color: #66dbff;
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { 
+    // temporary reference, remove before merge
+    .nav {
+        background-color: #ff668f;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+    // temporary reference, remove before merge
+    .nav {
+        background-color: #fff666;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    // temporary reference, remove before merge
+    .nav {
+        background-color: @color2;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+    // temporary reference, remove before merge
+    .nav {
+        background-color: @color3;
+    }
+
+    .ticker-name .ticker-graph .ticker-details .delete-ticker {
+        width: 400px;
+    }
+
+}

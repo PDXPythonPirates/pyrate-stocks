@@ -10,8 +10,7 @@
 - [Built With](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#built-with)
 
 - [Getting Started](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#getting-started)
-	* [Installation](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#installation)
-
+	
 - [Features](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#features)
 
 - [Contributors](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#contributors)
@@ -36,9 +35,6 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 
 ## **Getting Started**
-
-
-#### **Installation**
 
 1. Clone repository
 

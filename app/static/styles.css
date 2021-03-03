@@ -61,7 +61,13 @@ body {
   color: #32CF9B;
 }
 .slogan {
-  margin-top: 150px;
+  margin: none;
+  padding: none;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 .text-logo {
   color: #32CF9B;

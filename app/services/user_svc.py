@@ -38,7 +38,7 @@ class UserService():
             if not user.check_password(lform.password.data):    
                 flash('Wrong password!', 'alert')
                 lform.username.data = user.username
-                return render_template('login.html', title='Sign In', form=lform)
+                return render_template('login.html', title='Sign In', form=lform, username=lform.username.data)
             
             flash(f'Welcome, {user.username}!', 'notify')
             login_user(user, remember=lform.remember.data)
@@ -57,7 +57,8 @@ class UserService():
                     return render_template('update.html', form=uform)
                 if uform.validate_on_submit():
                     uform.populate_obj(user)
-                    user.set_password(uform.password.data)
+                    if uform.password.data:
+                        user.set_password(uform.password.data)
                     db.session.commit()
                     flash('Your inforamtion has been updated.', 'notify')
                     return redirect(url_for('main_bp.dashboard'))
@@ -65,6 +66,7 @@ class UserService():
             uform.username.data = current_user.username
             uform.email.data = current_user.email
             uform.stocks.data = current_user.stocks
+
             return render_template('update.html', form=uform)
         
         flash('Please login first.', 'alert')

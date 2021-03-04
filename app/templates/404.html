@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2 class="error-h1">File Not Found</h2>
-    <h3 class="error-text">Please try again later.</h3>
 
-    <div class="error-404-container pt-4">
-        <img src="../static/pirate-flag.jpg">
+    <div class="error-container">
+        <img class="pirate-img mb-4" src="{{url_for('static', filename='pirate-flag.jpg')}}"/>
+        <h2 class="error-title">File Not Found</h2>
+        <h3 class="error-text">Please try again later.</h3>
     </div>
     
 {% endblock %}

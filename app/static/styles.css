@@ -100,7 +100,19 @@ body {
 .plot {
   background-color: #343A40;
 }
-.error-h1 {
+.error-container {
+  margin: none;
+  padding: none;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.pirate-img {
+  border: 1px solid #32CF9B;
+}
+.error-title {
   color: #32CF9B;
 }
 .error-text {

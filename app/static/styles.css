@@ -22,9 +22,9 @@ input:-webkit-autofill {
   padding: 5px;
   margin: 0;
   border-radius: 0%;
-  border-bottom: 1px solid #d15e3b;
-  background-color: #813021;
-  color: #f39057;
+  border-bottom: 1px solid #e38e9c;
+  background-color: #842132;
+  color: #e38e9c;
   font-size: 12px;
 }
 .notify {

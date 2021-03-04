@@ -80,9 +80,6 @@ body {
 .ticker-graph a:hover {
   color: #E2E2E2;
 }
-.add-ticker-btn {
-  color: #32CF9B;
-}
 .delete-ticker {
   background-color: #CE3D55;
 }

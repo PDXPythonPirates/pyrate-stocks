@@ -43,22 +43,28 @@ input:-webkit-autofill {
 body {
   overflow: auto;
 }
-.nav a {
-  color: #E3F6F8;
+.nav-logo {
+  color: #32CF9B;
+}
+.navbar-nav a {
+  color: #E2E2E2;
   font-size: 24px;
   font-weight: 200;
 }
-.nav a.current {
+.navbar-nav a.current {
   font-weight: 700;
   text-decoration-line: underline;
   text-decoration-style: solid;
   text-decoration-color: #32CF9B;
   text-decoration-thickness: 2px;
-  color: #32CF9B;
+  color: #FFFFFE;
 }
-.nav a:hover {
+.navbar-nav a:hover {
   text-decoration: none;
-  color: #32CF9B;
+  color: #E2E2E2;
+}
+.custom-toggler.navbar-toggler {
+  border-color: #32CF9B;
 }
 .slogan {
   margin: none;

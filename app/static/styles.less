@@ -52,30 +52,37 @@ input:-webkit-autofill {
     font-size: 12px;
 }
 
-// ------ BASE ------
+// ------ BASE / NAV ------
 body { 
     overflow: auto; 
 }
 
-.nav a {
-    color: @color6;
+.nav-logo {
+    color: @color2;
+}
+.navbar-nav a {
+    color: @color1;
     font-size: 24px;
     font-weight: 200;
 }
 
-.nav a.current {
+.navbar-nav a.current {
     font-weight: 700;
     text-decoration-line: underline;
     text-decoration-style: solid;
     text-decoration-color: @color2;
     text-decoration-thickness: 2px;
-    color: @color2;
+    color: @lightColor;
 }
 
-.nav a:hover {
+.navbar-nav a:hover {
     text-decoration: none;
-    color: @color2;
+    color: @color1;
 }
+
+.custom-toggler.navbar-toggler {
+    border-color: @color2;
+} 
 
 // ------ HOME ------
 .slogan {

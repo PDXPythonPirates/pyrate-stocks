@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="login-container p-4 w-75">
+<div class="login-container p-4 w-50">
     <form class="text-light" name="" action="{{ url_for('main_bp.login') }}" method="POST">
         {{ form.csrf_token }}
         <div class="form-group">

@@ -88,6 +88,17 @@ body {
 .ticker-success {
   color: #32CF9B;
 }
+@media (min-width: 320px) {
+  .signup-container {
+    max-width: 75%;
+  }
+  .login-container {
+    max-width: 75%;
+  }
+  .update-container {
+    max-width: 75%;
+  }
+}
 @media (min-width: 992px) {
   .ticker-container {
     max-width: 1199px;

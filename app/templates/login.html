@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="login-container p-4 w-50">
+<div class="login-container p-4 w-75">
     <form class="text-light" name="" action="{{ url_for('main_bp.login') }}" method="POST">
         {{ form.csrf_token }}
         <div class="form-group">
@@ -11,7 +11,7 @@
         </div>
         <div class="form-group">
           <label for="password-input">Password</label>
-          <input name="password" type="password" class="form-control bg-dark text-light border-0" id="password-input" placeholder="Enter password" required>
+          <input name="password" type="password" class="form-control bg-dark text-light border-0" id="password-input" placeholder="Enter Password" required>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="remember">

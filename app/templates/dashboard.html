@@ -7,15 +7,16 @@
 <div class="dashboard-container p-4">
   <div class="form-group col-lg-4">
     <form action="{{ url_for('main_bp.add') }}" method="post"> 
-      <input type="text" list="tickerlist" name="symbol" class="form-control bg-dark text-light border-0" id="tickerInput" Placeholder="Search stock symbol..">
+      <input type="text" list="tickerlist" name="symbol" class="ticker-form form-control bg-dark text-light border-0" id="tickerInput" Placeholder="Search stock symbol..">
       <datalist id="tickerlist">
         {% for i in results %}
             <option value="{{ i }}"></option> 
         {% endfor %}
       </datalist>
-      <button class="add-ticker btn btn-dark btn-sm mt-4" type="submit">Add Ticker</button>
+      <button class="add-ticker btn btn-dark btn-sm mt-4" type="submit"><span class="add-ticker-btm">Add</span></button>
     </form>
   </div>
+
   {% if stocks %}
   {% for stock in stocks %}
   <div class="ticker-container pl-4 pr-4 pb-2 pt-2">
@@ -33,7 +34,7 @@
           <p class="text-secondary">Open: ${{ stock.open }}<br>Prev. close: ${{ stock.close }}</p>
       </div>
       <div class="delete-ticker p-4 col-lg-1">
-          <a class="text-light" href="/delete/{{ stock.symbol }}">Delete</a>
+          <a class="" href="/delete/{{ stock.symbol }}">Delete</a>
       </div>
     </div>
   </div>

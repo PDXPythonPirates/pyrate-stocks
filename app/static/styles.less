@@ -1,34 +1,16 @@
+// Modify main color palette:
 @import 'palette.less';
-// @import 'mixins.less';
+
+// Parametric Mixins Library:
+@import 'mixins.less';
+
+
+.transformWhiteText();
+
+.textChangeAutofillBox();
 
 .block-content {
     background: @color4;
-}
-
-.plot {
-    background-color: @color5;
-}
-
-.ticker-graph {
-    font-weight: 400;
-}
-
-.ticker-graph a:hover {
-    color: @color2;
-}
-
-/* Change the white to any color */
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #343a40 inset !important;
-            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-}
-
-/*Change text in autofill textbox*/
-input:-webkit-autofill {
-    -webkit-text-fill-color: rgb(226, 226, 226) !important;
 }
 
 // ------ FLASHES ------
@@ -65,7 +47,6 @@ body {
     font-size: 24px;
     font-weight: 200;
 }
-
 .navbar-nav a.current {
     font-weight: 700;
     text-decoration-line: underline;
@@ -74,25 +55,14 @@ body {
     text-decoration-thickness: 2px;
     color: @lightColor;
 }
-
 .navbar-nav a:hover {
     text-decoration: none;
     color: @color1;
 }
 
-.custom-toggler.navbar-toggler {
-    border-color: @color2;
-} 
-
 // ------ HOME ------
 .slogan {
-    margin: none;
-    padding: none;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    .deadCenter();
 }
 
 .text-logo {
@@ -100,18 +70,41 @@ body {
 }
 
 // ------ DASHBOARD ------
+.ticker-success {
+    color: @color2;
+}
+
+.ticker-graph {
+    font-weight: 400;
+}
+.ticker-graph a:hover {
+    color: @color1;
+}
+
+.add-ticker-btn {
+    color: @color2;
+}
 
 .delete-ticker {
     background-color: @color3;
 }
-
 .delete-ticker a {
-    color: @color3;
+    color: @lightColor;
     font-weight: 100;
+    .deadCenter();
 }
 
-.ticker-success {
+// ------ PLOT ------
+.plot {
+    background-color: @color5;
+}
+
+// ------ ERROR 403-404-500 ------
+.error-h1 {
     color: @color2;
+}
+.error-text {
+    color: @color1;
 }
 
 // ------ MEDIA QUERIES ------
@@ -123,9 +116,11 @@ body {
     .signup-container {
         max-width: 75%;
     }
+
     .login-container {
         max-width: 75%;
     }
+
     .update-container {
         max-width: 75%;
     }
@@ -148,7 +143,7 @@ body {
     }
 
     .delete-ticker {
-        max-width: 125px;
+        max-width: 120px;
     }
 }
 
@@ -159,6 +154,6 @@ body {
     }
     
     .delete-ticker {
-        max-width: 125px;
+        max-width: 120px;
     }
 }

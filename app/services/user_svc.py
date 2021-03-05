@@ -60,7 +60,7 @@ class UserService():
                     if uform.password.data:
                         user.set_password(uform.password.data)
                     db.session.commit()
-                    flash('Your inforamtion has been updated.', 'notify')
+                    flash('Your information has been updated.', 'notify')
                     return redirect(url_for('main_bp.dashboard'))
             
             uform.username.data = current_user.username

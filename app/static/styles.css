@@ -120,3 +120,24 @@ input:-webkit-autofill:active {
 input:-webkit-autofill {
     -webkit-text-fill-color: rgb(226, 226, 226) !important;
 }
+
+#return-top {
+    display: none;
+    position: fixed;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    bottom: 0px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: rgb(51, 101, 124);
+    border-top: 1px solid rgb(47, 153, 179);
+    color: rgb(192, 234, 245);
+    cursor: pointer;
+  }
+  
+  #return-top:hover {
+    background-color: rgb(76, 159, 180);
+  }

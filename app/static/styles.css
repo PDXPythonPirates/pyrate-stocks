@@ -128,16 +128,12 @@ No media query since this is the default in Bootstrap */
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
-    /* .delete-ticker {
-        padding: 3%;
-    } */
+
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-    /* .delete-ticker {
-        padding: 2%;
-    } */
+
 }
 
 /* Large devices (desktops, 992px and up) */

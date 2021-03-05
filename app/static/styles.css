@@ -158,4 +158,10 @@ No media query since this is the default in Bootstrap */
     .delete-ticker {
         max-width: 60px;
     }
+    /* Centers dashboard content on large devices */
+    .dashboard-container {
+        max-width: 1500px;
+        margin: auto;
+        padding: 10px;
+    }
 }

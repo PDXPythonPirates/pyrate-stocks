@@ -41,7 +41,7 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 ## **Getting Started**
 
-1. Clone repository
+###### 1. Clone repository
 <br>
 
     $ git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main

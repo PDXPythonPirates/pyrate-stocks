@@ -61,7 +61,7 @@ or
     #venv
     $ python -m venv myenv
     
-###### **Activate virtual environment**
+### **Activate virtual environment**
 
 Activate your new virtual environment
 
@@ -78,13 +78,13 @@ or
     #venv (Mac / Unix / WSL)
     $ source myenv/bin/activate
     
-###### **Install requirements.txt**
+### **Install requirements.txt**
 
 Install the required packages
 
     $ pip install -r requirements.txt
     
-###### **FLASK_ENV Variable**
+### **FLASK_ENV Variable**
 
 Set the flask environment
 
@@ -96,7 +96,7 @@ or
     #Mac / Unix / WSL
     $ export FLASK_ENV=fin_app.py
     
-###### **Run application**
+### **Run application**
 
 Run the app using Flask
 

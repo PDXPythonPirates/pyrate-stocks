@@ -45,7 +45,7 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 <br>
 
     $ git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
-
+<br>
 2. Create virtual environment
 <br>
 
@@ -55,7 +55,7 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
     #venv
     $ python -m venv myenv
-
+<br>
 3. Activate virtual environment
 <br>
 
@@ -69,12 +69,12 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
     #venv (Mac / Unix / WSL)
     $ source myenv/bin/activate
-
+<br>
 4. Install requirements.txt
 <br>
 
     $ pip install -r requirements.txt
-
+<br>
 5. Set FLASK_ENV
 <br>
 
@@ -84,13 +84,12 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
     #Mac / Unix / WSL
     $ export FLASK_ENV=fin_app.py
-
+<br>
 6. Run application
 <br>
 
     $ flask run
-
-
+<br>
 ## **Features**
 
 - Anonymous users are presented with Home, Login, and Signup options.

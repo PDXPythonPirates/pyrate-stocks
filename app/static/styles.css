@@ -1,163 +1,140 @@
+/* Main Color Palette */
+/* Parametrics Mixins Library */
+/* Parametric Mixins Library */
+/* Places things in the dead center of a container or page */
+/* Prevents overscroll behavior */
 .alert {
-    padding: 5px;
-    margin: 0;
-    border-radius: 0%;
-    border-bottom: 1px solid #DD8795;
-    background-color: #842133;
-    color: #DD8795;
-    font-size: 12px;
+  padding: 5px;
+  margin: 0;
+  border-radius: 0%;
+  border-bottom: 1px solid #e38e9c;
+  background-color: #842132;
+  color: #e38e9c;
+  font-size: 12px;
 }
-
 .notify {
-    padding: 5px;
-    margin: 0;
-    border-radius: 0%;
-    border-bottom: 1px solid #2FB387;
-    background-color: #2A745B;
-    color: #5CE6B8;
-    font-size: 12px;
+  padding: 5px;
+  margin: 0;
+  border-radius: 0%;
+  border-bottom: 1px solid #85e2c3;
+  background-color: #85e2c3;
+  color: #85e2c3;
+  font-size: 12px;
 }
-
-/* Centers home logo and styling for error templates */
-.slogan, .error-container {
-    margin: none;
-    padding: none;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+.slogan,
+.error-container {
+  margin: none;
+  padding: none;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
-
 .error-text {
-    color: #E2E2E2;
+  color: #E2E2E2;
 }
-
 /* Image located on error templates */
 .pirate-img {
-    border: 1px solid #32CF9B;
+  border: 1px solid #32CF9B;
 }
-
-.nav-logo, .text-logo, .ticker-success, .error-title {
-    color: #32CF9B;
+.nav-logo,
+.text-logo,
+.ticker-success,
+.error-title {
+  color: #32CF9B;
 }
-
 .navbar-nav a {
-    color: #E2E2E2;
-    font-size: 24px;
-    font-weight: 200;
+  color: #E2E2E2;
+  font-size: 24px;
+  font-weight: 200;
 }
-
 .navbar-nav a.current {
-    font-weight: 700;
-    text-decoration-line: underline;
-    text-decoration-style: solid;
-    text-decoration-color: #32CF9B;
-    text-decoration-thickness: 2px;
-    color: #FFFFFF;
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: #32CF9B;
+  text-decoration-thickness: 2px;
+  color: #FFFFFE;
 }
-
 .navbar-nav a:hover {
-    text-decoration: none;
-    color: #E2E2E2;
+  text-decoration: none;
+  color: #E2E2E2;
 }
-
 .ticker-graph a:hover {
-    color: #E2E2E2;
+  color: #E2E2E2;
 }
-
 .ticker-graph {
-    font-weight: 400;
+  font-weight: 400;
 }
-
 .plot {
-    background-color: #343A40;
+  background-color: #343A40;
 }
-
 .delete-ticker {
-    background-color: #CE3D55;
+  background-color: #CE3D55;
 }
-
 .delete-ticker a {
-    color: #FFFFFF;
-    font-weight: 100;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+  color: #FFFFFE;
+  font-weight: 100;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
-
 .block-content {
-    background: #585E63;
+  background: #585E63;
 }
-
 /* Prevents overscroll behavior */
-body { 
-    overflow: auto; 
+body {
+  overflow: auto;
 }
-
 /*Change text in autofill textbox*/
 input:-webkit-autofill {
-    -webkit-text-fill-color: #E2E2E2 !important;
+  -webkit-text-fill-color: #E2E2E2 !important;
 }
-
 /* Change the white to any color */
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #343a40 inset !important;
-            box-shadow: inset 0 0 6px #000000;
+  -webkit-box-shadow: 0 0 0 30px #343A40 inset !important;
+  box-shadow: inset 0 0 6px #000000;
 }
-
 /* ------ MEDIA QUERIES ------
 Extra small devices (portrait phones, less than 576px)
 No media query since this is the default in Bootstrap */
-
 /* Small devices (portrait phones, 320px and up) */
 @media (min-width: 320px) {
-    .signup-container {
-        max-width: 75%;
-    }
-    .login-container, .update-container {
-        max-width: 75%;
-    }
-
+  .login-container,
+  .signup-container,
+  .update-container {
+    max-width: 75%;
+  }
 }
-
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
-
-}
-
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-
-}
-
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-    .ticker-container {
-        max-width: 1199px;
-    }
-    .delete-ticker {
-        max-width: 60px;
-    }
+  .ticker-container {
+    max-width: 1199px;
+  }
+  .delete-ticker {
+    max-width: 60px;
+  }
 }
-
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-    .ticker-container {
-        max-width: 1500px;
-    }
-    .delete-ticker {
-        max-width: 60px;
-    }
-    /* Centers dashboard content on large devices */
-    .dashboard-container {
-        max-width: 1500px;
-        margin: auto;
-        padding: 10px;
-    }
+  .ticker-container {
+    max-width: 1500px;
+  }
+  .delete-ticker {
+    max-width: 60px;
+  }
+  /* Centers dashboard content on large devices */
+  .dashboard-container {
+    max-width: 1500px;
+    margin: auto;
+    padding: 10px;
+  }
 }

@@ -1,4 +1,4 @@
-## **Pyrate Stocks**
+# **Pyrate Stocks**
 
 A simple investment application built with Flask and Python | [Explore the docs >>](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1)
 

@@ -49,6 +49,10 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 ###### 2. Create virtual environment
 <br>
 
+    #navigate to clone folder
+    $ cd python-pirates-project-cohort-1
+<br>
+
     #conda
     $ conda create -n myenv python=3.8
 <br>

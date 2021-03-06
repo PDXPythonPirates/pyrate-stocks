@@ -42,7 +42,6 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 ## **Getting Started**
 
 ### **Clone repository**
-<br>
 
     $ git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
 
@@ -51,12 +50,12 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 Navigate to the project folder
 
     $ cd python-pirates-project-cohort-1
-<br>
+
 Create a new virtual environment
 
     #conda
     $ conda create -n myenv python=3.8
-<br>
+
 or
 
     #venv
@@ -68,12 +67,12 @@ Activate your new virtual environment
 
     #conda
     $ conda activate myenv
-<br>
+
 or
 
     #venv (Windows)
     $ myenv/Scripts/activate    
-<br>
+
 or
 
     #venv (Mac / Unix / WSL)
@@ -91,7 +90,7 @@ Set the flask environment
 
     #Windows
     $ set FLASK_ENV=fin_app.py
-<br>
+
 or
 
     #Mac / Unix / WSL

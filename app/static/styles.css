@@ -38,10 +38,11 @@
 .pirate-img {
   border: 1px solid #32CF9B;
 }
+.error-title,
 .nav-logo,
+.plot-text,
 .text-logo,
-.ticker-success,
-.error-title {
+.ticker-success {
   color: #32CF9B;
 }
 .navbar-nav a {
@@ -67,7 +68,7 @@
 .ticker-graph {
   font-weight: 400;
 }
-.plot {
+.plot-container {
   background-color: #343A40;
 }
 .delete-ticker {

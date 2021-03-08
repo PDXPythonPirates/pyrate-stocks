@@ -70,6 +70,9 @@
 }
 .plot-container {
   background-color: #343A40;
+  max-width: 1500px;
+  margin: auto;
+  padding: 10px;
 }
 .delete-ticker {
   background-color: #CE3D55;

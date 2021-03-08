@@ -144,4 +144,7 @@ No media query since this is the default in Bootstrap */
     margin: auto;
     padding: 10px;
   }
+  .block-content {
+    background: #343A40;
+  }
 }

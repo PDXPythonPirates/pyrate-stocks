@@ -119,9 +119,9 @@ class TickerService:
 
         p.border_fill_color = "#343a40"
         p.outline_line_color = "#343a40"
-        p.yaxis.major_label_text_color = "#6c757d"
-        p.xaxis.major_label_text_color = "#6c757d"
-        p.yaxis.axis_label_text_color = "#6c757d"
+        p.yaxis.major_label_text_color = "#747d85"
+        p.xaxis.major_label_text_color = "#747d85"
+        p.yaxis.axis_label_text_color = "#747d85"
 
         p.background_fill_alpha = 0
         p.yaxis.axis_line_alpha = .3

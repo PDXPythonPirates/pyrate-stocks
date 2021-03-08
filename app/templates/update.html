@@ -8,20 +8,20 @@
         <form class="signup-form text-light" name="" action="{{ url_for('main_bp.update') }}" method="POST">
             {{ form.csrf_token }}
             <div class="form-group">
-                <label for="username-input">Username</label>
-                <input name="username" type="text" class="form-control bg-dark text-light border-0" id="username-input" placeholder="Enter Username" required>
+                <label class="text-light">Username</label>
+                {{ form.username(class="form-control bg-dark text-light border-0", placeholder="Enter Username",) }}
             </div>
             <div class="form-group">
-                <label for="email-input">Email Address</label>
-                <input name="email" type="email" class="form-control bg-dark text-light border-0" id="email-input" placeholder="Enter Email" required>
+                <label for="email-input">Email</label>
+                {{ form.email(class="form-control bg-dark text-light border-0", placeholder="Enter Email", type="email", id="email-input") }}
             </div>
             <div class="form-group">
                 <label for="password-input">Password</label>
-                <input name="password" type="password" class="form-control bg-dark text-light border-0" id="password-input" placeholder="Enter Password" required>
+                <input name="password" type="password" class="form-control bg-dark text-light border-0" id="password-input" placeholder="Enter Password (Not Required)" required>
             </div>
             <div class="form-group">
                 <label for="stock-input">Symbols</label>
-                <input name="stocks" type="text" class="form-control bg-dark text-light border-0" id="stock-input" placeholder="Separate by commas (e.g., AAPL,TSLA,FB,MSFT)">
+                {{ form.stocks(class="form-control bg-dark text-light border-0", placeholder="Separate by commas (e.g., AAPL,TSLA,FB,MSFT)", type="text", id="stock-input") }}
             </div>
             <button type="submit" class="btn btn-secondary btn-sm mt-4">Submit</button>
         </form>

@@ -1,15 +1,19 @@
-## **Pyrate Stocks**
+# **Pyrate Stocks**
 
- A simple finance application built with Flask and Python | [Explore the docs >>](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1)
+A simple investment application built with Flask and Python | [Explore the docs >>](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1)
+
 
 ## **Table of Contents**
+
+<details>
+	<summary>Click to expand!</summary>
+
 - [About the Project](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#about-the-project)
 
 - [Built With](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#built-with)
 
 - [Getting Started](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#getting-started)
-	* [Installation](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#installation)
-
+	
 - [Features](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#features)
 
 - [Contributors](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#contributors)
@@ -19,6 +23,9 @@
 - [Special Thanks](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#special-thanks)
 
 - [License](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#license)
+
+</details>
+
 
 ## **About The Project** 
 
@@ -34,54 +41,66 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 ## **Getting Started**
 
-#### **Installation**
+### **Clone repository**
 
-1. Clone repository
+    $ git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
 
-            git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
+### **Create virtual environment**
 
-2. Create virtual environment
+* Navigate to the project folder
 
-	- Conda
+      $ cd python-pirates-project-cohort-1
 
-            conda create -n myenv python=3.8
+* Create a new virtual environment
+
+      #conda
+      $ conda create -n myenv python=3.8
+
+	or
+
+      #venv
+      $ python -m venv myenv
     
-	- venv
+### **Activate virtual environment**
 
-            python -m venv myenv
+* Activate your new virtual environment
 
-3. Activate virtual environment
+      #conda
+      $ conda activate myenv
 
-	- Conda
+	or
 
-            conda activate myenv
-	    
-	- venv (Windows)
+      #venv (Windows)
+      $ myenv/Scripts/activate    
 
-            myenv/Scripts/activate
-	    
-	- venv (Mac / Unix / WSL)
+	or
 
-            source myenv/bin/activate
+      #venv (Mac / Unix / WSL)
+      $ source myenv/bin/activate
+    
+### **Install requirements.txt**
 
-4. Install requirements.txt
+* Install the required packages
 
-            pip install -r requirements.txt
+      $ pip install -r requirements.txt
+    
+### **FLASK_ENV Variable**
 
-5. Set FLASK_ENV
+* Set the flask environment
 
-	- Windows
+      #Windows
+      $ set FLASK_ENV=fin_app.py
 
-			set FLASK_ENV=fin_app.py
+	or
 
-	- Mac / Unix / WSL
+      #Mac / Unix / WSL
+      $ export FLASK_ENV=fin_app.py
+    
+### **Run application**
 
-			export FLASK_ENV=fin_app.py
+* Run the app using Flask
 
-6. Run application
-
-			flask run
-
+      $ flask run
 
 ## **Features**
 
@@ -119,10 +138,12 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 
 ## **Contributors**
+
 - Matthias Wheelhouse
 - Jessica Cassidy
 - Xuehong Liu
 - Matt Griffes
+
 
 ## **Special Thanks**
 

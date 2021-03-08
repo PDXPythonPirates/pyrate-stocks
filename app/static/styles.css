@@ -70,9 +70,6 @@
 }
 .plot-container {
   background-color: #343A40;
-  max-width: 1500px;
-  margin: auto;
-  padding: 10px;
 }
 .delete-ticker {
   background-color: #CE3D55;
@@ -137,6 +134,12 @@ No media query since this is the default in Bootstrap */
   }
   /* Centers dashboard content on large devices */
   .dashboard-container {
+    max-width: 1500px;
+    margin: auto;
+    padding: 10px;
+  }
+  .plot-container {
+    background-color: #343A40;
     max-width: 1500px;
     margin: auto;
     padding: 10px;

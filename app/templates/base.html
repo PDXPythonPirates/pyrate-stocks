@@ -4,9 +4,10 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- Custom CSS -->
         <link rel="stylesheet" href="../static/styles.css">
         <title>Pyrate Stocks</title>
     </head>
@@ -19,20 +20,25 @@
                 <div class="{{ category }}">{{ message }}</div>
             {% endfor %}
         {% endwith %}
-
-        <div class="nav p-4 bg-dark">
-            <ul class="my-3 list-inline">
-                <li class="pr-2 list-inline-item"><a href="{{ url_for('main_bp.home') }}">Home</a></li>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="{{ url_for('main_bp.home') }}"><span class="nav-logo">Pyrate Stocks</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
                 {% if current_user.is_anonymous %}
-                <li class="pr-2 list-inline-item"><a href="{{ url_for('main_bp.login') }}">Login</a></li>
-                <li class="list-inline-item"><a href="{{ url_for('main_bp.signup') }}">Signup</a></li>
+                <a class="nav-item nav-link" href="{{ url_for('main_bp.login') }}">Login</a>
+                <a class="nav-item nav-link" href="{{ url_for('main_bp.signup') }}">Signup</a>
                 {% else %}
-                <li class="pr-2 list-inline-item"><a href="{{ url_for('main_bp.dashboard') }}">Dashboard</a></li>
-                <li class="list-inline-item"><a href="{{ url_for('main_bp.update') }}">Update Account</a></li>
-                <li class="list-inline-item"><a href="{{ url_for('main_bp.logout') }}">Logout</a></li>
+                <a class="nav-item nav-link" href="{{ url_for('main_bp.dashboard') }}">Dashboard</a>
+                <a class="nav-item nav-link" href="{{ url_for('main_bp.update') }}">Update Account</a>
+                <a class="nav-item nav-link" href="{{ url_for('main_bp.logout') }}">Logout</a>
                 {% endif %}
-            </ul>
-        </div>
+              </div>
+            </div>
+          </nav>
+
         <div class="block-content">
             {% block content %}
             {% endblock %}

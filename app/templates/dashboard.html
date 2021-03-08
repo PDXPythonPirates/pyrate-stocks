@@ -3,35 +3,39 @@
 {% block title %}{{super()}}{{ username }}{% endblock %}
 
 {% block content %}
+
 <div class="dashboard-container p-4">
-  <div class="form-group w-50">
+  <div class="form-group col-lg-4">
     <form action="{{ url_for('main_bp.add') }}" method="post"> 
-      <input type="text" list="tickerlist" name="symbol" class="form-control bg-dark text-light border-0" id="tickerInput" Placeholder="Search stock symbol..">
-      <button class="add-ticker btn btn-dark btn-sm mt-3" type="submit">Add</button>
+      <input type="text" list="tickerlist" name="symbol" class="ticker-form form-control bg-dark text-light border-0" id="tickerInput" Placeholder="Search stock symbol..">
       <datalist id="tickerlist">
         {% for i in results %}
             <option value="{{ i }}"></option> 
         {% endfor %}
       </datalist>
+      <button class="add-ticker btn btn-dark btn-sm mt-4" type="submit">Add</button>
     </form>
   </div>
+
   {% if stocks %}
   {% for stock in stocks %}
-  <div class="ticker-container bg-dark mt-4">
-    <div class="ticker-name col pt-2">
-      <h2 class="text-light">{{ stock.symbol }}</h2>
-      <p class="text-light">{{ stock.name }}</p>
-      <h2 class="ticker-success">${{ stock.current_price }}</h2>
-    </div>
-    <div class="ticker-graph col pt-2">
-      <a class="ticker-success" href="/plot/{{ stock.symbol }}">View chart</a>
-    </div>
-    <div class="ticker-details col pt-2">
-      <p class="ticker-success">High: ${{ stock.high }}<br><span class="text-danger">Low: ${{ stock.low }}</span></p>
-      <p class="text-secondary">Open: ${{ stock.open }}<br>Prev. close: ${{ stock.close }}</p>
-    </div>
-    <div class="col delete-ticker">
-      <a class="" href="/delete/{{ stock.symbol }}">Delete</a>
+  <div class="ticker-container pl-4 pr-4 pb-2 pt-2">
+    <div class="card-group d-flex row">
+      <div class="mb-0 p-4 bg-dark col-md">
+          <h2 class="text-light">{{ stock.symbol }}</h2>
+          <p class="text-light">{{ stock.name }}</p>
+          <h2 class="ticker-success">${{ stock.current_price }}</h2>
+      </div>
+      <div class="ticker-graph mb-0 p-4 bg-dark col-md">
+          <a class="ticker-success" href="/plot/{{ stock.symbol }}" target="_blank">View chart</a>
+      </div>
+      <div class="ticker-details mb-0 p-4 bg-dark col-md">
+          <p class="ticker-success">High: ${{ stock.high }}<br><span class="text-danger">Low: ${{ stock.low }}</span></p>
+          <p class="text-secondary">Open: ${{ stock.open }}<br>Prev. close: ${{ stock.close }}</p>
+      </div>
+      <div class="delete-ticker col-lg-1 p-4">
+          <a class="" href="/delete/{{ stock.symbol }}">Delete</a>
+      </div>
     </div>
   </div>
   {% endfor %}

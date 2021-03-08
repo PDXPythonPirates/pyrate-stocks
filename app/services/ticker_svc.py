@@ -103,7 +103,7 @@ class TickerService:
         _lineColor = (50, 207, 155, 1)
         _fontColor = (50, 207, 155, 1)
 
-        p = figure(plot_width=1000, plot_height=350,
+        p = figure(plot_width=1000, plot_height=300,
                     sizing_mode='scale_width',tools='pan, box_zoom, wheel_zoom, hover, reset',
                     tooltips = [("Date","@DateString"),("Close", "@Close")])
 

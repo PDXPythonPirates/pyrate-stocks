@@ -45,6 +45,9 @@
 .ticker-success {
   color: #32CF9B;
 }
+.nav-logo {
+  font-size: medium;
+}
 .navbar-nav a {
   color: #E2E2E2;
   font-size: 24px;
@@ -67,9 +70,6 @@
 }
 .ticker-graph {
   font-weight: 400;
-}
-.plot-container {
-  background-color: #343A40;
 }
 .delete-ticker {
   background-color: #CE3D55;
@@ -138,8 +138,7 @@ No media query since this is the default in Bootstrap */
     margin: auto;
     padding: 10px;
   }
-  .plot-container {
-    background-color: #343A40;
+  .plot-page {
     max-width: 1500px;
     margin: auto;
     padding: 10px;

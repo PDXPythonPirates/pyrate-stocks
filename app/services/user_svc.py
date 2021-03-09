@@ -32,7 +32,7 @@ class UserService():
         if lform.validate_on_submit():
             user = Account.query.filter_by(username=lform.username.data).first()
             if user is None:
-                flash('Please Sign Up', 'notify')
+                flash('Please sign Up', 'notify')
                 return render_template('signup.html', title='Signup', form=SignUpForm())
 
             if not user.check_password(lform.password.data):    

@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <h1>Sorry, you don't have access to this page</h1>
     
-    <div class="error-container">
-        <img class="pirate-img mb-4" src="{{url_for('static', filename='pirate-flag.jpg')}}"/>
-        <h2 class="error-title">Sorry, you don't have access to this page.</h2>
+    <div class="col-lg-1" style="padding: 0">
+        <img src="{{url_for('static', filename='pirate-flag.jpg', align='middle')}}"/>
     </div>
     
 {% endblock %}

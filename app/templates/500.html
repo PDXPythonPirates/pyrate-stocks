@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>An unexpected error has occurred</h1>
-<h4>Sorry for the inconvenience!</h4>
 
-    <div class="col-lg-1" style="padding: 0">
-        <img src="{{url_for('static', filename='pirate-flag.jpg', align='middle')}}"/>
+    <div class="error-container">
+        <img class="pirate-img mb-4" src="{{url_for('static', filename='pirate-flag.jpg')}}"/>
+        <h2 class="error-title">An unexpected error has occurred.</h2>
+        <h3 class="error-text">Sorry for the inconvenience!</h3>
     </div>
    
 {% endblock %}

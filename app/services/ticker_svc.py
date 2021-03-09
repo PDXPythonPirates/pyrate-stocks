@@ -103,17 +103,13 @@ class TickerService:
         _lineColor = (50, 207, 155, 1)
         _fontColor = (50, 207, 155, 1)
 
-        p = figure(title ='Closing Price History', plot_width=1000, plot_height=400,
+        p = figure(title ='Closing Price History', plot_width=1000, plot_height=300,
                     sizing_mode='scale_width',tools='pan, box_zoom, wheel_zoom, hover, reset',
                     tooltips = [("Date","@DateString"),("Close", "@Close")])
 
         p.line('Date', 'Close', line_width=2, source=source, line_color=_lineColor)
         
         p.xaxis.formatter = DatetimeTickFormatter(hourmin = ['%Y:%M'])
-
-        p.title.align = "center"
-        p.title.text_font_size = '20pt'
-        p.title.text_color = _fontColor  
 
         p.yaxis.axis_label = symbol
         p.xaxis.major_label_text_font_size = "14pt"
@@ -123,9 +119,9 @@ class TickerService:
 
         p.border_fill_color = "#343a40"
         p.outline_line_color = "#343a40"
-        p.yaxis.major_label_text_color = "#6c757d"
-        p.xaxis.major_label_text_color = "#6c757d"
-        p.yaxis.axis_label_text_color = "#6c757d"
+        p.yaxis.major_label_text_color = "#747d85"
+        p.xaxis.major_label_text_color = "#747d85"
+        p.yaxis.axis_label_text_color = "#747d85"
 
         p.background_fill_alpha = 0
         p.yaxis.axis_line_alpha = .3

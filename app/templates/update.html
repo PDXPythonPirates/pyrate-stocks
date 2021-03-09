@@ -13,15 +13,15 @@
             </div>
             <div class="form-group">
                 <label class="text-light">Email</label>
-                {{ form.email(class="form-control bg-dark text-light border-0") }}
+                {{ form.email(class="form-control bg-dark text-light border-0", placeholder="Enter Email", type="email", id="email-input") }}
             </div>
             <div class="form-group">
                 <label for="password-input">Password</label>
                 <input name="password" type="password" class="form-control bg-dark text-light border-0" id="password-input" placeholder="Enter Password (Not Required)">
             </div>
             <div class="form-group">
-                <label class="text-light">Symbols</label>
-                {{ form.stocks(class="form-control bg-dark text-light border-0", placeholder="Stock symbols separated by comma (e.g., AAPL,TSLA,FB,MSFT)") }}
+                <label for="stock-input">Symbols</label>
+                {{ form.stocks(class="form-control bg-dark text-light border-0", placeholder="Separate by commas (e.g., AAPL,TSLA,FB,MSFT)", type="text", id="stock-input") }}
             </div>
             <button type="submit" class="btn btn-secondary btn-sm mt-4">Submit</button>
         </form>

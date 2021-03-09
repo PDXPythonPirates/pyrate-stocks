@@ -1,15 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="plot-container bg-dark">
-    <div class="plot-page p-4">
-      <h2 class="plot-text text-center p-4">Closing Price History</h2>
-      <link rel='stylesheet' href={{ cdn_css | safe }} type="text/css" />
-      <script type='text/javascript' src={{ cdn_js | safe }}></script>
+<div class="plot p-4">
+  <link rel='stylesheet' href={{ cdn_css | safe }} type="text/css" />
+  <script type='text/javascript' src={{ cdn_js | safe }}></script>
 
-        {{script | safe}}
-        {{div | safe}}
-    </div>
-  </div>
-
+    {{script | safe}}
+    {{div | safe}}
+</div>
 {% endblock %}

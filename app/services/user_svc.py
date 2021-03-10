@@ -25,7 +25,7 @@ class UserService():
         
     def login():
         if current_user.is_authenticated:
-            flash('You already signed in!', 'notify')
+            flash('You are already signed in.', 'notify')
             return redirect(url_for('main_bp.dashboard'))
 
         lform = LoginForm()

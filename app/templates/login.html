@@ -8,6 +8,7 @@
     <div class="form-group">
       <label for="username-input">Username</label>
       {% if username %}
+      <!-- {{ form.username(class="form-control bg-dark text-light border-0", type="text", id="username-input", placeholder="", required) }} -->
       <input name="username" type="text" class="form-control bg-dark text-light border-0" id="username-input" placeholder="" value= "{{ username }}" required>
       {% else %}
       <input name="username" type="text" class="form-control bg-dark text-light border-0" id="username-input" placeholder="Enter Username" required>

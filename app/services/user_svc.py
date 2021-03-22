@@ -19,13 +19,13 @@ class UserService():
             db.session.add(user)
             db.session.commit()
             flash(f'Welcome {user.username}! Please login.', 'notify')
-            # lform.username.data = user.username
-            return redirect(url_for('main_bp.dashboard'))
+            lform.username.data = user.username
+            return render_template('login.html', title='Sign In', form=lform, username=lform.username.data)
         return render_template('signup.html', title='Signup', form=sform)    
         
     def login():
         if current_user.is_authenticated:
-            flash('You already signed in!', 'notify')
+            flash('You are already signed in.', 'notify')
             return redirect(url_for('main_bp.dashboard'))
 
         lform = LoginForm()

@@ -123,6 +123,13 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 - The user stays logged in until the user decides to log out.  
 
+## **Styling**
+
+[Bootstrap](https://getbootstrap.com/) and [LESS](http://lesscss.org/) were used for styling. Bootstrap uses class based styling and LESS is a CSS preprocessor. If you're using VSCode, download the Easy LESS extension by mrcrowl. This extension will allow you to easily work with LESS files in VSCode. If you're using another text editor, you'll want to search for a LESS compiler that will compile .less files to .css. 
+
+- To modify the main color palette of the layout, modify the palette.less file.
+
+- The mixins.less file holds parametric mixins. [Mixins](http://lesscss.org/#mixins) hold one or more parameters that are used to extend functionality of LESS by taking arguments and its properties and customize the mixin output when mixed into another block. Mixins also help minimize lines of repeat code. With parametric mixins, you can also create a library of your own frequently used styling, that can be used across other projects.
 
 ## **Resources**
 

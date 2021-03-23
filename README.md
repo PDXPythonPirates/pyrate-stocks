@@ -16,6 +16,8 @@ A simple investment application built with Flask and Python | [Explore the docs 
 	
 - [Features](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#features)
 
+- [Styling](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1#styling)
+
 - [Contributors](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#contributors)
 
 - [Resources](https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/blob/main/README.md#resources)

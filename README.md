@@ -45,13 +45,13 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 ### **Clone repository**
 
-    $ git clone https://github.com/PDXPythonPirates/python-pirates-project-cohort-1/tree/main
+    $ git clone https://github.com/PDXPythonPirates/pyrate-stocks.git
 
 ### **Create virtual environment**
 
 * Navigate to the project folder
 
-      $ cd python-pirates-project-cohort-1
+      $ cd pyrate-stocks
 
 * Create a new virtual environment
 

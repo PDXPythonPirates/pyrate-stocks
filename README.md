@@ -98,6 +98,7 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
       #Mac / Unix / WSL
       $ export FLASK_ENV=fin_app.py
     
+    
 ### **Run application**
 
 * Run the app using Flask
@@ -145,21 +146,18 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 - [Pandas Documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html)
 - [yFinance Package](https://pypi.org/project/yfinance/)
 
-
 ## **Contributors**
 
-- Matthias Wheelhouse
-- Jessica Cassidy
-- Xuehong Liu
-- Matt Griffes
-
+- [Matthias Wheelhouse](https://www.linkedin.com/in/mattiwheels/)
+- [Jessica Cassidy](https://www.linkedin.com/in/cassjs/)
+- [Xuehong Liu](https://www.linkedin.com/in/xuehong-liu/)
+- [Matt Griffes](https://www.linkedin.com/in/matthewgriffes/)
 
 ## **Special Thanks**
 
 Thank you, Chris Thompson and Matt Phillips, for hosting the **Python Pyrates Project Cohort 1**! We greatly appreciate your guidance and support throughout the creation of this app, as well as the opportunity to experience the software lifecycle on a real-world application.
 
 We encourage any interested developers - regardless of experience - to apply for the next cohort. This is was an amazing experience for all four of us.
-
 
 ## **License**
 

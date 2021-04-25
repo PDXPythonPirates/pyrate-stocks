@@ -53,33 +53,21 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
       
 ### **Download Docker, Build Image, Run Container**
       
-* **What is Docker?** Docker is a platform for building, running, and shipping applications. Docker packages up an application with everything it needs and            allows an app to run and function the same way on any user's local machine.
+* **What is Docker?** Docker is a platform for building, running, and shipping applications. Docker packages up an application with everything it needs and allows an app to run and function the same way on any user's local machine.
 
-* **Download Docker Desktop:** In order to run the Docker container, you’ll need to install Docker then run it on your local machine. There are versions                available for Linux, Max, and Windows. Download the Docker desktop application: https://www.docker.com/get-started (If you’re using VScode, the docker            extension can also be utilized, however, Docker Desktop will still need to run in the background on your local machine when running the program.
+* **Download Docker Desktop:** In order to run the Docker container, you’ll need to install Docker then run it on your local machine. There are versions available for Linux, Max, and Windows. Download the Docker desktop application: https://www.docker.com/get-started (If you’re using VScode, the docker extension can also be utilized, however, Docker Desktop will still need to run in the background on your local machine when running the program.
 
 * Build Docker Image
 
-      $ docker build -t pyrate-stocks
+      $ docker build -t pyrate-stocks .
 
 * Run Docker Container
 
-      $ docker run -t pyrate-stocks:latest
+      $ docker run -p 8080:5000 pyrate-stocks
     
-### Set Flask File & Run Application
+### Run Application
 
-* Set Main Flask File to Run
-
-      #Windows
-      $ set FLASK_APP=fin_app.py
-
-	    or
-
-      #Mac / Unix / WSL
-      $ export FLASK_APP=fin_app.py
-    
-* Run Flask Application
-
-      $ flask run
+* Open a web browser and go to http://localhost:8080/ (Note: This is a development server. Do not use it in a production deployment)
 
 ## **Features**
 

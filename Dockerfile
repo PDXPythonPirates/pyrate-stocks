@@ -7,5 +7,6 @@ COPY . .
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt 
 
-# Run application
-CMD [ "python", "fin_app.py" ]
+# Set Flask File and Run App
+COPY fin_app.py .
+ENTRYPOINT FLASK_APP=fin_app.py flask run --host=0.0.0.0

@@ -84,7 +84,7 @@ When changes are made to the application, the Docker image and container will ne
       # Stop container running
       $ docker stop <ContainerID>
 
-* After edits are madeto the application, rebuild the container image with the build command and run the container again (see "Download Docker, Build Image, Run Container" for commands).
+* After edits are madeto the application, rebuild the container image with the build command and run the container again (see [Download Docker, Build Image, Run Container](https://github.com/PDXPythonPirates/pyrate-stocks/tree/eng/docker#download-docker-build-image-run-container) for commands).
 
 ## **Features**
 

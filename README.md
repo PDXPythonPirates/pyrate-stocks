@@ -72,6 +72,20 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 * Open a web browser and go to http://localhost:8080/ \
 (Note: This is a development server. Do not use it in a production deployment)
 
+### Editing the Application
+
+When changes are made to the application, the Docker image and container will need to be rebuilt. Note: If testing multiple changes, Run and Debug Mode is recommended for efficiency, then the container image can be rebuilt. 
+
+* The docker container can be stopped manually via the VSCode extension or using the stop command. You will need the container ID to use the stop command.
+
+      # Find container ID
+      $ docker ps
+      
+      # Stop container running
+      $ docker stop <ContainerID>
+
+* After edits are madeto the application, rebuild the container image with the build command and run the container again (see "Download Docker, Build Image, Run Container" for commands).
+
 ## **Features**
 
 - Anonymous users are presented with Home, Login, and Signup options.

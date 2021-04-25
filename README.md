@@ -47,61 +47,37 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
     $ git clone https://github.com/PDXPythonPirates/pyrate-stocks.git
 
-### **Create virtual environment**
-
 * Navigate to the project folder
 
       $ cd pyrate-stocks
+      
+### **Download Docker, Build Image, Run Container**
+      
+* **What is Docker?** Docker is a platform for building, running, and shipping applications. Docker packages up an application with everything it needs and            allows an app to run and function the same way on any user's local machine.
 
-* Create a new virtual environment
+* **Download Docker Desktop:** In order to run the Docker container, you’ll need to install Docker then run it on your local machine. There are versions                available for Linux, Max, and Windows. Download the Docker desktop application: https://www.docker.com/get-started (If you’re using VScode, the docker            extension can also be utilized, however, Docker Desktop will still need to run in the background on your local machine when running the program.
 
-      #conda
-      $ conda create -n myenv python=3.8
+* Build Docker Image
 
-	or
+      $ docker build -t pyrate-stocks
 
-      #venv
-      $ python -m venv myenv
+* Run Docker Container
+
+      $ docker run -t pyrate-stocks:latest
     
-### **Activate virtual environment**
+### Set Flask File & Run Application
 
-* Activate your new virtual environment
-
-      #conda
-      $ conda activate myenv
-
-	or
-
-      #venv (Windows)
-      $ myenv/Scripts/activate    
-
-	or
-
-      #venv (Mac / Unix / WSL)
-      $ source myenv/bin/activate
-    
-### **Install requirements.txt**
-
-* Install the required packages
-
-      $ pip install -r requirements.txt
-    
-### **FLASK_ENV Variable**
-
-* Set the flask environment
+* Set Main Flask File to Run
 
       #Windows
-      $ set FLASK_ENV=fin_app.py
+      $ set FLASK_APP=fin_app.py
 
-	or
+	    or
 
       #Mac / Unix / WSL
-      $ export FLASK_ENV=fin_app.py
+      $ export FLASK_APP=fin_app.py
     
-    
-### **Run application**
-
-* Run the app using Flask
+* Run Flask Application
 
       $ flask run
 

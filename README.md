@@ -53,9 +53,11 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
       
 ### **Download Docker, Build Image, Run Container**
 
-* **Download Docker Desktop:** In order to run the Docker container, you’ll need to install Docker then have it open on your local machine. There are versions available for Linux, Max, and Windows. Download the Docker desktop application: https://www.docker.com/get-started (If you’re using VScode, the docker extension can also be utilized, however, Docker Desktop will still need to run in the background in order to build the image and run the container.
-      
-      * **What is Docker?** Docker is a platform for building, running, and shipping applications. Docker packages up an application with everything it needs and allows an app to run and function the same way on any user's local machine.
+* **Download Docker Desktop:** In order to run the Docker container, you’ll need to install Docker then have it open on your local machine. There are versions available for Linux, Max, and Windows. Download the Docker desktop application: https://www.docker.com/get-started. 
+     
+     * **VSCode (Extra/Not Required)** If you’re using VScode, the docker extension can also be utilized, however, Docker Desktop will still need to run in the background in order to build the image and run the container.
+
+     * **What is Docker?** Docker is a platform for building, running, and shipping applications. Docker packages up an application with everything it needs and allows an app to run and function the same way on any user's local machine.
 
 * Build Docker Image
 

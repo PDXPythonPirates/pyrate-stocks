@@ -53,11 +53,13 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
       
 ### **Download Docker, Build Image, Run Container**
 
-* **Download Docker Desktop:** In order to run the Docker container, you’ll need to install Docker then have it open on your local machine. There are versions available for Linux, Max, and Windows. Download the Docker desktop application: https://www.docker.com/get-started. 
-     
-     * **VSCode (Extra/Not Required)** If you’re using VScode, the docker extension can also be utilized, however, Docker Desktop will still need to run in the background in order to build the image and run the container.
+* **Download Docker Desktop:** https://www.docker.com/get-started. There are versions available for Linux, Max, and Windows. **What is Docker?** Docker is a platform for building, running, and shipping applications. Docker packages up an application with everything it needs and allows an app to run and function the same way on any user's local machine.
 
-     * **What is Docker?** Docker is a platform for building, running, and shipping applications. Docker packages up an application with everything it needs and allows an app to run and function the same way on any user's local machine.
+* **Create a Docker ID:** https://hub.docker.com/signup
+     
+* **Login:**
+
+      $ docker login
 
 * Build Docker Image
 
@@ -72,11 +74,8 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 * Open a web browser and go to http://localhost:8080/ \
 (Note: This is a development server. Do not use it in a production deployment)
 
-### Editing the Application
-
-When changes are made to the application, the Docker image and container will need to be rebuilt. Note: If testing multiple changes, Run and Debug Mode is recommended for efficiency, then the container image can be rebuilt. 
-
-* The docker container can be stopped manually via the VSCode extension or using the stop command. You will need the container ID to use the stop command.
+### **Editing Application**
+* **Stop Running Container:** You will need the container ID to use the stop command.
 
       # Find container ID
       $ docker ps
@@ -84,7 +83,8 @@ When changes are made to the application, the Docker image and container will ne
       # Stop container running
       $ docker stop <ContainerID>
 
-* After edits are madeto the application, rebuild the container image with the build command and run the container again (see [Download Docker, Build Image, Run Container](https://github.com/PDXPythonPirates/pyrate-stocks/tree/eng/docker#download-docker-build-image-run-container) for commands).
+* **Rebuild & Run Container:** After edits are made to the application, rebuild and run the container via the docker build and run commands.
+
 
 ## **Features**
 

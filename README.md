@@ -51,28 +51,24 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
       $ cd pyrate-stocks
       
-### **Download Docker, Build Image, Run Container**
+### **Docker**
 
 * **Download Docker Desktop:** https://www.docker.com/get-started. There are versions available for Linux, Max, and Windows. **What is Docker?** Docker is a platform for building, running, and shipping applications. Docker packages up an application with everything it needs and allows an app to run and function the same way on any user's local machine.
 
 * **Create a Docker ID:** https://hub.docker.com/signup
-     
-* **Login:**
 
+* **Login:** You will be prompted to enter your Docker credentials.
+      
       $ docker login
-
-* Build Docker Image
-
-      $ docker build -t pyrate-stocks .
-
-* Run Docker Container
-
-      $ docker run -p 8080:5000 pyrate-stocks
-    
-### Run Application
-
-* Open a web browser and go to http://localhost:8080/ \
-(Note: This is a development server. Do not use it in a production deployment)
+      
+* **Build Docker Image:** 
+      
+      $ ./scripts/build.sh
+      
+* **Run Application/Docker Container:**
+      
+      $ ./scripts/run.sh
+      # Opens a browser http://localhost:5000
 
 ### **Editing Application**
 * **Stop Running Container:** You will need the container ID to use the stop command.
@@ -82,8 +78,65 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
       
       # Stop container running
       $ docker stop <ContainerID>
+      
+* **Multiple Edits:** For efficiency with multiple edits, it is recommened to create your own virtual enviorment on your local machine. Once all edits are confirmed, just rebuild and run the container with the commands from the Docker section. 
 
-* **Rebuild & Run Container:** After edits are made to the application, rebuild and run the container via the docker build and run commands.
+	<details>
+		<summary>Click to expand! Create a local virtual enviornment</summary>
+
+	* Create a new virtual environment
+
+	      #conda
+	      $ conda create -n myenv python=3.8
+
+		or
+
+	      #venv
+	      $ python -m venv myenv
+
+	### **Activate virtual environment**
+
+	* Activate your new virtual environment
+
+	      #conda
+	      $ conda activate myenv
+
+		or
+
+	      #venv (Windows)
+	      $ myenv/Scripts/activate    
+
+		or
+
+	      #venv (Mac / Unix / WSL)
+	      $ source myenv/bin/activate
+
+	### **Install requirements.txt**
+
+	* Install the required packages
+
+	      $ pip install -r requirements.txt
+
+	### **FLASK_ENV Variable**
+
+	* Set the flask environment
+
+	      #Windows
+	      $ set FLASK_ENV=fin_app.py
+
+		or
+
+	      #Mac / Unix / WSL
+	      $ export FLASK_ENV=fin_app.py
+
+
+	### **Run application**
+
+	* Run the app using Flask
+
+	      $ flask run
+
+	</details>
 
 
 ## **Features**

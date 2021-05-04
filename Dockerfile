@@ -1,12 +1,13 @@
-FROM python:3.9
+FROM python:3.8-buster
 
 WORKDIR /pyrate-stocks
-COPY . . 
 
-# Install dependencies
+# Copy file and install dependencies
 COPY requirements.txt .
-RUN pip3 install -r requirements.txt 
+RUN pip install -r requirements.txt 
 
-# Set Flask File and Run App
-COPY fin_app.py .
+# Copy required files
+COPY . .
+
+# Run Application
 ENTRYPOINT FLASK_APP=fin_app.py flask run --host=0.0.0.0

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-# Stop running Docker container
+echo "Stopping Docker container ..." 
 docker stop $(docker ps -q)

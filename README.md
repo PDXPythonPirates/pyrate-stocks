@@ -71,13 +71,9 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
       # Opens a browser http://localhost:5000
 
 ### **Editing Application**
-* **Stop Running Container:** You will need the container ID to use the stop command.
+* **Stop Running Container:** 
 
-      # Find container ID
-      $ docker ps
-      
-      # Stop container running
-      $ docker stop <ContainerID>
+      $ ./scripts/stop.sh  
       
 * **Multiple Edits:** For efficiency with multiple edits, it is recommened to create your own virtual enviorment on your local machine. Once all edits are confirmed, just rebuild and run the container with the commands from the Docker section. 
 

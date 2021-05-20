@@ -47,63 +47,93 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
     $ git clone https://github.com/PDXPythonPirates/pyrate-stocks.git
 
-### **Create virtual environment**
-
 * Navigate to the project folder
 
       $ cd pyrate-stocks
+      
+### **Docker**
 
-* Create a new virtual environment
+* **Download Docker Desktop:** https://www.docker.com/get-started. There are versions available for Linux, Max, and Windows. **What is Docker?** Docker is a platform for building, running, and shipping applications. Docker packages up an application with everything it needs and allows an app to run and function the same way on any user's local machine.
 
-      #conda
-      $ conda create -n myenv python=3.8
+* **Create a Docker ID:** https://hub.docker.com/signup
 
-	or
+* **Login:** You will be prompted to enter your Docker credentials.
+      
+      $ docker login
+      
+* **Build Docker Image:** 
+      
+      $ ./scripts/build.sh
+      
+* **Run Application/Docker Container:**
+      
+      $ ./scripts/run.sh
+      # Opens a browser http://localhost:5000
 
-      #venv
-      $ python -m venv myenv
-    
-### **Activate virtual environment**
+### **Editing Application**
+* **Stop Running Container:** 
 
-* Activate your new virtual environment
+      $ ./scripts/stop.sh  
+      
+* **Multiple Edits:** For efficiency with multiple edits, it is recommened to create your own virtual enviorment on your local machine. Once all edits are confirmed, just rebuild and run the container with the commands from the Docker section. 
 
-      #conda
-      $ conda activate myenv
+	<details>
+		<summary>Click to expand! Create a local virtual enviornment</summary>
 
-	or
+	* Create a new virtual environment
 
-      #venv (Windows)
-      $ myenv/Scripts/activate    
+	      #conda
+	      $ conda create -n myenv python=3.8
 
-	or
+		or
 
-      #venv (Mac / Unix / WSL)
-      $ source myenv/bin/activate
-    
-### **Install requirements.txt**
+	      #venv
+	      $ python -m venv myenv
 
-* Install the required packages
+	### **Activate virtual environment**
 
-      $ pip install -r requirements.txt
-    
-### **FLASK_ENV Variable**
+	* Activate your new virtual environment
 
-* Set the flask environment
+	      #conda
+	      $ conda activate myenv
 
-      #Windows
-      $ set FLASK_ENV=fin_app.py
+		or
 
-	or
+	      #venv (Windows)
+	      $ myenv/Scripts/activate    
 
-      #Mac / Unix / WSL
-      $ export FLASK_ENV=fin_app.py
-    
-    
-### **Run application**
+		or
 
-* Run the app using Flask
+	      #venv (Mac / Unix / WSL)
+	      $ source myenv/bin/activate
 
-      $ flask run
+	### **Install requirements.txt**
+
+	* Install the required packages
+
+	      $ pip install -r requirements.txt
+
+	### **FLASK_ENV Variable**
+
+	* Set the flask environment
+
+	      #Windows
+	      $ set FLASK_ENV=fin_app.py
+
+		or
+
+	      #Mac / Unix / WSL
+	      $ export FLASK_ENV=fin_app.py
+
+
+	### **Run application**
+
+	* Run the app using Flask
+
+	      $ flask run
+
+	</details>
+
 
 ## **Features**
 
@@ -138,6 +168,7 @@ This app was created by the first cohort of the Python Pyrates Project, hosted b
 
 - [Portland Python Pirates](https://github.com/PDXPythonPirates)
 - [Bootstrap Documentation](https://getbootstrap.com/)
+- [Docker Documentation](https://docs.docker.com/engine/reference/commandline/run/)
 - [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/)
 - [Hackers and Slackers' Flask Series](https://hackersandslackers.com/series/build-flask-apps/)
 - [Miguel Grinberg's Dev Blog](https://blog.miguelgrinberg.com/category/Flask)

@@ -16,3 +16,6 @@ def test():
     import unittest
     tests = unittest.TestLoader().discover('tests')
     unittest.TextTestRunner(verbosity=2).run(tests)
+
+if __name__ == "__main__":
+    app.run(host='127.0.0.1', port=8080, debug=False)

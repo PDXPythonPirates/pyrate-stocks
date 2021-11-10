@@ -1,0 +1,17 @@
+steps:
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/${_PROJECT_ID}/${_SERVICE}:$COMMIT_SHA', '.']
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/${_PROJECT_ID}/${_SERVICE}:$COMMIT_SHA']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', '${_SERVICE}', '--image', 'gcr.io/${_PROJECT_ID}/${_SERVICE}:$COMMIT_SHA', '--region', '${_REGION}']
+images:
+- gcr.io/${_PROJECT_ID}/${_SERVICE}:$COMMIT_SHA
+substitutions:
+  _SERVICE: pyrate-stocks
+  _PROJECT_ID: pyrate-stocks
+  _REGION: us-central1
